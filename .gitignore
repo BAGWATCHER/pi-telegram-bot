@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.local
+.pi/
+sessions/
+memory/
+agent-sessions/
+tasks.json
+task-outputs/
+*.db
+*.db-wal
+*.db-shm
+*.log
+.DS_Store
