@@ -1,6 +1,6 @@
 # Pi Telegram Bot
 
-A Telegram bot powered by the **pi coding agent** — Claude with tools, streaming, and persistent sessions per chat.
+A Telegram bot powered by the **pi coding agent** — any AI model (Claude, GPT, Gemini) with tools, streaming, and persistent sessions per chat.
 
 ## Features
 
