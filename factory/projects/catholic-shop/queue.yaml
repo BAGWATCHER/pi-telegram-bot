@@ -1,0 +1,289 @@
+version: 1
+project_id: catholic-shop
+sprint: dark-factory-wave-1
+updated_at: '2026-04-26T10:06:00Z'
+run_status: active
+tasks:
+- id: CS-001
+  title: Bootstrap mobile-first storefront + API core
+  lane: platform
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on: []
+  done_when:
+  - mobile homepage + product detail path is functional
+  - catalog feed API + product detail API return valid contracts
+  - PM2 demo process and public route are online
+  artifacts:
+  - frontend/index.html
+  - backend/api/app.py
+  - artifacts/smoke-2026-04-25.json
+- id: CS-002
+  title: Dark-factory operating model + lane ownership setup
+  lane: ops
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-001
+  done_when:
+  - lane plan doc exists with team ownership and handoff rules
+  - agent lane claims tracked in machine-readable artifact
+  - run-status artifact includes active lane progress
+  artifacts:
+  - spec/dark-factory-lane-plan-v1.md
+  - artifacts/agent-lane-claims.json
+  - artifacts/run-status-2026-04-25.md
+- id: CS-003
+  title: Eval harness with mobile + API quality gates
+  lane: eval
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-001
+  done_when:
+  - objective pass/fail script exists
+  - gates include mobile viewport + key endpoint checks
+  - eval summary artifact emitted
+  artifacts:
+  - eval/run_eval.py
+  - artifacts/eval-summary.md
+  - artifacts/eval-summary.json
+- id: CS-004
+  title: User auth + saved-item primitives (mobile)
+  lane: platform
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - CS-003
+  done_when:
+  - user account create/login flow works
+  - save/unsave product works from mobile cards/detail
+  - session state persisted
+  artifacts:
+  - backend/api/app.py
+  - frontend/index.html
+- id: CS-005
+  title: Cart + checkout intent scaffold
+  lane: commerce
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - CS-003
+  done_when:
+  - cart add/remove/update flow works on mobile
+  - checkout intent endpoint returns deterministic payload
+  - order draft persistence exists
+  artifacts:
+  - backend/api/app.py
+  - data/processed/orders.json
+  - spec/checkout-contract-v1.md
+- id: CS-006
+  title: Shop onboarding operations queue + review states
+  lane: partner-ops
+  priority: p1
+  risk: low
+  status: todo
+  depends_on:
+  - CS-003
+  done_when:
+  - onboarding leads include triage states
+  - review queue endpoint exists
+  - accepted/rejected transitions are auditable
+  artifacts:
+  - backend/api/app.py
+  - data/processed/shop_onboarding_leads.json
+  - artifacts/onboarding-ops-smoke.json
+- id: CS-007
+  title: AI concierge evaluation set + guardrails
+  lane: ai
+  priority: p1
+  risk: medium
+  status: todo
+  depends_on:
+  - CS-003
+  done_when:
+  - recommendation eval cases exist
+  - failure taxonomies captured
+  - guardrail policy documented
+  artifacts:
+  - artifacts/ai-concierge-eval-cases.json
+  - artifacts/ai-concierge-eval-summary.md
+  - spec/ai-guardrail-policy-v1.md
+- id: CS-008
+  title: Social autopilot queue (draft -> approve -> publish-ready)
+  lane: ai
+  priority: p1
+  risk: medium
+  status: todo
+  depends_on:
+  - CS-003
+  done_when:
+  - generated social drafts are queueable and reviewable
+  - approval state machine exists
+  - channel payload format documented
+  artifacts:
+  - backend/api/app.py
+  - data/processed/social_drafts.json
+  - spec/social-dispatch-contract-v1.md
+- id: CS-009
+  title: Provenance + trust fields hardening
+  lane: trust
+  priority: p1
+  risk: medium
+  status: todo
+  depends_on:
+  - CS-003
+  done_when:
+  - provenance fields are mandatory for publishable items
+  - unknown provenance items are flagged and suppressed
+  - trust policy documented
+  artifacts:
+  - spec/provenance-policy-v1.md
+  - data/processed/products.json
+- id: CS-010
+  title: Dad item-list ingest lane (deferred import)
+  lane: data
+  priority: p1
+  risk: medium
+  status: blocked-waiting-input
+  depends_on:
+  - CS-009
+  done_when:
+  - CSV/Sheet import script handles dedupe + normalization
+  - import QA report includes missing-field and duplicate stats
+  - first controlled publish batch shipped
+  artifacts:
+  - scripts/import_dad_catalog.py
+  - artifacts/catalog-import-summary.md
+  - artifacts/catalog-import-summary.json
+- id: CS-011
+  title: UI clean-pass (remove nested boxes, simplify visual hierarchy)
+  lane: platform
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-004
+  done_when:
+  - no nested panel/card framing in primary flows
+  - product list uses cleaner single-surface rows
+  - social generator moved behind secondary details toggle
+  artifacts:
+  - frontend/index.html
+  - artifacts/eval-summary.md
+- id: CS-012
+  title: Browse by destination flow (city/country navigation)
+  lane: platform
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-011
+  done_when:
+  - destination list endpoint returns destination options with counts
+  - mobile UI shows destination browse chips
+  - catalog filter by destination works end-to-end
+  artifacts:
+  - backend/api/app.py
+  - frontend/index.html
+  - artifacts/eval-summary.md
+- id: CS-013
+  title: Conversion modules (bundles, related items, shipping ETA cues)
+  lane: commerce
+  priority: p1
+  risk: medium
+  status: todo
+  depends_on:
+  - CS-005
+  done_when:
+  - product detail shows related items
+  - starter bundles are visible on mobile home
+  - shipping ETA cue is shown in listing/detail
+  artifacts:
+  - frontend/index.html
+  - backend/api/app.py
+  - artifacts/conversion-modules-smoke.json
+- id: CS-014
+  title: Starter inventory sourcing + CSV import pipeline
+  lane: data
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-001
+  done_when:
+  - inventory sourcing playbook documented
+  - starter intake template created
+  - importer script updates products with inventory fields and emits summary artifacts
+  artifacts:
+  - spec/inventory-sourcing-playbook-v1.md
+  - data/raw/starter_inventory_intake.template.csv
+  - scripts/import_starter_inventory_csv.py
+  - artifacts/inventory-import-summary.md
+- id: CS-015
+  title: Sell-now lane: Stripe buy-now checkout + order ops scaffold
+  lane: commerce
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - CS-014
+  done_when:
+  - buy-now endpoint returns checkout URL for a product order
+  - order records persist with dispatch notes and status transitions
+  - frontend product modal launches checkout flow
+  artifacts:
+  - backend/api/app.py
+  - frontend/index.html
+  - data/processed/orders.json
+  - artifacts/eval-summary.md
+- id: CS-016
+  title: Ops dashboard page for dispatch/status workflow
+  lane: partner-ops
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-015
+  done_when:
+  - `/ops` page lists orders with status filter
+  - dispatch notes can be posted from dashboard
+  - status transitions can be updated from dashboard
+  artifacts:
+  - frontend/ops.html
+  - backend/api/app.py
+- id: CS-017
+  title: AI concierge relevance hardening (intent parsing + destination/occasion weighting)
+  lane: ai
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-007
+  done_when:
+  - AI parser extracts country/occasion/category/budget hints from freeform intent
+  - recommendation ranking prioritizes destination + occasion fit over generic matches
+  - API returns parsed intent metadata for debuggability
+  artifacts:
+  - backend/api/app.py
+  - artifacts/eval-summary.md
+- id: CS-018
+  title: Mobile shopping flow polish (inventory cues + reduced list overload)
+  lane: platform
+  priority: p1
+  risk: low
+  status: done-local
+  depends_on:
+  - CS-011
+  done_when:
+  - listing shows inventory/lead-time cues
+  - initial list truncates with show-more for easier scanning
+  - AI results provide quick view buttons for top recommendations
+  artifacts:
+  - frontend/index.html
+  - artifacts/ui/mobile-home.png

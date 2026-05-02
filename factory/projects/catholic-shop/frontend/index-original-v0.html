@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Catholic Market</title>
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --text: #1a1a1a;
+      --muted: #6f675f;
+      --line: #ddd6cf;
+      --accent: #7a3b10;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Avenir Next", "Segoe UI", Inter, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.48;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .app {
+      max-width: 460px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 14px 14px 92px;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 12;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+    .brand {
+      margin: 4px 0 2px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .search {
+      display: flex;
+      gap: 8px;
+    }
+    input, button {
+      font: inherit;
+    }
+    input {
+      width: 100%;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--text);
+    }
+    button {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 10px 12px;
+      background: var(--white);
+      color: var(--accent);
+      font-weight: 620;
+    }
+    button.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    h2 {
+      margin: 16px 0 8px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "Times New Roman", serif;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+    .chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px 0 2px;
+      margin-bottom: 6px;
+    }
+    .chip {
+      white-space: nowrap;
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    .section {
+      padding: 6px 0 4px;
+      border-bottom: 1px solid var(--line);
+    }
+    .product-row {
+      display: flex;
+      gap: 11px;
+      padding: 12px 0;
+      border-bottom: 1px solid #ece7e2;
+    }
+    .product-row:last-child { border-bottom: 0; }
+    .thumb {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #e7dfd8;
+      background: #eee;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 620;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .micro {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .ai-result {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+    .inputs-stack {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .bottom {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-width: 460px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      padding: 8px 10px 10px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      z-index: 20;
+    }
+    .nav {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+    .nav strong {
+      display: block;
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 1px;
+      font-weight: 600;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.42);
+      z-index: 40;
+      display: none;
+      align-items: end;
+    }
+    .modal-inner {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px 16px 0 0;
+      padding: 14px;
+      max-height: 82vh;
+      overflow: auto;
+    }
+    .close {
+      float: right;
+      font-size: 12px;
+      padding: 6px 9px;
+    }
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="topbar">
+      <div class="brand">Catholic Market</div>
+      <div class="sub">Unique Catholic items from trusted local shops worldwide.</div>
+      <div class="search">
+        <input id="q" placeholder="Search: olive wood cross, rosary, icon..." />
+        <button class="primary" id="searchBtn">Find</button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="micro" style="margin-top:6px;">Browse by destination</div>
+      <div class="chips" id="destinations"></div>
+    </section>
+
+    <section class="section" id="featuredSection">
+      <h2>Featured catalog</h2>
+      <div class="micro">Clean, provenance-first listing. Tap any item to view details.</div>
+      <div id="cards"></div>
+    </section>
+
+    <section class="section" id="cartSection">
+      <h2>Cart</h2>
+      <div id="cartItems" class="micro">Your cart is empty.</div>
+      <div class="row" style="margin-top:8px;">
+        <div class="price" id="cartTotal">$0.00</div>
+        <button class="primary" id="checkoutCartBtn">Checkout cart</button>
+      </div>
+      <div id="cartResult" class="ai-result"></div>
+    </section>
+
+    <section class="section">
+      <h2>Concierge recommendations</h2>
+      <div class="inputs-stack">
+        <input id="intent" value="confirmation gift under $50 from Italy" />
+        <div class="search">
+          <input id="budget" placeholder="Budget USD" value="50" />
+          <input id="occasion" placeholder="Occasion" value="confirmation" />
+        </div>
+      </div>
+      <div class="search" style="margin-top:8px;">
+        <button class="primary" id="aiBtn" style="width:100%;">Get recommendations</button>
+      </div>
+      <div id="aiResult" class="ai-result"></div>
+      <div id="aiActions" class="row" style="margin-top:8px; flex-wrap:wrap;"></div>
+
+      <details>
+        <summary>Optional: social caption generator</summary>
+        <div style="margin-top:8px;">
+          <button id="socialBtn" style="width:100%;">Generate caption from top product</button>
+          <div id="socialResult" class="ai-result"></div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <nav class="bottom">
+    <div class="nav"><strong>Home</strong>Today</div>
+    <div class="nav"><strong>Search</strong>Catalog</div>
+    <div class="nav"><strong>Saved</strong><span id="savedCountLabel">0 items</span></div>
+    <div class="nav"><strong>Cart</strong><span id="cartCountLabel">0 items</span></div>
+    <div class="nav"><strong>Account</strong><span id="accountLabel">Guest</span></div>
+  </nav>
+
+  <div class="modal" id="modal">
+    <div class="modal-inner" id="modalInner"></div>
+  </div>
+
+  <script>
+    const cardsEl = document.getElementById('cards');
+    const chipsEl = document.getElementById('chips');
+    const destinationsEl = document.getElementById('destinations');
+    const modalEl = document.getElementById('modal');
+    const modalInnerEl = document.getElementById('modalInner');
+    const savedCountLabelEl = document.getElementById('savedCountLabel');
+    const cartCountLabelEl = document.getElementById('cartCountLabel');
+    const cartItemsEl = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const cartResultEl = document.getElementById('cartResult');
+    const accountLabelEl = document.getElementById('accountLabel');
+    const aiActionsEl = document.getElementById('aiActions');
+
+    let latestItems = [];
+    let userId = localStorage.getItem('catholicMarketUserId') || '';
+    let cartId = localStorage.getItem('catholicMarketCartId') || '';
+    let savedIds = new Set();
+    let activeDestination = '';
+    let visibleCount = 4;
+    let cartState = { items: [], total_quantity: 0, subtotal_cents: 0 };
+
+    const chipValues = ['Italy', 'Poland', 'Mexico', 'confirmation', 'baptism', 'first_communion'];
+    chipsEl.innerHTML = chipValues.map(v => `<button class="chip" data-chip="${v}">${v.replace('_', ' ')}</button>`).join('');
+    chipsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-chip]');
+      if (!btn) return;
+      document.getElementById('q').value = btn.getAttribute('data-chip');
+      loadCatalog();
+    });
+
+    destinationsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-destination]');
+      if (!btn) return;
+      activeDestination = btn.getAttribute('data-destination') || '';
+      renderDestinationButtons();
+      loadCatalog();
+    });
+
+    let destinationItems = [];
+    function renderDestinationButtons() {
+      const buttons = [`<button class="chip ${activeDestination === '' ? 'primary' : ''}" data-destination="">All</button>`];
+      destinationItems.forEach((item) => {
+        const id = item.destination_id;
+        const selected = id === activeDestination;
+        buttons.push(`<button class="chip ${selected ? 'primary' : ''}" data-destination="${id}">${item.city}</button>`);
+      });
+      destinationsEl.innerHTML = buttons.join('');
+    }
+
+    async function loadDestinations() {
+      const res = await fetch('api/v1/destinations?limit=12');
+      if (!res.ok) {
+        destinationsEl.innerHTML = '';
+        return;
+      }
+      const data = await res.json();
+      destinationItems = data.items || [];
+      renderDestinationButtons();
+    }
+
+    function money(cents) {
+      return `$${(Number(cents || 0) / 100).toFixed(2)}`;
+    }
+
+    function refreshSavedLabels() {
+      savedCountLabelEl.textContent = `${savedIds.size} item${savedIds.size === 1 ? '' : 's'}`;
+    }
+
+    function refreshCartLabels() {
+      const count = Number(cartState?.total_quantity || 0);
+      cartCountLabelEl.textContent = `${count} item${count === 1 ? '' : 's'}`;
+      cartTotalEl.textContent = money(cartState?.subtotal_cents || 0);
+    }
+
+    function renderCart() {
+      const items = cartState?.items || [];
+      if (!items.length) {
+        cartItemsEl.innerHTML = '<div class="micro">Your cart is empty.</div>';
+        refreshCartLabels();
+        return;
+      }
+      cartItemsEl.innerHTML = items.map((item) => `
+        <article class="product-row" style="padding:8px 0;">
+          <div style="flex:1; min-width:0;">
+            <div class="title" style="font-size:15px;">${item.title}</div>
+            <div class="micro">${money(item.unit_price_cents)} × ${item.quantity}</div>
+            <div class="row" style="margin-top:6px;">
+              <button onclick="cartAdjust('${item.product_id}', -1)">−</button>
+              <button onclick="cartAdjust('${item.product_id}', 1)">+</button>
+              <button onclick="removeFromCart('${item.product_id}')">Remove</button>
+              <div class="price">${money(item.line_total_cents)}</div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+      refreshCartLabels();
+    }
+
+    async function ensureGuestSession() {
+      if (userId) {
+        accountLabelEl.textContent = 'Guest';
+        return;
+      }
+      const res = await fetch('api/v1/auth/guest-session', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ display_name: 'Guest' })
+      });
+      const data = await res.json();
+      userId = data?.user?.user_id || '';
+      if (!userId) return;
+      localStorage.setItem('catholicMarketUserId', userId);
+      accountLabelEl.textContent = data?.user?.display_name || 'Guest';
+    }
+
+    async function ensureCartSession() {
+      if (cartId) {
+        const current = await fetch(`api/v1/carts/${cartId}`);
+        if (current.ok) {
+          const data = await current.json();
+          cartState = data.cart || cartState;
+          renderCart();
+          return;
+        }
+      }
+      const res = await fetch('api/v1/carts', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ user_id: userId || null })
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      cartId = data?.cart?.cart_id || '';
+      if (cartId) localStorage.setItem('catholicMarketCartId', cartId);
+      cartState = data?.cart || cartState;
+      renderCart();
+    }
+
+    async function loadSaved() {
+      if (!userId) return;
+      const res = await fetch(`api/v1/users/${userId}/saved`);
+      if (!res.ok) return;
+      const data = await res.json();
+      savedIds = new Set((data.items || []).map(i => i.product_id));
+      refreshSavedLabels();
+    }
+
+    async function loadCart() {
+      if (!cartId) return;
+      const res = await fetch(`api/v1/carts/${cartId}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      cartState = data?.cart || { items: [], total_quantity: 0, subtotal_cents: 0 };
+      renderCart();
+    }
+
+    async function toggleSaved(productId) {
+      if (!userId) return;
+      const isSaved = savedIds.has(productId);
+      const method = isSaved ? 'DELETE' : 'POST';
+      const res = await fetch(`api/v1/users/${userId}/saved/${productId}`, { method });
+      if (!res.ok) return;
+      if (isSaved) savedIds.delete(productId);
+      else savedIds.add(productId);
+      refreshSavedLabels();
+      renderCards();
+      if (modalEl.style.display === 'flex') openProduct(productId);
+    }
+
+    async function addToCart(productId, quantity = 1) {
+      if (!cartId) return;
+      const res = await fetch(`api/v1/carts/${cartId}/items`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ product_id: productId, quantity })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const detail = typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || data);
+        cartResultEl.textContent = `Cart error: ${detail}`;
+        return;
+      }
+      cartState = data.cart || cartState;
+      cartResultEl.textContent = 'Added to cart.';
+      renderCart();
+      renderCards();
+      if (modalEl.style.display === 'flex') openProduct(productId);
+    }
+
+    async function cartAdjust(productId, delta) {
+      const current = (cartState.items || []).find((x) => x.product_id === productId);
+      if (!current) return;
+      const nextQty = Math.max(0, Number(current.quantity || 0) + Number(delta || 0));
+      const method = 'PUT';
+      const res = await fetch(`api/v1/carts/${cartId}/items/${productId}`, {
+        method,
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ quantity: nextQty })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const detail = typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || data);
+        cartResultEl.textContent = `Cart error: ${detail}`;
+        return;
+      }
+      cartState = data.cart || cartState;
+      renderCart();
+      renderCards();
+    }
+
+    async function removeFromCart(productId) {
+      const res = await fetch(`api/v1/carts/${cartId}/items/${productId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) return;
+      cartState = data.cart || cartState;
+      renderCart();
+      renderCards();
+    }
+
+    async function checkoutCart() {
+      if (!cartId) return;
+      cartResultEl.textContent = 'Preparing cart checkout...';
+      const idem = `web_${cartId}_${Date.now()}`;
+      const res = await fetch('api/v1/checkout/intents', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          cart_id: cartId,
+          user_id: userId || null,
+          success_url: window.location.href,
+          cancel_url: window.location.href,
+          idempotency_key: idem,
+          dry_run: false
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const detail = typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || data);
+        cartResultEl.textContent = `Checkout error: ${detail}`;
+        return;
+      }
+      const url = data?.checkout_url || '';
+      if (url) {
+        window.location.href = url;
+        return;
+      }
+      cartResultEl.textContent = 'Checkout link missing. Please try again.';
+    }
+
+    function renderCards() {
+      const rows = latestItems.slice(0, visibleCount);
+      const body = rows.map(item => {
+        const status = String(item.inventory_status || 'in_stock').replaceAll('_', ' ');
+        const lead = (item.lead_time_days !== undefined && item.lead_time_days !== null && item.lead_time_days !== '')
+          ? ` · ships in ~${item.lead_time_days}d`
+          : '';
+        const img = item.image_url || 'https://via.placeholder.com/180x180/f0ece7/8a7d6f?text=Catholic+Item';
+        const inCart = (cartState.items || []).find((x) => x.product_id === item.product_id);
+        return `
+        <article class="product-row">
+          <img class="thumb" src="${img}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/180x180/f0ece7/8a7d6f?text=Catholic+Item'" />
+          <div style="flex:1; min-width:0;">
+            <div class="title">${item.title}</div>
+            <div class="meta">${item.shop?.name || 'Shop'} · ${item.city}, ${item.country}</div>
+            <div class="micro" style="margin-bottom:6px;">${status}${lead}</div>
+            <div class="row" style="margin-bottom:7px;">
+              <div class="price">${money(item.price_cents)}</div>
+              <div class="micro">${inCart ? `In cart (${inCart.quantity})` : (savedIds.has(item.product_id) ? 'Saved' : '')}</div>
+            </div>
+            <div class="row" style="flex-wrap:wrap; gap:6px;">
+              <button onclick="openProduct('${item.product_id}')">View</button>
+              <button onclick="addToCart('${item.product_id}', 1)">Add</button>
+              <button onclick="toggleSaved('${item.product_id}')">${savedIds.has(item.product_id) ? 'Saved' : 'Save'}</button>
+            </div>
+          </div>
+        </article>`;
+      }).join('');
+
+      const more = latestItems.length > visibleCount
+        ? `<div class="row" style="padding:8px 0 2px;"><button onclick="showMoreProducts()" style="width:100%;">Show ${Math.min(4, latestItems.length - visibleCount)} more</button></div>`
+        : '';
+
+      cardsEl.innerHTML = body || '<div class="micro" style="padding:10px 0;">No products matched.</div>';
+      cardsEl.insertAdjacentHTML('beforeend', more);
+    }
+
+    async function loadCatalog() {
+      const q = document.getElementById('q').value.trim();
+      const params = new URLSearchParams({ limit: '30', q });
+      if (activeDestination) params.set('destination', activeDestination);
+      const res = await fetch(`api/v1/catalog/feed?${params.toString()}`);
+      const data = await res.json();
+      latestItems = data.items || [];
+      visibleCount = 4;
+      renderCards();
+    }
+
+    async function openProduct(productId) {
+      const res = await fetch(`api/v1/products/${productId}`);
+      const data = await res.json();
+      const p = data.product;
+      modalInnerEl.innerHTML = `
+        <button class="close" onclick="closeModal()">Close</button>
+        <h2 style="margin-top:2px;">${p.title}</h2>
+        <div class="meta">${p.shop?.name || ''} · ${p.city}, ${p.country}</div>
+        <img src="${p.image_url}" style="width:100%;height:210px;object-fit:cover;border-radius:10px;border:1px solid #e6ddd6;" />
+        <p style="font-size:14px;line-height:1.45;margin:10px 0;">${p.story}</p>
+        <div class="micro" style="margin-bottom:8px;">Materials: ${(p.materials || []).join(', ') || '—'}</div>
+        <div class="micro" style="margin-bottom:12px;">Good for: ${(p.sacrament_tags || []).join(', ') || 'daily devotion'}</div>
+        <div class="row" style="margin-bottom:8px;">
+          <button onclick="toggleSaved('${p.product_id}')">${savedIds.has(p.product_id) ? 'Saved' : 'Save'}</button>
+          <button onclick="addToCart('${p.product_id}', 1)">Add to cart</button>
+        </div>
+        <div class="row">
+          <button class="primary" style="width:100%;" onclick="buyNow('${p.product_id}')">Buy now · ${money(p.price_cents)}</button>
+        </div>
+        <div id="buyNowResult" class="ai-result" style="margin-top:8px;"></div>
+      `;
+      modalEl.style.display = 'flex';
+    }
+
+    async function buyNow(productId) {
+      const resultEl = document.getElementById('buyNowResult');
+      if (resultEl) resultEl.textContent = 'Preparing secure checkout...';
+      try {
+        const res = await fetch('api/v1/checkout/buy-now', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            user_id: userId || null,
+            product_id: productId,
+            quantity: 1,
+            success_url: window.location.href,
+            cancel_url: window.location.href,
+            dry_run: false
+          })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          const detail = typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || data);
+          if (resultEl) resultEl.textContent = `Checkout error: ${detail}`;
+          return;
+        }
+        const url = data?.checkout_url || '';
+        if (url) {
+          window.location.href = url;
+          return;
+        }
+        if (resultEl) resultEl.textContent = 'Checkout link missing. Please try again.';
+      } catch (err) {
+        if (resultEl) resultEl.textContent = `Checkout error: ${String(err)}`;
+      }
+    }
+
+    function showMoreProducts() {
+      visibleCount = Math.min(latestItems.length, visibleCount + 4);
+      renderCards();
+    }
+
+    function closeModal() {
+      modalEl.style.display = 'none';
+    }
+    window.openProduct = openProduct;
+    window.toggleSaved = toggleSaved;
+    window.closeModal = closeModal;
+    window.buyNow = buyNow;
+    window.showMoreProducts = showMoreProducts;
+    window.addToCart = addToCart;
+    window.cartAdjust = cartAdjust;
+    window.removeFromCart = removeFromCart;
+
+    document.getElementById('searchBtn').addEventListener('click', loadCatalog);
+    document.getElementById('checkoutCartBtn').addEventListener('click', checkoutCart);
+
+    document.getElementById('aiBtn').addEventListener('click', async () => {
+      const intent = document.getElementById('intent').value.trim();
+      const budget = Number(document.getElementById('budget').value || 0);
+      const occasion = document.getElementById('occasion').value.trim();
+      const resultEl = document.getElementById('aiResult');
+      resultEl.textContent = 'Thinking...';
+      aiActionsEl.innerHTML = '';
+      const res = await fetch('api/v1/ai/recommend', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ intent, budget_usd: budget, occasion, limit: 3 })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        resultEl.textContent = `Recommendation error (${res.status})`;
+        return;
+      }
+
+      const lines = [data.summary || ''];
+      (data.recommendations || []).forEach((row, idx) => {
+        const p = row.product || {};
+        lines.push(`${idx + 1}) ${p.title} (${p.country}) ${money(p.price_cents)} — ${(row.reasons || []).join('; ')}`);
+      });
+      resultEl.textContent = lines.join('\n');
+
+      const top = (data.recommendations || []).slice(0, 3).map((row) => row.product || {}).filter((p) => p.product_id);
+      aiActionsEl.innerHTML = top.map((p) => `<button onclick="openProduct('${p.product_id}')">View ${p.title}</button><button onclick="addToCart('${p.product_id}', 1)">Add</button>`).join('');
+    });
+
+    document.getElementById('socialBtn').addEventListener('click', async () => {
+      const top = latestItems[0];
+      const resultEl = document.getElementById('socialResult');
+      resultEl.textContent = 'Generating...';
+      const res = await fetch('api/v1/social/generate', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ product_id: top?.product_id || null, platform: 'instagram', tone: 'reverent' })
+      });
+      const data = await res.json();
+      resultEl.textContent = `${data.caption_short}\n\n${(data.hashtags || []).join(' ')}`;
+    });
+
+    async function init() {
+      await ensureGuestSession();
+      await ensureCartSession();
+      await loadSaved();
+      await loadDestinations();
+      await loadCatalog();
+      await loadCart();
+      refreshSavedLabels();
+      refreshCartLabels();
+    }
+
+    init();
+  </script>
+</body>
+</html>

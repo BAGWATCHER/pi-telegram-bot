@@ -1,0 +1,31 @@
+{
+  "base_url": "http://127.0.0.1:8099",
+  "all_ok": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:8099/health",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8099/api/v1/signals/coverage",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8099/api/v1/outcomes/summary",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8099/api/v1/governance/policies",
+      "ok": true,
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8099/api/v1/site/site_5dbcd14616d9",
+      "ok": true,
+      "status": 200
+    }
+  ]
+}

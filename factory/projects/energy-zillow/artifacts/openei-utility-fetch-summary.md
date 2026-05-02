@@ -1,0 +1,70 @@
+# OpenEI Utility/Tariff Fetch Summary
+
+- generated_at: `2026-04-17T05:19:44Z`
+- sites in scope: **61834**
+- zips in scope: **55**
+- rows written: **53965**
+- output: `/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/utility_tariff_feed.csv`
+
+## ZIP fetch status
+
+- `mapped`: 48
+- `no_items`: 7
+
+## Coverage by ZIP
+
+- `01450`: mapped=0/412 (0.0%), with_rate=0/412 (0.0%), status=no_items
+- `01451`: mapped=405/405 (100.0%), with_rate=405/405 (100.0%), status=mapped
+- `01720`: mapped=1426/1426 (100.0%), with_rate=1426/1426 (100.0%), status=mapped
+- `01730`: mapped=2173/2173 (100.0%), with_rate=2173/2173 (100.0%), status=mapped
+- `01740`: mapped=351/351 (100.0%), with_rate=351/351 (100.0%), status=mapped
+- `01741`: mapped=470/470 (100.0%), with_rate=470/470 (100.0%), status=mapped
+- `01748`: mapped=1083/1083 (100.0%), with_rate=1083/1083 (100.0%), status=mapped
+- `01770`: mapped=495/495 (100.0%), with_rate=495/495 (100.0%), status=mapped
+- `01772`: mapped=951/951 (100.0%), with_rate=951/951 (100.0%), status=mapped
+- `01776`: mapped=1184/1184 (100.0%), with_rate=1184/1184 (100.0%), status=mapped
+- `01778`: mapped=846/846 (100.0%), with_rate=846/846 (100.0%), status=mapped
+- `01827`: mapped=358/358 (100.0%), with_rate=358/358 (100.0%), status=mapped
+- `01886`: mapped=831/831 (100.0%), with_rate=831/831 (100.0%), status=mapped
+- `01890`: mapped=3763/3763 (100.0%), with_rate=3763/3763 (100.0%), status=mapped
+- `01921`: mapped=436/436 (100.0%), with_rate=436/436 (100.0%), status=mapped
+- `01940`: mapped=0/1885 (0.0%), with_rate=0/1885 (0.0%), status=no_items
+- `01949`: mapped=0/1019 (0.0%), with_rate=0/1019 (0.0%), status=no_items
+- `01965`: mapped=575/575 (100.0%), with_rate=575/575 (100.0%), status=mapped
+- `01983`: mapped=990/990 (100.0%), with_rate=990/990 (100.0%), status=mapped
+- `01985`: mapped=486/486 (100.0%), with_rate=486/486 (100.0%), status=mapped
+- `02030`: mapped=689/689 (100.0%), with_rate=689/689 (100.0%), status=mapped
+- `02043`: mapped=0/1525 (0.0%), with_rate=0/1525 (0.0%), status=no_items
+- `02052`: mapped=1529/1529 (100.0%), with_rate=1529/1529 (100.0%), status=mapped
+- `02056`: mapped=1023/1023 (100.0%), with_rate=1023/1023 (100.0%), status=mapped
+- `02061`: mapped=527/527 (100.0%), with_rate=527/527 (100.0%), status=mapped
+- `02067`: mapped=1405/1405 (100.0%), with_rate=1405/1405 (100.0%), status=mapped
+- `02090`: mapped=1579/1579 (100.0%), with_rate=1579/1579 (100.0%), status=mapped
+- `02118`: mapped=2998/2998 (100.0%), with_rate=2998/2998 (100.0%), status=mapped
+- `02186`: mapped=3043/3043 (100.0%), with_rate=3043/3043 (100.0%), status=mapped
+- `02332`: mapped=364/364 (100.0%), with_rate=364/364 (100.0%), status=mapped
+- `02339`: mapped=1129/1129 (100.0%), with_rate=1129/1129 (100.0%), status=mapped
+- `02420`: mapped=2182/2182 (100.0%), with_rate=2182/2182 (100.0%), status=mapped
+- `02482`: mapped=0/2535 (0.0%), with_rate=0/2535 (0.0%), status=no_items
+- `02492`: mapped=2725/2725 (100.0%), with_rate=2725/2725 (100.0%), status=mapped
+- `02493`: mapped=541/541 (100.0%), with_rate=541/541 (100.0%), status=mapped
+- `02575`: mapped=549/549 (100.0%), with_rate=549/549 (100.0%), status=mapped
+- `02637`: mapped=731/731 (100.0%), with_rate=731/731 (100.0%), status=mapped
+- `02667`: mapped=1953/1953 (100.0%), with_rate=1953/1953 (100.0%), status=mapped
+- `02903`: mapped=246/246 (100.0%), with_rate=246/246 (100.0%), status=mapped
+- `03087`: mapped=387/387 (100.0%), with_rate=387/387 (100.0%), status=mapped
+- `03854`: mapped=74/74 (100.0%), with_rate=74/74 (100.0%), status=mapped
+- `04006`: mapped=0/72 (0.0%), with_rate=0/72 (0.0%), status=no_items
+- `04101`: mapped=2966/2966 (100.0%), with_rate=2966/2966 (100.0%), status=mapped
+- `05486`: mapped=0/421 (0.0%), with_rate=0/421 (0.0%), status=no_items
+- `06103`: mapped=745/745 (100.0%), with_rate=745/745 (100.0%), status=mapped
+- `06510`: mapped=512/512 (100.0%), with_rate=512/512 (100.0%), status=mapped
+- `06525`: mapped=1253/1253 (100.0%), with_rate=1253/1253 (100.0%), status=mapped
+- `06824`: mapped=2139/2139 (100.0%), with_rate=2139/2139 (100.0%), status=mapped
+- `06831`: mapped=523/523 (100.0%), with_rate=523/523 (100.0%), status=mapped
+- `06877`: mapped=1367/1367 (100.0%), with_rate=1367/1367 (100.0%), status=mapped
+- `06883`: mapped=739/739 (100.0%), with_rate=739/739 (100.0%), status=mapped
+- `06890`: mapped=1454/1454 (100.0%), with_rate=1454/1454 (100.0%), status=mapped
+- `06896`: mapped=99/99 (100.0%), with_rate=99/99 (100.0%), status=mapped
+- `06897`: mapped=593/593 (100.0%), with_rate=593/593 (100.0%), status=mapped
+- `06903`: mapped=1078/1078 (100.0%), with_rate=1078/1078 (100.0%), status=mapped

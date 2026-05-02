@@ -1,0 +1,49 @@
+{
+  "version": "2026-04-26-v1",
+  "project_id": "catholic-shop",
+  "updated_at": "2026-04-26T10:06:00Z",
+  "claims": [
+    {
+      "lane": "platform",
+      "owner": "MrChow-Platform",
+      "status": "ready-for-handoff",
+      "active_tasks": ["CS-004", "CS-011", "CS-012", "CS-018"],
+      "collision_notes": "CS-004 + CS-011 + CS-012 + CS-018 shipped-local (auth/saved-items + clean UI + destination browse + mobile shopping polish)."
+    },
+    {
+      "lane": "commerce",
+      "owner": "MrChow-Commerce",
+      "status": "ready-for-handoff",
+      "active_tasks": ["CS-005", "CS-013", "CS-015"],
+      "collision_notes": "CS-005 cart + checkout-intent scaffold shipped (API + mobile + idempotency replay); CS-015 sell-now live checkout lane remains stable; CS-013 conversion modules next."
+    },
+    {
+      "lane": "ai",
+      "owner": "MrChow-AI",
+      "status": "active",
+      "active_tasks": ["CS-007", "CS-008", "CS-017"],
+      "collision_notes": "CS-017 relevance hardening shipped; next is eval-case depth and social queue policy."
+    },
+    {
+      "lane": "partner-ops",
+      "owner": "MrChow-PartnerOps",
+      "status": "active",
+      "active_tasks": ["CS-006", "CS-014", "CS-016"],
+      "collision_notes": "CS-014 inventory intake pipeline + CS-016 ops dashboard shipped; CS-006 onboarding review queue pending."
+    },
+    {
+      "lane": "trust",
+      "owner": "MrChow-Trust",
+      "status": "queued",
+      "active_tasks": ["CS-009"],
+      "collision_notes": "Policy-first lane; suppress unknown provenance from public listing."
+    },
+    {
+      "lane": "eval",
+      "owner": "MrChow-Eval",
+      "status": "active",
+      "active_tasks": ["CS-003"],
+      "collision_notes": "Owns scorecard and release gate outputs (including UI clean-pass regression checks)."
+    }
+  ]
+}

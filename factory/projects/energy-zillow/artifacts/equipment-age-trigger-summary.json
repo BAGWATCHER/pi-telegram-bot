@@ -1,0 +1,293 @@
+{
+  "generated_at": "2026-04-16T23:58:23Z",
+  "sites": 61834,
+  "zip_count": 55,
+  "feed_source": "live-census",
+  "census_fetch_ok": true,
+  "census_error": "",
+  "zip_feed_rows": 55,
+  "equipment_status_counts": {
+    "medium": 7573,
+    "high": 15008,
+    "event_detected": 38866,
+    "low": 387
+  },
+  "zip_coverage": {
+    "01450": {
+      "sites": 412,
+      "equipment_non_missing": 412,
+      "equipment_missing": 0
+    },
+    "01451": {
+      "sites": 405,
+      "equipment_non_missing": 405,
+      "equipment_missing": 0
+    },
+    "01720": {
+      "sites": 1426,
+      "equipment_non_missing": 1426,
+      "equipment_missing": 0
+    },
+    "01730": {
+      "sites": 2173,
+      "equipment_non_missing": 2173,
+      "equipment_missing": 0
+    },
+    "01740": {
+      "sites": 351,
+      "equipment_non_missing": 351,
+      "equipment_missing": 0
+    },
+    "01741": {
+      "sites": 470,
+      "equipment_non_missing": 470,
+      "equipment_missing": 0
+    },
+    "01748": {
+      "sites": 1083,
+      "equipment_non_missing": 1083,
+      "equipment_missing": 0
+    },
+    "01770": {
+      "sites": 495,
+      "equipment_non_missing": 495,
+      "equipment_missing": 0
+    },
+    "01772": {
+      "sites": 951,
+      "equipment_non_missing": 951,
+      "equipment_missing": 0
+    },
+    "01776": {
+      "sites": 1184,
+      "equipment_non_missing": 1184,
+      "equipment_missing": 0
+    },
+    "01778": {
+      "sites": 846,
+      "equipment_non_missing": 846,
+      "equipment_missing": 0
+    },
+    "01827": {
+      "sites": 358,
+      "equipment_non_missing": 358,
+      "equipment_missing": 0
+    },
+    "01886": {
+      "sites": 831,
+      "equipment_non_missing": 831,
+      "equipment_missing": 0
+    },
+    "01890": {
+      "sites": 3763,
+      "equipment_non_missing": 3763,
+      "equipment_missing": 0
+    },
+    "01921": {
+      "sites": 436,
+      "equipment_non_missing": 436,
+      "equipment_missing": 0
+    },
+    "01940": {
+      "sites": 1885,
+      "equipment_non_missing": 1885,
+      "equipment_missing": 0
+    },
+    "01949": {
+      "sites": 1019,
+      "equipment_non_missing": 1019,
+      "equipment_missing": 0
+    },
+    "01965": {
+      "sites": 575,
+      "equipment_non_missing": 575,
+      "equipment_missing": 0
+    },
+    "01983": {
+      "sites": 990,
+      "equipment_non_missing": 990,
+      "equipment_missing": 0
+    },
+    "01985": {
+      "sites": 486,
+      "equipment_non_missing": 486,
+      "equipment_missing": 0
+    },
+    "02030": {
+      "sites": 689,
+      "equipment_non_missing": 689,
+      "equipment_missing": 0
+    },
+    "02043": {
+      "sites": 1525,
+      "equipment_non_missing": 1525,
+      "equipment_missing": 0
+    },
+    "02052": {
+      "sites": 1529,
+      "equipment_non_missing": 1529,
+      "equipment_missing": 0
+    },
+    "02056": {
+      "sites": 1023,
+      "equipment_non_missing": 1023,
+      "equipment_missing": 0
+    },
+    "02061": {
+      "sites": 527,
+      "equipment_non_missing": 527,
+      "equipment_missing": 0
+    },
+    "02067": {
+      "sites": 1405,
+      "equipment_non_missing": 1405,
+      "equipment_missing": 0
+    },
+    "02090": {
+      "sites": 1579,
+      "equipment_non_missing": 1579,
+      "equipment_missing": 0
+    },
+    "02118": {
+      "sites": 2998,
+      "equipment_non_missing": 2998,
+      "equipment_missing": 0
+    },
+    "02186": {
+      "sites": 3043,
+      "equipment_non_missing": 3043,
+      "equipment_missing": 0
+    },
+    "02332": {
+      "sites": 364,
+      "equipment_non_missing": 364,
+      "equipment_missing": 0
+    },
+    "02339": {
+      "sites": 1129,
+      "equipment_non_missing": 1129,
+      "equipment_missing": 0
+    },
+    "02420": {
+      "sites": 2182,
+      "equipment_non_missing": 2182,
+      "equipment_missing": 0
+    },
+    "02482": {
+      "sites": 2535,
+      "equipment_non_missing": 2535,
+      "equipment_missing": 0
+    },
+    "02492": {
+      "sites": 2725,
+      "equipment_non_missing": 2725,
+      "equipment_missing": 0
+    },
+    "02493": {
+      "sites": 541,
+      "equipment_non_missing": 541,
+      "equipment_missing": 0
+    },
+    "02575": {
+      "sites": 549,
+      "equipment_non_missing": 549,
+      "equipment_missing": 0
+    },
+    "02637": {
+      "sites": 731,
+      "equipment_non_missing": 731,
+      "equipment_missing": 0
+    },
+    "02667": {
+      "sites": 1953,
+      "equipment_non_missing": 1953,
+      "equipment_missing": 0
+    },
+    "02903": {
+      "sites": 246,
+      "equipment_non_missing": 246,
+      "equipment_missing": 0
+    },
+    "03087": {
+      "sites": 387,
+      "equipment_non_missing": 387,
+      "equipment_missing": 0
+    },
+    "03854": {
+      "sites": 74,
+      "equipment_non_missing": 74,
+      "equipment_missing": 0
+    },
+    "04006": {
+      "sites": 72,
+      "equipment_non_missing": 72,
+      "equipment_missing": 0
+    },
+    "04101": {
+      "sites": 2966,
+      "equipment_non_missing": 2966,
+      "equipment_missing": 0
+    },
+    "05486": {
+      "sites": 421,
+      "equipment_non_missing": 421,
+      "equipment_missing": 0
+    },
+    "06103": {
+      "sites": 745,
+      "equipment_non_missing": 745,
+      "equipment_missing": 0
+    },
+    "06510": {
+      "sites": 512,
+      "equipment_non_missing": 512,
+      "equipment_missing": 0
+    },
+    "06525": {
+      "sites": 1253,
+      "equipment_non_missing": 1253,
+      "equipment_missing": 0
+    },
+    "06824": {
+      "sites": 2139,
+      "equipment_non_missing": 2139,
+      "equipment_missing": 0
+    },
+    "06831": {
+      "sites": 523,
+      "equipment_non_missing": 523,
+      "equipment_missing": 0
+    },
+    "06877": {
+      "sites": 1367,
+      "equipment_non_missing": 1367,
+      "equipment_missing": 0
+    },
+    "06883": {
+      "sites": 739,
+      "equipment_non_missing": 739,
+      "equipment_missing": 0
+    },
+    "06890": {
+      "sites": 1454,
+      "equipment_non_missing": 1454,
+      "equipment_missing": 0
+    },
+    "06896": {
+      "sites": 99,
+      "equipment_non_missing": 99,
+      "equipment_missing": 0
+    },
+    "06897": {
+      "sites": 593,
+      "equipment_non_missing": 593,
+      "equipment_missing": 0
+    },
+    "06903": {
+      "sites": 1078,
+      "equipment_non_missing": 1078,
+      "equipment_missing": 0
+    }
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv"
+}

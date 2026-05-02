@@ -1,0 +1,19 @@
+{
+  "coworkers": "/home/ubuntu/clawd/apps/second-brain-ui",
+  "adam": "/home/ubuntu/clawd/apps/adam-landing",
+  "adamn": "/home/ubuntu/clawd/apps/adam-landing",
+  "landing": "/home/ubuntu/clawd/apps/adam-landing",
+  "slope": "/home/ubuntu/clawd/slopesniper-site-v2",
+  "slopesniper": "/home/ubuntu/clawd/slopesniper-site-v2",
+  "bagwatcher": "/home/ubuntu/clawd/projects/bagwatcher",
+  "bags": "/home/ubuntu/clawd/projects/bagwatcher",
+  "secondbrain": "/home/ubuntu/clawd/apps/second-brain-ui",
+  "brain": "/home/ubuntu/clawd/apps/second-brain-ui",
+  "1clickbot": "/home/ubuntu/clawd/apps/1clickbot",
+  "partsnap": "/home/ubuntu/clawd/apps/partsnap-landing",
+  "chow": "/home/ubuntu/pi-telegram-bot",
+  "bot": "/home/ubuntu/pi-telegram-bot",
+  "rico": "/home/ubuntu/trenchfeed-trader",
+  "trenchfeed": "/home/ubuntu/trenchfeed-trader",
+  "trader": "/home/ubuntu/trenchfeed-trader"
+}

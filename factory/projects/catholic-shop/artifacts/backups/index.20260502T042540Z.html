@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Catholic Market — Treasures from holy places</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: { DEFAULT: '#f5f0e8', light: '#faf8f4', dark: '#e8e0d0' },
+            ink: { DEFAULT: '#2c1810', light: '#5c3d2e', muted: '#8b7355' },
+            gold: { DEFAULT: '#b8860b', light: '#d4a843', pale: '#f0e6c8' },
+            rubric: { DEFAULT: '#722f37', light: '#964b53' }
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', '"Iowan Old Style"', 'Palatino', 'Georgia', 'serif'],
+            body: ['"Crimson Text"', '"Palatino Linotype"', 'Palatino', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+
+    /* ── Grain texture overlay ── */
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+
+    /* ── Staggered card reveal ── */
+    @keyframes cardRise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .product-card { animation: cardRise 0.6s ease-out both; }
+    .product-card:nth-child(1) { animation-delay: 0.05s; }
+    .product-card:nth-child(2) { animation-delay: 0.12s; }
+    .product-card:nth-child(3) { animation-delay: 0.19s; }
+    .product-card:nth-child(4) { animation-delay: 0.26s; }
+    .product-card:nth-child(5) { animation-delay: 0.33s; }
+    .product-card:nth-child(6) { animation-delay: 0.40s; }
+
+    /* ── Destination scroll ── */
+    .dest-scroll { -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+    .dest-scroll > * { scroll-snap-align: start; }
+    .dest-scroll::-webkit-scrollbar { display: none; }
+
+    /* ── Drop cap ── */
+    .drop-cap::first-letter {
+      float: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem; line-height: 0.75;
+      padding-right: 8px; padding-top: 2px;
+      color: #722f37; font-weight: 600;
+    }
+
+    /* ── Gold rule divider ── */
+    .gold-rule {
+      border: 0; height: 1px;
+      background: linear-gradient(to right, transparent, #b8860b44, #b8860b88, #b8860b44, transparent);
+    }
+
+    /* ── Card hover ── */
+    .card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(44,24,16,0.10); }
+
+    /* ── Cart drawer ── */
+    .cart-drawer { transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+    /* Safety uncloak */
+    @keyframes uncloak { 0%,99% { display: none } 100% { display: block } }
+    body.x-cloak-safe { animation: uncloak 3.5s forwards; }
+  </style>
+</head>
+<body class="bg-parchment text-ink font-body antialiased leading-relaxed x-cloak-safe" x-data="catholicMarket()" x-init="init(); $el.classList.remove('x-cloak-safe')">
+
+  <!-- MAIN SHELL -->
+  <div class="max-w-lg mx-auto min-h-screen pb-24 relative">
+
+    <!-- ═══ HERO / HEADER ═══ -->
+    <header class="pt-8 pb-4 px-5">
+      <div class="flex items-baseline justify-between">
+        <div>
+          <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-none">
+            Catholic<br /><span class="italic text-gold">Market</span>
+          </h1>
+          <p class="text-ink-muted text-sm mt-2 max-w-xs leading-snug">
+            Devotional treasures sourced from monasteries, shrines &amp; holy sites around the world.
+          </p>
+        </div>
+        <div class="text-right text-ink-muted text-xs tracking-widest uppercase hidden sm:block">
+          Est. MMXXV
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ SEARCH ═══ -->
+    <div class="px-5 pb-3">
+      <div class="flex gap-2">
+        <div class="relative flex-1">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="q" x-model="query" @keyup.enter="loadCatalog()"
+            class="w-full pl-9 pr-4 py-2.5 text-sm font-body bg-parchment-light border border-parchment-dark rounded-none focus:ring-1 focus:ring-gold focus:border-gold outline-none transition-shadow placeholder:text-ink-muted/50"
+            placeholder="Search shrines, saints, occasions…" />
+        </div>
+        <button @click="loadCatalog()" class="px-5 py-2.5 bg-ink text-parchment-light text-sm font-semibold tracking-wide uppercase hover:bg-ink-light active:scale-95 transition-all font-display">
+          Find
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══ MISSION ═══ -->
+    <section class="px-5 py-3">
+      <p class="text-sm text-ink-muted italic text-center drop-cap max-w-xs mx-auto leading-relaxed">
+        Thank you for supporting Catholic shops and artisans around the world. Every purchase helps bring customers to their doors.
+      </p>
+      <hr class="gold-rule mt-5 mb-1" />
+    </section>
+
+    <!-- ═══ DESTINATION BROWSE ═══ -->
+    <section class="px-5 pt-1 pb-2">
+      <div class="flex items-end justify-between mb-3">
+        <h2 class="font-display text-xl font-semibold italic text-ink">Pilgrimage</h2>
+        <span class="text-xs text-ink-muted tracking-wide uppercase" x-text="destinations.length + ' holy sites'"></span>
+      </div>
+      <div class="dest-scroll flex gap-4 overflow-x-auto pb-3 -mx-1 px-1">
+        <template x-for="d in destinations" :key="d.destination_id">
+          <button @click="activeDestination = activeDestination === d.destination_id ? '' : d.destination_id; loadCatalog()"
+            class="flex-shrink-0 w-32 text-left group focus:outline-none relative"
+            :class="activeDestination === d.destination_id ? 'ring-2 ring-gold ring-offset-2 ring-offset-parchment' : ''">
+            <div class="relative h-36 bg-parchment-dark overflow-hidden shadow-sm group-hover:shadow-md transition-shadow duration-300">
+              <!-- Placeholder image area -->
+              <div class="absolute inset-0 bg-gradient-to-b from-parchment/40 to-ink/70 flex items-center justify-center">
+                <span class="text-3xl opacity-60" x-text="d.flag || '✠'"></span>
+              </div>
+              <!-- Vertical label -->
+              <div class="absolute bottom-0 left-0 right-0 p-3">
+                <p class="text-white text-xs font-semibold tracking-wide uppercase font-display leading-tight" x-text="d.city"></p>
+                <p class="text-white/70 text-[10px] tracking-wider" x-text="d.country"></p>
+              </div>
+            </div>
+          </button>
+        </template>
+      </div>
+      <!-- Active destination chip -->
+      <div x-show="activeDestination" class="mt-2 flex items-center gap-2" x-transition>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-ink text-parchment-light text-[11px] font-medium tracking-wide uppercase font-display">
+          ✠ <span x-text="destinations.find(d => d.destination_id === activeDestination)?.city || activeDestination"></span>
+          <button @click="activeDestination = ''; loadCatalog()" class="ml-1 text-parchment-light/60 hover:text-parchment-light">&times;</button>
+        </span>
+        <span class="text-xs text-ink-muted italic" x-text="products.length + ' items'"></span>
+      </div>
+    </section>
+
+    <!-- ═══ PRODUCT GRID ═══ -->
+    <section class="px-5 pt-4">
+      <div class="flex items-end justify-between mb-4">
+        <h2 class="font-display text-xl font-semibold italic text-ink">
+          <span x-show="!activeDestination">Treasury</span>
+          <span x-show="activeDestination" x-text="'From ' + (destinations.find(d => d.destination_id === activeDestination)?.city || '')"></span>
+        </h2>
+        <span class="text-xs text-ink-muted tracking-wide uppercase" x-show="products.length > visibleCount" x-text="visibleCount + ' / ' + products.length"></span>
+      </div>
+
+      <!-- Loading skeletons -->
+      <div x-show="loading" class="space-y-4">
+        <template x-for="i in 3" :key="i">
+          <div class="flex gap-4 animate-pulse">
+            <div class="w-20 h-28 bg-parchment-dark"></div>
+            <div class="flex-1 space-y-2 py-2">
+              <div class="h-4 bg-parchment-dark w-3/4"></div>
+              <div class="h-3 bg-parchment-dark w-1/2"></div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Products -->
+      <div x-show="!loading" class="space-y-4">
+        <template x-for="item in products.slice(0, visibleCount)" :key="item.product_id">
+          <article class="product-card flex gap-4 p-3 bg-parchment-light border border-parchment-dark card-hover cursor-pointer group"
+            @click="openProduct(item.product_id)">
+            <!-- Thumbnail — tall aspect ratio, editorial -->
+            <div class="relative w-20 h-28 flex-shrink-0 bg-parchment-dark overflow-hidden">
+              <img :src="item.image_url || 'https://via.placeholder.com/160x224/f5f0e8/8b7355?text=✠'"
+                :alt="item.title"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                @error="$el.src='https://via.placeholder.com/160x224/f5f0e8/8b7355?text=✠'" />
+              <!-- Inventory ribbon -->
+              <div x-show="item.inventory_status === 'low_stock'"
+                class="absolute top-0 right-0 w-0 h-0 border-t-[28px] border-t-rubric border-l-[28px] border-l-transparent"></div>
+              <div x-show="item.inventory_status === 'out_of_stock'"
+                class="absolute top-0 right-0 w-0 h-0 border-t-[28px] border-t-ink-muted border-l-[28px] border-l-transparent"></div>
+            </div>
+            <!-- Info -->
+            <div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+              <div>
+                <h3 class="text-sm font-semibold text-ink leading-snug font-display" x-text="item.title"></h3>
+                <p class="text-[11px] text-ink-muted mt-0.5 italic tracking-wide">
+                  <span x-text="item.city + ', ' + item.country"></span>
+                  <span x-show="item.shop?.name"> · <span x-text="item.shop.name"></span></span>
+                </p>
+              </div>
+              <div class="flex items-center justify-between mt-1.5">
+                <span class="text-base font-bold text-ink font-display" x-text="formatMoney(item.price_cents)"></span>
+                <div class="flex items-center gap-2">
+                  <span x-show="cartItemQty(item.product_id) > 0"
+                    class="text-[10px] font-semibold text-gold bg-gold-pale/50 px-2 py-0.5 font-display tracking-wide"
+                    x-text="cartItemQty(item.product_id) + ' in cart'"></span>
+                  <span x-show="savedIds.has(item.product_id)" class="text-base opacity-70">✠</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+
+      <!-- Empty -->
+      <div x-show="!loading && products.length === 0" class="text-center py-12">
+        <p class="text-4xl mb-3 opacity-40">✠</p>
+        <p class="text-ink-muted text-sm italic">Nothing found. Try another pilgrimage.</p>
+      </div>
+
+      <!-- Show more -->
+      <div x-show="products.length > visibleCount" class="mt-4 mb-8">
+        <button @click="visibleCount = Math.min(products.length, visibleCount + 4)"
+          class="w-full py-3 text-sm font-semibold text-ink border border-parchment-dark hover:bg-parchment-dark/30 transition-colors font-display tracking-widest uppercase">
+          Reveal more
+        </button>
+      </div>
+
+      <hr class="gold-rule mt-2 mb-6" />
+    </section>
+
+    <!-- ═══ AI CONCIERGE ═══ -->
+    <section id="concierge" class="px-5 pb-4">
+      <h2 class="font-display text-xl font-semibold italic text-ink mb-1">Concierge</h2>
+      <p class="text-xs text-ink-muted mb-4 italic">Tell us what you seek — we'll find the right devotional items.</p>
+      <div class="space-y-3 mb-4">
+        <input x-model="intent" @keyup.enter="recommend()"
+          class="w-full px-4 py-3 text-sm font-body bg-parchment-light border border-parchment-dark focus:ring-1 focus:ring-gold focus:border-gold outline-none placeholder:text-ink-muted/50"
+          placeholder='e.g. "A rosary blessed at Lourdes for my daughter"' />
+        <div class="flex gap-3">
+          <input x-model="occasion" @keyup.enter="recommend()"
+            class="flex-1 px-4 py-3 text-sm bg-parchment-light border border-parchment-dark focus:ring-1 focus:ring-gold focus:border-gold outline-none placeholder:text-ink-muted/50"
+            placeholder="Occasion" />
+          <input x-model.number="budget" type="number" @keyup.enter="recommend()"
+            class="w-28 px-4 py-3 text-sm bg-parchment-light border border-parchment-dark focus:ring-1 focus:ring-gold focus:border-gold outline-none placeholder:text-ink-muted/50"
+            placeholder="Budget $" />
+        </div>
+      </div>
+      <button @click="recommend()" :disabled="aiLoading"
+        class="w-full py-3 bg-ink text-parchment-light font-semibold tracking-widest uppercase text-sm hover:bg-ink-light disabled:opacity-40 active:scale-95 transition-all font-display">
+        <span x-show="!aiLoading">Ask the Concierge ✠</span>
+        <span x-show="aiLoading" class="inline-flex items-center justify-center gap-2">
+          <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+          Thinking…
+        </span>
+      </button>
+      <!-- AI result -->
+      <div x-show="aiResult" class="mt-5 p-5 bg-parchment-light border border-parchment-dark" x-transition>
+        <p class="text-sm text-ink leading-relaxed whitespace-pre-line font-body" x-text="aiResult"></p>
+        <div x-show="aiProducts.length" class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-parchment-dark">
+          <template x-for="p in aiProducts" :key="p.product_id">
+            <button @click="openProduct(p.product_id); $event.stopPropagation()"
+              class="px-4 py-2 text-xs font-semibold tracking-wide uppercase border border-ink/20 hover:bg-ink hover:text-parchment-light transition-colors font-display"
+              x-text="p.title"></button>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CART FAB ═══ -->
+    <button @click="cartOpen = !cartOpen"
+      class="fixed bottom-20 right-5 z-40 w-12 h-12 bg-ink text-parchment-light shadow-lg hover:bg-ink-light active:scale-95 transition-all flex items-center justify-center"
+      :class="cartOpen ? 'translate-y-4 opacity-0 pointer-events-none' : ''">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span x-show="cartState.total_quantity > 0"
+        class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rubric text-white text-[10px] font-bold flex items-center justify-center"
+        x-text="cartState.total_quantity"></span>
+    </button>
+
+    <!-- ═══ CART DRAWER ═══ -->
+    <div x-show="cartOpen" @click="cartOpen = false"
+      class="fixed inset-0 bg-ink/60 z-50 transition-opacity" x-transition.opacity></div>
+
+    <div x-show="cartOpen"
+      class="fixed bottom-0 left-0 right-0 z-50 max-w-lg mx-auto bg-parchment-light border-t-2 border-gold shadow-2xl cart-drawer"
+      :class="cartOpen ? 'translate-y-0' : 'translate-y-full'"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
+      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
+
+      <div class="flex items-center justify-between px-5 pt-5 pb-3">
+        <h2 class="font-display text-2xl font-semibold italic text-ink">Your Cart</h2>
+        <button @click="cartOpen = false" class="w-8 h-8 flex items-center justify-center hover:bg-parchment-dark/30 text-ink-muted transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="px-5 max-h-56 overflow-y-auto">
+        <template x-if="!cartState.items || cartState.items.length === 0">
+          <div class="py-12 text-center">
+            <p class="text-3xl mb-3 opacity-30">✠</p>
+            <p class="text-ink-muted text-sm italic">Your cart awaits treasures.</p>
+          </div>
+        </template>
+        <template x-for="item in cartState.items" :key="item.product_id">
+          <div class="flex items-center gap-4 py-3 border-b border-parchment-dark last:border-0">
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-ink truncate font-display" x-text="item.title"></p>
+              <p class="text-xs text-ink-muted italic" x-text="formatMoney(item.unit_price_cents) + ' × ' + item.quantity"></p>
+            </div>
+            <div class="flex items-center gap-1">
+              <button @click="cartAdjust(item.product_id, -1)"
+                class="w-7 h-7 flex items-center justify-center border border-parchment-dark text-ink hover:bg-parchment-dark/30 text-sm">−</button>
+              <span class="text-sm font-semibold w-5 text-center font-display" x-text="item.quantity"></span>
+              <button @click="cartAdjust(item.product_id, 1)"
+                class="w-7 h-7 flex items-center justify-center border border-parchment-dark text-ink hover:bg-parchment-dark/30 text-sm">+</button>
+            </div>
+            <p class="text-sm font-bold text-ink w-16 text-right font-display" x-text="formatMoney(item.line_total_cents)"></p>
+          </div>
+        </template>
+      </div>
+
+      <div class="px-5 py-4 border-t border-parchment-dark">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-sm text-ink-muted italic">Subtotal</span>
+          <span class="text-xl font-bold text-ink font-display" x-text="formatMoney(cartState.subtotal_cents)"></span>
+        </div>
+        <p x-show="cartMessage" class="text-xs mb-3 italic" :class="cartError ? 'text-rubric' : 'text-ink-muted'" x-text="cartMessage"></p>
+        <button @click="checkoutCart()" :disabled="!cartState.items || cartState.items.length === 0"
+          class="w-full py-3 bg-ink text-parchment-light font-semibold tracking-widest uppercase text-sm hover:bg-ink-light disabled:opacity-30 active:scale-95 transition-all font-display">
+          Checkout →
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══ PRODUCT MODAL ═══ -->
+    <div x-show="modalProduct" @click.self="modalProduct = null"
+      class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+      x-transition.opacity>
+      <div class="bg-ink/70 absolute inset-0"></div>
+      <div class="relative bg-parchment-light w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl border-t-2 border-gold sm:border-2"
+        @click.stop="">
+        <button @click="modalProduct = null"
+          class="absolute top-3 right-3 z-10 w-8 h-8 bg-parchment-light/90 flex items-center justify-center shadow-sm hover:bg-parchment-light text-ink-muted">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <!-- Hero -->
+        <img :src="modalProduct.image_url || 'https://via.placeholder.com/400x300/f5f0e8/8b7355?text=✠'"
+          class="w-full h-52 object-cover"
+          @error="$el.src='https://via.placeholder.com/400x300/f5f0e8/8b7355?text=✠'" />
+        <div class="px-6 pt-5 pb-8">
+          <h2 class="font-display text-2xl font-semibold text-ink leading-tight" x-text="modalProduct.title"></h2>
+          <p class="text-sm text-ink-muted mt-1 italic">
+            <span x-text="modalProduct.city + ', ' + modalProduct.country"></span>
+            <span x-show="modalProduct.shop?.name"> · <span x-text="modalProduct.shop.name"></span></span>
+          </p>
+          <!-- Provenance -->
+          <div class="mt-5 p-4 bg-parchment border border-gold/20">
+            <p class="text-[10px] font-semibold text-gold uppercase tracking-widest mb-2 font-display">Provenance</p>
+            <p class="text-sm text-ink leading-relaxed" x-text="modalProduct.story || 'A unique Catholic devotional, sourced directly from its place of origin.'"></p>
+            <p x-show="modalProduct.materials?.length" class="text-xs text-ink-muted mt-2 italic">
+              Materials: <span class="text-ink" x-text="modalProduct.materials?.join(', ')"></span>
+            </p>
+          </div>
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mt-4" x-show="modalProduct.sacrament_tags?.length">
+            <template x-for="tag in modalProduct.sacrament_tags" :key="tag">
+              <span class="px-3 py-0.5 text-[10px] tracking-wide uppercase border border-ink/15 text-ink-muted font-display" x-text="tag"></span>
+            </template>
+          </div>
+          <!-- Price + actions -->
+          <div class="mt-6 space-y-3">
+            <p class="font-display text-3xl font-bold text-ink" x-text="formatMoney(modalProduct.price_cents)"></p>
+            <div class="flex gap-3">
+              <button @click="toggleSaved(modalProduct.product_id)"
+                class="flex-1 py-2.5 border text-sm tracking-wide uppercase transition-colors font-display font-semibold"
+                :class="savedIds.has(modalProduct.product_id) ? 'border-gold bg-gold-pale/30 text-gold' : 'border-ink/20 text-ink hover:bg-ink hover:text-parchment-light'">
+                <span x-show="!savedIds.has(modalProduct.product_id)">Save ✠</span>
+                <span x-show="savedIds.has(modalProduct.product_id)">Saved ✠</span>
+              </button>
+              <button @click="addToCart(modalProduct.product_id, 1)"
+                class="flex-1 py-2.5 bg-ink text-parchment-light text-sm tracking-wide uppercase hover:bg-ink-light active:scale-95 transition-all font-display font-semibold">
+                Add to Cart
+              </button>
+            </div>
+            <button @click="buyNow(modalProduct.product_id)"
+              class="w-full py-3 bg-gold text-parchment-light font-semibold tracking-widest uppercase text-sm hover:bg-gold-light active:scale-95 transition-all font-display">
+              Buy Now · <span x-text="formatMoney(modalProduct.price_cents)"></span>
+            </button>
+            <p x-show="buyNowMessage" class="text-xs text-center text-ink-muted italic" x-text="buyNowMessage"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BOTTOM NAV ═══ -->
+    <nav class="fixed bottom-0 left-0 right-0 z-30 max-w-lg mx-auto bg-parchment-light border-t border-parchment-dark px-2 py-2 grid grid-cols-5 gap-1">
+      <button @click="scrollToTop(); activeDestination=''; loadCatalog()" class="flex flex-col items-center py-1 text-ink-muted hover:text-ink transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span class="text-[9px] tracking-wider uppercase mt-1 font-display">Home</span>
+      </button>
+      <a href="/sacraments" class="flex flex-col items-center py-1 text-ink-muted hover:text-ink transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        <span class="text-[9px] tracking-wider uppercase mt-1 font-display">Sacraments</span>
+      </a>
+      <button @click="scrollToElement('concierge')" class="flex flex-col items-center py-1 text-ink-muted hover:text-ink transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        <span class="text-[9px] tracking-wider uppercase mt-1 font-display">Concierge</span>
+      </button>
+      <button @click="cartOpen = !cartOpen" class="flex flex-col items-center py-1 text-ink-muted hover:text-ink transition-colors relative">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span class="text-[9px] tracking-wider uppercase mt-1 font-display">Cart</span>
+        <span x-show="cartState.total_quantity > 0"
+          class="absolute top-0 right-2 w-4 h-4 bg-rubric text-white text-[8px] font-bold flex items-center justify-center"
+          x-text="cartState.total_quantity"></span>
+      </button>
+      <button class="flex flex-col items-center py-1 text-ink-muted hover:text-ink transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <span class="text-[9px] tracking-wider uppercase mt-1 font-display">Account</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- ═══ ALPINE LOGIC ═══ -->
+  <script>
+    function catholicMarket() {
+      return {
+        query: '',
+        products: [],
+        destinations: [],
+        activeDestination: '',
+        visibleCount: 4,
+        loading: false,
+        userId: localStorage.getItem('catholicMarketUserId') || '',
+        cartId: localStorage.getItem('catholicMarketCartId') || '',
+        cartState: { items: [], total_quantity: 0, subtotal_cents: 0 },
+        cartOpen: false,
+        cartMessage: '',
+        cartError: false,
+        savedIds: new Set(),
+        modalProduct: null,
+        buyNowMessage: '',
+        intent: '',
+        occasion: '',
+        budget: null,
+        aiLoading: false,
+        aiResult: '',
+        aiProducts: [],
+
+        async init() {
+          await this.ensureGuestSession();
+          await this.ensureCartSession();
+          await this.loadSaved();
+          await this.loadDestinations();
+          await this.loadCatalog();
+          await this.refreshCart();
+        },
+
+        formatMoney(cents) { return '$' + (Number(cents || 0) / 100).toFixed(2); },
+        cartItemQty(pid) { return (this.cartState.items || []).find(i => i.product_id === pid)?.quantity || 0; },
+        scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); },
+        scrollToElement(id) { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); },
+
+        async api(url, opts = {}) {
+          const res = await fetch(url, opts);
+          const data = await res.json();
+          if (!res.ok) throw new Error(typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || data) || `Error ${res.status}`);
+          return data;
+        },
+
+        async ensureGuestSession() {
+          if (this.userId) return;
+          try {
+            const data = await this.api('api/v1/auth/guest-session', { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({display_name:'Guest'}) });
+            this.userId = data?.user?.user_id || '';
+            if (this.userId) localStorage.setItem('catholicMarketUserId', this.userId);
+          } catch(e) {}
+        },
+
+        async ensureCartSession() {
+          if (this.cartId) {
+            try { const r = await fetch(`api/v1/carts/${this.cartId}`); if (r.ok) { const d = await r.json(); this.cartState = d.cart || this.cartState; return; } } catch(e) {}
+          }
+          try {
+            const data = await this.api('api/v1/carts', { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({user_id:this.userId||null}) });
+            this.cartId = data?.cart?.cart_id || '';
+            if (this.cartId) localStorage.setItem('catholicMarketCartId', this.cartId);
+            this.cartState = data?.cart || this.cartState;
+          } catch(e) {}
+        },
+
+        async loadSaved() {
+          if (!this.userId) return;
+          try { const data = await this.api(`api/v1/users/${this.userId}/saved`); this.savedIds = new Set((data.items||[]).map(i=>i.product_id)); } catch(e) {}
+        },
+
+        async loadDestinations() {
+          try { const data = await this.api('api/v1/destinations?limit=12'); this.destinations = (data.items||[]).map(d=>({...d,flag:this.destinationFlag(d.country)})); } catch(e) { this.destinations = []; }
+        },
+
+        destinationFlag(c) {
+          const m = {'Italy':'🇮🇹','France':'🇫🇷','Poland':'🇵🇱','Mexico':'🇲🇽','Portugal':'🇵🇹','Spain':'🇪🇸','Ireland':'🇮🇪','Israel':'🇮🇱','Palestine':'🇵🇸','Brazil':'🇧🇷','Philippines':'🇵🇭','Canada':'🇨🇦','USA':'🇺🇸','Uganda':'🇺🇬',"Côte d'Ivoire":'🇨🇮'};
+          return m[c] || '✠';
+        },
+
+        async loadCatalog() {
+          this.loading = true;
+          try {
+            const p = new URLSearchParams({limit:'30'});
+            if (this.query) p.set('q',this.query);
+            if (this.activeDestination) p.set('destination',this.activeDestination);
+            const data = await this.api(`api/v1/catalog/feed?${p.toString()}`);
+            this.products = data.items || [];
+            this.visibleCount = 4;
+          } catch(e) { this.products = []; }
+          this.loading = false;
+        },
+
+        async refreshCart() {
+          if (!this.cartId) return;
+          try { const data = await this.api(`api/v1/carts/${this.cartId}`); this.cartState = data?.cart || this.cartState; } catch(e) {}
+        },
+
+        openProduct(pid) {
+          window.location.href = `/product/${pid}`;
+        },
+
+        async toggleSaved(pid) {
+          if (!this.userId) return;
+          const isSaved = this.savedIds.has(pid);
+          try {
+            await this.api(`api/v1/users/${this.userId}/saved/${pid}`, {method:isSaved?'DELETE':'POST'});
+            if (isSaved) this.savedIds.delete(pid); else this.savedIds.add(pid);
+            this.savedIds = new Set(this.savedIds);
+          } catch(e) {}
+        },
+
+        async addToCart(pid, qty=1) {
+          if (!this.cartId) return;
+          try {
+            const data = await this.api(`api/v1/carts/${this.cartId}/items`, {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product_id:pid,quantity:qty})});
+            this.cartState = data.cart || this.cartState;
+            this.cartMessage = 'Added to cart ✓'; this.cartError = false;
+            setTimeout(()=>{this.cartMessage=''},2000);
+          } catch(e) { this.cartMessage = e.message; this.cartError = true; }
+        },
+
+        async cartAdjust(pid, delta) {
+          const cur = (this.cartState.items||[]).find(x=>x.product_id===pid);
+          if (!cur) return;
+          const nq = Math.max(0, Number(cur.quantity||0)+Number(delta||0));
+          try {
+            const data = await this.api(`api/v1/carts/${this.cartId}/items/${pid}`, {method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify({quantity:nq})});
+            this.cartState = data.cart || this.cartState;
+          } catch(e) { this.cartMessage = e.message; this.cartError = true; }
+        },
+
+        async checkoutCart() {
+          if (!this.cartId) return;
+          this.cartMessage = 'Preparing checkout…'; this.cartError = false;
+          try {
+            const idem = `web_${this.cartId}_${Date.now()}`;
+            const data = await this.api('api/v1/checkout/intents', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({cart_id:this.cartId,user_id:this.userId||null,success_url:window.location.href,cancel_url:window.location.href,idempotency_key:idem,dry_run:false})});
+            if (data?.checkout_url) window.location.href = data.checkout_url;
+            else { this.cartMessage = 'Checkout link missing.'; this.cartError = true; }
+          } catch(e) { this.cartMessage = e.message; this.cartError = true; }
+        },
+
+        async buyNow(pid) {
+          this.buyNowMessage = 'Preparing secure checkout…';
+          try {
+            const data = await this.api('api/v1/checkout/buy-now', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({user_id:this.userId||null,product_id:pid,quantity:1,success_url:window.location.href,cancel_url:window.location.href,dry_run:false})});
+            if (data?.checkout_url) window.location.href = data.checkout_url;
+            else this.buyNowMessage = 'Checkout link missing.';
+          } catch(e) { this.buyNowMessage = e.message; }
+        },
+
+        async recommend() {
+          this.aiLoading = true; this.aiResult = ''; this.aiProducts = [];
+          try {
+            const data = await this.api('api/v1/ai/recommend', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({intent:this.intent,budget_usd:Number(this.budget||0),occasion:this.occasion,limit:3})});
+            const lines = [data.summary||''];
+            (data.recommendations||[]).forEach((row,idx)=>{const p=row.product||{};lines.push(`${idx+1}) ${p.title} (${p.country}) ${this.formatMoney(p.price_cents)} — ${(row.reasons||[]).join('; ')}`);});
+            this.aiResult = lines.join('\n');
+            this.aiProducts = (data.recommendations||[]).slice(0,3).map(r=>r.product).filter(p=>p?.product_id);
+          } catch(e) { this.aiResult = `Unable to get recommendations: ${e.message}`; }
+          this.aiLoading = false;
+        }
+      };
+    }
+  </script>
+</body>
+</html>

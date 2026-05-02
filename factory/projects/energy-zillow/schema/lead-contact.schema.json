@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://demandgrid.ai/schema/lead-contact.schema.json",
+  "title": "DemandGrid Lead Contact Schema v1",
+  "type": "object",
+  "required": ["contact_id", "account_id", "site_id", "entity_type", "role", "display_name", "preferred_channel"],
+  "properties": {
+    "contact_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "site_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "role": { "type": "string" },
+    "display_name": { "type": "string" },
+    "first_name": { "type": ["string", "null"] },
+    "last_name": { "type": ["string", "null"] },
+    "organization_name": { "type": ["string", "null"] },
+    "owner_occupancy": { "type": ["string", "null"] },
+    "residency_confidence": { "type": ["number", "null"] },
+    "preferred_channel": { "type": "string" },
+    "contactability_score": { "type": ["number", "null"] },
+    "contactability_label": { "type": ["string", "null"] },
+    "do_not_contact": { "type": "boolean" },
+    "primary_phone": { "type": ["string", "null"] },
+    "phone_numbers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "primary_email": { "type": ["string", "null"] },
+    "emails": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "website_url": { "type": ["string", "null"] },
+    "contact_form_url": { "type": ["string", "null"] },
+    "contact_paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "value"],
+        "properties": {
+          "type": { "type": "string" },
+          "value": { "type": "string" },
+          "label": { "type": ["string", "null"] },
+          "priority": { "type": ["integer", "null"] }
+        }
+      }
+    },
+    "mailing_address": { "type": ["string", "null"] },
+    "best_contact_window": { "type": ["string", "null"] },
+    "dedupe_key": { "type": ["string", "null"] },
+    "identity_sources": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_record_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "verified_at": { "type": ["string", "null"] },
+    "freshness_days": { "type": ["integer", "null"] },
+    "notes": { "type": ["string", "null"] },
+    "created_at": { "type": ["string", "null"] },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

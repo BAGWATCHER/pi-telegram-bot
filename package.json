@@ -1,0 +1,32 @@
+{
+  "name": "pi-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot powered by pi coding agent",
+  "type": "module",
+  "scripts": {
+    "start": "node --import tsx/esm src/bot.ts",
+    "dev": "node --watch --import tsx/esm src/bot.ts",
+    "relay": "node --import tsx/esm relay/server.ts",
+    "relay:dev": "node --watch --import tsx/esm relay/server.ts",
+    "dashboard": "node --import tsx/esm dashboard/server.ts",
+    "dashboard:dev": "node --watch --import tsx/esm dashboard/server.ts",
+    "brain:bootstrap": "node --import tsx/esm scripts/chow-brain/bootstrap.ts",
+    "brain:reflect": "node --import tsx/esm scripts/chow-brain/reflect.ts",
+    "brain:context": "node --import tsx/esm scripts/chow-brain/context.ts",
+    "brain:consolidate": "node --import tsx/esm scripts/chow-brain/consolidate.ts",
+    "learn:add-source": "node --import tsx/esm scripts/learning-center/add-source.ts",
+    "learn:add-note": "node --import tsx/esm scripts/learning-center/add-note.ts",
+    "learn:build-context": "node --import tsx/esm scripts/learning-center/build-context.ts",
+    "learn:status": "node --import tsx/esm scripts/learning-center/status.ts",
+    "factory:status": "node --import tsx/esm scripts/factory/status.ts"
+  },
+  "dependencies": {
+    "@mariozechner/pi-coding-agent": "^0.71.0",
+    "@types/express": "^5.0.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "telegraf": "^4.16.3",
+    "telegram": "^2.26.22",
+    "tsx": "^4.0.0"
+  }
+}

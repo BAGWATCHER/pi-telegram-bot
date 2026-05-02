@@ -1,0 +1,42 @@
+{
+  "lane_id": "EZ-022",
+  "timestamp_utc": "2026-04-21T21:05:08.815679+00:00",
+  "queue_updated_at": "2026-04-18T07:04:31Z",
+  "lane": {
+    "id": "EZ-022",
+    "title": "Add parcel permit-history lane (roof/HVAC/solar timing signals)",
+    "lane": "data",
+    "priority": "p0",
+    "risk": "medium",
+    "status": "in-progress",
+    "depends_on": [
+      "EZ-021"
+    ],
+    "done_when": [
+      "permit feed normalizes to site_id or deterministic parcel/address key",
+      "roofing/HVAC recency triggers populate non-trivial share of active sites",
+      "trigger notes include permit recency fields and source provenance",
+      "merge + score + eval pass with permit lane enabled"
+    ],
+    "artifacts": [
+      "scripts/fetch_boston_permit_feed.py",
+      "scripts/fetch_providence_permit_feed.py",
+      "scripts/fetch_cambridge_permit_feed.py",
+      "scripts/project_parcel_permit_triggers.py",
+      "data/raw/parcel_permit_feed.template.csv",
+      "data/raw/parcel_permit_feed.csv",
+      "data/raw/property_triggers_external.csv",
+      "artifacts/boston-permit-fetch-summary.md",
+      "artifacts/boston-permit-fetch-summary.json",
+      "artifacts/providence-permit-fetch-summary.md",
+      "artifacts/providence-permit-fetch-summary.json",
+      "artifacts/cambridge-permit-fetch-summary.md",
+      "artifacts/cambridge-permit-fetch-summary.json",
+      "artifacts/permit-trigger-summary.md",
+      "artifacts/permit-trigger-summary.json",
+      "artifacts/permit-trigger-coverage.md",
+      "artifacts/eval-summary.md"
+    ]
+  },
+  "eval_summary_head": "# Eval Summary\n\n## Gate Results\n\n- \u2705 **coverage** \u2014 100.00% (threshold >= 80%)\n- \u2705 **ranking_stability** \u2014 1.000 (threshold >= 0.90)\n- \u2705 **multi_zip_regression** \u2014 zips=64 req>=25, min_rows_per_zip=20, min_zip_stability=1.000 req>=0.90, rows_ok=True, coverage_ok=True\n- \u2705 **product_flow** \u2014 scored+h3+api-samples+frontend map/list/detail flow present\n- \u2705 **agent_copilot_contract** \u2014 skipped_large_board rows=66941\n- \u2705 **honesty_wind** \u2014 violations=0\n- \u2705 **honesty_product_readiness** \u2014 missing=0, proxy_lane_mismatch=0\n- \u2705 **operator_workflow_labels** \u2014 missing=0, invalid=0\n- \u2705 **operator_route_usability** \u2014 route_score_missing=0, top200_hot=200\n- \u2705 **widened_product_mix** \u2014 top100={'roofing': 18, 'solar': 82}\n- \u2705 **solar_first_default** \u2014 hybrid=29997, violations=0\n- \u2705 **perf_api** \u2014 p95=2.20ms (threshold <= 700ms)\n- \u2705 **explanation_quality** \u2014 100.00% (threshold >= 98%)\n- \u2705 **assumption_traceability** \u2014 scoring_assumptions=True, limitations=True\n- \u2705 **trigger_layer_contract** \u2014 trigger_rows=66941, sites=66941\n- \u2705 **battery_reliability_prior** \u2014 loaded_rows=66941, scored_rows=66941\n- \u2705 **flood_gap_coverage** \u2014 outage_gap_zips=['01450', '01451', '01720', '01730', '01740', '01741', '01748', '01770', '01772', '01776', '01778', '01827', '01886', '01890', '01921', '01940', '01949', '01965', '01983', '01985', '02030', '02043', '02052', '02056', '02061', '02067', '02090', '02118', '02139', '02186', '02332', '02339', '02420', '02468', '02482', '02492', '02493', '02575', '02637', '02667', '02903', '03087', '03249', '03253', '03854', '04006', '04101', '05486', '06103', '06510', '06525', '06820', '06824', '06831', '06840', '06870', '06877', '06878', '06880', '06883', '06890', '06896', '06897', '06903'], flood_covered_gap_zips=['01450', '01451', '01720', '01730', '01740', '01741', '01748', '01770', '01772', '01776', '01778', '01827', '01886', '01890', '01921', '01940', '01949', '01965', '01983', '01985', '02030', '02043', '02052', '02056', '02061', '02067', '02090', '02118', '02139', '02186', '02332', '02339', '02420', '02482', '02492', '02493', '02575', '02637', '02667', '02903', '03087', '03854', '04006', '04101', '05486', '06103', '06510', '06525', '06824', '06831', '06877', '06883', '06890', '06896', '06897', '06903']\n- \u2705 **equipment_age_coverage** \u2014 zips_with_equipment=['02118', '02139', '02903']\n- \u2705 **outreach_policy_config_contract** \u2014 version=2026-04-17-v1, source=/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json, confidence_min=0.65, product_overrides=4\n- \u2705 **outreach_payload_contract** \u2014 contract_exists=True, payload_ok=40/40 (100.0%)"
+}

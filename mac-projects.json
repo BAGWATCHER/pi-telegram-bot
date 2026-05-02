@@ -1,0 +1,14 @@
+{
+  "hector": "/Users/adamn/pi-telegram-bot",
+  "bot": "/Users/adamn/pi-telegram-bot",
+  "extensions": "/Users/adamn/pi-extensions",
+  "dashboard": "/Users/adamn/pi-telegram-bot/dashboard",
+  "slope": "/Users/adamn/SlopeSniper",
+  "slopesniper": "/Users/adamn/SlopeSniper",
+  "slopesite": "/Users/adamn/slopesniper-site-v2",
+  "convoy": "/Users/adamn/CONVOY-manager",
+  "rico": "/Users/adamn/rico-website",
+  "hydra": "/Users/adamn/HYDRA SUPER DEV",
+  "clawd": "/Users/adamn/clawd",
+  "clawdops": "/Users/adamn/clawd-ops"
+}

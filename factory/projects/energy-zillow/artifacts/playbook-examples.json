@@ -1,0 +1,369 @@
+{
+  "solar_agent_assist": {
+    "framework": "dg-playbook-compiler-v1",
+    "playbook_id": "playbook_site-ab25957991a6_20260418T050801885847Z",
+    "compiled_at": "2026-04-18T05:08:01Z",
+    "site_id": "site_ab25957991a6",
+    "objective": "Qualify and convert the solar opportunity while urgency is high.",
+    "execution_mode": "agent_assist",
+    "channel_order": [
+      "phone",
+      "sms",
+      "email"
+    ],
+    "strict_guardrails": true,
+    "guardrail_flags": [
+      "capture_outcome",
+      "stop_on_terminal_state",
+      "respect_outreach_policy",
+      "require_manual_review_on_flags",
+      "review_flag_present"
+    ],
+    "stop_conditions": [
+      "lead outcome becomes won or lost",
+      "operator status becomes closed or skip",
+      "prospect gives explicit do-not-contact or hard no",
+      "policy/compliance flags require manual review before send"
+    ],
+    "opportunity": {
+      "address": "19 Old Colony Drive, Dover, MA, 02030",
+      "zip": "02030",
+      "primary_product": "solar",
+      "secondary_product": "roofing",
+      "lead_temperature": "hot",
+      "operator_status": "unworked",
+      "opportunity_score": 78.2,
+      "win_probability_proxy": 0.579,
+      "confidence": 0.83
+    },
+    "playbook": {
+      "objective": "Qualify and convert the solar opportunity while urgency is high.",
+      "steps": [
+        {
+          "step_id": "review_context",
+          "title": "Review the evidence pack and choose the opener",
+          "channel": "workspace",
+          "mode": "human",
+          "instruction": "Solar remains the strongest first offer because the economics and roof-fit proxies are better than the alternatives.",
+          "success_signal": "Rep or agent can explain why this lead is ranked now and what proof supports the move.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "first_touch",
+          "title": "Run the first touch on phone",
+          "channel": "phone",
+          "mode": "agent",
+          "instruction": "Solar remains the strongest first offer because the economics and roof-fit proxies are better than the alternatives.",
+          "success_signal": "Lead responds, books next step, or is marked contacted with a clear next action.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "follow_up_touch",
+          "title": "If no reply, run the follow-up on sms",
+          "channel": "sms",
+          "mode": "human",
+          "instruction": "Prioritize this stop and lead with solar.",
+          "success_signal": "Lead is qualified, scheduled, suppressed, or moved to a later dated follow-up.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "log_outcome",
+          "title": "Capture the real outcome and economics",
+          "channel": "workspace",
+          "mode": "human",
+          "instruction": "After the touch, update status, outcome, objection, reason, and realized value so ranking and policy can learn.",
+          "success_signal": "Outcome record is complete enough to explain what happened and whether the lane made money.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        }
+      ],
+      "objection_map": [
+        {
+          "objection": "too expensive",
+          "handling_angle": "Lead with modeled annual savings, utility-rate pressure, and next-step options instead of opening on system price."
+        },
+        {
+          "objection": "not interested",
+          "handling_angle": "Use the best evidence-backed why-now trigger and ask for a light qualification, not a hard close."
+        },
+        {
+          "objection": "timing",
+          "handling_angle": "Anchor on current bill pain, outage/flood risk, or permit history and ask for a scheduled follow-up window."
+        }
+      ],
+      "next_best_action": "work_now",
+      "recommended_channel": "phone"
+    },
+    "learning_context": {
+      "global": null,
+      "same_zip": null,
+      "same_product": null,
+      "same_zip_product": null,
+      "preferred_scope": null
+    },
+    "refs": {
+      "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+      "revenue_graph_ref": "/api/v1/revenue-graph/site/site_ab25957991a6",
+      "signals_ref": "/api/v1/signals/site/site_ab25957991a6",
+      "outreach_ref": "/api/v1/outreach/site/site_ab25957991a6",
+      "investigation_ref": "/api/v1/investigation/site/site_ab25957991a6"
+    },
+    "policy_snapshot": {
+      "product": "solar",
+      "confidence_min": 0.62,
+      "confidence_high_min": 0.82,
+      "policy_version": "2026-04-17-v1",
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json"
+    },
+    "signal_summary": {
+      "quality_counts": {
+        "verified": 0,
+        "proxy": 1,
+        "missing": 4
+      },
+      "trigger_data_gaps": "Missing external trigger layers: storm/hail events, outage reliability, equipment age or fuel type, permit/work history.",
+      "has_actionable_outage_data": true,
+      "utility_name": "NSTAR Electric Company",
+      "utility_rate_method": "official_utility_override",
+      "utility_rate_as_of": "2017-07-01"
+    },
+    "notes": {
+      "auto_send_allowed": true,
+      "compliance_flags": [],
+      "review_flags": [
+        "requires_site_survey"
+      ]
+    }
+  },
+  "roofing_rep_assist": {
+    "framework": "dg-playbook-compiler-v1",
+    "playbook_id": "playbook_site-9dc98e41c5af_20260418T050801897279Z",
+    "compiled_at": "2026-04-18T05:08:01Z",
+    "site_id": "site_9dc98e41c5af",
+    "objective": "Qualify and convert the roofing opportunity while urgency is high.",
+    "execution_mode": "rep_assist",
+    "channel_order": [
+      "email",
+      "phone",
+      "sms"
+    ],
+    "strict_guardrails": true,
+    "guardrail_flags": [
+      "capture_outcome",
+      "stop_on_terminal_state",
+      "respect_outreach_policy",
+      "require_manual_review_on_flags",
+      "review_flag_present"
+    ],
+    "stop_conditions": [
+      "lead outcome becomes won or lost",
+      "operator status becomes closed or skip",
+      "prospect gives explicit do-not-contact or hard no",
+      "policy/compliance flags require manual review before send"
+    ],
+    "opportunity": {
+      "address": "88B Elm Street, Hopkinton, MA, 01748",
+      "zip": "01748",
+      "primary_product": "roofing",
+      "secondary_product": "solar",
+      "lead_temperature": "hot",
+      "operator_status": "unworked",
+      "opportunity_score": 56.7,
+      "win_probability_proxy": 0.483,
+      "confidence": 0.83
+    },
+    "playbook": {
+      "objective": "Qualify and convert the roofing opportunity while urgency is high.",
+      "steps": [
+        {
+          "step_id": "review_context",
+          "title": "Review the evidence pack and choose the opener",
+          "channel": "workspace",
+          "mode": "human",
+          "instruction": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+          "success_signal": "Rep or agent can explain why this lead is ranked now and what proof supports the move.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "first_touch",
+          "title": "Run the first touch on email",
+          "channel": "email",
+          "mode": "human",
+          "instruction": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+          "success_signal": "Lead responds, books next step, or is marked contacted with a clear next action.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "follow_up_touch",
+          "title": "If no reply, run the follow-up on phone",
+          "channel": "phone",
+          "mode": "human",
+          "instruction": "Prioritize this stop and lead with roofing. Current gap: Needs storm or hail history, roof-age evidence, and neighborhood replacement clustering before event-ready roofing targeting.",
+          "success_signal": "Lead is qualified, scheduled, suppressed, or moved to a later dated follow-up.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        },
+        {
+          "step_id": "log_outcome",
+          "title": "Capture the real outcome and economics",
+          "channel": "workspace",
+          "mode": "human",
+          "instruction": "After the touch, update status, outcome, objection, reason, and realized value so ranking and policy can learn.",
+          "success_signal": "Outcome record is complete enough to explain what happened and whether the lane made money.",
+          "stop_conditions": [
+            "lead outcome becomes won or lost",
+            "operator status becomes closed or skip",
+            "prospect gives explicit do-not-contact or hard no",
+            "policy/compliance flags require manual review before send"
+          ],
+          "guardrail_flags": [
+            "capture_outcome",
+            "stop_on_terminal_state",
+            "respect_outreach_policy",
+            "require_manual_review_on_flags",
+            "review_flag_present"
+          ]
+        }
+      ],
+      "objection_map": [
+        {
+          "objection": "already have a roofer",
+          "handling_angle": "Position as a fast second-look inspection with trigger-backed urgency and no-friction next step."
+        },
+        {
+          "objection": "timing",
+          "handling_angle": "Use storm/flood/permit evidence to frame why delay increases risk and offer a narrow booking window."
+        },
+        {
+          "objection": "too expensive",
+          "handling_angle": "Focus first on inspection findings and loss prevention before full replacement economics."
+        }
+      ],
+      "next_best_action": "work_now",
+      "recommended_channel": "phone"
+    },
+    "learning_context": {
+      "global": null,
+      "same_zip": null,
+      "same_product": null,
+      "same_zip_product": null,
+      "preferred_scope": null
+    },
+    "refs": {
+      "decision_ref": "/api/v1/decision/site/site_9dc98e41c5af",
+      "revenue_graph_ref": "/api/v1/revenue-graph/site/site_9dc98e41c5af",
+      "signals_ref": "/api/v1/signals/site/site_9dc98e41c5af",
+      "outreach_ref": "/api/v1/outreach/site/site_9dc98e41c5af",
+      "investigation_ref": "/api/v1/investigation/site/site_9dc98e41c5af"
+    },
+    "policy_snapshot": {
+      "product": "roofing",
+      "confidence_min": 0.67,
+      "confidence_high_min": 0.84,
+      "policy_version": "2026-04-17-v1",
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json"
+    },
+    "signal_summary": {
+      "quality_counts": {
+        "verified": 0,
+        "proxy": 1,
+        "missing": 4
+      },
+      "trigger_data_gaps": "Missing external trigger layers: storm/hail events, outage reliability, equipment age or fuel type, permit/work history.",
+      "has_actionable_outage_data": true,
+      "utility_name": "NSTAR Electric Company",
+      "utility_rate_method": "official_utility_override",
+      "utility_rate_as_of": "2017-07-01"
+    },
+    "notes": {
+      "auto_send_allowed": true,
+      "compliance_flags": [],
+      "review_flags": [
+        "requires_site_survey",
+        "proxy_only_readiness"
+      ]
+    }
+  }
+}

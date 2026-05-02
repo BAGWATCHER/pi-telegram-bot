@@ -1,0 +1,1249 @@
+{
+  "status": "ok",
+  "attempted_zips": 300,
+  "succeeded_zips": 4,
+  "failed_zips": 296,
+  "half_span_deg": 0.02,
+  "min_records_per_zip": 25,
+  "merged_records": 5800,
+  "successes": [
+    {
+      "zip": "06525",
+      "city": "Woodbridge",
+      "state": "CT",
+      "records": 1253,
+      "source_breakdown": {
+        "node": 1248,
+        "way": 5
+      },
+      "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_06525_osm.csv",
+      "rank": 56
+    },
+    {
+      "zip": "01730",
+      "city": "Bedford",
+      "state": "MA",
+      "records": 2173,
+      "source_breakdown": {
+        "node": 73,
+        "way": 2100
+      },
+      "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_01730_osm.csv",
+      "rank": 133
+    },
+    {
+      "zip": "05486",
+      "city": "South Hero",
+      "state": "VT",
+      "records": 421,
+      "source_breakdown": {
+        "node": 361,
+        "way": 60
+      },
+      "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_05486_osm.csv",
+      "rank": 257
+    },
+    {
+      "zip": "02667",
+      "city": "Wellfleet",
+      "state": "MA",
+      "records": 1953,
+      "source_breakdown": {
+        "node": 5,
+        "way": 1948
+      },
+      "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_02667_osm.csv",
+      "rank": 268
+    }
+  ],
+  "failures": [
+    {
+      "zip": "06883",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "02468",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "02492",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "02030",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "02493",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "06880",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "01776",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "06903",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "01778",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "01741",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "02481",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "03087",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "01921",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "02420",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "02056",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "06897",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "06840",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "06820",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02090",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02061",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02332",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "01890",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "01740",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "01985",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "02459",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "06824",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "01772",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "01886",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "01949",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "01451",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "02052",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "06878",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "01770",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "06890",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "04006",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "02186",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "01983",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "01450",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "01748",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "01940",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "02067",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "06896",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "03854",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "01827",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "02637",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "06877",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "06870",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "02043",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "02575",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "02482",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "06831",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "02339",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "01742",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "01945",
+      "reason": "OSM map fetch failed (400): You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm"
+    },
+    {
+      "zip": "02025",
+      "reason": "OSM map fetch failed (400): You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm"
+    },
+    {
+      "zip": "01887",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 29 seconds."
+    },
+    {
+      "zip": "01810",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 29 seconds."
+    },
+    {
+      "zip": "01867",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 28 seconds."
+    },
+    {
+      "zip": "06376",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 28 seconds."
+    },
+    {
+      "zip": "06443",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 28 seconds."
+    },
+    {
+      "zip": "02421",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 27 seconds."
+    },
+    {
+      "zip": "06612",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 27 seconds."
+    },
+    {
+      "zip": "01951",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 26 seconds."
+    },
+    {
+      "zip": "02066",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 26 seconds."
+    },
+    {
+      "zip": "03856",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 26 seconds."
+    },
+    {
+      "zip": "06853",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 25 seconds."
+    },
+    {
+      "zip": "03049",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 25 seconds."
+    },
+    {
+      "zip": "01965",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 25 seconds."
+    },
+    {
+      "zip": "06611",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 24 seconds."
+    },
+    {
+      "zip": "02806",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 24 seconds."
+    },
+    {
+      "zip": "06468",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 24 seconds."
+    },
+    {
+      "zip": "01984",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 23 seconds."
+    },
+    {
+      "zip": "02053",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 23 seconds."
+    },
+    {
+      "zip": "06073",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 23 seconds."
+    },
+    {
+      "zip": "04107",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 22 seconds."
+    },
+    {
+      "zip": "01746",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 22 seconds."
+    },
+    {
+      "zip": "01532",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 21 seconds."
+    },
+    {
+      "zip": "05445",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 21 seconds."
+    },
+    {
+      "zip": "01775",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 21 seconds."
+    },
+    {
+      "zip": "02071",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 20 seconds."
+    },
+    {
+      "zip": "02535",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 20 seconds."
+    },
+    {
+      "zip": "02534",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 20 seconds."
+    },
+    {
+      "zip": "02461",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "03885",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "03750",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "01864",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "01568",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "02874",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "02648",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "03031",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "04110",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "06092",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "01773",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "02835",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "03032",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "01922",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "03033",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "03110",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "02478",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "02047",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "02359",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "02467",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "03811",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "04021",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "03810",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "06752",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "02093",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "01834",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "02081",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "02537",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "01541",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "01720",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "01460",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "02494",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "06470",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "02837",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "06482",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "02032",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "03862",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "02465",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "06807",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "04105",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "01833",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "02630",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "01824",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "01756",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "02892",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "01590",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "01950",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "03036",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "02556",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "03840",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 56 seconds."
+    },
+    {
+      "zip": "01944",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 55 seconds."
+    },
+    {
+      "zip": "01821",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 55 seconds."
+    },
+    {
+      "zip": "06477",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 54 seconds."
+    },
+    {
+      "zip": "06830",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 54 seconds."
+    },
+    {
+      "zip": "01879",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 53 seconds."
+    },
+    {
+      "zip": "03827",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 53 seconds."
+    },
+    {
+      "zip": "03057",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 52 seconds."
+    },
+    {
+      "zip": "02462",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 52 seconds."
+    },
+    {
+      "zip": "02054",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 51 seconds."
+    },
+    {
+      "zip": "03304",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 51 seconds."
+    },
+    {
+      "zip": "02127",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 50 seconds."
+    },
+    {
+      "zip": "06812",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 50 seconds."
+    },
+    {
+      "zip": "03844",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 49 seconds."
+    },
+    {
+      "zip": "02715",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 49 seconds."
+    },
+    {
+      "zip": "02445",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 48 seconds."
+    },
+    {
+      "zip": "01803",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 48 seconds."
+    },
+    {
+      "zip": "02458",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 47 seconds."
+    },
+    {
+      "zip": "02108",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 47 seconds."
+    },
+    {
+      "zip": "01745",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 46 seconds."
+    },
+    {
+      "zip": "02129",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 46 seconds."
+    },
+    {
+      "zip": "02038",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 46 seconds."
+    },
+    {
+      "zip": "01876",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 45 seconds."
+    },
+    {
+      "zip": "02132",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 45 seconds."
+    },
+    {
+      "zip": "02476",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 44 seconds."
+    },
+    {
+      "zip": "02769",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 44 seconds."
+    },
+    {
+      "zip": "02466",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 43 seconds."
+    },
+    {
+      "zip": "02460",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 43 seconds."
+    },
+    {
+      "zip": "02210",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 43 seconds."
+    },
+    {
+      "zip": "03586",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 42 seconds."
+    },
+    {
+      "zip": "02702",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 42 seconds."
+    },
+    {
+      "zip": "06524",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 40 seconds."
+    },
+    {
+      "zip": "01106",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 40 seconds."
+    },
+    {
+      "zip": "05677",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 39 seconds."
+    },
+    {
+      "zip": "02554",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 39 seconds."
+    },
+    {
+      "zip": "03861",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 38 seconds."
+    },
+    {
+      "zip": "03768",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 38 seconds."
+    },
+    {
+      "zip": "06410",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 37 seconds."
+    },
+    {
+      "zip": "01760",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 37 seconds."
+    },
+    {
+      "zip": "02921",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "02474",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "03870",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "02717",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 35 seconds."
+    },
+    {
+      "zip": "02831",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 35 seconds."
+    },
+    {
+      "zip": "01719",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "01543",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "02050",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "01929",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 33 seconds."
+    },
+    {
+      "zip": "02779",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 33 seconds."
+    },
+    {
+      "zip": "01982",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 32 seconds."
+    },
+    {
+      "zip": "06437",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 32 seconds."
+    },
+    {
+      "zip": "01519",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 31 seconds."
+    },
+    {
+      "zip": "01701",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 31 seconds."
+    },
+    {
+      "zip": "06107",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 30 seconds."
+    },
+    {
+      "zip": "03053",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 30 seconds."
+    },
+    {
+      "zip": "06013",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 29 seconds."
+    },
+    {
+      "zip": "03755",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 29 seconds."
+    },
+    {
+      "zip": "03076",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 29 seconds."
+    },
+    {
+      "zip": "02144",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 28 seconds."
+    },
+    {
+      "zip": "06001",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 28 seconds."
+    },
+    {
+      "zip": "06422",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 27 seconds."
+    },
+    {
+      "zip": "03070",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 27 seconds."
+    },
+    {
+      "zip": "01520",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 26 seconds."
+    },
+    {
+      "zip": "01845",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 26 seconds."
+    },
+    {
+      "zip": "06762",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 25 seconds."
+    },
+    {
+      "zip": "02021",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 25 seconds."
+    },
+    {
+      "zip": "02562",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 24 seconds."
+    },
+    {
+      "zip": "06804",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 24 seconds."
+    },
+    {
+      "zip": "01564",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 23 seconds."
+    },
+    {
+      "zip": "06478",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 23 seconds."
+    },
+    {
+      "zip": "03770",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 22 seconds."
+    },
+    {
+      "zip": "02140",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 22 seconds."
+    },
+    {
+      "zip": "02184",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 22 seconds."
+    },
+    {
+      "zip": "02176",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 21 seconds."
+    },
+    {
+      "zip": "02635",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 21 seconds."
+    },
+    {
+      "zip": "02563",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 20 seconds."
+    },
+    {
+      "zip": "02142",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 20 seconds."
+    },
+    {
+      "zip": "01880",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "02446",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 19 seconds."
+    },
+    {
+      "zip": "06371",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "02045",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 18 seconds."
+    },
+    {
+      "zip": "06825",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "02116",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "02109",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 17 seconds."
+    },
+    {
+      "zip": "02675",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "01907",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 16 seconds."
+    },
+    {
+      "zip": "01612",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "01863",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 15 seconds."
+    },
+    {
+      "zip": "03046",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "01545",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 14 seconds."
+    },
+    {
+      "zip": "02638",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "03052",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 13 seconds."
+    },
+    {
+      "zip": "02766",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02367",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02130",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 12 seconds."
+    },
+    {
+      "zip": "02764",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "06117",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 11 seconds."
+    },
+    {
+      "zip": "03054",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "03905",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "02114",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 10 seconds."
+    },
+    {
+      "zip": "06756",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "02817",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 9 seconds."
+    },
+    {
+      "zip": "06419",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "02139",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 8 seconds."
+    },
+    {
+      "zip": "02138",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "01721",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "02048",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 7 seconds."
+    },
+    {
+      "zip": "01938",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "04852",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "02026",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 6 seconds."
+    },
+    {
+      "zip": "02770",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "01516",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 5 seconds."
+    },
+    {
+      "zip": "02341",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "03858",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "02143",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "02333",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "02347",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "01581",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "01566",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "01258",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "02824",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "06231",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "02655",
+      "reason": "OSM map fetch failed (400): You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm"
+    },
+    {
+      "zip": "02738",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 4 seconds."
+    },
+    {
+      "zip": "02364",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "02110",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "06060",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 3 seconds."
+    },
+    {
+      "zip": "05465",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "06783",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 2 seconds."
+    },
+    {
+      "zip": "02472",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "01245",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "06475",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 1 seconds."
+    },
+    {
+      "zip": "06905",
+      "reason": "OSM map fetch failed (400): You requested too many nodes (limit is 50000). Either request a smaller area, or use planet.osm"
+    },
+    {
+      "zip": "02379",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 44 seconds."
+    },
+    {
+      "zip": "05161",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 44 seconds."
+    },
+    {
+      "zip": "02791",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 43 seconds."
+    },
+    {
+      "zip": "02632",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 43 seconds."
+    },
+    {
+      "zip": "02871",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 42 seconds."
+    },
+    {
+      "zip": "02356",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 42 seconds."
+    },
+    {
+      "zip": "04074",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 41 seconds."
+    },
+    {
+      "zip": "01969",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 41 seconds."
+    },
+    {
+      "zip": "02739",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 40 seconds."
+    },
+    {
+      "zip": "06090",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 40 seconds."
+    },
+    {
+      "zip": "04855",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 40 seconds."
+    },
+    {
+      "zip": "06784",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 39 seconds."
+    },
+    {
+      "zip": "02818",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 39 seconds."
+    },
+    {
+      "zip": "01254",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 38 seconds."
+    },
+    {
+      "zip": "01523",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 38 seconds."
+    },
+    {
+      "zip": "03229",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 38 seconds."
+    },
+    {
+      "zip": "03907",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 37 seconds."
+    },
+    {
+      "zip": "01073",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 37 seconds."
+    },
+    {
+      "zip": "02155",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "06033",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "01463",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 36 seconds."
+    },
+    {
+      "zip": "01908",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 35 seconds."
+    },
+    {
+      "zip": "05084",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 35 seconds."
+    },
+    {
+      "zip": "01505",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "06070",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "04097",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 34 seconds."
+    },
+    {
+      "zip": "02666",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 33 seconds."
+    },
+    {
+      "zip": "02451",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 33 seconds."
+    },
+    {
+      "zip": "02145",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 32 seconds."
+    },
+    {
+      "zip": "03044",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 32 seconds."
+    },
+    {
+      "zip": "06093",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 32 seconds."
+    },
+    {
+      "zip": "02141",
+      "reason": "OSM map fetch failed (509): You have downloaded too much data. Please try again in 31 seconds."
+    }
+  ],
+  "outputs": {
+    "sites_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites.csv",
+    "sites_multi_osm_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_multi_osm.csv"
+  }
+}

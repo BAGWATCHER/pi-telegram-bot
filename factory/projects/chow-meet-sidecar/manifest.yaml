@@ -1,0 +1,41 @@
+version: 1
+project:
+  id: chow-meet-sidecar
+  name: Chow Meet Sidecar
+  mode: dark-factory
+  requested_by: adam
+  owner_agent: Mr Chow
+  status: active
+
+goal:
+  one_liner: "Add production-safe Google Meet operator control to Chow via sidecar, without migrating Chow runtime to OpenClaw."
+  target_user: "Adam operating meetings from Telegram"
+  north_star_metric: "Join/setup/recover flows are deterministic and operator-readable from /meet commands"
+
+scope:
+  in:
+    - /meet command surface in Telegram bot
+    - strict meet URL validation
+    - setup/join/status/recover/leave/speak command wrappers
+    - chat-scoped session memory + persistence
+    - factory eval gate for command surface and sidecar module
+  out:
+    - full migration to OpenClaw runtime
+    - autonomous meeting attendance without explicit operator command
+    - Twilio/PSTN production rollout hardening in this pass
+
+environment:
+  repo_root: /home/ubuntu/pi-telegram-bot
+  working_dir: /home/ubuntu/pi-telegram-bot
+
+delivery:
+  artifact_dir: /home/ubuntu/pi-telegram-bot/factory/projects/chow-meet-sidecar/artifacts
+  required_artifacts:
+    - eval-summary.md
+    - eval-summary.json
+    - run-status-2026-04-26.md
+
+rules:
+  - "No claim of full runtime success without command-level eval pass"
+  - "Keep Chow as primary orchestrator (no runtime swap)"
+  - "Fail with actionable operator guidance (manual action reasons)"

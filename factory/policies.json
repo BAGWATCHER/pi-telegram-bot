@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "policies": {
+    "noDirectProdDeployWithoutApproval": true,
+    "requireRollbackPlanForHighRisk": true,
+    "requireArtifactBundle": true,
+    "artifactBundle": [
+      "baseline-metrics",
+      "failure-log",
+      "patch-plan",
+      "post-patch-results"
+    ],
+    "defaultRetryPolicy": {
+      "attempts": 3,
+      "baseDelayMs": 500
+    }
+  }
+}

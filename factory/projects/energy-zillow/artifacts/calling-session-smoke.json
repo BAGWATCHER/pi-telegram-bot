@@ -1,0 +1,302 @@
+{
+  "create": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-agent-calling-v1",
+      "session_id": "call_session_site-9dc98e41c5af_20260418T055730457619Z",
+      "site_id": "site_9dc98e41c5af",
+      "playbook_id": "playbook_site-9dc98e41c5af_20260418T055730453740Z",
+      "status": "ready",
+      "call_direction": "outbound",
+      "created_at": "2026-04-18T05:57:30Z",
+      "updated_at": "2026-04-18T05:57:30Z",
+      "site": {
+        "address": "88B Elm Street, Hopkinton, MA, 01748",
+        "zip": "01748",
+        "primary_product": "roofing",
+        "secondary_product": "solar",
+        "lead_temperature": "hot",
+        "operator_status": "unworked",
+        "opportunity_score": 56.7,
+        "win_probability_proxy": 0.483,
+        "confidence": 0.83
+      },
+      "pre_call_brief": {
+        "objective": "Qualify and convert the roofing opportunity while urgency is high.",
+        "recommended_channel": "phone",
+        "opener": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "next_best_action": "work_now",
+        "proof_points": [
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded."
+        ],
+        "objection_map": [
+          {
+            "objection": "already have a roofer",
+            "handling_angle": "Position as a fast second-look inspection with trigger-backed urgency and no-friction next step."
+          },
+          {
+            "objection": "timing",
+            "handling_angle": "Use storm/flood/permit evidence to frame why delay increases risk and offer a narrow booking window."
+          },
+          {
+            "objection": "too expensive",
+            "handling_angle": "Focus first on inspection findings and loss prevention before full replacement economics."
+          }
+        ]
+      },
+      "live_assist": {
+        "recommended_talk_track": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "guardrail_flags": [
+          "capture_outcome",
+          "stop_on_terminal_state",
+          "respect_outreach_policy",
+          "require_manual_review_on_flags",
+          "review_flag_present"
+        ],
+        "stop_conditions": [
+          "lead outcome becomes won or lost",
+          "operator status becomes closed or skip",
+          "prospect gives explicit do-not-contact or hard no",
+          "policy/compliance flags require manual review before send"
+        ]
+      },
+      "outcome_sync": {
+        "lead_outcome_ref": "/api/v1/operator/outcome/site_9dc98e41c5af",
+        "status": "pending",
+        "last_synced_at": null
+      },
+      "event_log": [
+        {
+          "event_type": "session_created",
+          "status": "ready",
+          "detail": "Calling session created from compiled playbook.",
+          "event_at": "2026-04-18T05:57:30Z"
+        }
+      ]
+    }
+  },
+  "start": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-agent-calling-v1",
+      "session_id": "call_session_site-9dc98e41c5af_20260418T055730457619Z",
+      "site_id": "site_9dc98e41c5af",
+      "playbook_id": "playbook_site-9dc98e41c5af_20260418T055730453740Z",
+      "status": "live",
+      "call_direction": "outbound",
+      "created_at": "2026-04-18T05:57:30Z",
+      "updated_at": "2026-04-18T05:57:30Z",
+      "site": {
+        "address": "88B Elm Street, Hopkinton, MA, 01748",
+        "zip": "01748",
+        "primary_product": "roofing",
+        "secondary_product": "solar",
+        "lead_temperature": "hot",
+        "operator_status": "unworked",
+        "opportunity_score": 56.7,
+        "win_probability_proxy": 0.483,
+        "confidence": 0.83
+      },
+      "pre_call_brief": {
+        "objective": "Qualify and convert the roofing opportunity while urgency is high.",
+        "recommended_channel": "phone",
+        "opener": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "next_best_action": "work_now",
+        "proof_points": [
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded."
+        ],
+        "objection_map": [
+          {
+            "objection": "already have a roofer",
+            "handling_angle": "Position as a fast second-look inspection with trigger-backed urgency and no-friction next step."
+          },
+          {
+            "objection": "timing",
+            "handling_angle": "Use storm/flood/permit evidence to frame why delay increases risk and offer a narrow booking window."
+          },
+          {
+            "objection": "too expensive",
+            "handling_angle": "Focus first on inspection findings and loss prevention before full replacement economics."
+          }
+        ]
+      },
+      "live_assist": {
+        "recommended_talk_track": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "guardrail_flags": [
+          "capture_outcome",
+          "stop_on_terminal_state",
+          "respect_outreach_policy",
+          "require_manual_review_on_flags",
+          "review_flag_present"
+        ],
+        "stop_conditions": [
+          "lead outcome becomes won or lost",
+          "operator status becomes closed or skip",
+          "prospect gives explicit do-not-contact or hard no",
+          "policy/compliance flags require manual review before send"
+        ],
+        "latest_transcript_excerpt": "Reached property owner, opening with roofing urgency."
+      },
+      "outcome_sync": {
+        "lead_outcome_ref": "/api/v1/operator/outcome/site_9dc98e41c5af",
+        "status": "pending",
+        "last_synced_at": null
+      },
+      "event_log": [
+        {
+          "event_type": "session_created",
+          "status": "ready",
+          "detail": "Calling session created from compiled playbook.",
+          "event_at": "2026-04-18T05:57:30Z"
+        },
+        {
+          "event_type": "session_started",
+          "status": "live",
+          "detail": "Calling session updated via session_started.",
+          "event_at": "2026-04-18T05:57:30Z",
+          "transcript_excerpt": "Reached property owner, opening with roofing urgency.",
+          "objection": null,
+          "reason": null,
+          "outcome_status": null,
+          "metadata": {}
+        }
+      ]
+    }
+  },
+  "qualified": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-agent-calling-v1",
+      "session_id": "call_session_site-9dc98e41c5af_20260418T055730457619Z",
+      "site_id": "site_9dc98e41c5af",
+      "playbook_id": "playbook_site-9dc98e41c5af_20260418T055730453740Z",
+      "status": "completed",
+      "call_direction": "outbound",
+      "created_at": "2026-04-18T05:57:30Z",
+      "updated_at": "2026-04-18T05:57:30Z",
+      "site": {
+        "address": "88B Elm Street, Hopkinton, MA, 01748",
+        "zip": "01748",
+        "primary_product": "roofing",
+        "secondary_product": "solar",
+        "lead_temperature": "hot",
+        "operator_status": "unworked",
+        "opportunity_score": 56.7,
+        "win_probability_proxy": 0.483,
+        "confidence": 0.83
+      },
+      "pre_call_brief": {
+        "objective": "Qualify and convert the roofing opportunity while urgency is high.",
+        "recommended_channel": "phone",
+        "opener": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "next_best_action": "work_now",
+        "proof_points": [
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+          "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded."
+        ],
+        "objection_map": [
+          {
+            "objection": "already have a roofer",
+            "handling_angle": "Position as a fast second-look inspection with trigger-backed urgency and no-friction next step."
+          },
+          {
+            "objection": "timing",
+            "handling_angle": "Use storm/flood/permit evidence to frame why delay increases risk and offer a narrow booking window."
+          },
+          {
+            "objection": "too expensive",
+            "handling_angle": "Focus first on inspection findings and loss prevention before full replacement economics."
+          }
+        ]
+      },
+      "live_assist": {
+        "recommended_talk_track": "Large roof and closeability make this worth a roof-first conversation even before full storm evidence is loaded.",
+        "guardrail_flags": [
+          "capture_outcome",
+          "stop_on_terminal_state",
+          "respect_outreach_policy",
+          "require_manual_review_on_flags",
+          "review_flag_present"
+        ],
+        "stop_conditions": [
+          "lead outcome becomes won or lost",
+          "operator status becomes closed or skip",
+          "prospect gives explicit do-not-contact or hard no",
+          "policy/compliance flags require manual review before send"
+        ],
+        "latest_transcript_excerpt": "Prospect asked about timeline and inspection availability.",
+        "latest_objection": "timing"
+      },
+      "outcome_sync": {
+        "lead_outcome_ref": "/api/v1/operator/outcome/site_9dc98e41c5af",
+        "status": "synced",
+        "last_synced_at": "2026-04-18T05:57:30Z",
+        "lead_outcome": {
+          "status": "qualified",
+          "note": "Owner open to inspection next week",
+          "objection": "timing",
+          "reason": "storm concern",
+          "product": "roofing",
+          "realized_revenue_usd": null,
+          "realized_profit_usd": null,
+          "updated_at": "2026-04-18T05:57:30Z",
+          "won_at": null,
+          "lost_at": null
+        }
+      },
+      "event_log": [
+        {
+          "event_type": "session_created",
+          "status": "ready",
+          "detail": "Calling session created from compiled playbook.",
+          "event_at": "2026-04-18T05:57:30Z"
+        },
+        {
+          "event_type": "session_started",
+          "status": "live",
+          "detail": "Calling session updated via session_started.",
+          "event_at": "2026-04-18T05:57:30Z",
+          "transcript_excerpt": "Reached property owner, opening with roofing urgency.",
+          "objection": null,
+          "reason": null,
+          "outcome_status": null,
+          "metadata": {}
+        },
+        {
+          "event_type": "qualified",
+          "status": "completed",
+          "detail": "Owner open to inspection next week",
+          "event_at": "2026-04-18T05:57:30Z",
+          "transcript_excerpt": "Prospect asked about timeline and inspection availability.",
+          "objection": "timing",
+          "reason": "storm concern",
+          "outcome_status": "qualified",
+          "metadata": {}
+        }
+      ]
+    }
+  },
+  "lead_outcome": {
+    "status_code": 200,
+    "body": {
+      "site_id": "site_9dc98e41c5af",
+      "address": "88B Elm Street, Hopkinton, MA, 01748",
+      "zip": "01748",
+      "h3_cell": "882a33d505fffff",
+      "lead_outcome": {
+        "status": "qualified",
+        "note": "Owner open to inspection next week",
+        "objection": "timing",
+        "reason": "storm concern",
+        "product": "roofing",
+        "realized_revenue_usd": null,
+        "realized_profit_usd": null,
+        "updated_at": "2026-04-18T05:57:30Z",
+        "won_at": null,
+        "lost_at": null
+      }
+    }
+  }
+}

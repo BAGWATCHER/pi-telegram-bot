@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-04-23T02:30:10Z",
+  "framework": "dg-craigslist-signal-v1",
+  "checks": [
+    {
+      "name": "refresh",
+      "request": "POST /api/v1/signals/jobs/craigslist/refresh",
+      "result": "200",
+      "notes": "Refresh succeeded; Craigslist RSS queries currently return 403 from Azure VM."
+    },
+    {
+      "name": "manual_import",
+      "request": "POST /api/v1/signals/jobs/craigslist/import",
+      "result": "200",
+      "notes": "Created manual seeded opportunity for queue path validation."
+    },
+    {
+      "name": "list_signals",
+      "request": "GET /api/v1/signals/jobs/craigslist?min_score=0.7",
+      "result": "200",
+      "notes": "Returned seeded opportunity and ingest warnings."
+    },
+    {
+      "name": "queue_outreach",
+      "request": "POST /api/v1/signals/jobs/craigslist/opportunity/{opportunity_id}/queue-outreach",
+      "result": "200",
+      "notes": "Queue record includes drafts for email subject/body and call opening."
+    },
+    {
+      "name": "queue_list",
+      "request": "GET /api/v1/signals/jobs/craigslist/outreach-queue",
+      "result": "200",
+      "notes": "Queue listing returns queued_review item."
+    }
+  ]
+}

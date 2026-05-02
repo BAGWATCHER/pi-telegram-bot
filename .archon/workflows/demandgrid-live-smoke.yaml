@@ -1,0 +1,126 @@
+name: demandgrid-live-smoke
+description: |
+  Use when: You want a deterministic API smoke pass against the DemandGrid demo stack.
+  Triggers: "demandgrid smoke", "dg live smoke", "api smoke demandgrid".
+  Does: Probes health + key DemandGrid API routes and writes JSON smoke artifacts.
+  NOT for: Deep eval/retraining or lane implementation.
+
+nodes:
+  - id: run-smoke
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      BASE_URL="${ARGUMENTS:-http://127.0.0.1:8099}"
+      if [ -z "$BASE_URL" ]; then
+        BASE_URL="http://127.0.0.1:8099"
+      fi
+      export BASE_URL
+
+      python3 - << 'PY'
+      import csv
+      import json
+      import os
+      import urllib.request
+      from datetime import datetime, timezone
+      from pathlib import Path
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      base_url = os.environ.get('BASE_URL', '').strip() or 'http://127.0.0.1:8099'
+      base_url = base_url.rstrip('/')
+
+      site_id = 'site_unknown'
+      site_scores = root / 'data' / 'processed' / 'site_scores.csv'
+      if site_scores.exists():
+          with site_scores.open('r', encoding='utf-8') as f:
+              reader = csv.DictReader(f)
+              first = next(reader, None)
+              if first and first.get('site_id'):
+                  site_id = first['site_id']
+
+      endpoints = [
+          ('health', '/health'),
+          ('signals_coverage', '/api/v1/signals/coverage'),
+          ('outcomes_summary', '/api/v1/outcomes/summary'),
+          ('governance_policies', '/api/v1/governance/policies'),
+          ('site_detail', f'/api/v1/site/{site_id}'),
+      ]
+
+      results = []
+      all_ok = True
+      for name, path in endpoints:
+          url = f"{base_url}{path}"
+          status = None
+          body_preview = ''
+          ok = False
+          try:
+              req = urllib.request.Request(url, method='GET')
+              with urllib.request.urlopen(req, timeout=20) as resp:
+                  status = int(resp.status)
+                  body = resp.read().decode('utf-8', errors='replace')
+                  body_preview = body[:180]
+                  ok = 200 <= status < 300
+          except Exception as e:
+              body_preview = str(e)[:180]
+              ok = False
+          all_ok = all_ok and ok
+          results.append({
+              'name': name,
+              'url': url,
+              'ok': ok,
+              'status': status,
+              'preview': body_preview,
+          })
+
+      out = {
+          'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          'base_url': base_url,
+          'site_id': site_id,
+          'all_ok': all_ok,
+          'checks': results,
+      }
+
+      (root / 'artifacts').mkdir(parents=True, exist_ok=True)
+      out_json = root / 'artifacts' / 'archon-live-smoke.json'
+      out_md = root / 'artifacts' / 'archon-live-smoke.md'
+      out_json.write_text(json.dumps(out, indent=2), encoding='utf-8')
+
+      lines = [
+          '# DemandGrid live smoke',
+          '',
+          f"- timestamp_utc: {out['timestamp_utc']}",
+          f"- base_url: {base_url}",
+          f"- site_id: {site_id}",
+          f"- all_ok: {all_ok}",
+          '',
+          '## checks',
+      ]
+      for c in results:
+          lines.append(f"- {c['name']}: ok={c['ok']} status={c['status']} url={c['url']}")
+      out_md.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+      print(str(out_json))
+      print(str(out_md))
+      print('PASS' if all_ok else 'FAIL')
+      PY
+
+  - id: assert-smoke
+    depends_on: [run-smoke]
+    bash: |
+      set -euo pipefail
+
+      python3 - << 'PY'
+      import json
+      from pathlib import Path
+
+      p = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-live-smoke.json')
+      if not p.exists():
+          raise SystemExit('FAIL: missing artifacts/archon-live-smoke.json')
+
+      obj = json.loads(p.read_text(encoding='utf-8'))
+      if not obj.get('all_ok'):
+          raise SystemExit('FAIL: demandgrid live smoke had failing endpoint(s)')
+
+      print('PASS: demandgrid live smoke')
+      PY

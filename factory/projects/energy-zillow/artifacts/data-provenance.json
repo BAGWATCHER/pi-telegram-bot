@@ -1,0 +1,23 @@
+{
+  "task": "EZ-002",
+  "method": "OSM real address/footprint ingest",
+  "zip": "06870",
+  "city": "Old Greenwich",
+  "state": "CT",
+  "center": {
+    "lat": 41.0354,
+    "lon": -73.5673
+  },
+  "half_span_deg": 0.006,
+  "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_06870_osm.csv",
+  "coverage": {
+    "candidate_addresses": 433,
+    "scored_ready_addresses": 433,
+    "coverage": 1.0
+  },
+  "source_breakdown": {
+    "node": 431,
+    "way": 2
+  },
+  "source_api": "https://api.openstreetmap.org/api/0.6/map"
+}

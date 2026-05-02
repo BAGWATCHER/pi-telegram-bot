@@ -1,0 +1,67 @@
+version: 1
+project_id: chow-meet-sidecar
+sprint: meet-sidecar-v1
+updated_at: '2026-04-26T11:35:00Z'
+run_status: active
+tasks:
+- id: CMS-001
+  title: Build Meet sidecar adapter module for OpenClaw CLI orchestration
+  lane: integration
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on: []
+  done_when:
+  - src/meet-sidecar.ts exists with setup/join/status/recover/leave/speak wrappers
+  - launcher fallback supports openclaw binary or npx openclaw
+  - command failures return operator-readable error text
+  artifacts:
+  - src/meet-sidecar.ts
+- id: CMS-002
+  title: Ship Telegram /meet operator command surface
+  lane: bot
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - CMS-001
+  done_when:
+  - /meet help, setup, join, status, recover, speak, leave, doctor implemented
+  - chat-level session persistence wired to data/meet-chat-state.json
+  - /start command list includes /meet command family
+  artifacts:
+  - src/bot.ts
+  - data/meet-chat-state.json
+- id: CMS-003
+  title: Add reliability UX above baseline (auto-recover + manual action guidance)
+  lane: reliability
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - CMS-002
+  done_when:
+  - join failure path attempts recover-tab on non-twilio flows
+  - manual action reason/message surfaced in Telegram output
+  - status summary includes in-call/realtime/manual-action health
+  artifacts:
+  - src/bot.ts
+  - src/meet-sidecar.ts
+- id: CMS-004
+  title: Factory eval gate + status artifacts
+  lane: eval
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - CMS-001
+  - CMS-002
+  - CMS-003
+  done_when:
+  - eval script checks command surface + sidecar wrappers + state file path wiring
+  - eval summary artifacts generated
+  artifacts:
+  - eval/run_eval.py
+  - artifacts/eval-summary.md
+  - artifacts/eval-summary.json
+  - artifacts/run-status-2026-04-26.md

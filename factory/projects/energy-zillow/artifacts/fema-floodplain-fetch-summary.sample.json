@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-04-17T00:40:11Z",
+  "sites_targeted": 250,
+  "sites_fetched_new": 250,
+  "sites_total_written": 250,
+  "status_counts": {
+    "low": 234,
+    "verified": 16
+  },
+  "zip_coverage": {
+    "01730": {
+      "sites": 250,
+      "non_missing": 250,
+      "verified": 16
+    }
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/fema_floodplain_site_feed.sample.csv",
+  "elapsed_seconds": 10.39,
+  "zips_filter": [
+    "01730",
+    "02667",
+    "05486",
+    "06525"
+  ]
+}

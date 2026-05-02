@@ -1,0 +1,470 @@
+{
+  "create": {
+    "status_code": 200,
+    "body": {
+      "reused": false,
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T063704646395Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "orch-1",
+      "created_at": "2026-04-18T06:37:04Z",
+      "updated_at": "2026-04-18T06:37:04Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "awaiting_approval",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "pending",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session"
+          ]
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound"
+      }
+    }
+  },
+  "approve_outreach": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T063704646395Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "orch-1",
+      "created_at": "2026-04-18T06:37:04Z",
+      "updated_at": "2026-04-18T06:37:04Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "awaiting_approval",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T06:37:04Z",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z",
+          "result": {
+            "job_id": "outreach_job_site-ab25957991a6_20260418T063704651382Z",
+            "job_status": "queued"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "pending",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session"
+          ]
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6",
+        "outreach_job_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound"
+      }
+    }
+  },
+  "approve_calling": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T063704646395Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "orch-1",
+      "created_at": "2026-04-18T06:37:04Z",
+      "updated_at": "2026-04-18T06:37:04Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "in_progress",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T06:37:04Z",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z",
+          "result": {
+            "job_id": "outreach_job_site-ab25957991a6_20260418T063704651382Z",
+            "job_status": "queued"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T06:37:04Z",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/calling/sessions/call_session_site-ab25957991a6_20260418T063704654236Z",
+          "result": {
+            "session_id": "call_session_site-ab25957991a6_20260418T063704654236Z",
+            "session_status": "ready"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "ready",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session"
+          ],
+          "note": "Review outreach/calling outcomes and decide follow-up."
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6",
+        "outreach_job_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z",
+        "calling_session_ref": "/api/v1/agents/calling/sessions/call_session_site-ab25957991a6_20260418T063704654236Z"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound"
+      }
+    }
+  },
+  "reuse": {
+    "status_code": 200,
+    "body": {
+      "reused": true,
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T063704646395Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "orch-1",
+      "created_at": "2026-04-18T06:37:04Z",
+      "updated_at": "2026-04-18T06:37:04Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "in_progress",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T063704639589Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T06:37:04Z",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z",
+          "result": {
+            "job_id": "outreach_job_site-ab25957991a6_20260418T063704651382Z",
+            "job_status": "queued"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T06:37:04Z",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/calling/sessions/call_session_site-ab25957991a6_20260418T063704654236Z",
+          "result": {
+            "session_id": "call_session_site-ab25957991a6_20260418T063704654236Z",
+            "session_status": "ready"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "ready",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t063704646395z_03_create_calling_session"
+          ],
+          "note": "Review outreach/calling outcomes and decide follow-up."
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T063704639589Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6",
+        "outreach_job_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T063704651382Z",
+        "calling_session_ref": "/api/v1/agents/calling/sessions/call_session_site-ab25957991a6_20260418T063704654236Z"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound"
+      }
+    }
+  },
+  "auto_execute": {
+    "status_code": 200,
+    "body": {
+      "reused": false,
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-9dc98e41c5af_20260418T063704661205Z",
+      "site_id": "site_9dc98e41c5af",
+      "idempotency_key": "orch-auto-1",
+      "created_at": "2026-04-18T06:37:04Z",
+      "updated_at": "2026-04-18T06:37:04Z",
+      "approval_required": false,
+      "auto_execute": true,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "in_progress",
+      "site": {
+        "address": "88B Elm Street, Hopkinton, MA, 01748",
+        "zip": "01748",
+        "primary_product": "roofing",
+        "secondary_product": "solar",
+        "lead_temperature": "hot",
+        "opportunity_score": 56.7,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-9dc98e41c5af_20260418T063704658377Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-9dc98e41c5af_20260418T063704658377Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-9dc98e41c5af_20260418T063704658377Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_01_compile_playbook"
+          ],
+          "resource_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-9dc98e41c5af_20260418T063704661627Z",
+          "result": {
+            "job_id": "outreach_job_site-9dc98e41c5af_20260418T063704661627Z",
+            "job_status": "queued"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_01_compile_playbook"
+          ],
+          "resource_ref": "/api/v1/agents/calling/sessions/call_session_site-9dc98e41c5af_20260418T063704662182Z",
+          "result": {
+            "session_id": "call_session_site-9dc98e41c5af_20260418T063704662182Z",
+            "session_status": "ready"
+          },
+          "updated_at": "2026-04-18T06:37:04Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "ready",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_02_create_outreach_job",
+            "action_orchestrator-run-site-9dc98e41c5af-20260418t063704661205z_03_create_calling_session"
+          ],
+          "note": "Review outreach/calling outcomes and decide follow-up."
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-9dc98e41c5af_20260418T063704658377Z",
+        "decision_ref": "/api/v1/decision/site/site_9dc98e41c5af",
+        "signals_ref": "/api/v1/signals/site/site_9dc98e41c5af",
+        "outreach_job_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-9dc98e41c5af_20260418T063704661627Z",
+        "calling_session_ref": "/api/v1/agents/calling/sessions/call_session_site-9dc98e41c5af_20260418T063704662182Z"
+      },
+      "policy": {
+        "approval_required": false,
+        "auto_execute": true,
+        "call_direction": "outbound"
+      }
+    }
+  }
+}

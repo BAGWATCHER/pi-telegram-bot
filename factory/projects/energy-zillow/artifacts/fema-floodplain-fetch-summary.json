@@ -1,0 +1,295 @@
+{
+  "generated_at": "2026-04-17T17:09:59Z",
+  "sites_targeted": 63659,
+  "sites_fetched_new": 57859,
+  "sites_total_written": 63659,
+  "status_counts": {
+    "low": 62747,
+    "verified": 912
+  },
+  "zip_coverage": {
+    "01450": {
+      "sites": 412,
+      "non_missing": 412,
+      "verified": 0
+    },
+    "01451": {
+      "sites": 405,
+      "non_missing": 405,
+      "verified": 1
+    },
+    "01720": {
+      "sites": 1426,
+      "non_missing": 1426,
+      "verified": 5
+    },
+    "01730": {
+      "sites": 2173,
+      "non_missing": 2173,
+      "verified": 83
+    },
+    "01740": {
+      "sites": 351,
+      "non_missing": 351,
+      "verified": 1
+    },
+    "01741": {
+      "sites": 470,
+      "non_missing": 470,
+      "verified": 0
+    },
+    "01748": {
+      "sites": 1083,
+      "non_missing": 1083,
+      "verified": 0
+    },
+    "01770": {
+      "sites": 495,
+      "non_missing": 495,
+      "verified": 0
+    },
+    "01772": {
+      "sites": 951,
+      "non_missing": 951,
+      "verified": 6
+    },
+    "01776": {
+      "sites": 1184,
+      "non_missing": 1184,
+      "verified": 5
+    },
+    "01778": {
+      "sites": 846,
+      "non_missing": 846,
+      "verified": 5
+    },
+    "01827": {
+      "sites": 358,
+      "non_missing": 358,
+      "verified": 0
+    },
+    "01886": {
+      "sites": 831,
+      "non_missing": 831,
+      "verified": 0
+    },
+    "01890": {
+      "sites": 3763,
+      "non_missing": 3763,
+      "verified": 99
+    },
+    "01921": {
+      "sites": 436,
+      "non_missing": 436,
+      "verified": 0
+    },
+    "01940": {
+      "sites": 1885,
+      "non_missing": 1885,
+      "verified": 5
+    },
+    "01949": {
+      "sites": 1019,
+      "non_missing": 1019,
+      "verified": 1
+    },
+    "01965": {
+      "sites": 575,
+      "non_missing": 575,
+      "verified": 4
+    },
+    "01983": {
+      "sites": 990,
+      "non_missing": 990,
+      "verified": 8
+    },
+    "01985": {
+      "sites": 486,
+      "non_missing": 486,
+      "verified": 0
+    },
+    "02030": {
+      "sites": 689,
+      "non_missing": 689,
+      "verified": 0
+    },
+    "02043": {
+      "sites": 1525,
+      "non_missing": 1525,
+      "verified": 2
+    },
+    "02052": {
+      "sites": 1529,
+      "non_missing": 1529,
+      "verified": 7
+    },
+    "02056": {
+      "sites": 1023,
+      "non_missing": 1023,
+      "verified": 0
+    },
+    "02061": {
+      "sites": 527,
+      "non_missing": 527,
+      "verified": 0
+    },
+    "02067": {
+      "sites": 1405,
+      "non_missing": 1405,
+      "verified": 3
+    },
+    "02090": {
+      "sites": 1579,
+      "non_missing": 1579,
+      "verified": 1
+    },
+    "02118": {
+      "sites": 2998,
+      "non_missing": 2998,
+      "verified": 0
+    },
+    "02139": {
+      "sites": 1825,
+      "non_missing": 1825,
+      "verified": 0
+    },
+    "02186": {
+      "sites": 3043,
+      "non_missing": 3043,
+      "verified": 6
+    },
+    "02332": {
+      "sites": 364,
+      "non_missing": 364,
+      "verified": 0
+    },
+    "02339": {
+      "sites": 1129,
+      "non_missing": 1129,
+      "verified": 0
+    },
+    "02420": {
+      "sites": 2182,
+      "non_missing": 2182,
+      "verified": 9
+    },
+    "02482": {
+      "sites": 2535,
+      "non_missing": 2535,
+      "verified": 0
+    },
+    "02492": {
+      "sites": 2725,
+      "non_missing": 2725,
+      "verified": 0
+    },
+    "02493": {
+      "sites": 541,
+      "non_missing": 541,
+      "verified": 26
+    },
+    "02575": {
+      "sites": 549,
+      "non_missing": 549,
+      "verified": 0
+    },
+    "02637": {
+      "sites": 731,
+      "non_missing": 731,
+      "verified": 6
+    },
+    "02667": {
+      "sites": 1953,
+      "non_missing": 1953,
+      "verified": 226
+    },
+    "02903": {
+      "sites": 246,
+      "non_missing": 246,
+      "verified": 0
+    },
+    "03087": {
+      "sites": 387,
+      "non_missing": 387,
+      "verified": 4
+    },
+    "03854": {
+      "sites": 74,
+      "non_missing": 74,
+      "verified": 4
+    },
+    "04006": {
+      "sites": 72,
+      "non_missing": 72,
+      "verified": 2
+    },
+    "04101": {
+      "sites": 2966,
+      "non_missing": 2966,
+      "verified": 139
+    },
+    "05486": {
+      "sites": 421,
+      "non_missing": 421,
+      "verified": 0
+    },
+    "06103": {
+      "sites": 745,
+      "non_missing": 745,
+      "verified": 0
+    },
+    "06510": {
+      "sites": 512,
+      "non_missing": 512,
+      "verified": 0
+    },
+    "06525": {
+      "sites": 1253,
+      "non_missing": 1253,
+      "verified": 4
+    },
+    "06824": {
+      "sites": 2139,
+      "non_missing": 2139,
+      "verified": 125
+    },
+    "06831": {
+      "sites": 523,
+      "non_missing": 523,
+      "verified": 12
+    },
+    "06877": {
+      "sites": 1367,
+      "non_missing": 1367,
+      "verified": 10
+    },
+    "06883": {
+      "sites": 739,
+      "non_missing": 739,
+      "verified": 6
+    },
+    "06890": {
+      "sites": 1454,
+      "non_missing": 1454,
+      "verified": 82
+    },
+    "06896": {
+      "sites": 99,
+      "non_missing": 99,
+      "verified": 2
+    },
+    "06897": {
+      "sites": 593,
+      "non_missing": 593,
+      "verified": 13
+    },
+    "06903": {
+      "sites": 1078,
+      "non_missing": 1078,
+      "verified": 0
+    }
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/fema_floodplain_site_feed.csv",
+  "elapsed_seconds": 1764.11,
+  "zips_filter": []
+}

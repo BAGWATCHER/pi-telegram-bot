@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://demandgrid.ai/schema/lead-interaction.schema.json",
+  "title": "DemandGrid Lead Interaction Schema v1",
+  "type": "object",
+  "required": ["interaction_id", "site_id", "contact_id", "account_id", "channel", "interaction_type", "result_status", "started_at"],
+  "properties": {
+    "interaction_id": { "type": "string" },
+    "site_id": { "type": "string" },
+    "contact_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "channel": { "type": "string" },
+    "direction": { "type": ["string", "null"] },
+    "interaction_type": { "type": "string" },
+    "started_at": { "type": "string" },
+    "ended_at": { "type": ["string", "null"] },
+    "result_status": { "type": "string" },
+    "objection": { "type": ["string", "null"] },
+    "reason": { "type": ["string", "null"] },
+    "transcript_excerpt": { "type": ["string", "null"] },
+    "note": { "type": ["string", "null"] },
+    "script_id": { "type": ["string", "null"] },
+    "playbook_id": { "type": ["string", "null"] },
+    "orchestrator_run_id": { "type": ["string", "null"] },
+    "outreach_job_id": { "type": ["string", "null"] },
+    "calling_session_id": { "type": ["string", "null"] },
+    "outcome_id": { "type": ["string", "null"] },
+    "next_follow_up_at": { "type": ["string", "null"] },
+    "next_best_action": { "type": ["string", "null"] },
+    "rep_id": { "type": ["string", "null"] },
+    "agent_id": { "type": ["string", "null"] },
+    "attribution_signal_keys": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created_at": { "type": ["string", "null"] },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse by Sacrament | Catholic Market</title>
+    <meta name="description" content="Find Catholic devotional gifts by life moment — Baptism, First Communion, Confirmation, Wedding, Healing, and Home Blessing.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Garamond', 'serif'],
+                        body: ['"Crimson Text"', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        parchment: '#f5f0e8',
+                        ink: '#2c1810',
+                        'ink-light': '#4a3728',
+                        gold: '#b8860b',
+                        'gold-light': '#d4a843',
+                        rubric: '#722f37',
+                        'rubric-light': '#944a53',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .grain::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        .gold-rule {
+            border: 0; height: 1px;
+            background: linear-gradient(to right, transparent, #b8860b 20%, #d4a843 50%, #b8860b 80%, transparent);
+            margin: 2rem 0;
+        }
+        @keyframes cardRise {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-rise { animation: cardRise 0.7s ease-out forwards; }
+        .card-rise-1 { animation-delay: 0.1s; opacity: 0; }
+        .card-rise-2 { animation-delay: 0.2s; opacity: 0; }
+        .card-rise-3 { animation-delay: 0.3s; opacity: 0; }
+        [x-cloak-safe] { opacity: 0; }
+    </style>
+</head>
+<body class="bg-parchment text-ink font-body grain min-h-screen" x-data="sacramentsPage()" x-init="init()" x-cloak-safe>
+
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto px-6 pt-8 pb-2">
+        <a href="/" class="inline-flex items-center text-ink-light hover:text-gold transition-colors font-display italic text-lg">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back to marketplace
+        </a>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 pb-24">
+
+        <!-- Title -->
+        <div class="text-center mb-12 card-rise card-rise-1">
+            <h1 class="font-display text-3xl md:text-4xl text-ink font-semibold">Browse by Life Moment</h1>
+            <p class="font-display italic text-lg text-ink-light mt-2">Find a gift for the sacrament, not just the shelf.</p>
+        </div>
+
+        <!-- Sacrament Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+            <template x-for="sac in sacraments" :key="sac.id">
+                <button @click="selectSacrament(sac.id)"
+                    class="text-left p-6 rounded bg-white/40 hover:bg-white/60 transition-colors border border-transparent hover:border-gold/20 card-rise"
+                    :class="'card-rise-' + (sac.id + 1)">
+                    <span class="text-3xl" x-text="sac.icon"></span>
+                    <h2 class="font-display text-xl text-ink font-semibold mt-2" x-text="sac.name"></h2>
+                    <p class="font-body text-ink-light text-sm mt-1" x-text="sac.desc"></p>
+                    <p class="font-display text-gold text-xs mt-3 tracking-wide" x-text="sac.count + ' gifts →'"></p>
+                </button>
+            </template>
+        </div>
+
+        <!-- Selected Sacrament Products -->
+        <div x-show="selected" class="card-rise card-rise-3">
+            <hr class="gold-rule">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <span class="text-2xl mr-2" x-text="selectedSac.icon"></span>
+                    <span class="font-display text-2xl text-ink font-semibold" x-text="selectedSac.name"></span>
+                </div>
+                <button @click="selected = null" class="text-ink-light hover:text-gold font-display italic text-sm">← All categories</button>
+            </div>
+            <p class="font-body text-ink-light italic mb-6" x-text="selectedSac.subtitle"></p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <template x-for="p in selectedProducts" :key="p.product_id">
+                    <a :href="'/product/' + p.product_id"
+                        class="flex gap-4 p-4 rounded bg-white/40 hover:bg-white/60 transition-colors border border-transparent hover:border-gold/20 group">
+                        <img :src="p.image_url" :alt="p.title" class="w-20 h-20 object-cover rounded flex-shrink-0">
+                        <div class="min-w-0">
+                            <h3 class="font-display text-lg text-ink font-semibold group-hover:text-gold transition-colors" x-text="p.title"></h3>
+                            <p class="font-body text-xs text-ink-light" x-text="p.city + ', ' + p.country"></p>
+                            <p class="font-body text-sm text-ink-light mt-1 line-clamp-2" x-text="p.story?.split('.')[0] + '.'"></p>
+                            <p class="font-display text-gold mt-1" x-text="'$' + (p.price_cents / 100).toFixed(2)"></p>
+                        </div>
+                    </a>
+                </template>
+            </div>
+
+            <div x-show="selectedProducts.length === 0" class="text-center py-12">
+                <p class="font-display text-xl text-ink-light italic">No products yet for this sacrament.</p>
+                <p class="font-body text-ink-light mt-2">We're working with artisans to add more.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    function sacramentsPage() {
+        return {
+            allProducts: [],
+            sacraments: [],
+            selected: null,
+
+            async init() {
+                try {
+                    const resp = await fetch('/api/v1/catalog/feed?limit=50');
+                    const data = await resp.json();
+                    this.allProducts = data.items || [];
+                } catch(e) {
+                    this.allProducts = [];
+                }
+                this.buildSacraments();
+                document.body.removeAttribute('x-cloak-safe');
+            },
+
+            buildSacraments() {
+                const defs = [
+                    { id: 0, name: 'Baptism', icon: '🕊️', desc: 'For the newest Christian. Water, light, and white garments.', subtitle: 'Gifts for the beginning of a life in Christ.', tags: ['baptism', 'home_blessing', 'protection'] },
+                    { id: 1, name: 'First Communion', icon: '🕯️', desc: 'Receiving the Eucharist for the first time. Rosaries, medals, and prayer books.', subtitle: 'Gifts for the first reception of the Holy Eucharist.', tags: ['first_communion', 'devotion', 'rosary'] },
+                    { id: 2, name: 'Confirmation', icon: '🔥', desc: 'Sealed with the Holy Spirit. Crosses, icons, and medals of patron saints.', subtitle: 'Gifts for being sealed with the Holy Spirit.', tags: ['confirmation', 'patron_saint', 'protection'] },
+                    { id: 3, name: 'Wedding', icon: '💍', desc: 'Two becoming one. Rosaries for the ceremony, crucifixes for the home.', subtitle: 'Gifts for the sacrament of Holy Matrimony.', tags: ['wedding', 'home_blessing', 'devotion'] },
+                    { id: 4, name: 'Healing & Comfort', icon: '🕯️', desc: 'For the sick, the grieving, the anxious. Anointing oil, candles, holy water.', subtitle: 'Gifts for those who need peace and healing.', tags: ['healing', 'anointing', 'comfort', 'protection'] },
+                    { id: 5, name: 'Home Blessing', icon: '🏠', desc: 'Making the home a domestic church. Crucifixes, icons, holy water fonts.', subtitle: 'Gifts to make every home a sacred space.', tags: ['home_blessing', 'crucifix', 'icon'] }
+                ];
+
+                this.sacraments = defs.map(d => {
+                    const matches = this.allProducts.filter(p =>
+                        (p.sacrament_tags || []).some(t => d.tags.includes(t))
+                    );
+                    return { ...d, count: matches.length };
+                });
+            },
+
+            selectSacrament(id) {
+                this.selected = id;
+            },
+
+            get selectedSac() {
+                return this.sacraments.find(s => s.id === this.selected) || {};
+            },
+
+            get selectedProducts() {
+                if (this.selected === null) return [];
+                const sac = this.selectedSac;
+                return this.allProducts.filter(p =>
+                    (p.sacrament_tags || []).some(t => (sac.tags || []).includes(t))
+                );
+            }
+        }
+    }
+    </script>
+</body>
+</html>

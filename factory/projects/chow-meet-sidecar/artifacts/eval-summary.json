@@ -1,0 +1,89 @@
+{
+  "project": "chow-meet-sidecar",
+  "passed": true,
+  "total_checks": 16,
+  "passed_checks": 16,
+  "failed_checks": [],
+  "checks": [
+    {
+      "id": "file-bot-ts",
+      "ok": true,
+      "detail": "/home/ubuntu/pi-telegram-bot/src/bot.ts"
+    },
+    {
+      "id": "file-meet-sidecar-ts",
+      "ok": true,
+      "detail": "/home/ubuntu/pi-telegram-bot/src/meet-sidecar.ts"
+    },
+    {
+      "id": "bot-command-meet",
+      "ok": true,
+      "detail": "meet command wired"
+    },
+    {
+      "id": "bot-command-meeting",
+      "ok": true,
+      "detail": "meeting alias wired"
+    },
+    {
+      "id": "bot-start-help-meet",
+      "ok": true,
+      "detail": "/start includes meet help line"
+    },
+    {
+      "id": "bot-state-file",
+      "ok": true,
+      "detail": "chat state persistence constant"
+    },
+    {
+      "id": "bot-recover-path",
+      "ok": true,
+      "detail": "recover flow integrated"
+    },
+    {
+      "id": "sidecar-export-meetSetup",
+      "ok": true,
+      "detail": "meetSetup exported"
+    },
+    {
+      "id": "sidecar-export-meetJoin",
+      "ok": true,
+      "detail": "meetJoin exported"
+    },
+    {
+      "id": "sidecar-export-meetStatus",
+      "ok": true,
+      "detail": "meetStatus exported"
+    },
+    {
+      "id": "sidecar-export-meetRecoverCurrentTab",
+      "ok": true,
+      "detail": "meetRecoverCurrentTab exported"
+    },
+    {
+      "id": "sidecar-export-meetLeave",
+      "ok": true,
+      "detail": "meetLeave exported"
+    },
+    {
+      "id": "sidecar-export-meetSpeak",
+      "ok": true,
+      "detail": "meetSpeak exported"
+    },
+    {
+      "id": "sidecar-export-normalizeMeetUrlOrThrow",
+      "ok": true,
+      "detail": "normalizeMeetUrlOrThrow exported"
+    },
+    {
+      "id": "sidecar-launcher-fallback",
+      "ok": true,
+      "detail": "npx fallback present"
+    },
+    {
+      "id": "sidecar-url-validator",
+      "ok": true,
+      "detail": "strict URL validator present"
+    }
+  ]
+}

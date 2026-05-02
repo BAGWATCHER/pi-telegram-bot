@@ -1,0 +1,410 @@
+{
+  "generated_at": "2026-04-17T19:14:48Z",
+  "sites": 66941,
+  "permit_rows": 7471,
+  "permit_sites_matched": 3,
+  "equipment_status_counts": {
+    "missing": 65463,
+    "medium": 137,
+    "low": 1341
+  },
+  "storm_status_counts": {
+    "missing": 65885,
+    "low": 951,
+    "medium": 105
+  },
+  "permit_status_counts": {
+    "missing": 65038,
+    "low": 197,
+    "high": 491,
+    "event_detected": 701,
+    "medium": 514
+  },
+  "zip_coverage": {
+    "01450": {
+      "sites": 412,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01451": {
+      "sites": 405,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01720": {
+      "sites": 1426,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01730": {
+      "sites": 2173,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01740": {
+      "sites": 351,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01741": {
+      "sites": 470,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01748": {
+      "sites": 1083,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01770": {
+      "sites": 495,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01772": {
+      "sites": 951,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01776": {
+      "sites": 1184,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01778": {
+      "sites": 846,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01827": {
+      "sites": 358,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01886": {
+      "sites": 831,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01890": {
+      "sites": 3763,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01921": {
+      "sites": 436,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01940": {
+      "sites": 1885,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01949": {
+      "sites": 1019,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01965": {
+      "sites": 575,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01983": {
+      "sites": 990,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "01985": {
+      "sites": 486,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02030": {
+      "sites": 689,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02043": {
+      "sites": 1525,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02052": {
+      "sites": 1529,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02056": {
+      "sites": 1023,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02061": {
+      "sites": 527,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02067": {
+      "sites": 1405,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02090": {
+      "sites": 1579,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02118": {
+      "sites": 2998,
+      "permit_matched": 847,
+      "equipment_non_missing": 522,
+      "roof_non_missing": 661
+    },
+    "02139": {
+      "sites": 1825,
+      "permit_matched": 918,
+      "equipment_non_missing": 828,
+      "roof_non_missing": 300
+    },
+    "02186": {
+      "sites": 3043,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02332": {
+      "sites": 364,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02339": {
+      "sites": 1129,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02420": {
+      "sites": 2182,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02468": {
+      "sites": 581,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02482": {
+      "sites": 2535,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02492": {
+      "sites": 2725,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02493": {
+      "sites": 541,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02575": {
+      "sites": 549,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02637": {
+      "sites": 731,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02667": {
+      "sites": 1953,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "02903": {
+      "sites": 246,
+      "permit_matched": 138,
+      "equipment_non_missing": 128,
+      "roof_non_missing": 95
+    },
+    "03087": {
+      "sites": 387,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "03249": {
+      "sites": 150,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "03253": {
+      "sites": 191,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "03854": {
+      "sites": 74,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "04006": {
+      "sites": 72,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "04101": {
+      "sites": 2966,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "05486": {
+      "sites": 421,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06103": {
+      "sites": 745,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06510": {
+      "sites": 512,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06525": {
+      "sites": 1253,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06820": {
+      "sites": 338,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06824": {
+      "sites": 2139,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06831": {
+      "sites": 523,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06840": {
+      "sites": 618,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06870": {
+      "sites": 433,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06877": {
+      "sites": 1367,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06878": {
+      "sites": 631,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06880": {
+      "sites": 340,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06883": {
+      "sites": 739,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06890": {
+      "sites": 1454,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06896": {
+      "sites": 99,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06897": {
+      "sites": 593,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    },
+    "06903": {
+      "sites": 1078,
+      "permit_matched": 0,
+      "equipment_non_missing": 0,
+      "roof_non_missing": 0
+    }
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv"
+}

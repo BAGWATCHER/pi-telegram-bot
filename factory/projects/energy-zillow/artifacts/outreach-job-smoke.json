@@ -1,0 +1,239 @@
+{
+  "allowed_create": {
+    "status_code": 200,
+    "body": {
+      "reused": false,
+      "framework": "dg-agent-outreach-v1",
+      "job_id": "outreach_job_site-ab25957991a6_20260418T052147968852Z",
+      "site_id": "site_ab25957991a6",
+      "playbook_id": "playbook_site-ab25957991a6_20260418T052147966855Z",
+      "idempotency_key": "artifact-allow-1",
+      "status": "queued",
+      "dispatch_mode": "dry_run",
+      "requested_channel": null,
+      "resolved_channel": "phone",
+      "created_at": "2026-04-18T05:21:47Z",
+      "updated_at": "2026-04-18T05:21:47Z",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "operator_status": "unworked",
+        "opportunity_score": 78.2,
+        "win_probability_proxy": 0.579,
+        "confidence": 0.83
+      },
+      "objective": "Qualify and convert the solar opportunity while urgency is high.",
+      "policy": {
+        "decision": "allow",
+        "block_reasons": [],
+        "compliance_flags": [],
+        "review_flags": [
+          "requires_site_survey"
+        ],
+        "strict_guardrails": true,
+        "policy_snapshot": {
+          "product": "solar",
+          "confidence_min": 0.62,
+          "confidence_high_min": 0.82,
+          "policy_version": "2026-04-17-v1",
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json"
+        }
+      },
+      "send_context": {
+        "channel_order": [
+          "phone",
+          "sms",
+          "email"
+        ],
+        "recommended_channel": "phone",
+        "resolved_channel": "phone",
+        "next_best_action": "work_now",
+        "message_hint": "Solar remains the strongest first offer because the economics and roof-fit proxies are better than the alternatives.",
+        "outreach_ref": "/api/v1/outreach/site/site_ab25957991a6"
+      },
+      "delivery": {
+        "attempt_count": 0,
+        "provider_message_id": null,
+        "last_event_type": "queued",
+        "last_event_at": "2026-04-18T05:21:47Z",
+        "reply_received": false
+      },
+      "event_log": [
+        {
+          "event_type": "queued",
+          "status": "queued",
+          "detail": "Job accepted into outreach queue.",
+          "event_at": "2026-04-18T05:21:47Z",
+          "metadata": {
+            "dispatch_mode": "dry_run"
+          }
+        }
+      ]
+    }
+  },
+  "allowed_event": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-agent-outreach-v1",
+      "job_id": "outreach_job_site-ab25957991a6_20260418T052147968852Z",
+      "site_id": "site_ab25957991a6",
+      "playbook_id": "playbook_site-ab25957991a6_20260418T052147966855Z",
+      "idempotency_key": "artifact-allow-1",
+      "status": "sent",
+      "dispatch_mode": "dry_run",
+      "requested_channel": null,
+      "resolved_channel": "phone",
+      "created_at": "2026-04-18T05:21:47Z",
+      "updated_at": "2026-04-18T05:21:48Z",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "operator_status": "unworked",
+        "opportunity_score": 78.2,
+        "win_probability_proxy": 0.579,
+        "confidence": 0.83
+      },
+      "objective": "Qualify and convert the solar opportunity while urgency is high.",
+      "policy": {
+        "decision": "allow",
+        "block_reasons": [],
+        "compliance_flags": [],
+        "review_flags": [
+          "requires_site_survey"
+        ],
+        "strict_guardrails": true,
+        "policy_snapshot": {
+          "product": "solar",
+          "confidence_min": 0.62,
+          "confidence_high_min": 0.82,
+          "policy_version": "2026-04-17-v1",
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json"
+        }
+      },
+      "send_context": {
+        "channel_order": [
+          "phone",
+          "sms",
+          "email"
+        ],
+        "recommended_channel": "phone",
+        "resolved_channel": "phone",
+        "next_best_action": "work_now",
+        "message_hint": "Solar remains the strongest first offer because the economics and roof-fit proxies are better than the alternatives.",
+        "outreach_ref": "/api/v1/outreach/site/site_ab25957991a6"
+      },
+      "delivery": {
+        "attempt_count": 1,
+        "provider_message_id": "msg_artifact_1",
+        "last_event_type": "sent",
+        "last_event_at": "2026-04-18T05:21:48Z",
+        "reply_received": false
+      },
+      "event_log": [
+        {
+          "event_type": "queued",
+          "status": "queued",
+          "detail": "Job accepted into outreach queue.",
+          "event_at": "2026-04-18T05:21:47Z",
+          "metadata": {
+            "dispatch_mode": "dry_run"
+          }
+        },
+        {
+          "event_type": "sent",
+          "status": "sent",
+          "detail": "Lifecycle updated via sent.",
+          "event_at": "2026-04-18T05:21:48Z",
+          "provider_message_id": "msg_artifact_1",
+          "metadata": {}
+        }
+      ]
+    }
+  },
+  "blocked_create": {
+    "status_code": 200,
+    "body": {
+      "reused": false,
+      "framework": "dg-agent-outreach-v1",
+      "job_id": "outreach_job_site-6fad7a96b7b2_20260418T052148020227Z",
+      "site_id": "site_6fad7a96b7b2",
+      "playbook_id": "playbook_site-6fad7a96b7b2_20260418T052148018146Z",
+      "idempotency_key": "artifact-block-1",
+      "status": "blocked",
+      "dispatch_mode": "dry_run",
+      "requested_channel": null,
+      "resolved_channel": "review",
+      "created_at": "2026-04-18T05:21:48Z",
+      "updated_at": "2026-04-18T05:21:48Z",
+      "site": {
+        "address": "200 Kent Road, Waban, MA, 02468",
+        "zip": "02468",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "skip",
+        "operator_status": "unworked",
+        "opportunity_score": 48.9,
+        "win_probability_proxy": 0.428,
+        "confidence": 0.83
+      },
+      "objective": "Resolve whether the solar opportunity should stay suppressed or be reactivated.",
+      "policy": {
+        "decision": "blocked",
+        "block_reasons": [
+          "lead_skip"
+        ],
+        "compliance_flags": [
+          "lead_skip"
+        ],
+        "review_flags": [
+          "requires_site_survey"
+        ],
+        "strict_guardrails": true,
+        "policy_snapshot": {
+          "product": "solar",
+          "confidence_min": 0.62,
+          "confidence_high_min": 0.82,
+          "policy_version": "2026-04-17-v1",
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/outreach_policy.json"
+        }
+      },
+      "send_context": {
+        "channel_order": [
+          "review",
+          "phone",
+          "sms",
+          "email"
+        ],
+        "recommended_channel": "review",
+        "resolved_channel": "review",
+        "next_best_action": "deprioritize",
+        "message_hint": "Do not auto-send. Resolve the policy/compliance/review flags, then decide whether to proceed or suppress.",
+        "outreach_ref": "/api/v1/outreach/site/site_6fad7a96b7b2"
+      },
+      "delivery": {
+        "attempt_count": 0,
+        "provider_message_id": null,
+        "last_event_type": "blocked",
+        "last_event_at": "2026-04-18T05:21:48Z",
+        "reply_received": false
+      },
+      "event_log": [
+        {
+          "event_type": "blocked",
+          "status": "blocked",
+          "detail": "Job blocked by policy.",
+          "event_at": "2026-04-18T05:21:48Z",
+          "metadata": {
+            "dispatch_mode": "dry_run"
+          }
+        }
+      ]
+    }
+  }
+}

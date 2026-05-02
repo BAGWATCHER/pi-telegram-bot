@@ -1,0 +1,1834 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tt xml:lang="en" xmlns="http://www.w3.org/ns/ttml" xmlns:ttm="http://www.w3.org/ns/ttml#metadata" xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttp="http://www.w3.org/ns/ttml#parameter" ttp:profile="http://www.w3.org/TR/profile/sdp-us" >
+<head>
+<styling>
+<style xml:id="s1" tts:textAlign="center" tts:extent="90% 90%" tts:origin="5% 5%" tts:displayAlign="after"/>
+<style xml:id="s2" tts:fontSize=".72c" tts:backgroundColor="black" tts:color="white"/>
+</styling>
+<layout>
+<region xml:id="r1" style="s1"/>
+</layout>
+</head>
+<body region="r1">
+<div>
+<p begin="00:00:03.760" end="00:00:07.839" style="s2">All right,</p>
+<p begin="00:00:05.359" end="00:00:09.679" style="s2">I want to welcome everybody to night</p>
+<p begin="00:00:07.839" end="00:00:11.360" style="s2">school. We have a bunch of people</p>
+<p begin="00:00:09.679" end="00:00:14.240" style="s2">popping in, so we&#39;re going to give them</p>
+<p begin="00:00:11.360" end="00:00:17.199" style="s2">a few minutes.</p>
+<p begin="00:00:14.240" end="00:00:20.000" style="s2">And as everybody pops in here in the</p>
+<p begin="00:00:17.199" end="00:00:22.160" style="s2">chat, let&#39;s write wherever we&#39;re coming</p>
+<p begin="00:00:20.000" end="00:00:26.000" style="s2">in from. So, is it New York? You&#39;re in</p>
+<p begin="00:00:22.160" end="00:00:30.519" style="s2">Austin, Texas, SF, around the world. Let</p>
+<p begin="00:00:26.000" end="00:00:30.519" style="s2">us know where you&#39;re dialing in from.</p>
+<p begin="00:00:31.439" end="00:00:35.600" style="s2">Now, we have over 400 people signed up</p>
+<p begin="00:00:33.680" end="00:00:37.680" style="s2">for this session. So, there&#39;s going to</p>
+<p begin="00:00:35.600" end="00:00:40.239" style="s2">be a lot of people all over the place.</p>
+<p begin="00:00:37.680" end="00:00:42.800" style="s2">So, I&#39;m excited to see Louisiana, New</p>
+<p begin="00:00:40.239" end="00:00:46.320" style="s2">Zealand. That&#39;s the farthest.</p>
+<p begin="00:00:42.800" end="00:00:48.640" style="s2">We have Orange County, Canada.</p>
+<p begin="00:00:46.320" end="00:00:51.200" style="s2">Love it.</p>
+<p begin="00:00:48.640" end="00:00:53.360" style="s2">Now, there&#39;s a few people in the room</p>
+<p begin="00:00:51.200" end="00:00:56.239" style="s2">who are going to be sort of my helpers,</p>
+<p begin="00:00:53.360" end="00:00:57.680" style="s2">staff members from Gauntlet. you&#39;ll see</p>
+<p begin="00:00:56.239" end="00:01:00.239" style="s2">uh they&#39;re going to write with Gauntlet</p>
+<p begin="00:00:57.680" end="00:01:02.399" style="s2">or from Gauntlet on their display names.</p>
+<p begin="00:01:00.239" end="00:01:04.640" style="s2">So, help answer some of your questions.</p>
+<p begin="00:01:02.399" end="00:01:07.760" style="s2">But as you&#39;re hopping into this class,</p>
+<p begin="00:01:04.640" end="00:01:09.920" style="s2">please add where you&#39;re dialing in from.</p>
+<p begin="00:01:07.760" end="00:01:11.760" style="s2">And let&#39;s also add why we are joining</p>
+<p begin="00:01:09.920" end="00:01:13.760" style="s2">this class.</p>
+<p begin="00:01:11.760" end="00:01:16.479" style="s2">Why are you joining this class on how to</p>
+<p begin="00:01:13.760" end="00:01:19.200" style="s2">interview as an AI first engineer? I</p>
+<p begin="00:01:16.479" end="00:01:20.960" style="s2">want to deliver value to you guys. And</p>
+<p begin="00:01:19.200" end="00:01:23.759" style="s2">so, this is completely live. I&#39;ll be</p>
+<p begin="00:01:20.960" end="00:01:28.200" style="s2">doing a ton of Q&amp;A at the end. So, what</p>
+<p begin="00:01:23.759" end="00:01:28.200" style="s2">is the reason why you joined the class?</p>
+<p begin="00:01:31.360" end="00:01:35.560" style="s2">Poland. That&#39;s another one.</p>
+<p begin="00:01:36.960" end="00:01:42.640" style="s2">New Hampshire. All right.</p>
+<p begin="00:01:40.640" end="00:01:44.960" style="s2">Okay. You don&#39;t interview well. Looking</p>
+<p begin="00:01:42.640" end="00:01:47.280" style="s2">for a better job to get better</p>
+<p begin="00:01:44.960" end="00:01:50.560" style="s2">understanding.</p>
+<p begin="00:01:47.280" end="00:01:52.640" style="s2">transitioning from senior writer former</p>
+<p begin="00:01:50.560" end="00:01:54.720" style="s2">Lambda school.</p>
+<p begin="00:01:52.640" end="00:01:57.920" style="s2">Yes, the session is going to be recorded</p>
+<p begin="00:01:54.720" end="00:01:59.680" style="s2">and available on YouTube afterward.</p>
+<p begin="00:01:57.920" end="00:02:02.799" style="s2">I have an opportunity to join an AI</p>
+<p begin="00:01:59.680" end="00:02:05.280" style="s2">company. Amazing. McKini, Texas, looking</p>
+<p begin="00:02:02.799" end="00:02:08.080" style="s2">for a job.</p>
+<p begin="00:02:05.280" end="00:02:13.399" style="s2">Transitioning from TPM to AI engineer.</p>
+<p begin="00:02:08.080" end="00:02:13.399" style="s2">Love it. Exploring the AI landscape.</p>
+<p begin="00:02:13.440" end="00:02:17.239" style="s2">Looking for a better job.</p>
+<p begin="00:02:17.760" end="00:02:21.680" style="s2">would love to learn more about</p>
+<p begin="00:02:19.280" end="00:02:25.360" style="s2">experimenting. Don&#39;t interview well.</p>
+<p begin="00:02:21.680" end="00:02:27.440" style="s2">Imposter syndrome, of course.</p>
+<p begin="00:02:25.360" end="00:02:30.239" style="s2">This is great. The awesome part about</p>
+<p begin="00:02:27.440" end="00:02:32.160" style="s2">this is</p>
+<p begin="00:02:30.239" end="00:02:34.160" style="s2">this is going to help me decide what</p>
+<p begin="00:02:32.160" end="00:02:36.400" style="s2">other classes I should have for night</p>
+<p begin="00:02:34.160" end="00:02:38.560" style="s2">school. So the whole point of night</p>
+<p begin="00:02:36.400" end="00:02:41.200" style="s2">scroll is to take the gauntlet AI</p>
+<p begin="00:02:38.560" end="00:02:43.440" style="s2">curriculum and to ensure that there is</p>
+<p begin="00:02:41.200" end="00:02:46.000" style="s2">an open version of that curriculum that</p>
+<p begin="00:02:43.440" end="00:02:48.000" style="s2">all of you can use to get better at</p>
+<p begin="00:02:46.000" end="00:02:50.160" style="s2">either a technical skill, an</p>
+<p begin="00:02:48.000" end="00:02:52.720" style="s2">interviewing skill, and just get hired</p>
+<p begin="00:02:50.160" end="00:02:55.440" style="s2">much faster in this job market. So I&#39;m</p>
+<p begin="00:02:52.720" end="00:02:56.800" style="s2">excited to see all this inside of the</p>
+<p begin="00:02:55.440" end="00:02:59.280" style="s2">chat so we can actually see what the</p>
+<p begin="00:02:56.800" end="00:03:01.760" style="s2">next classes might be. We&#39;re going to</p>
+<p begin="00:02:59.280" end="00:03:03.680" style="s2">give people another minute. We have 109</p>
+<p begin="00:03:01.760" end="00:03:06.400" style="s2">people already joining us. We&#39;re going</p>
+<p begin="00:03:03.680" end="00:03:08.319" style="s2">to get started here in just a minute and</p>
+<p begin="00:03:06.400" end="00:03:12.400" style="s2">we&#39;ll get started on our session on how</p>
+<p begin="00:03:08.319" end="00:03:13.920" style="s2">to interview as an AI first engineer.</p>
+<p begin="00:03:12.400" end="00:03:15.519" style="s2">Someone is saying being an AI engineer</p>
+<p begin="00:03:13.920" end="00:03:18.080" style="s2">is a completely new role to me and it&#39;s</p>
+<p begin="00:03:15.519" end="00:03:21.200" style="s2">an interesting change for sure. This is</p>
+<p begin="00:03:18.080" end="00:03:24.879" style="s2">a role that didn&#39;t exist 8 months ago,</p>
+<p begin="00:03:21.200" end="00:03:26.400" style="s2">right? The 8 months ago this role was</p>
+<p begin="00:03:24.879" end="00:03:28.959" style="s2">completely something that people were</p>
+<p begin="00:03:26.400" end="00:03:31.920" style="s2">thinking about. HR didn&#39;t have a name</p>
+<p begin="00:03:28.959" end="00:03:34.640" style="s2">for it. All of a sudden, cloud code</p>
+<p begin="00:03:31.920" end="00:03:37.120" style="s2">reaches a maxima and everybody is</p>
+<p begin="00:03:34.640" end="00:03:38.400" style="s2">looking for an AI first engineer. And so</p>
+<p begin="00:03:37.120" end="00:03:40.239" style="s2">I think this is going to be really</p>
+<p begin="00:03:38.400" end="00:03:42.640" style="s2">insightful for all of you and I&#39;m</p>
+<p begin="00:03:40.239" end="00:03:44.560" style="s2">excited to get started. Okay, so I want</p>
+<p begin="00:03:42.640" end="00:03:46.799" style="s2">to go through how night school works.</p>
+<p begin="00:03:44.560" end="00:03:49.120" style="s2">Night School is a weekly session that we</p>
+<p begin="00:03:46.799" end="00:03:51.280" style="s2">have here at Gauntlet AI that is open to</p>
+<p begin="00:03:49.120" end="00:03:54.480" style="s2">the public. And this session is going to</p>
+<p begin="00:03:51.280" end="00:03:57.040" style="s2">go over either a technical skill, a soft</p>
+<p begin="00:03:54.480" end="00:03:58.879" style="s2">skill, or something that has to do with</p>
+<p begin="00:03:57.040" end="00:04:01.840" style="s2">both of those areas when it comes to</p>
+<p begin="00:03:58.879" end="00:04:05.360" style="s2">getting hired as an AI engineer. We run</p>
+<p begin="00:04:01.840" end="00:04:07.840" style="s2">a 10-week accelerator, 3 weeks remote, 7</p>
+<p begin="00:04:05.360" end="00:04:10.640" style="s2">weeks on-site, where all we do is</p>
+<p begin="00:04:07.840" end="00:04:12.640" style="s2">completely immerse ourselves in AI. That</p>
+<p begin="00:04:10.640" end="00:04:14.319" style="s2">means I have over a hundred students at</p>
+<p begin="00:04:12.640" end="00:04:17.120" style="s2">our headquarters right now in Austin,</p>
+<p begin="00:04:14.319" end="00:04:20.320" style="s2">Texas that are devoting over a thousand</p>
+<p begin="00:04:17.120" end="00:04:22.479" style="s2">hours to being at the frontier of AI. My</p>
+<p begin="00:04:20.320" end="00:04:24.479" style="s2">goal is to take that curriculum and</p>
+<p begin="00:04:22.479" end="00:04:27.520" style="s2">bring it to you for free. So, if you</p>
+<p begin="00:04:24.479" end="00:04:29.520" style="s2">have questions, if you have uh specific</p>
+<p begin="00:04:27.520" end="00:04:31.440" style="s2">concerns, if you&#39;re wondering about</p>
+<p begin="00:04:29.520" end="00:04:34.080" style="s2">something, please, please, please add it</p>
+<p begin="00:04:31.440" end="00:04:36.960" style="s2">to the chat. Here&#39;s how Q&amp;A is going to</p>
+<p begin="00:04:34.080" end="00:04:39.680" style="s2">work. I have three of my Gauntlet staff</p>
+<p begin="00:04:36.960" end="00:04:41.360" style="s2">members, Derek, Aaron, and Nina, inside</p>
+<p begin="00:04:39.680" end="00:04:43.120" style="s2">of the chat with you. They&#39;re going to</p>
+<p begin="00:04:41.360" end="00:04:45.840" style="s2">be able to answer your questions on the</p>
+<p begin="00:04:43.120" end="00:04:48.320" style="s2">fly as I&#39;m teaching. At the end of my</p>
+<p begin="00:04:45.840" end="00:04:51.680" style="s2">session, I&#39;ll be spending about 15 to 30</p>
+<p begin="00:04:48.320" end="00:04:54.080" style="s2">minutes on Q&amp;A alone. I&#39;ve also asked</p>
+<p begin="00:04:51.680" end="00:04:56.720" style="s2">the staff, Sunny and Tom, to highlight</p>
+<p begin="00:04:54.080" end="00:04:58.000" style="s2">some of the best questions for me. These</p>
+<p begin="00:04:56.720" end="00:05:00.400" style="s2">best questions are then being</p>
+<p begin="00:04:58.000" end="00:05:03.120" style="s2">highlighted on my phone here, so I can</p>
+<p begin="00:05:00.400" end="00:05:04.880" style="s2">actually answer them out loud. So, we&#39;re</p>
+<p begin="00:05:03.120" end="00:05:06.160" style="s2">there&#39;s a lot of people in the room, so</p>
+<p begin="00:05:04.880" end="00:05:08.240" style="s2">we&#39;re going to do our best to make sure</p>
+<p begin="00:05:06.160" end="00:05:10.320" style="s2">all your questions are answered. But</p>
+<p begin="00:05:08.240" end="00:05:12.960" style="s2">here&#39;s what you should do for the next</p>
+<p begin="00:05:10.320" end="00:05:15.120" style="s2">40 to 45 minutes. Lock in, pay attention</p>
+<p begin="00:05:12.960" end="00:05:17.440" style="s2">to what I&#39;m trying to say, participate</p>
+<p begin="00:05:15.120" end="00:05:19.919" style="s2">in some of the exercises, note down your</p>
+<p begin="00:05:17.440" end="00:05:22.160" style="s2">question in the chat, and we&#39;ll have one</p>
+<p begin="00:05:19.919" end="00:05:24.080" style="s2">of our staff members answer it async or</p>
+<p begin="00:05:22.160" end="00:05:26.560" style="s2">I&#39;ll answer it out loud at the end of</p>
+<p begin="00:05:24.080" end="00:05:28.720" style="s2">the session. This is exactly how classes</p>
+<p begin="00:05:26.560" end="00:05:31.199" style="s2">work here at Gauntlet AI. We take a</p>
+<p begin="00:05:28.720" end="00:05:33.520" style="s2">portion of the class and have it focused</p>
+<p begin="00:05:31.199" end="00:05:35.600" style="s2">on the lecture material. Once the</p>
+<p begin="00:05:33.520" end="00:05:38.080" style="s2">lecture material is over, we usually</p>
+<p begin="00:05:35.600" end="00:05:40.639" style="s2">have a Q&amp;A session for about 15 to 30</p>
+<p begin="00:05:38.080" end="00:05:42.800" style="s2">minutes and then an exercise at the end</p>
+<p begin="00:05:40.639" end="00:05:44.479" style="s2">that individuals can do to sort of get</p>
+<p begin="00:05:42.800" end="00:05:46.240" style="s2">prepared and take themselves to the next</p>
+<p begin="00:05:44.479" end="00:05:48.479" style="s2">level. That&#39;s exactly what we&#39;ll be</p>
+<p begin="00:05:46.240" end="00:05:51.479" style="s2">doing today.</p>
+<p begin="00:05:48.479" end="00:05:51.479" style="s2">All right.</p>
+<p begin="00:05:52.240" end="00:05:57.759" style="s2">Today&#39;s class is going to be on how to</p>
+<p begin="00:05:54.639" end="00:05:59.759" style="s2">interview as an AI first engineer. The</p>
+<p begin="00:05:57.759" end="00:06:01.840" style="s2">reason why I think I can talk about this</p>
+<p begin="00:05:59.759" end="00:06:04.000" style="s2">is because I&#39;ve partnered with over 81</p>
+<p begin="00:06:01.840" end="00:06:05.520" style="s2">companies and teams. I&#39;ve trained over a</p>
+<p begin="00:06:04.000" end="00:06:07.919" style="s2">thousand engineers over the last two</p>
+<p begin="00:06:05.520" end="00:06:11.280" style="s2">years and I&#39;ve placed over 300 gauntlet</p>
+<p begin="00:06:07.919" end="00:06:13.680" style="s2">grads as AI first engineers. We partner</p>
+<p begin="00:06:11.280" end="00:06:17.280" style="s2">with organizations like</p>
+<p begin="00:06:13.680" end="00:06:19.199" style="s2">GoFundMe, Zapier, Nerdy, Nexa, and my</p>
+<p begin="00:06:17.280" end="00:06:21.440" style="s2">graduates are becoming AI first</p>
+<p begin="00:06:19.199" end="00:06:24.000" style="s2">engineers at all of these organizations.</p>
+<p begin="00:06:21.440" end="00:06:26.080" style="s2">Our goal here at Gauntlet is to train</p>
+<p begin="00:06:24.000" end="00:06:28.560" style="s2">the next generation of engineers,</p>
+<p begin="00:06:26.080" end="00:06:31.520" style="s2">leaders, managers, and business owners</p>
+<p begin="00:06:28.560" end="00:06:34.080" style="s2">to be AI first across the board. That is</p>
+<p begin="00:06:31.520" end="00:06:36.720" style="s2">why I can come to you and say I</p>
+<p begin="00:06:34.080" end="00:06:39.440" style="s2">understand how people are trying to hire</p>
+<p begin="00:06:36.720" end="00:06:41.840" style="s2">for these AI roles. I&#39;ve talked to CTO&#39;s</p>
+<p begin="00:06:39.440" end="00:06:45.280" style="s2">across the board. I&#39;ve hired personally</p>
+<p begin="00:06:41.840" end="00:06:48.560" style="s2">as a CTO and the system is entirely</p>
+<p begin="00:06:45.280" end="00:06:53.039" style="s2">broken. This is real data from a job</p>
+<p begin="00:06:48.560" end="00:06:57.039" style="s2">posting that I recently had where 88% of</p>
+<p begin="00:06:53.039" end="00:07:00.319" style="s2">all of the applications I got were AI</p>
+<p begin="00:06:57.039" end="00:07:03.120" style="s2">generated resumes. You could tell by how</p>
+<p begin="00:07:00.319" end="00:07:05.440" style="s2">exact the keywords were being used. You</p>
+<p begin="00:07:03.120" end="00:07:08.160" style="s2">could tell by how precise everything</p>
+<p begin="00:07:05.440" end="00:07:10.240" style="s2">matched my job description. You can tell</p>
+<p begin="00:07:08.160" end="00:07:13.680" style="s2">that it&#39;s just really hard to find</p>
+<p begin="00:07:10.240" end="00:07:15.199" style="s2">signal in a sea of noise. There is so</p>
+<p begin="00:07:13.680" end="00:07:17.840" style="s2">much noise out there where people are</p>
+<p begin="00:07:15.199" end="00:07:19.599" style="s2">claiming overexaggerating and not</p>
+<p begin="00:07:17.840" end="00:07:22.319" style="s2">actually talking to the exact skill set</p>
+<p begin="00:07:19.599" end="00:07:23.919" style="s2">that they have. When you actually start</p>
+<p begin="00:07:22.319" end="00:07:26.240" style="s2">talking to these people and you start</p>
+<p begin="00:07:23.919" end="00:07:28.000" style="s2">interviewing them, you realize, hey, he</p>
+<p begin="00:07:26.240" end="00:07:30.800" style="s2">doesn&#39;t actually have the knowledge for</p>
+<p begin="00:07:28.000" end="00:07:32.720" style="s2">this specific position or no, they did</p>
+<p begin="00:07:30.800" end="00:07:34.960" style="s2">something similar, but it&#39;s not exactly</p>
+<p begin="00:07:32.720" end="00:07:37.680" style="s2">what I&#39;m looking for. Based on that job</p>
+<p begin="00:07:34.960" end="00:07:40.880" style="s2">posting, I had 88% which I thought were</p>
+<p begin="00:07:37.680" end="00:07:43.680" style="s2">AI generated résumés. I saw identical</p>
+<p begin="00:07:40.880" end="00:07:46.880" style="s2">keywords for about 76% of that uh those</p>
+<p begin="00:07:43.680" end="00:07:48.400" style="s2">applications. About 12% in my opinion</p>
+<p begin="00:07:46.880" end="00:07:51.360" style="s2">were like, &quot;Okay, this guy&#39;s probably</p>
+<p begin="00:07:48.400" end="00:07:53.919" style="s2">good. He has a brand name. He has a</p>
+<p begin="00:07:51.360" end="00:07:55.680" style="s2">referral. There&#39;s some signal here that</p>
+<p begin="00:07:53.919" end="00:07:57.520" style="s2">makes it me seem like, hey, this is</p>
+<p begin="00:07:55.680" end="00:07:59.840" style="s2">actually a valid candidate.&quot; And then</p>
+<p begin="00:07:57.520" end="00:08:02.400" style="s2">finally, about 8% did move on to the</p>
+<p begin="00:07:59.840" end="00:08:04.879" style="s2">interview round. That is what&#39;s</p>
+<p begin="00:08:02.400" end="00:08:07.199" style="s2">happening on this side of the hiring</p>
+<p begin="00:08:04.879" end="00:08:09.039" style="s2">cycle. Let&#39;s say you&#39;re a CTO. Let&#39;s say</p>
+<p begin="00:08:07.199" end="00:08:11.520" style="s2">you&#39;re an engineering manager. Let&#39;s say</p>
+<p begin="00:08:09.039" end="00:08:13.199" style="s2">you&#39;re uh a product leader. It doesn&#39;t</p>
+<p begin="00:08:11.520" end="00:08:15.199" style="s2">matter what area this is happening in</p>
+<p begin="00:08:13.199" end="00:08:17.599" style="s2">in, but where what what what&#39;s happening</p>
+<p begin="00:08:15.199" end="00:08:19.759" style="s2">is we&#39;re getting 10,000 AI generated</p>
+<p begin="00:08:17.599" end="00:08:21.840" style="s2">applications. There&#39;s like a another</p>
+<p begin="00:08:19.759" end="00:08:23.520" style="s2">agent coming out that is doing job</p>
+<p begin="00:08:21.840" end="00:08:26.639" style="s2">search for you and then uploading your</p>
+<p begin="00:08:23.520" end="00:08:29.680" style="s2">apps. And we we have little to no way to</p>
+<p begin="00:08:26.639" end="00:08:32.240" style="s2">discern signal from noise. And so I this</p>
+<p begin="00:08:29.680" end="00:08:35.760" style="s2">is important because this signal is</p>
+<p begin="00:08:32.240" end="00:08:37.680" style="s2">broken. We are then going to referrals</p>
+<p begin="00:08:35.760" end="00:08:39.839" style="s2">and we&#39;re going to brand names and we&#39;re</p>
+<p begin="00:08:37.680" end="00:08:42.479" style="s2">going to test and we&#39;re going to other</p>
+<p begin="00:08:39.839" end="00:08:44.480" style="s2">in-person events, conferences, college</p>
+<p begin="00:08:42.479" end="00:08:46.800" style="s2">meetups, and we&#39;re trying to find our</p>
+<p begin="00:08:44.480" end="00:08:48.160" style="s2">engineers in that location. Now, what</p>
+<p begin="00:08:46.800" end="00:08:50.080" style="s2">happens when you do that virtual</p>
+<p begin="00:08:48.160" end="00:08:52.080" style="s2">interview? Everybody&#39;s using some sort</p>
+<p begin="00:08:50.080" end="00:08:54.399" style="s2">of coding assistant on the right side.</p>
+<p begin="00:08:52.080" end="00:08:56.399" style="s2">They have some sort of hidden earpiece.</p>
+<p begin="00:08:54.399" end="00:08:58.320" style="s2">There&#39;s like a screen overlay app that</p>
+<p begin="00:08:56.399" end="00:08:59.760" style="s2">we&#39;ve heard of like eight of them now.</p>
+<p begin="00:08:58.320" end="00:09:02.160" style="s2">They there&#39;s also these like ghost</p>
+<p begin="00:08:59.760" end="00:09:04.320" style="s2">riding co-pilots. It&#39;s really hard to</p>
+<p begin="00:09:02.160" end="00:09:05.519" style="s2">discern even in the interview if this</p>
+<p begin="00:09:04.320" end="00:09:07.360" style="s2">person actually knows what they&#39;re</p>
+<p begin="00:09:05.519" end="00:09:09.600" style="s2">talking about. That is to the point</p>
+<p begin="00:09:07.360" end="00:09:12.160" style="s2">where I have individuals come into my</p>
+<p begin="00:09:09.600" end="00:09:14.080" style="s2">headquarters now and interview because I</p>
+<p begin="00:09:12.160" end="00:09:16.320" style="s2">have better signal watching them in</p>
+<p begin="00:09:14.080" end="00:09:18.480" style="s2">person, talking to them directly than I</p>
+<p begin="00:09:16.320" end="00:09:20.880" style="s2">do over some sort of virtual meeting.</p>
+<p begin="00:09:18.480" end="00:09:22.800" style="s2">That is the state of the market. And</p>
+<p begin="00:09:20.880" end="00:09:25.839" style="s2">everything is becoming a knowledge</p>
+<p begin="00:09:22.800" end="00:09:28.320" style="s2">round. Meaning if we know that AI can</p>
+<p begin="00:09:25.839" end="00:09:31.279" style="s2">generate code, if we know that AI is</p>
+<p begin="00:09:28.320" end="00:09:33.440" style="s2">able to do XYZ portion of the entire</p>
+<p begin="00:09:31.279" end="00:09:36.000" style="s2">software development life cycle, then</p>
+<p begin="00:09:33.440" end="00:09:39.440" style="s2">what part becomes important? Judgment,</p>
+<p begin="00:09:36.000" end="00:09:43.040" style="s2">taste, the ability to decide when to do</p>
+<p begin="00:09:39.440" end="00:09:44.480" style="s2">what with your AI is the key skill.</p>
+<p begin="00:09:43.040" end="00:09:47.200" style="s2">There&#39;s two tracks that I want you to</p>
+<p begin="00:09:44.480" end="00:09:49.120" style="s2">focus in on. And these two tracks</p>
+<p begin="00:09:47.200" end="00:09:50.959" style="s2">correspond with the gauntlet curriculum.</p>
+<p begin="00:09:49.120" end="00:09:53.120" style="s2">The gauntlet curriculum focuses on</p>
+<p begin="00:09:50.959" end="00:09:56.480" style="s2">coding with AI and building AI</p>
+<p begin="00:09:53.120" end="00:10:00.000" style="s2">applications. Now, coding with AI means</p>
+<p begin="00:09:56.480" end="00:10:01.600" style="s2">you have codecs, claude code, open code,</p>
+<p begin="00:10:00.000" end="00:10:03.760" style="s2">whatever you&#39;ve decided your harness is</p>
+<p begin="00:10:01.600" end="00:10:06.320" style="s2">for coding, you have a methodology on</p>
+<p begin="00:10:03.760" end="00:10:07.760" style="s2">top by which you code with that harness.</p>
+<p begin="00:10:06.320" end="00:10:09.920" style="s2">I&#39;ll give you an example of this.</p>
+<p begin="00:10:07.760" end="00:10:13.279" style="s2">Currently, I use claude code as my</p>
+<p begin="00:10:09.920" end="00:10:16.079" style="s2">primary harness. Claude code uses uh</p>
+<p begin="00:10:13.279" end="00:10:18.079" style="s2">linear as a task management tool. I use</p>
+<p begin="00:10:16.079" end="00:10:20.560" style="s2">plan mode on cloud code. I have a</p>
+<p begin="00:10:18.079" end="00:10:22.800" style="s2">testing suite with three other sub aents</p>
+<p begin="00:10:20.560" end="00:10:25.360" style="s2">and then I do code review with reptile.</p>
+<p begin="00:10:22.800" end="00:10:27.680" style="s2">That is my AI first methodology. I&#39;ve</p>
+<p begin="00:10:25.360" end="00:10:30.240" style="s2">taken three or four tools, four or five</p>
+<p begin="00:10:27.680" end="00:10:32.640" style="s2">skills and the exact steps from start to</p>
+<p begin="00:10:30.240" end="00:10:35.120" style="s2">finish to better understand how to</p>
+<p begin="00:10:32.640" end="00:10:38.240" style="s2">actually code with AI. I want to make</p>
+<p begin="00:10:35.120" end="00:10:40.880" style="s2">sure that as I&#39;m coding, I can outline</p>
+<p begin="00:10:38.240" end="00:10:44.399" style="s2">and talk about this methodology step by</p>
+<p begin="00:10:40.880" end="00:10:46.320" style="s2">step. I have seen inside of interviews</p>
+<p begin="00:10:44.399" end="00:10:48.480" style="s2">for both gauntlet students and for</p>
+<p begin="00:10:46.320" end="00:10:51.040" style="s2">individuals that are interviewing across</p>
+<p begin="00:10:48.480" end="00:10:52.880" style="s2">the board here in Austin, Texas, that</p>
+<p begin="00:10:51.040" end="00:10:55.200" style="s2">people are asked directly, how do you</p>
+<p begin="00:10:52.880" end="00:10:57.040" style="s2">use cloud code? What skills are you</p>
+<p begin="00:10:55.200" end="00:10:58.800" style="s2">using? How are you manipulating these</p>
+<p begin="00:10:57.040" end="00:11:01.200" style="s2">skills? How are you automating the</p>
+<p begin="00:10:58.800" end="00:11:02.959" style="s2">things like code review and deployment?</p>
+<p begin="00:11:01.200" end="00:11:04.640" style="s2">What is a plug-in? Are you using a</p>
+<p begin="00:11:02.959" end="00:11:06.720" style="s2">plug-in for deployment? These are</p>
+<p begin="00:11:04.640" end="00:11:08.480" style="s2">important questions to discern if you</p>
+<p begin="00:11:06.720" end="00:11:11.839" style="s2">actually know what you&#39;re doing. When it</p>
+<p begin="00:11:08.480" end="00:11:14.079" style="s2">comes to using coding agents, there&#39;s</p>
+<p begin="00:11:11.839" end="00:11:16.160" style="s2">there&#39;s dabbling and there&#39;s actually</p>
+<p begin="00:11:14.079" end="00:11:18.720" style="s2">understanding something. I would</p>
+<p begin="00:11:16.160" end="00:11:21.760" style="s2">encourage all of you to actually put in</p>
+<p begin="00:11:18.720" end="00:11:23.839" style="s2">the time. Spend 20 to 40 hours with your</p>
+<p begin="00:11:21.760" end="00:11:25.920" style="s2">coding agent of choice. Understand the</p>
+<p begin="00:11:23.839" end="00:11:27.839" style="s2">nuances, understand the prompting,</p>
+<p begin="00:11:25.920" end="00:11:29.839" style="s2">understand the skills, understand the</p>
+<p begin="00:11:27.839" end="00:11:32.160" style="s2">exact methodology before you start</p>
+<p begin="00:11:29.839" end="00:11:34.560" style="s2">thinking about your methodology. The</p>
+<p begin="00:11:32.160" end="00:11:37.120" style="s2">other part is building AI applications.</p>
+<p begin="00:11:34.560" end="00:11:38.959" style="s2">If you were to take all of the big AI</p>
+<p begin="00:11:37.120" end="00:11:40.880" style="s2">applications in the market right now,</p>
+<p begin="00:11:38.959" end="00:11:42.560" style="s2">they all come down to four primitives</p>
+<p begin="00:11:40.880" end="00:11:44.959" style="s2">and I think people complicate this a</p>
+<p begin="00:11:42.560" end="00:11:48.000" style="s2">lot, but the four primitives are rag,</p>
+<p begin="00:11:44.959" end="00:11:50.880" style="s2">agents, graphs, and evals. Now, each of</p>
+<p begin="00:11:48.000" end="00:11:52.560" style="s2">these topics is going to be key because</p>
+<p begin="00:11:50.880" end="00:11:54.320" style="s2">when you&#39;re interviewing to be an AI</p>
+<p begin="00:11:52.560" end="00:11:56.320" style="s2">engineer, these are the questions that</p>
+<p begin="00:11:54.320" end="00:11:58.320" style="s2">you might get. What&#39;s agentic rag?</p>
+<p begin="00:11:56.320" end="00:11:59.680" style="s2">What&#39;s metadata filtered rag? What</p>
+<p begin="00:11:58.320" end="00:12:01.600" style="s2">vector database are you using for your</p>
+<p begin="00:11:59.680" end="00:12:03.760" style="s2">rag system? Where do where do rag</p>
+<p begin="00:12:01.600" end="00:12:05.120" style="s2">systems work and where do they break?</p>
+<p begin="00:12:03.760" end="00:12:07.440" style="s2">What&#39;s an agent? What&#39;s the difference</p>
+<p begin="00:12:05.120" end="00:12:09.440" style="s2">between an agent and a graph? Uh what&#39;s</p>
+<p begin="00:12:07.440" end="00:12:11.200" style="s2">an eval? Why are you scoring something?</p>
+<p begin="00:12:09.440" end="00:12:13.600" style="s2">What&#39;s LLM as a judge? What&#39;s an</p>
+<p begin="00:12:11.200" end="00:12:15.440" style="s2">observability platform? Questions like</p>
+<p begin="00:12:13.600" end="00:12:18.399" style="s2">these are exactly what you should be</p>
+<p begin="00:12:15.440" end="00:12:21.920" style="s2">exposed to and be working with to be</p>
+<p begin="00:12:18.399" end="00:12:24.720" style="s2">even in the arena to be hired as an AI</p>
+<p begin="00:12:21.920" end="00:12:28.480" style="s2">first engineer. The most important part</p>
+<p begin="00:12:24.720" end="00:12:30.560" style="s2">about this is you need to have one, two,</p>
+<p begin="00:12:28.480" end="00:12:32.800" style="s2">three tools in each of these categories.</p>
+<p begin="00:12:30.560" end="00:12:34.480" style="s2">You don&#39;t need to go crazy. One of the</p>
+<p begin="00:12:32.800" end="00:12:37.120" style="s2">biggest things that happens in AI is</p>
+<p begin="00:12:34.480" end="00:12:39.279" style="s2">there&#39;s a new discovery or something</p>
+<p begin="00:12:37.120" end="00:12:41.200" style="s2">comes out every single day and we think</p>
+<p begin="00:12:39.279" end="00:12:42.959" style="s2">that the breadth of what we learn is</p>
+<p begin="00:12:41.200" end="00:12:45.040" style="s2">important. When it&#39;s not the breath, it</p>
+<p begin="00:12:42.959" end="00:12:47.839" style="s2">is the depth. Meaning you need to go</p>
+<p begin="00:12:45.040" end="00:12:50.959" style="s2">deeper into lang chain, deeper into claw</p>
+<p begin="00:12:47.839" end="00:12:53.440" style="s2">SDK, deeper into lang. You need to pick</p>
+<p begin="00:12:50.959" end="00:12:55.440" style="s2">your tool set and stick with it. Okay.</p>
+<p begin="00:12:53.440" end="00:12:57.600" style="s2">So those are the two areas that you</p>
+<p begin="00:12:55.440" end="00:12:59.600" style="s2">should be ramping up on. And this is</p>
+<p begin="00:12:57.600" end="00:13:01.839" style="s2">exactly what Gauntlet focuses on in</p>
+<p begin="00:12:59.600" end="00:13:03.279" style="s2">terms of our curriculum.</p>
+<p begin="00:13:01.839" end="00:13:05.279" style="s2">Now, when you when I talk about coding</p>
+<p begin="00:13:03.279" end="00:13:07.440" style="s2">with AI, I talked about a methodology,</p>
+<p begin="00:13:05.279" end="00:13:09.760" style="s2">but I also want to give you specific</p>
+<p begin="00:13:07.440" end="00:13:11.279" style="s2">things I would focus on for practicing</p>
+<p begin="00:13:09.760" end="00:13:14.079" style="s2">during the interview and what you might</p>
+<p begin="00:13:11.279" end="00:13:16.639" style="s2">be asked to do. Walk me through your</p>
+<p begin="00:13:14.079" end="00:13:18.320" style="s2">cloud code workflow step by step. To</p>
+<p begin="00:13:16.639" end="00:13:20.320" style="s2">some people, this might be like, hey,</p>
+<p begin="00:13:18.320" end="00:13:22.720" style="s2">this is a stupid question. My cla code</p>
+<p begin="00:13:20.320" end="00:13:24.720" style="s2">workflow is just answering and prompting</p>
+<p begin="00:13:22.720" end="00:13:26.480" style="s2">and, you know, answering whatever I have</p>
+<p begin="00:13:24.720" end="00:13:28.160" style="s2">to answer or giving the information I</p>
+<p begin="00:13:26.480" end="00:13:31.120" style="s2">need to give or connecting something.</p>
+<p begin="00:13:28.160" end="00:13:34.079" style="s2">It&#39;s pretty straight and simple.</p>
+<p begin="00:13:31.120" end="00:13:36.320" style="s2">That shows that you are a novice.</p>
+<p begin="00:13:34.079" end="00:13:37.839" style="s2">If you truly have a cloud code workflow,</p>
+<p begin="00:13:36.320" end="00:13:40.320" style="s2">you should have one for green field</p>
+<p begin="00:13:37.839" end="00:13:43.200" style="s2">projects and brownfield projects. You</p>
+<p begin="00:13:40.320" end="00:13:45.120" style="s2">should understand how your cloud code</p>
+<p begin="00:13:43.200" end="00:13:46.880" style="s2">orchestrator is taking in all of the</p>
+<p begin="00:13:45.120" end="00:13:48.320" style="s2">context and the data. You should</p>
+<p begin="00:13:46.880" end="00:13:50.560" style="s2">understand how what your testing</p>
+<p begin="00:13:48.320" end="00:13:53.839" style="s2">strategy is, your code review strategy</p>
+<p begin="00:13:50.560" end="00:13:56.560" style="s2">is, what model you&#39;re using when. That</p>
+<p begin="00:13:53.839" end="00:13:58.880" style="s2">all makes up your methodology. The first</p>
+<p begin="00:13:56.560" end="00:14:00.480" style="s2">week of Gauntlet, we tell everybody,</p>
+<p begin="00:13:58.880" end="00:14:02.079" style="s2">hey,</p>
+<p begin="00:14:00.480" end="00:14:04.240" style="s2">there&#39;s no manual coding for the next</p>
+<p begin="00:14:02.079" end="00:14:06.240" style="s2">two weeks. Your goal is to build an AI</p>
+<p begin="00:14:04.240" end="00:14:09.040" style="s2">first methodology, which means that you</p>
+<p begin="00:14:06.240" end="00:14:11.440" style="s2">and your coding agent should be in a</p>
+<p begin="00:14:09.040" end="00:14:13.839" style="s2">symbiosis be able to code and work with</p>
+<p begin="00:14:11.440" end="00:14:15.360" style="s2">each other perfectly. So when someone</p>
+<p begin="00:14:13.839" end="00:14:16.880" style="s2">tells you, &quot;Walk me through your cloud</p>
+<p begin="00:14:15.360" end="00:14:20.480" style="s2">code workflow,&quot; you should be able to</p>
+<p begin="00:14:16.880" end="00:14:22.320" style="s2">say, &quot;I start off with doing meetings</p>
+<p begin="00:14:20.480" end="00:14:24.800" style="s2">across the team, the product manager,</p>
+<p begin="00:14:22.320" end="00:14:26.720" style="s2">the UX designer, across whoever&#39;s</p>
+<p begin="00:14:24.800" end="00:14:29.279" style="s2">designated as a subject matter expert,</p>
+<p begin="00:14:26.720" end="00:14:30.639" style="s2">and I do interviews. I use granola to</p>
+<p begin="00:14:29.279" end="00:14:32.560" style="s2">take down every single thing that</p>
+<p begin="00:14:30.639" end="00:14:34.160" style="s2">they&#39;re saying, and I make sure that I</p>
+<p begin="00:14:32.560" end="00:14:36.160" style="s2">understand exactly what the ticket</p>
+<p begin="00:14:34.160" end="00:14:38.320" style="s2">requires. Once I have all of this</p>
+<p begin="00:14:36.160" end="00:14:40.399" style="s2">information, I&#39;m taking all my granola</p>
+<p begin="00:14:38.320" end="00:14:42.560" style="s2">notes. I&#39;m taking the ticket from Jira</p>
+<p begin="00:14:40.399" end="00:14:44.560" style="s2">and I&#39;ve connected the MCP servers</p>
+<p begin="00:14:42.560" end="00:14:46.160" style="s2">across both of those different tools.</p>
+<p begin="00:14:44.560" end="00:14:49.120" style="s2">I&#39;m bringing in all this information</p>
+<p begin="00:14:46.160" end="00:14:51.360" style="s2">into cloud code inside of an MD file.</p>
+<p begin="00:14:49.120" end="00:14:53.760" style="s2">Then I turn on plan mode inside of Cloud</p>
+<p begin="00:14:51.360" end="00:14:55.680" style="s2">Code where I am walking through the</p>
+<p begin="00:14:53.760" end="00:14:56.720" style="s2">exact implementation process, the</p>
+<p begin="00:14:55.680" end="00:14:58.800" style="s2">directories that are going to be</p>
+<p begin="00:14:56.720" end="00:15:00.320" style="s2">updated, the exact code that I&#39;m going</p>
+<p begin="00:14:58.800" end="00:15:03.360" style="s2">to write through, and I&#39;m using voice</p>
+<p begin="00:15:00.320" end="00:15:05.199" style="s2">dictation through Aqua to do so. After I</p>
+<p begin="00:15:03.360" end="00:15:07.360" style="s2">do that, I&#39;m going to walk through and</p>
+<p begin="00:15:05.199" end="00:15:09.360" style="s2">start implementing a task list where</p>
+<p begin="00:15:07.360" end="00:15:10.720" style="s2">I&#39;ll create a simple MD file with all a</p>
+<p begin="00:15:09.360" end="00:15:13.760" style="s2">checklist of all the things that have to</p>
+<p begin="00:15:10.720" end="00:15:15.839" style="s2">be completed plus phases that I can uh</p>
+<p begin="00:15:13.760" end="00:15:18.320" style="s2">walk in and see if everything is working</p>
+<p begin="00:15:15.839" end="00:15:20.320" style="s2">perfectly. Once I have that, then I can</p>
+<p begin="00:15:18.320" end="00:15:22.480" style="s2">go step by step by step and actually</p>
+<p begin="00:15:20.320" end="00:15:24.000" style="s2">ship that piece of code. That is a</p>
+<p begin="00:15:22.480" end="00:15:26.880" style="s2">methodology.</p>
+<p begin="00:15:24.000" end="00:15:29.920" style="s2">It is a string of connected tools that</p>
+<p begin="00:15:26.880" end="00:15:32.000" style="s2">you know exactly how to use well so that</p>
+<p begin="00:15:29.920" end="00:15:34.240" style="s2">you can get the code on the other side</p>
+<p begin="00:15:32.000" end="00:15:36.160" style="s2">properly. You should be able to convey</p>
+<p begin="00:15:34.240" end="00:15:39.040" style="s2">this in an interview if you want to be</p>
+<p begin="00:15:36.160" end="00:15:41.040" style="s2">an AI first engineer. Now there&#39;s three</p>
+<p begin="00:15:39.040" end="00:15:43.360" style="s2">other areas that I think are super</p>
+<p begin="00:15:41.040" end="00:15:45.600" style="s2">important. One of them is how do you</p>
+<p begin="00:15:43.360" end="00:15:47.839" style="s2">manage task? If you have so many things</p>
+<p begin="00:15:45.600" end="00:15:49.360" style="s2">that are happening within an entire</p>
+<p begin="00:15:47.839" end="00:15:50.720" style="s2">coding workflow, one of the key</p>
+<p begin="00:15:49.360" end="00:15:53.279" style="s2">questions you&#39;ll get inside of the</p>
+<p begin="00:15:50.720" end="00:15:55.279" style="s2">interview is are you using linear? Are</p>
+<p begin="00:15:53.279" end="00:15:56.240" style="s2">you using a task management platform? Is</p>
+<p begin="00:15:55.279" end="00:15:58.639" style="s2">there something that you&#39;re doing</p>
+<p begin="00:15:56.240" end="00:16:00.720" style="s2">specifically to manage these task?</p>
+<p begin="00:15:58.639" end="00:16:02.399" style="s2">Skills are by far one of the most</p>
+<p begin="00:16:00.720" end="00:16:04.399" style="s2">important things that you could be doing</p>
+<p begin="00:16:02.399" end="00:16:06.560" style="s2">and they are available across all of the</p>
+<p begin="00:16:04.399" end="00:16:09.600" style="s2">coding agents whether it&#39;s cursor, codec</p>
+<p begin="00:16:06.560" end="00:16:12.800" style="s2">or cloud code. A skill is essentially</p>
+<p begin="00:16:09.600" end="00:16:14.240" style="s2">taking domain expertise from whichever</p>
+<p begin="00:16:12.800" end="00:16:17.199" style="s2">area of the company that you&#39;re working</p>
+<p begin="00:16:14.240" end="00:16:20.160" style="s2">in. Putting that domain expertise in a</p>
+<p begin="00:16:17.199" end="00:16:22.160" style="s2">single file that claude code can then</p>
+<p begin="00:16:20.160" end="00:16:25.839" style="s2">progressively disclose to the context</p>
+<p begin="00:16:22.160" end="00:16:27.600" style="s2">window is exactly one of the key ways of</p>
+<p begin="00:16:25.839" end="00:16:29.839" style="s2">making your coding strategy or coding</p>
+<p begin="00:16:27.600" end="00:16:32.320" style="s2">methodologies 10 times better. So if you</p>
+<p begin="00:16:29.839" end="00:16:34.720" style="s2">have not tried any skills yet knowing</p>
+<p begin="00:16:32.320" end="00:16:37.680" style="s2">and h knowing what a skill is and how to</p>
+<p begin="00:16:34.720" end="00:16:39.920" style="s2">use it is super important.</p>
+<p begin="00:16:37.680" end="00:16:43.279" style="s2">All right, next one is staying in</p>
+<p begin="00:16:39.920" end="00:16:45.199" style="s2">control. Now, one of the key areas that</p>
+<p begin="00:16:43.279" end="00:16:47.199" style="s2">we try to build credibility in an</p>
+<p begin="00:16:45.199" end="00:16:48.560" style="s2">interview, and I do this myself, and</p>
+<p begin="00:16:47.199" end="00:16:50.399" style="s2">this could be with even some of the</p>
+<p begin="00:16:48.560" end="00:16:52.320" style="s2">hiring partners here at Gauntlet AI, for</p>
+<p begin="00:16:50.399" end="00:16:55.759" style="s2">example, Mark from Replicated, for</p>
+<p begin="00:16:52.320" end="00:16:57.519" style="s2">example, um I don&#39;t know, all the CTOs</p>
+<p begin="00:16:55.759" end="00:17:00.160" style="s2">that we&#39;re talking to, they&#39;re asking</p>
+<p begin="00:16:57.519" end="00:17:02.480" style="s2">this one question. How do you verify AI</p>
+<p begin="00:17:00.160" end="00:17:04.640" style="s2">generated code before it ships? That</p>
+<p begin="00:17:02.480" end="00:17:06.959" style="s2">might be building a test suite. That</p>
+<p begin="00:17:04.640" end="00:17:09.199" style="s2">might be having a code review sub agent.</p>
+<p begin="00:17:06.959" end="00:17:11.760" style="s2">That might be ensuring that each of the</p>
+<p begin="00:17:09.199" end="00:17:13.280" style="s2">things follow a certain skill that</p>
+<p begin="00:17:11.760" end="00:17:16.160" style="s2">identifies and outlines engineering</p>
+<p begin="00:17:13.280" end="00:17:18.400" style="s2">standards. Verification is going to be</p>
+<p begin="00:17:16.160" end="00:17:21.520" style="s2">the first question you get when you try</p>
+<p begin="00:17:18.400" end="00:17:23.839" style="s2">to get an AI engineer job. They want to</p>
+<p begin="00:17:21.520" end="00:17:25.520" style="s2">make sure that you have the underlying</p>
+<p begin="00:17:23.839" end="00:17:28.559" style="s2">experience and skill set as a software</p>
+<p begin="00:17:25.520" end="00:17:32.720" style="s2">engineer already, but you can also be a</p>
+<p begin="00:17:28.559" end="00:17:35.039" style="s2">stop gap to AI going off the rails. A</p>
+<p begin="00:17:32.720" end="00:17:37.520" style="s2">nice analogy uh that I&#39;ve heard before</p>
+<p begin="00:17:35.039" end="00:17:39.200" style="s2">is before we used to be the actors in a</p>
+<p begin="00:17:37.520" end="00:17:40.960" style="s2">movie when we were building software,</p>
+<p begin="00:17:39.200" end="00:17:43.360" style="s2">but now we&#39;re the director of those</p>
+<p begin="00:17:40.960" end="00:17:45.520" style="s2">actors. Each of these agents can go in</p>
+<p begin="00:17:43.360" end="00:17:48.000" style="s2">multiple different directions. And we</p>
+<p begin="00:17:45.520" end="00:17:50.960" style="s2">want to see inside of the interview that</p>
+<p begin="00:17:48.000" end="00:17:53.760" style="s2">you&#39;re able to actually know exactly</p>
+<p begin="00:17:50.960" end="00:17:56.080" style="s2">when AI is correct, when AI is wrong,</p>
+<p begin="00:17:53.760" end="00:17:59.679" style="s2">when AI is partially right, when AI</p>
+<p begin="00:17:56.080" end="00:18:01.919" style="s2">needs to be directionally turned around.</p>
+<p begin="00:17:59.679" end="00:18:03.520" style="s2">That is going to be one of the questions</p>
+<p begin="00:18:01.919" end="00:18:06.080" style="s2">you get in your interview no matter</p>
+<p begin="00:18:03.520" end="00:18:07.919" style="s2">what. Now, the other thing that happens</p>
+<p begin="00:18:06.080" end="00:18:11.120" style="s2">when you&#39;re using a ton of AI on top of</p>
+<p begin="00:18:07.919" end="00:18:14.000" style="s2">your codebase is that you lose track of</p>
+<p begin="00:18:11.120" end="00:18:16.080" style="s2">your codebase as AI keeps adding code,</p>
+<p begin="00:18:14.000" end="00:18:17.760" style="s2">keeps adding code, keeps adding code.</p>
+<p begin="00:18:16.080" end="00:18:19.679" style="s2">Once you start losing track of that</p>
+<p begin="00:18:17.760" end="00:18:22.080" style="s2">codebase and you&#39;re not understanding</p>
+<p begin="00:18:19.679" end="00:18:24.080" style="s2">what each directory is doing, what each</p>
+<p begin="00:18:22.080" end="00:18:25.919" style="s2">file is doing, what all the different</p>
+<p begin="00:18:24.080" end="00:18:27.200" style="s2">agents, all the different endpoints, all</p>
+<p begin="00:18:25.919" end="00:18:29.679" style="s2">the different software that you&#39;ve</p>
+<p begin="00:18:27.200" end="00:18:32.400" style="s2">created is doing, then that is a red</p>
+<p begin="00:18:29.679" end="00:18:34.960" style="s2">flag. I&#39;m not saying that you need to</p>
+<p begin="00:18:32.400" end="00:18:37.039" style="s2">understand every single line of code.</p>
+<p begin="00:18:34.960" end="00:18:39.600" style="s2">What I&#39;m trying to tell you is you need</p>
+<p begin="00:18:37.039" end="00:18:41.360" style="s2">to understand at the directory level</p>
+<p begin="00:18:39.600" end="00:18:43.280" style="s2">what each part of your codebase is</p>
+<p begin="00:18:41.360" end="00:18:46.240" style="s2">doing, why you&#39;ve used certain</p>
+<p begin="00:18:43.280" end="00:18:48.160" style="s2">dependencies, what this class is doing,</p>
+<p begin="00:18:46.240" end="00:18:50.240" style="s2">what this endpoint is doing, what the</p>
+<p begin="00:18:48.160" end="00:18:52.799" style="s2">goal of what you&#39;re trying to build is.</p>
+<p begin="00:18:50.240" end="00:18:54.720" style="s2">What happens is we try to vibe code so</p>
+<p begin="00:18:52.799" end="00:18:57.840" style="s2">much that we lose complete control of</p>
+<p begin="00:18:54.720" end="00:19:00.480" style="s2">our codebase. If that becomes what is</p>
+<p begin="00:18:57.840" end="00:19:02.080" style="s2">happening, then you are not an AI</p>
+<p begin="00:19:00.480" end="00:19:03.600" style="s2">engineer. You&#39;re just letting go of the</p>
+<p begin="00:19:02.080" end="00:19:06.320" style="s2">reins.</p>
+<p begin="00:19:03.600" end="00:19:07.600" style="s2">Now the other thing is as engineers</p>
+<p begin="00:19:06.320" end="00:19:09.679" style="s2">there&#39;s so many things that we know</p>
+<p begin="00:19:07.600" end="00:19:11.919" style="s2">already that we want to make our code as</p>
+<p begin="00:19:09.679" end="00:19:13.919" style="s2">simple as possible. We want to ensure</p>
+<p begin="00:19:11.919" end="00:19:15.919" style="s2">that there&#39;s no dead code. We want to</p>
+<p begin="00:19:13.919" end="00:19:17.919" style="s2">have comments on our code. We want to be</p>
+<p begin="00:19:15.919" end="00:19:20.640" style="s2">able to review the code in a really nice</p>
+<p begin="00:19:17.919" end="00:19:23.039" style="s2">way. You should still keep all of those</p>
+<p begin="00:19:20.640" end="00:19:24.960" style="s2">things intact. Your comment structure,</p>
+<p begin="00:19:23.039" end="00:19:27.360" style="s2">your testing strategy, your code review</p>
+<p begin="00:19:24.960" end="00:19:30.559" style="s2">methodology, your ability to say that,</p>
+<p begin="00:19:27.360" end="00:19:31.919" style="s2">hey, I have this exact methodology or</p>
+<p begin="00:19:30.559" end="00:19:34.720" style="s2">engineering standard from what I&#39;m</p>
+<p begin="00:19:31.919" end="00:19:38.000" style="s2">building. and keeping those set, keeping</p>
+<p begin="00:19:34.720" end="00:19:39.520" style="s2">those intact is key. So, what are we</p>
+<p begin="00:19:38.000" end="00:19:42.000" style="s2">looking for when we&#39;re asking you this</p>
+<p begin="00:19:39.520" end="00:19:43.840" style="s2">question? We&#39;re trying to discern if you</p>
+<p begin="00:19:42.000" end="00:19:46.160" style="s2">actually know how to wield your coding</p>
+<p begin="00:19:43.840" end="00:19:47.600" style="s2">agent well or not. We&#39;re trying to see</p>
+<p begin="00:19:46.160" end="00:19:50.480" style="s2">if you&#39;re losing control of your</p>
+<p begin="00:19:47.600" end="00:19:52.960" style="s2">codebase or you know when to stop AI or</p>
+<p begin="00:19:50.480" end="00:19:54.559" style="s2">when to let AI go. We&#39;re trying to check</p>
+<p begin="00:19:52.960" end="00:19:56.799" style="s2">and see if you actually understand the</p>
+<p begin="00:19:54.559" end="00:19:58.240" style="s2">code that you&#39;re generating. We&#39;re</p>
+<p begin="00:19:56.799" end="00:20:00.080" style="s2">trying to see if the code that you&#39;re</p>
+<p begin="00:19:58.240" end="00:20:02.720" style="s2">generating can be verified and you have</p>
+<p begin="00:20:00.080" end="00:20:04.640" style="s2">actual system by which you&#39;re doing so.</p>
+<p begin="00:20:02.720" end="00:20:06.880" style="s2">This whole thing is your AI first</p>
+<p begin="00:20:04.640" end="00:20:09.360" style="s2">development methodology and that is</p>
+<p begin="00:20:06.880" end="00:20:11.520" style="s2">going to be tested in an interview no</p>
+<p begin="00:20:09.360" end="00:20:14.160" style="s2">matter what.</p>
+<p begin="00:20:11.520" end="00:20:16.640" style="s2">Okay. Now when you&#39;re building AI there</p>
+<p begin="00:20:14.160" end="00:20:18.559" style="s2">are four pillars. Now people will say</p>
+<p begin="00:20:16.640" end="00:20:20.640" style="s2">hey why don&#39;t you add fine-tuning or</p>
+<p begin="00:20:18.559" end="00:20:22.320" style="s2">reinforcement learning or classical</p>
+<p begin="00:20:20.640" end="00:20:23.919" style="s2">learning. That is important, don&#39;t get</p>
+<p begin="00:20:22.320" end="00:20:25.520" style="s2">me wrong. But if you&#39;re a software</p>
+<p begin="00:20:23.919" end="00:20:27.360" style="s2">engineering, if you&#39;re a software</p>
+<p begin="00:20:25.520" end="00:20:29.440" style="s2">engineer, excuse me, building at the</p>
+<p begin="00:20:27.360" end="00:20:32.480" style="s2">application level, then these are the</p>
+<p begin="00:20:29.440" end="00:20:36.080" style="s2">four pillars by which you should focus.</p>
+<p begin="00:20:32.480" end="00:20:38.400" style="s2">Rag, graphs, agents, evals. By far the</p>
+<p begin="00:20:36.080" end="00:20:40.960" style="s2">thing that people forget always is eval</p>
+<p begin="00:20:38.400" end="00:20:42.720" style="s2">because they don&#39;t think it&#39;s important.</p>
+<p begin="00:20:40.960" end="00:20:44.799" style="s2">Right now, every single thing that you</p>
+<p begin="00:20:42.720" end="00:20:47.280" style="s2">see in the market, whether it&#39;s claude</p>
+<p begin="00:20:44.799" end="00:20:49.200" style="s2">code agent harness, whether it&#39;s some of</p>
+<p begin="00:20:47.280" end="00:20:50.960" style="s2">the graph-based agents across banking</p>
+<p begin="00:20:49.200" end="00:20:53.919" style="s2">systems, whether it&#39;s a customer support</p>
+<p begin="00:20:50.960" end="00:20:55.919" style="s2">agent, whether it&#39;s manis, everything is</p>
+<p begin="00:20:53.919" end="00:20:58.000" style="s2">based off of these four primitives and</p>
+<p begin="00:20:55.919" end="00:21:01.520" style="s2">they are the foundations of everything</p>
+<p begin="00:20:58.000" end="00:21:03.440" style="s2">that is being built. Rag or retrieval,</p>
+<p begin="00:21:01.520" end="00:21:05.679" style="s2">which means how can you grab context</p>
+<p begin="00:21:03.440" end="00:21:07.840" style="s2">whenever you need it. How can you</p>
+<p begin="00:21:05.679" end="00:21:10.000" style="s2">reliably get context from a vector</p>
+<p begin="00:21:07.840" end="00:21:13.039" style="s2">database from structured context from a</p>
+<p begin="00:21:10.000" end="00:21:15.360" style="s2">SQL database? Context across documents,</p>
+<p begin="00:21:13.039" end="00:21:17.679" style="s2">context across different areas of your</p>
+<p begin="00:21:15.360" end="00:21:19.919" style="s2">codebase. That is what rag is. It&#39;s</p>
+<p begin="00:21:17.679" end="00:21:21.679" style="s2">retrieval. Adding it to your context</p>
+<p begin="00:21:19.919" end="00:21:25.440" style="s2">window and then being able to have a</p>
+<p begin="00:21:21.679" end="00:21:27.679" style="s2">better output. A graph. A graph is nodes</p>
+<p begin="00:21:25.440" end="00:21:30.240" style="s2">and edges that can go in multiple</p>
+<p begin="00:21:27.679" end="00:21:32.480" style="s2">different directions and simulate well</p>
+<p begin="00:21:30.240" end="00:21:35.919" style="s2">how an agent would act across let&#39;s say</p>
+<p begin="00:21:32.480" end="00:21:38.159" style="s2">8 9 10 pathways. When you have a regular</p>
+<p begin="00:21:35.919" end="00:21:40.159" style="s2">agent, that regular agent can act in a</p>
+<p begin="00:21:38.159" end="00:21:42.480" style="s2">million different ways. But what a graph</p>
+<p begin="00:21:40.159" end="00:21:45.120" style="s2">lets you do is have guardrails across</p>
+<p begin="00:21:42.480" end="00:21:46.720" style="s2">all the different ways an agent can act.</p>
+<p begin="00:21:45.120" end="00:21:48.960" style="s2">That means you start by building a</p>
+<p begin="00:21:46.720" end="00:21:51.280" style="s2">graph. That graph gets better and better</p>
+<p begin="00:21:48.960" end="00:21:52.960" style="s2">and better over time. you understand all</p>
+<p begin="00:21:51.280" end="00:21:54.960" style="s2">the different areas where a graph should</p>
+<p begin="00:21:52.960" end="00:21:58.000" style="s2">be performing and you can then turn it</p>
+<p begin="00:21:54.960" end="00:21:59.919" style="s2">into an agent. An agent is going to be a</p>
+<p begin="00:21:58.000" end="00:22:03.360" style="s2">single orchestrator with multiple</p>
+<p begin="00:21:59.919" end="00:22:05.360" style="s2">skills, multiple connectors, MCP API</p>
+<p begin="00:22:03.360" end="00:22:07.919" style="s2">connections that the agent is able to</p>
+<p begin="00:22:05.360" end="00:22:10.000" style="s2">then orchestrate over 20 tools to</p>
+<p begin="00:22:07.919" end="00:22:12.240" style="s2">actually do something to actually make</p>
+<p begin="00:22:10.000" end="00:22:15.200" style="s2">up new sequences of work and workflows</p>
+<p begin="00:22:12.240" end="00:22:18.000" style="s2">that complete task end to end. And</p>
+<p begin="00:22:15.200" end="00:22:20.640" style="s2">finally, eval. Evals are the scoring</p>
+<p begin="00:22:18.000" end="00:22:22.559" style="s2">system which let us know if the last</p>
+<p begin="00:22:20.640" end="00:22:25.360" style="s2">three foundations are actually working</p>
+<p begin="00:22:22.559" end="00:22:27.520" style="s2">well or not. Right? A lot of people love</p>
+<p begin="00:22:25.360" end="00:22:29.520" style="s2">to have demos. I was working with this</p>
+<p begin="00:22:27.520" end="00:22:31.520" style="s2">team who was building a website builder</p>
+<p begin="00:22:29.520" end="00:22:33.600" style="s2">on top of their application and they had</p>
+<p begin="00:22:31.520" end="00:22:35.440" style="s2">this website builder running for about 6</p>
+<p begin="00:22:33.600" end="00:22:37.840" style="s2">months but they had no idea if it was</p>
+<p begin="00:22:35.440" end="00:22:40.320" style="s2">even leading to any conversion. We set</p>
+<p begin="00:22:37.840" end="00:22:42.720" style="s2">up a complete eval suite which tracked</p>
+<p begin="00:22:40.320" end="00:22:44.400" style="s2">if a human would actually move from</p>
+<p begin="00:22:42.720" end="00:22:46.720" style="s2">joining the website all the way to</p>
+<p begin="00:22:44.400" end="00:22:49.039" style="s2">converting and converting to a premium</p>
+<p begin="00:22:46.720" end="00:22:50.960" style="s2">account. We mapped it out step by step</p>
+<p begin="00:22:49.039" end="00:22:52.880" style="s2">with checkpoints and then we able to see</p>
+<p begin="00:22:50.960" end="00:22:55.280" style="s2">the evals and how people move through</p>
+<p begin="00:22:52.880" end="00:22:57.520" style="s2">that funnel. That is what you need. The</p>
+<p begin="00:22:55.280" end="00:22:59.440" style="s2">ability to score the performance, the</p>
+<p begin="00:22:57.520" end="00:23:03.039" style="s2">ability to see traction on top of your</p>
+<p begin="00:22:59.440" end="00:23:05.280" style="s2">application using actual numerical data.</p>
+<p begin="00:23:03.039" end="00:23:06.799" style="s2">These EVOs become by far one of the most</p>
+<p begin="00:23:05.280" end="00:23:09.760" style="s2">important things you can do to get</p>
+<p begin="00:23:06.799" end="00:23:11.120" style="s2">started in AI. So these four topics</p>
+<p begin="00:23:09.760" end="00:23:12.960" style="s2">you&#39;re going to get asked about inside</p>
+<p begin="00:23:11.120" end="00:23:14.159" style="s2">of your interview no matter what. So if</p>
+<p begin="00:23:12.960" end="00:23:15.679" style="s2">you don&#39;t know anything about them,</p>
+<p begin="00:23:14.159" end="00:23:18.000" style="s2">that&#39;s totally fine. There&#39;s YouTube</p>
+<p begin="00:23:15.679" end="00:23:19.679" style="s2">University and YouTube University has so</p>
+<p begin="00:23:18.000" end="00:23:21.679" style="s2">many videos across all four of these</p>
+<p begin="00:23:19.679" end="00:23:24.480" style="s2">topic areas.</p>
+<p begin="00:23:21.679" end="00:23:26.320" style="s2">Now, eval is what separates everybody</p>
+<p begin="00:23:24.480" end="00:23:28.159" style="s2">from being a true engineer or from</p>
+<p begin="00:23:26.320" end="00:23:29.919" style="s2">somebody that&#39;s just kind of dabbling.</p>
+<p begin="00:23:28.159" end="00:23:32.720" style="s2">What is an eval set? How do you build</p>
+<p begin="00:23:29.919" end="00:23:34.559" style="s2">one? That&#39;s a question you&#39;ll be asked.</p>
+<p begin="00:23:32.720" end="00:23:36.640" style="s2">There&#39;s how do you run experiments on</p>
+<p begin="00:23:34.559" end="00:23:38.559" style="s2">top of different models? If you have an</p>
+<p begin="00:23:36.640" end="00:23:40.720" style="s2">agent, can you manipulate which model</p>
+<p begin="00:23:38.559" end="00:23:42.240" style="s2">you&#39;re using, run your eval suite, and</p>
+<p begin="00:23:40.720" end="00:23:44.880" style="s2">then as a result see which model</p>
+<p begin="00:23:42.240" end="00:23:46.799" style="s2">performs best? What is observability?</p>
+<p begin="00:23:44.880" end="00:23:48.320" style="s2">What are observability platforms? How do</p>
+<p begin="00:23:46.799" end="00:23:50.240" style="s2">you connect to an observability platform</p>
+<p begin="00:23:48.320" end="00:23:51.360" style="s2">and actually use one? And then what are</p>
+<p begin="00:23:50.240" end="00:23:53.039" style="s2">the different ways you can use</p>
+<p begin="00:23:51.360" end="00:23:54.640" style="s2">observability to see what&#39;s working well</p>
+<p begin="00:23:53.039" end="00:23:57.520" style="s2">and what&#39;s working? What&#39;s not working</p>
+<p begin="00:23:54.640" end="00:23:59.280" style="s2">well? What&#39;s Langmith? What&#39;s Langfuse?</p>
+<p begin="00:23:57.520" end="00:24:02.000" style="s2">What are what&#39;s a good eval pipeline</p>
+<p begin="00:23:59.280" end="00:24:03.840" style="s2">look like? When I look at candidates,</p>
+<p begin="00:24:02.000" end="00:24:05.919" style="s2">there&#39;s people who can prompt. That&#39;s</p>
+<p begin="00:24:03.840" end="00:24:08.000" style="s2">basically everybody. Everybody at this</p>
+<p begin="00:24:05.919" end="00:24:09.760" style="s2">point can prompt. Then there&#39;s people</p>
+<p begin="00:24:08.000" end="00:24:11.279" style="s2">who can measure. That means they</p>
+<p begin="00:24:09.760" end="00:24:13.039" style="s2">understand how to actually connect an</p>
+<p begin="00:24:11.279" end="00:24:14.799" style="s2">observability platform that they</p>
+<p begin="00:24:13.039" end="00:24:16.400" style="s2">actually understand that there should be</p>
+<p begin="00:24:14.799" end="00:24:18.000" style="s2">some sort of measurement and what to</p>
+<p begin="00:24:16.400" end="00:24:21.279" style="s2">measure. And then finally, there&#39;s</p>
+<p begin="00:24:18.000" end="00:24:22.880" style="s2">people who can improve agentic systems.</p>
+<p begin="00:24:21.279" end="00:24:24.320" style="s2">So if you&#39;ve set up your agent, if</p>
+<p begin="00:24:22.880" end="00:24:26.480" style="s2">you&#39;ve set up your chatbot, if you&#39;ve</p>
+<p begin="00:24:24.320" end="00:24:28.320" style="s2">set up your rag pipeline, you should be</p>
+<p begin="00:24:26.480" end="00:24:32.080" style="s2">able to iterate on it and improve it</p>
+<p begin="00:24:28.320" end="00:24:34.400" style="s2">over time. That is the gold standard</p>
+<p begin="00:24:32.080" end="00:24:37.200" style="s2">when deciding who is a true AI engineer</p>
+<p begin="00:24:34.400" end="00:24:40.480" style="s2">and who isn&#39;t.</p>
+<p begin="00:24:37.200" end="00:24:43.200" style="s2">Now, this is going to be some of like</p>
+<p begin="00:24:40.480" end="00:24:46.000" style="s2">the key topics in gauntlet week 3, four,</p>
+<p begin="00:24:43.200" end="00:24:48.320" style="s2">five where it&#39;s important for you to do</p>
+<p begin="00:24:46.000" end="00:24:50.799" style="s2">complete projects. If you decide to</p>
+<p begin="00:24:48.320" end="00:24:52.240" style="s2">build a rag system, add emails to it. If</p>
+<p begin="00:24:50.799" end="00:24:54.880" style="s2">you decide to build a graph for an</p>
+<p begin="00:24:52.240" end="00:24:57.120" style="s2">agent, add emails to it. walk through</p>
+<p begin="00:24:54.880" end="00:24:58.799" style="s2">your methodology for testing that system</p>
+<p begin="00:24:57.120" end="00:25:00.640" style="s2">and then improving that system over</p>
+<p begin="00:24:58.799" end="00:25:03.440" style="s2">time.</p>
+<p begin="00:25:00.640" end="00:25:04.960" style="s2">Okay, so this is the interview arc. This</p>
+<p begin="00:25:03.440" end="00:25:08.240" style="s2">is what&#39;s going to happen in your AI</p>
+<p begin="00:25:04.960" end="00:25:09.760" style="s2">interview. Uh AI first interview. Uh I</p>
+<p begin="00:25:08.240" end="00:25:12.720" style="s2">think we&#39;ll have AI interviews sometime</p>
+<p begin="00:25:09.760" end="00:25:15.200" style="s2">soon probably as well. Fun fact, we use</p>
+<p begin="00:25:12.720" end="00:25:17.279" style="s2">AI interviewers in Gauntlet for grading.</p>
+<p begin="00:25:15.200" end="00:25:18.799" style="s2">Okay, so the interview arc is they&#39;re</p>
+<p begin="00:25:17.279" end="00:25:20.400" style="s2">going to start with a credibility check.</p>
+<p begin="00:25:18.799" end="00:25:23.440" style="s2">It&#39;s going to be hypers specific</p>
+<p begin="00:25:20.400" end="00:25:25.360" style="s2">questions and edge cases on top of the</p>
+<p begin="00:25:23.440" end="00:25:27.039" style="s2">tech stacks that you have experience in.</p>
+<p begin="00:25:25.360" end="00:25:28.799" style="s2">This is not going to be like lead code.</p>
+<p begin="00:25:27.039" end="00:25:30.240" style="s2">This is not going to be like some of the</p>
+<p begin="00:25:28.799" end="00:25:31.600" style="s2">questions that we used were used to</p>
+<p begin="00:25:30.240" end="00:25:34.080" style="s2">getting in the old software engineering</p>
+<p begin="00:25:31.600" end="00:25:35.679" style="s2">life cycle. It&#39;s going to be like hey</p>
+<p begin="00:25:34.080" end="00:25:38.240" style="s2">you have experience in node tell me</p>
+<p begin="00:25:35.679" end="00:25:41.440" style="s2">about MVM. You have experience in Python</p>
+<p begin="00:25:38.240" end="00:25:45.039" style="s2">tell me how to port C into Python. I&#39;m</p>
+<p begin="00:25:41.440" end="00:25:48.000" style="s2">not sure. Right. Decide what exactly is</p>
+<p begin="00:25:45.039" end="00:25:50.880" style="s2">going to be the knowledge base or the</p>
+<p begin="00:25:48.000" end="00:25:52.960" style="s2">foundation that certifies that your</p>
+<p begin="00:25:50.880" end="00:25:54.480" style="s2">experience in a tech stack is valid.</p>
+<p begin="00:25:52.960" end="00:25:56.640" style="s2">Those questions are going to be asked to</p>
+<p begin="00:25:54.480" end="00:26:00.320" style="s2">you. These questions can be generated by</p>
+<p begin="00:25:56.640" end="00:26:02.240" style="s2">AI really well. You can go into AI say</p>
+<p begin="00:26:00.320" end="00:26:04.480" style="s2">that hey I&#39;m going to be interviewing</p>
+<p begin="00:26:02.240" end="00:26:06.400" style="s2">for X Y andZ position as an AI first</p>
+<p begin="00:26:04.480" end="00:26:08.080" style="s2">engineer. I&#39;m going to have Python and</p>
+<p begin="00:26:06.400" end="00:26:10.080" style="s2">Java as the two things that they ask me</p>
+<p begin="00:26:08.080" end="00:26:12.240" style="s2">about and can you generate some</p>
+<p begin="00:26:10.080" end="00:26:14.240" style="s2">questions for me. Saying those questions</p>
+<p begin="00:26:12.240" end="00:26:16.159" style="s2">out loud, answering them really well is</p>
+<p begin="00:26:14.240" end="00:26:19.120" style="s2">going to be important. So, that&#39;s going</p>
+<p begin="00:26:16.159" end="00:26:20.880" style="s2">to be the first approach that these u</p>
+<p begin="00:26:19.120" end="00:26:24.159" style="s2">managers take to deciding if you&#39;re</p>
+<p begin="00:26:20.880" end="00:26:26.240" style="s2">worth it for the job. The next part</p>
+<p begin="00:26:24.159" end="00:26:27.760" style="s2">they&#39;re going to talk about probing how</p>
+<p begin="00:26:26.240" end="00:26:30.000" style="s2">deep your knowledge is of software</p>
+<p begin="00:26:27.760" end="00:26:32.240" style="s2">engineering. Software engineering is not</p>
+<p begin="00:26:30.000" end="00:26:34.080" style="s2">just coding. One of my first mentors</p>
+<p begin="00:26:32.240" end="00:26:35.600" style="s2">told me that there&#39;s coding and then</p>
+<p begin="00:26:34.080" end="00:26:37.120" style="s2">there&#39;s actually software engineering</p>
+<p begin="00:26:35.600" end="00:26:39.120" style="s2">because software engineering has</p>
+<p begin="00:26:37.120" end="00:26:41.360" style="s2">security, has deployment, has</p>
+<p begin="00:26:39.120" end="00:26:42.559" style="s2">scalability. All of these things are</p>
+<p begin="00:26:41.360" end="00:26:46.159" style="s2">things that you&#39;re going to be asked</p>
+<p begin="00:26:42.559" end="00:26:48.720" style="s2">about. If coding agents have pretty much</p>
+<p begin="00:26:46.159" end="00:26:50.640" style="s2">taken over the generation</p>
+<p begin="00:26:48.720" end="00:26:53.440" style="s2">portion of the software development life</p>
+<p begin="00:26:50.640" end="00:26:55.919" style="s2">cycle, there&#39;s seven other areas that</p>
+<p begin="00:26:53.440" end="00:26:58.400" style="s2">you can focus in on. Maybe that&#39;s task</p>
+<p begin="00:26:55.919" end="00:27:01.200" style="s2">generation. Maybe that&#39;s uh scaffolding</p>
+<p begin="00:26:58.400" end="00:27:03.120" style="s2">a repository. Maybe that&#39;s deployment.</p>
+<p begin="00:27:01.200" end="00:27:04.559" style="s2">Maybe that&#39;s security. Maybe that&#39;s</p>
+<p begin="00:27:03.120" end="00:27:06.720" style="s2">scaling this across your cloud</p>
+<p begin="00:27:04.559" end="00:27:09.360" style="s2">infrastructure. These are questions</p>
+<p begin="00:27:06.720" end="00:27:11.039" style="s2">you&#39;re going to get no matter what. So</p>
+<p begin="00:27:09.360" end="00:27:13.039" style="s2">you need to first have some sort of</p>
+<p begin="00:27:11.039" end="00:27:15.120" style="s2">credibility check to make sure that your</p>
+<p begin="00:27:13.039" end="00:27:16.880" style="s2">knowledge of a tech stack is valid. You</p>
+<p begin="00:27:15.120" end="00:27:18.320" style="s2">need to have the ability to talk about</p>
+<p begin="00:27:16.880" end="00:27:20.159" style="s2">the full software development life</p>
+<p begin="00:27:18.320" end="00:27:21.520" style="s2">cycle. Meaning that hey, I can talk</p>
+<p begin="00:27:20.159" end="00:27:23.120" style="s2">about security, I can talk about</p>
+<p begin="00:27:21.520" end="00:27:25.039" style="s2">scalability, and I can talk about</p>
+<p begin="00:27:23.120" end="00:27:27.919" style="s2">deployment. Finally, you need to have</p>
+<p begin="00:27:25.039" end="00:27:30.960" style="s2">some set level of product sense.</p>
+<p begin="00:27:27.919" end="00:27:34.240" style="s2">Gauntlet believes that as we get closer</p>
+<p begin="00:27:30.960" end="00:27:37.520" style="s2">and closer to coding being dominated by</p>
+<p begin="00:27:34.240" end="00:27:40.000" style="s2">AI, product manager and engineer are</p>
+<p begin="00:27:37.520" end="00:27:42.480" style="s2">becoming the same profession. I have</p>
+<p begin="00:27:40.000" end="00:27:45.440" style="s2">worked with teams that are making</p>
+<p begin="00:27:42.480" end="00:27:47.840" style="s2">product manager and engineer the same</p>
+<p begin="00:27:45.440" end="00:27:49.679" style="s2">position and calling it an AI first</p>
+<p begin="00:27:47.840" end="00:27:52.159" style="s2">builder. There&#39;s another company calling</p>
+<p begin="00:27:49.679" end="00:27:53.919" style="s2">it a full stack builder. Having a little</p>
+<p begin="00:27:52.159" end="00:27:56.159" style="s2">bit of product sense, understanding what</p>
+<p begin="00:27:53.919" end="00:27:58.960" style="s2">the user wants, actually understanding</p>
+<p begin="00:27:56.159" end="00:28:01.279" style="s2">the intent of a ticket, making sure that</p>
+<p begin="00:27:58.960" end="00:28:03.200" style="s2">the user is able to discern what is</p>
+<p begin="00:28:01.279" end="00:28:05.679" style="s2">supposed to happen with this feature is</p>
+<p begin="00:28:03.200" end="00:28:08.880" style="s2">going to be important. In the past, as</p>
+<p begin="00:28:05.679" end="00:28:10.960" style="s2">an engineer, it was required less of you</p>
+<p begin="00:28:08.880" end="00:28:12.880" style="s2">to understand exactly what the user</p>
+<p begin="00:28:10.960" end="00:28:16.559" style="s2">wanted. You you needed to be involved in</p>
+<p begin="00:28:12.880" end="00:28:19.279" style="s2">user reviews much less. Now, it is a</p>
+<p begin="00:28:16.559" end="00:28:22.080" style="s2">part about a part of what you&#39;re doing.</p>
+<p begin="00:28:19.279" end="00:28:24.640" style="s2">It is going to be important to discern</p>
+<p begin="00:28:22.080" end="00:28:26.480" style="s2">uh that skill inside of your interview</p>
+<p begin="00:28:24.640" end="00:28:27.760" style="s2">so the manager feels like hey this guy</p>
+<p begin="00:28:26.480" end="00:28:30.320" style="s2">actually understands a little bit of</p>
+<p begin="00:28:27.760" end="00:28:32.240" style="s2">product. He knows what decision to make</p>
+<p begin="00:28:30.320" end="00:28:35.039" style="s2">when. He has good judgment when it comes</p>
+<p begin="00:28:32.240" end="00:28:37.120" style="s2">to users. As a result, this can be a</p>
+<p begin="00:28:35.039" end="00:28:39.200" style="s2">better product on the other side.</p>
+<p begin="00:28:37.120" end="00:28:41.600" style="s2">Finally, workflow openness. What do I</p>
+<p begin="00:28:39.200" end="00:28:44.080" style="s2">mean by this? All right, there are some</p>
+<p begin="00:28:41.600" end="00:28:46.399" style="s2">people who say they are AI first when</p>
+<p begin="00:28:44.080" end="00:28:48.559" style="s2">they&#39;re truly not.</p>
+<p begin="00:28:46.399" end="00:28:50.240" style="s2">There&#39;s a bunch of people out there who</p>
+<p begin="00:28:48.559" end="00:28:52.880" style="s2">don&#39;t believe that AI should be involved</p>
+<p begin="00:28:50.240" end="00:28:55.279" style="s2">in work at all. There&#39;s individuals who</p>
+<p begin="00:28:52.880" end="00:28:56.880" style="s2">kind of embrace it but kind of don&#39;t.</p>
+<p begin="00:28:55.279" end="00:28:58.960" style="s2">There&#39;s individuals who have a ton of</p>
+<p begin="00:28:56.880" end="00:29:00.799" style="s2">reservations. There&#39;s individuals who</p>
+<p begin="00:28:58.960" end="00:29:02.720" style="s2">have a ton of preconceived notions.</p>
+<p begin="00:29:00.799" end="00:29:04.880" style="s2">That&#39;s fine. You can believe what you</p>
+<p begin="00:29:02.720" end="00:29:07.200" style="s2">want to believe, but when you go into an</p>
+<p begin="00:29:04.880" end="00:29:10.159" style="s2">interview, they&#39;re 100% going to check</p>
+<p begin="00:29:07.200" end="00:29:13.440" style="s2">how open are you to adopting a new way</p>
+<p begin="00:29:10.159" end="00:29:15.760" style="s2">of work. In the era of AI, the way we</p>
+<p begin="00:29:13.440" end="00:29:17.360" style="s2">work is fundamentally changing. And if</p>
+<p begin="00:29:15.760" end="00:29:19.360" style="s2">the way we work is fundamentally</p>
+<p begin="00:29:17.360" end="00:29:22.640" style="s2">changing then you should be open and</p>
+<p begin="00:29:19.360" end="00:29:24.480" style="s2">adaptable to whatever that may be. Now</p>
+<p begin="00:29:22.640" end="00:29:26.480" style="s2">there it could be specri development it</p>
+<p begin="00:29:24.480" end="00:29:28.880" style="s2">could be something else right but the</p>
+<p begin="00:29:26.480" end="00:29:31.440" style="s2">goal here is are you open to changing</p>
+<p begin="00:29:28.880" end="00:29:33.760" style="s2">the way you&#39;ve been doing things</p>
+<p begin="00:29:31.440" end="00:29:37.039" style="s2">okay to how to pass the credibility</p>
+<p begin="00:29:33.760" end="00:29:38.799" style="s2">check is to have projects that can speak</p>
+<p begin="00:29:37.039" end="00:29:40.960" style="s2">to your experience. These could be</p>
+<p begin="00:29:38.799" end="00:29:43.360" style="s2">deployed work this could be complete</p>
+<p begin="00:29:40.960" end="00:29:46.720" style="s2">work at the that you&#39;ve done across your</p>
+<p begin="00:29:43.360" end="00:29:48.559" style="s2">experience. You need to have the ability</p>
+<p begin="00:29:46.720" end="00:29:51.679" style="s2">to open up that app inside of your</p>
+<p begin="00:29:48.559" end="00:29:54.159" style="s2">portfolio, go under the hood, articulate</p>
+<p begin="00:29:51.679" end="00:29:56.799" style="s2">maybe how AI helped you build what you</p>
+<p begin="00:29:54.159" end="00:29:58.880" style="s2">just built, if it did, and describe any</p>
+<p begin="00:29:56.799" end="00:30:00.880" style="s2">of the bugs it may have, the trade-offs</p>
+<p begin="00:29:58.880" end="00:30:03.520" style="s2">you made, and then the judgment you had</p>
+<p begin="00:30:00.880" end="00:30:06.799" style="s2">when building the application. You want</p>
+<p begin="00:30:03.520" end="00:30:10.000" style="s2">to make sure that you are the engineer,</p>
+<p begin="00:30:06.799" end="00:30:12.480" style="s2">AI is the tool, and that&#39;s it. One more</p>
+<p begin="00:30:10.000" end="00:30:14.880" style="s2">time. You are the engineer. AI is the</p>
+<p begin="00:30:12.480" end="00:30:17.679" style="s2">tool. And what you&#39;re trying to show is</p>
+<p begin="00:30:14.880" end="00:30:19.679" style="s2">that you can wield your tool</p>
+<p begin="00:30:17.679" end="00:30:21.760" style="s2">the best compared to whoever else is</p>
+<p begin="00:30:19.679" end="00:30:24.159" style="s2">interviewing.</p>
+<p begin="00:30:21.760" end="00:30:26.320" style="s2">Now, product sense in the era, AI era,</p>
+<p begin="00:30:24.159" end="00:30:28.000" style="s2">just means that you have good judgment.</p>
+<p begin="00:30:26.320" end="00:30:30.000" style="s2">That means that if let&#39;s say you were</p>
+<p begin="00:30:28.000" end="00:30:31.600" style="s2">bottlenecked for 2 weeks and you had a</p>
+<p begin="00:30:30.000" end="00:30:33.840" style="s2">bunch of tickets to do, you would know</p>
+<p begin="00:30:31.600" end="00:30:35.760" style="s2">what ticket to focus on. Maybe you would</p>
+<p begin="00:30:33.840" end="00:30:38.000" style="s2">use AI to take in all of the user</p>
+<p begin="00:30:35.760" end="00:30:39.760" style="s2">interviews to better understand exactly</p>
+<p begin="00:30:38.000" end="00:30:41.840" style="s2">what was going on to pick the right</p>
+<p begin="00:30:39.760" end="00:30:44.159" style="s2">ticket to work on. Maybe you&#39;d be better</p>
+<p begin="00:30:41.840" end="00:30:46.320" style="s2">able to prioritize which features would</p>
+<p begin="00:30:44.159" end="00:30:48.960" style="s2">drive more user adoption than other</p>
+<p begin="00:30:46.320" end="00:30:50.720" style="s2">features. This level of judgment is what</p>
+<p begin="00:30:48.960" end="00:30:52.080" style="s2">people are looking for. That doesn&#39;t</p>
+<p begin="00:30:50.720" end="00:30:54.000" style="s2">mean that you have to completely go out</p>
+<p begin="00:30:52.080" end="00:30:55.679" style="s2">and be a product manager. That means you</p>
+<p begin="00:30:54.000" end="00:30:58.080" style="s2">need to have a certain level of taste</p>
+<p begin="00:30:55.679" end="00:31:00.240" style="s2">and judgment to decide what ticket is</p>
+<p begin="00:30:58.080" end="00:31:02.399" style="s2">more important. How should I approach</p>
+<p begin="00:31:00.240" end="00:31:04.559" style="s2">this ticket? How can I thoughtfully make</p>
+<p begin="00:31:02.399" end="00:31:07.440" style="s2">sure that we account for X, Y, and Z</p>
+<p begin="00:31:04.559" end="00:31:09.760" style="s2">scenarios? What&#39;s the trade-off between</p>
+<p begin="00:31:07.440" end="00:31:11.840" style="s2">doing this ticket and doing that ticket?</p>
+<p begin="00:31:09.760" end="00:31:14.080" style="s2">What&#39;s the trade-off in this approach</p>
+<p begin="00:31:11.840" end="00:31:16.080" style="s2">and that approach? This architecture and</p>
+<p begin="00:31:14.080" end="00:31:18.080" style="s2">that architecture. That level of</p>
+<p begin="00:31:16.080" end="00:31:20.000" style="s2">judgment you should have going to the</p>
+<p begin="00:31:18.080" end="00:31:22.240" style="s2">interview.</p>
+<p begin="00:31:20.000" end="00:31:25.679" style="s2">Now, workflow openness is what I talked</p>
+<p begin="00:31:22.240" end="00:31:27.279" style="s2">about earlier. And I think this diagram</p>
+<p begin="00:31:25.679" end="00:31:30.799" style="s2">illustrates properly what I&#39;m talking</p>
+<p begin="00:31:27.279" end="00:31:33.039" style="s2">about. there&#39;s too resistant, which just</p>
+<p begin="00:31:30.799" end="00:31:36.399" style="s2">means I&#39;m never going to adopt AI at</p>
+<p begin="00:31:33.039" end="00:31:38.480" style="s2">all. Or they might come off as, hey, I&#39;m</p>
+<p begin="00:31:36.399" end="00:31:39.840" style="s2">going to adopt AI just to like</p>
+<p begin="00:31:38.480" end="00:31:41.519" style="s2">autocomplete, but I&#39;m never going to</p>
+<p begin="00:31:39.840" end="00:31:43.919" style="s2">actually let it take take over my</p>
+<p begin="00:31:41.519" end="00:31:45.600" style="s2">workflow. Then on the other side, we</p>
+<p begin="00:31:43.919" end="00:31:47.279" style="s2">have, hey, I&#39;m going to vibe code</p>
+<p begin="00:31:45.600" end="00:31:49.120" style="s2">everything. I&#39;m going to generate a</p>
+<p begin="00:31:47.279" end="00:31:51.120" style="s2">million lines of code, not review it at</p>
+<p begin="00:31:49.120" end="00:31:53.840" style="s2">all, not have testing suites, and</p>
+<p begin="00:31:51.120" end="00:31:56.000" style="s2">actually go down the line and just ship</p>
+<p begin="00:31:53.840" end="00:31:59.039" style="s2">as much as I can. I think the right</p>
+<p begin="00:31:56.000" end="00:32:01.360" style="s2">answer is in the middle. Right. And I</p>
+<p begin="00:31:59.039" end="00:32:03.200" style="s2">think as AI gets better and better and</p>
+<p begin="00:32:01.360" end="00:32:05.360" style="s2">better, AI will become our digital</p>
+<p begin="00:32:03.200" end="00:32:07.840" style="s2">coworker. But until it gets there, we</p>
+<p begin="00:32:05.360" end="00:32:10.960" style="s2">need to have good verification systems</p>
+<p begin="00:32:07.840" end="00:32:14.080" style="s2">to ensure that this is a methodology.</p>
+<p begin="00:32:10.960" end="00:32:16.320" style="s2">This is leverage being given to me as an</p>
+<p begin="00:32:14.080" end="00:32:18.640" style="s2">engineer and it&#39;s going to introduce</p>
+<p begin="00:32:16.320" end="00:32:21.039" style="s2">some risk and my goal should be to</p>
+<p begin="00:32:18.640" end="00:32:22.799" style="s2">mitigate that risk. The director of this</p>
+<p begin="00:32:21.039" end="00:32:26.480" style="s2">movie, I need to make sure that the</p>
+<p begin="00:32:22.799" end="00:32:29.200" style="s2">actors are in the right location.</p>
+<p begin="00:32:26.480" end="00:32:30.720" style="s2">Okay, so this is what we&#39;re looking for</p>
+<p begin="00:32:29.200" end="00:32:32.720" style="s2">uh to give you a sort of breakdown of</p>
+<p begin="00:32:30.720" end="00:32:34.480" style="s2">all the skills. If you were to go into</p>
+<p begin="00:32:32.720" end="00:32:36.960" style="s2">an AI first engineer interview right</p>
+<p begin="00:32:34.480" end="00:32:40.080" style="s2">now, you want to be able to code with</p>
+<p begin="00:32:36.960" end="00:32:41.919" style="s2">AI, understand methodology, understand</p>
+<p begin="00:32:40.080" end="00:32:43.760" style="s2">plan mode, what skills are, task</p>
+<p begin="00:32:41.919" end="00:32:45.360" style="s2">management. You need to have some sort</p>
+<p begin="00:32:43.760" end="00:32:48.000" style="s2">of verification strategy. Could be</p>
+<p begin="00:32:45.360" end="00:32:50.159" style="s2">testing suites, could be manual review,</p>
+<p begin="00:32:48.000" end="00:32:52.480" style="s2">code review, sub aents, whatever that</p>
+<p begin="00:32:50.159" end="00:32:55.120" style="s2">philosophy is. You need to understand</p>
+<p begin="00:32:52.480" end="00:32:57.360" style="s2">the primitives, rag, agents, graphs,</p>
+<p begin="00:32:55.120" end="00:32:59.200" style="s2">evals. And then you need to have some</p>
+<p begin="00:32:57.360" end="00:33:01.840" style="s2">level of product sense. Talk about</p>
+<p begin="00:32:59.200" end="00:33:04.159" style="s2">trade-offs, prioritization, comms across</p>
+<p begin="00:33:01.840" end="00:33:06.000" style="s2">the entire team. When you&#39;re thinking</p>
+<p begin="00:33:04.159" end="00:33:08.320" style="s2">about preparing for an interview as an</p>
+<p begin="00:33:06.000" end="00:33:09.760" style="s2">AI first engineer, these are also the</p>
+<p begin="00:33:08.320" end="00:33:11.519" style="s2">areas that you should get really good</p>
+<p begin="00:33:09.760" end="00:33:13.919" style="s2">at. I&#39;m not saying you need to be</p>
+<p begin="00:33:11.519" end="00:33:15.679" style="s2">perfect and handle all edge cases, but</p>
+<p begin="00:33:13.919" end="00:33:17.679" style="s2">if you had to figure out what are the</p>
+<p begin="00:33:15.679" end="00:33:20.320" style="s2">key areas of focus, this is what I would</p>
+<p begin="00:33:17.679" end="00:33:21.279" style="s2">focus on.</p>
+<p begin="00:33:20.320" end="00:33:25.760" style="s2">Okay?</p>
+<p begin="00:33:21.279" end="00:33:27.760" style="s2">So, we are about 35 minutes in.</p>
+<p begin="00:33:25.760" end="00:33:29.760" style="s2">What I&#39;m going to start doing now is</p>
+<p begin="00:33:27.760" end="00:33:32.159" style="s2">we&#39;re going to do a few practice rounds</p>
+<p begin="00:33:29.760" end="00:33:34.480" style="s2">together. I don&#39;t believe in completely</p>
+<p begin="00:33:32.159" end="00:33:38.640" style="s2">theoretical lectures. That&#39;s not who I</p>
+<p begin="00:33:34.480" end="00:33:40.000" style="s2">am. The goal here is I want you guys I&#39;m</p>
+<p begin="00:33:38.640" end="00:33:42.399" style="s2">going to give you a question from the</p>
+<p begin="00:33:40.000" end="00:33:44.399" style="s2">list and inside of the chat I&#39;m going to</p>
+<p begin="00:33:42.399" end="00:33:47.120" style="s2">ask you to answer that question as you</p>
+<p begin="00:33:44.399" end="00:33:49.279" style="s2">would based on the experience you have</p>
+<p begin="00:33:47.120" end="00:33:51.600" style="s2">and as if you&#39;re inside of an interview.</p>
+<p begin="00:33:49.279" end="00:33:53.679" style="s2">If you have a dictation app, I use Aqua</p>
+<p begin="00:33:51.600" end="00:33:55.440" style="s2">for example, you can use the dictation</p>
+<p begin="00:33:53.679" end="00:34:01.880" style="s2">app to just answer your question and add</p>
+<p begin="00:33:55.440" end="00:34:01.880" style="s2">it to the Zoom chat. But I&#39;m gonna pick</p>
+<p begin="00:34:02.399" end="00:34:08.000" style="s2">question number five. Tell me about a</p>
+<p begin="00:34:05.200" end="00:34:10.480" style="s2">time AI gave you bad code. How did you</p>
+<p begin="00:34:08.000" end="00:34:13.679" style="s2">catch it?</p>
+<p begin="00:34:10.480" end="00:34:16.159" style="s2">So the question posed to you, act like</p>
+<p begin="00:34:13.679" end="00:34:19.599" style="s2">this is a real interview. Tell me about</p>
+<p begin="00:34:16.159" end="00:34:22.839" style="s2">a time AI gave you bad code. How did you</p>
+<p begin="00:34:19.599" end="00:34:22.839" style="s2">catch it?</p>
+<p begin="00:34:48.399" end="00:34:54.839" style="s2">Integration tests are good. Type check.</p>
+<p begin="00:34:50.879" end="00:34:54.839" style="s2">Bang on. Unit test.</p>
+<p begin="00:34:57.440" end="00:35:00.960" style="s2">I did manual Q&amp;A of the feature and I</p>
+<p begin="00:34:59.440" end="00:35:04.520" style="s2">asked it to build and it did work</p>
+<p begin="00:35:00.960" end="00:35:04.520" style="s2">properly. Good.</p>
+<p begin="00:35:06.079" end="00:35:13.480" style="s2">Some through unit test</p>
+<p begin="00:35:09.359" end="00:35:13.480" style="s2">unconnected AI triggers.</p>
+<p begin="00:35:16.240" end="00:35:23.079" style="s2">I use TDD. Great. And eval. Well done.</p>
+<p begin="00:35:27.520" end="00:35:32.960" style="s2">Terraform code created by AI. I was</p>
+<p begin="00:35:31.119" end="00:35:35.520" style="s2">building a multiplayer game and the back</p>
+<p begin="00:35:32.960" end="00:35:38.079" style="s2">end needed to hide information from one</p>
+<p begin="00:35:35.520" end="00:35:39.760" style="s2">player and the others asked a change.</p>
+<p begin="00:35:38.079" end="00:35:44.200" style="s2">Okay.</p>
+<p begin="00:35:39.760" end="00:35:44.200" style="s2">With my project, I caught a PR.</p>
+<p begin="00:35:45.520" end="00:35:50.160" style="s2">I also keep the output small so I can</p>
+<p begin="00:35:47.280" end="00:35:55.000" style="s2">see it all. Nice. I made sure to run</p>
+<p begin="00:35:50.160" end="00:35:55.000" style="s2">test to see if everything was working.</p>
+<p begin="00:35:56.480" end="00:36:01.760" style="s2">AI gave me bad code</p>
+<p begin="00:36:00.240" end="00:36:05.680" style="s2">visibility</p>
+<p begin="00:36:01.760" end="00:36:10.119" style="s2">mythos. Yeah, exactly.</p>
+<p begin="00:36:05.680" end="00:36:10.119" style="s2">Bad separation. Test the output.</p>
+<p begin="00:36:12.480" end="00:36:17.920" style="s2">Okay. Not bad. Not bad at all. Keep</p>
+<p begin="00:36:16.000" end="00:36:19.760" style="s2">going. I&#39;m going to give you my answer</p>
+<p begin="00:36:17.920" end="00:36:21.200" style="s2">because I think it&#39;s important. I think</p>
+<p begin="00:36:19.760" end="00:36:22.720" style="s2">what I&#39;m looking for when I ask this</p>
+<p begin="00:36:21.200" end="00:36:24.079" style="s2">question in an interview is the</p>
+<p begin="00:36:22.720" end="00:36:27.119" style="s2">following.</p>
+<p begin="00:36:24.079" end="00:36:28.640" style="s2">I actually broke up the exact tasks that</p>
+<p begin="00:36:27.119" end="00:36:31.040" style="s2">claude code was supposed to do into</p>
+<p begin="00:36:28.640" end="00:36:33.520" style="s2">phases. Each of the phases had</p>
+<p begin="00:36:31.040" end="00:36:35.839" style="s2">acceptance criteria. This acceptance</p>
+<p begin="00:36:33.520" end="00:36:38.560" style="s2">criteria was either a playright test,</p>
+<p begin="00:36:35.839" end="00:36:40.480" style="s2">integration test, end to end test, a</p>
+<p begin="00:36:38.560" end="00:36:41.920" style="s2">unit test, and maybe some things I could</p>
+<p begin="00:36:40.480" end="00:36:44.480" style="s2">check manually on the deployed</p>
+<p begin="00:36:41.920" end="00:36:46.480" style="s2">application. I had already deployed the</p>
+<p begin="00:36:44.480" end="00:36:48.960" style="s2">application earlier and what I was doing</p>
+<p begin="00:36:46.480" end="00:36:50.560" style="s2">is deploying it to a dev branch so I can</p>
+<p begin="00:36:48.960" end="00:36:53.200" style="s2">actually see and test out what I was</p>
+<p begin="00:36:50.560" end="00:36:54.960" style="s2">building. As Claude code would go</p>
+<p begin="00:36:53.200" end="00:36:57.520" style="s2">through each of the phases, I would</p>
+<p begin="00:36:54.960" end="00:36:59.760" style="s2">check the acceptance criteria, I would</p>
+<p begin="00:36:57.520" end="00:37:01.839" style="s2">go into the dev branch and actually see</p>
+<p begin="00:36:59.760" end="00:37:03.599" style="s2">what was breaking, what was working, and</p>
+<p begin="00:37:01.839" end="00:37:05.760" style="s2">then I would run the test manually</p>
+<p begin="00:37:03.599" end="00:37:08.240" style="s2">because Cloud Code likes to lie about</p>
+<p begin="00:37:05.760" end="00:37:10.240" style="s2">test passing all the time. And I would</p>
+<p begin="00:37:08.240" end="00:37:12.720" style="s2">make sure that those tests were actually</p>
+<p begin="00:37:10.240" end="00:37:15.520" style="s2">passing. This is exactly what happened</p>
+<p begin="00:37:12.720" end="00:37:19.760" style="s2">when I was building the Gauntlet AI LMS.</p>
+<p begin="00:37:15.520" end="00:37:22.480" style="s2">The LMS had this one bug where it was</p>
+<p begin="00:37:19.760" end="00:37:25.280" style="s2">unable to showcase all the scheduled</p>
+<p begin="00:37:22.480" end="00:37:27.200" style="s2">classes in a single calendar view. I</p>
+<p begin="00:37:25.280" end="00:37:29.119" style="s2">found that bug and AI kept telling me</p>
+<p begin="00:37:27.200" end="00:37:31.839" style="s2">no, it was working. I was able to do</p>
+<p begin="00:37:29.119" end="00:37:33.760" style="s2">that through my acceptance criteria, the</p>
+<p begin="00:37:31.839" end="00:37:36.640" style="s2">fact that I broke down the entire task</p>
+<p begin="00:37:33.760" end="00:37:39.599" style="s2">into phases, the test suite that I had,</p>
+<p begin="00:37:36.640" end="00:37:42.560" style="s2">and by reviewing the output myself.</p>
+<p begin="00:37:39.599" end="00:37:44.000" style="s2">Okay, what did I include in my answer? I</p>
+<p begin="00:37:42.560" end="00:37:46.800" style="s2">included a walkthrough of my</p>
+<p begin="00:37:44.000" end="00:37:49.680" style="s2">methodology. I included exactly what I</p>
+<p begin="00:37:46.800" end="00:37:52.320" style="s2">would do in a specific scenario. And I</p>
+<p begin="00:37:49.680" end="00:37:54.640" style="s2">included an example of something I was</p>
+<p begin="00:37:52.320" end="00:37:56.480" style="s2">actually building that if I was asked to</p>
+<p begin="00:37:54.640" end="00:37:59.280" style="s2">showcase, I can open up the GitHub</p>
+<p begin="00:37:56.480" end="00:38:02.480" style="s2">repository and talk about. That is what</p>
+<p begin="00:37:59.280" end="00:38:04.160" style="s2">you need to do out loud. Now, one of the</p>
+<p begin="00:38:02.480" end="00:38:06.560" style="s2">things we have here at Gauntlet is we</p>
+<p begin="00:38:04.160" end="00:38:10.079" style="s2">have an AI interviewer and each of the</p>
+<p begin="00:38:06.560" end="00:38:11.920" style="s2">students is forced to actually input</p>
+<p begin="00:38:10.079" end="00:38:13.359" style="s2">uh like a video of them walking through</p>
+<p begin="00:38:11.920" end="00:38:16.560" style="s2">their project for their submission every</p>
+<p begin="00:38:13.359" end="00:38:19.359" style="s2">single week. And the goal here is you</p>
+<p begin="00:38:16.560" end="00:38:20.880" style="s2">should act like it&#39;s a real interview.</p>
+<p begin="00:38:19.359" end="00:38:22.880" style="s2">Your goal should be that hey, I&#39;m</p>
+<p begin="00:38:20.880" end="00:38:24.480" style="s2">talking to my future interviewer and I&#39;m</p>
+<p begin="00:38:22.880" end="00:38:28.320" style="s2">going to walk through X, Y, and Z the</p>
+<p begin="00:38:24.480" end="00:38:31.359" style="s2">way I would for that specific project.</p>
+<p begin="00:38:28.320" end="00:38:33.119" style="s2">Now, if that&#39;s the case, then everything</p>
+<p begin="00:38:31.359" end="00:38:35.440" style="s2">we do with the questions I&#39;m giving you</p>
+<p begin="00:38:33.119" end="00:38:37.920" style="s2">right now, you need to be able to take</p>
+<p begin="00:38:35.440" end="00:38:39.920" style="s2">that question, answer it out loud, even</p>
+<p begin="00:38:37.920" end="00:38:43.040" style="s2">record yourself, and then see how you</p>
+<p begin="00:38:39.920" end="00:38:46.880" style="s2">perform. Okay, next one. Building with</p>
+<p begin="00:38:43.040" end="00:38:48.720" style="s2">AI. Now, many of you may not have</p>
+<p begin="00:38:46.880" end="00:38:51.119" style="s2">actually started learning about some of</p>
+<p begin="00:38:48.720" end="00:38:52.720" style="s2">these primitives of AI. There are a</p>
+<p begin="00:38:51.119" end="00:38:55.599" style="s2">bunch of resources that you can go out</p>
+<p begin="00:38:52.720" end="00:38:57.200" style="s2">and find. The gauntlet cohort focuses on</p>
+<p begin="00:38:55.599" end="00:38:59.680" style="s2">this in the first two weeks of our</p>
+<p begin="00:38:57.200" end="00:39:02.800" style="s2">program where we talk about rag, graphs,</p>
+<p begin="00:38:59.680" end="00:39:05.599" style="s2">agents, and evals. But the goal here</p>
+<p begin="00:39:02.800" end="00:39:07.359" style="s2">should be how can I take some of the</p>
+<p begin="00:39:05.599" end="00:39:09.680" style="s2">specific questions I may be asked in</p>
+<p begin="00:39:07.359" end="00:39:12.320" style="s2">these areas and then be able to answer</p>
+<p begin="00:39:09.680" end="00:39:14.800" style="s2">them really well out loud. So, back in</p>
+<p begin="00:39:12.320" end="00:39:17.200" style="s2">the chat, I want everybody to see if</p>
+<p begin="00:39:14.800" end="00:39:19.760" style="s2">they can answer question number six.</p>
+<p begin="00:39:17.200" end="00:39:21.760" style="s2">What does observability mean in an LLM</p>
+<p begin="00:39:19.760" end="00:39:25.440" style="s2">application?</p>
+<p begin="00:39:21.760" end="00:39:28.440" style="s2">What does observability mean in an LLM</p>
+<p begin="00:39:25.440" end="00:39:28.440" style="s2">application?</p>
+<p begin="00:39:36.160" end="00:39:40.000" style="s2">Also, I&#39;m seeing a ton of questions</p>
+<p begin="00:39:37.760" end="00:39:43.359" style="s2">about Gauntlet AI. If that&#39;s the case,</p>
+<p begin="00:39:40.000" end="00:39:45.200" style="s2">you can go to gauntletai.comfaq.</p>
+<p begin="00:39:43.359" end="00:39:47.040" style="s2">You can see all of our questions that</p>
+<p begin="00:39:45.200" end="00:39:50.920" style="s2">our little agent can answer for you</p>
+<p begin="00:39:47.040" end="00:39:50.920" style="s2">there. That&#39;s gauntletai.comfaq.</p>
+<p begin="00:39:51.200" end="00:39:55.680" style="s2">All right. Observability means that you</p>
+<p begin="00:39:53.520" end="00:39:58.240" style="s2">can trace the decision all the way</p>
+<p begin="00:39:55.680" end="00:39:59.520" style="s2">through. Observability means that you</p>
+<p begin="00:39:58.240" end="00:40:01.680" style="s2">have the ability to see the reasoning</p>
+<p begin="00:39:59.520" end="00:40:04.240" style="s2">and the agents and its tool calls.</p>
+<p begin="00:40:01.680" end="00:40:07.200" style="s2">Visibility to reasoning.</p>
+<p begin="00:40:04.240" end="00:40:09.280" style="s2">Be able to access data.</p>
+<p begin="00:40:07.200" end="00:40:12.160" style="s2">I&#39;ve been reviewing the thinking, seeing</p>
+<p begin="00:40:09.280" end="00:40:17.040" style="s2">the thought process. Observability in</p>
+<p begin="00:40:12.160" end="00:40:20.400" style="s2">LLM means application visibility</p>
+<p begin="00:40:17.040" end="00:40:22.000" style="s2">metrics. Good.</p>
+<p begin="00:40:20.400" end="00:40:23.359" style="s2">Observability means monitoring,</p>
+<p begin="00:40:22.000" end="00:40:25.839" style="s2">tracking, and understanding what&#39;s</p>
+<p begin="00:40:23.359" end="00:40:27.920" style="s2">happening inside your LLM application,</p>
+<p begin="00:40:25.839" end="00:40:30.720" style="s2">not just whether it works. Dashboarding</p>
+<p begin="00:40:27.920" end="00:40:33.720" style="s2">and alerting. Correct.</p>
+<p begin="00:40:30.720" end="00:40:33.720" style="s2">Correct.</p>
+<p begin="00:40:34.320" end="00:40:38.400" style="s2">Observer means being able to see the</p>
+<p begin="00:40:36.720" end="00:40:42.440" style="s2">work behind the LM, understanding what&#39;s</p>
+<p begin="00:40:38.400" end="00:40:42.440" style="s2">going on. But nice.</p>
+<p begin="00:40:46.720" end="00:40:52.560" style="s2">All right. Not bad. Not bad at all. For</p>
+<p begin="00:40:49.040" end="00:40:54.400" style="s2">me, observability is the key</p>
+<p begin="00:40:52.560" end="00:40:57.200" style="s2">information that is hidden behind the</p>
+<p begin="00:40:54.400" end="00:40:59.359" style="s2">black box that is your LLM application.</p>
+<p begin="00:40:57.200" end="00:41:01.680" style="s2">We send all these calls back to some</p>
+<p begin="00:40:59.359" end="00:41:03.200" style="s2">API. They do some sort of reasoning</p>
+<p begin="00:41:01.680" end="00:41:05.280" style="s2">inside of their neural network and we</p>
+<p begin="00:41:03.200" end="00:41:07.920" style="s2">get these answers back by them guessing</p>
+<p begin="00:41:05.280" end="00:41:10.160" style="s2">tokens. We need to be able to see the</p>
+<p begin="00:41:07.920" end="00:41:12.319" style="s2">tool calls, the inputs and the outputs,</p>
+<p begin="00:41:10.160" end="00:41:15.119" style="s2">the system prompt and the user prompt to</p>
+<p begin="00:41:12.319" end="00:41:17.680" style="s2">exactly know how our system is solving a</p>
+<p begin="00:41:15.119" end="00:41:20.319" style="s2">problem or completing a task. As a</p>
+<p begin="00:41:17.680" end="00:41:22.800" style="s2">result, observability is that view.</p>
+<p begin="00:41:20.319" end="00:41:25.119" style="s2">Every single interaction collated,</p>
+<p begin="00:41:22.800" end="00:41:28.800" style="s2">sequenced and organized for us to see</p>
+<p begin="00:41:25.119" end="00:41:32.480" style="s2">the end toend interaction of an LLM.</p>
+<p begin="00:41:28.800" end="00:41:34.640" style="s2">Each of these questions can be found by</p>
+<p begin="00:41:32.480" end="00:41:36.480" style="s2">just having them generate generated</p>
+<p begin="00:41:34.640" end="00:41:38.640" style="s2">through AI. some of the questions that</p>
+<p begin="00:41:36.480" end="00:41:40.319" style="s2">are available online. Each of you can</p>
+<p begin="00:41:38.640" end="00:41:42.000" style="s2">take these questions and practice them</p>
+<p begin="00:41:40.319" end="00:41:44.880" style="s2">for your next AI first engineer</p>
+<p begin="00:41:42.000" end="00:41:46.960" style="s2">interview. So again, coding with AI and</p>
+<p begin="00:41:44.880" end="00:41:50.560" style="s2">building with AI.</p>
+<p begin="00:41:46.960" end="00:41:52.720" style="s2">Okay, next up is product sense. So</p>
+<p begin="00:41:50.560" end="00:41:54.720" style="s2">again, product manager and engineer is</p>
+<p begin="00:41:52.720" end="00:41:57.200" style="s2">becoming the same profession. If that&#39;s</p>
+<p begin="00:41:54.720" end="00:41:59.839" style="s2">the case, we need to make sure that we</p>
+<p begin="00:41:57.200" end="00:42:01.520" style="s2">have some level of judgment.</p>
+<p begin="00:41:59.839" end="00:42:03.920" style="s2">How would you roll out an AI coding</p>
+<p begin="00:42:01.520" end="00:42:05.839" style="s2">workflow to your team?</p>
+<p begin="00:42:03.920" end="00:42:08.560" style="s2">What framework would you use between</p>
+<p begin="00:42:05.839" end="00:42:11.760" style="s2">fine-tuning and rag? The ability to</p>
+<p begin="00:42:08.560" end="00:42:13.680" style="s2">discern exactly what to use when, what</p>
+<p begin="00:42:11.760" end="00:42:15.839" style="s2">to do to ensure that the quality of what</p>
+<p begin="00:42:13.680" end="00:42:17.920" style="s2">you&#39;re building is correct. Now, in the</p>
+<p begin="00:42:15.839" end="00:42:20.000" style="s2">gauntlet program, what we like to do is</p>
+<p begin="00:42:17.920" end="00:42:22.560" style="s2">every single project that we have,</p>
+<p begin="00:42:20.000" end="00:42:25.359" style="s2">there&#39;s a target user. That target user</p>
+<p begin="00:42:22.560" end="00:42:27.599" style="s2">might be video editors, it might be</p>
+<p begin="00:42:25.359" end="00:42:29.680" style="s2">social media content creators, it might</p>
+<p begin="00:42:27.599" end="00:42:32.160" style="s2">be professors, whoever it is, you have</p>
+<p begin="00:42:29.680" end="00:42:34.480" style="s2">an avatar. You start by understanding</p>
+<p begin="00:42:32.160" end="00:42:35.680" style="s2">that avatar. You research that avatar.</p>
+<p begin="00:42:34.480" end="00:42:37.680" style="s2">You understand the problems that they&#39;re</p>
+<p begin="00:42:35.680" end="00:42:40.560" style="s2">facing. You then build out a project</p>
+<p begin="00:42:37.680" end="00:42:42.400" style="s2">according to their needs. This level of</p>
+<p begin="00:42:40.560" end="00:42:45.200" style="s2">product sense is super important for any</p>
+<p begin="00:42:42.400" end="00:42:47.280" style="s2">AI engineer. If AI is able to generate</p>
+<p begin="00:42:45.200" end="00:42:49.359" style="s2">all of the code in the world for you,</p>
+<p begin="00:42:47.280" end="00:42:51.760" style="s2">then the discerning factor between you</p>
+<p begin="00:42:49.359" end="00:42:54.480" style="s2">and everybody else using the same AI</p>
+<p begin="00:42:51.760" end="00:42:56.640" style="s2">coding agent is going to be how you use</p>
+<p begin="00:42:54.480" end="00:42:58.560" style="s2">that agent, how you manage that agent,</p>
+<p begin="00:42:56.640" end="00:42:59.839" style="s2">what you put that agent on, how you</p>
+<p begin="00:42:58.560" end="00:43:03.119" style="s2">distribute what you built with that</p>
+<p begin="00:42:59.839" end="00:43:05.680" style="s2">agent. Those are your modes. So having</p>
+<p begin="00:43:03.119" end="00:43:07.440" style="s2">some level of judgment into exactly what</p>
+<p begin="00:43:05.680" end="00:43:10.440" style="s2">you&#39;re building is really, really</p>
+<p begin="00:43:07.440" end="00:43:10.440" style="s2">important.</p>
+<p begin="00:43:10.480" end="00:43:15.359" style="s2">Okay, there are some hard questions. So</p>
+<p begin="00:43:12.720" end="00:43:17.520" style="s2">these are questions that actual Gauntlet</p>
+<p begin="00:43:15.359" end="00:43:19.520" style="s2">challengers have gotten when they went</p>
+<p begin="00:43:17.520" end="00:43:21.599" style="s2">into their interviews. So the way this</p>
+<p begin="00:43:19.520" end="00:43:23.440" style="s2">works is if you join Gauntlet during</p>
+<p begin="00:43:21.599" end="00:43:26.640" style="s2">week four, you start interviewing with</p>
+<p begin="00:43:23.440" end="00:43:28.720" style="s2">our platinum partners and that interview</p>
+<p begin="00:43:26.640" end="00:43:30.240" style="s2">starts halfway through the program. Then</p>
+<p begin="00:43:28.720" end="00:43:31.760" style="s2">we try to minimize like the number of</p>
+<p begin="00:43:30.240" end="00:43:33.440" style="s2">interviews you have to do back and forth</p>
+<p begin="00:43:31.760" end="00:43:36.400" style="s2">and then you get an offer at the end of</p>
+<p begin="00:43:33.440" end="00:43:39.440" style="s2">the program. But these are some real</p>
+<p begin="00:43:36.400" end="00:43:40.800" style="s2">interviews that we have seen some</p>
+<p begin="00:43:39.440" end="00:43:43.680" style="s2">questions that we have seen in real</p>
+<p begin="00:43:40.800" end="00:43:46.079" style="s2">interviews across the last cohort. Can</p>
+<p begin="00:43:43.680" end="00:43:47.599" style="s2">you explain every line of your code? Now</p>
+<p begin="00:43:46.079" end="00:43:50.000" style="s2">this is a trick question because most of</p>
+<p begin="00:43:47.599" end="00:43:52.160" style="s2">the time there&#39;s no way that an engineer</p>
+<p begin="00:43:50.000" end="00:43:54.160" style="s2">in like a million line codebase 100,000</p>
+<p begin="00:43:52.160" end="00:43:56.800" style="s2">line codebase can explain explain every</p>
+<p begin="00:43:54.160" end="00:43:58.319" style="s2">single line of code. Now, if it&#39;s a</p>
+<p begin="00:43:56.800" end="00:43:59.520" style="s2">green field project, if it&#39;s a small</p>
+<p begin="00:43:58.319" end="00:44:01.520" style="s2">project, that&#39;s a different story.</p>
+<p begin="00:43:59.520" end="00:44:02.960" style="s2">That&#39;s pretty straightforward and easy.</p>
+<p begin="00:44:01.520" end="00:44:06.240" style="s2">But let&#39;s say you were taking a</p>
+<p begin="00:44:02.960" end="00:44:07.920" style="s2">disgusting um brownfield repository, a</p>
+<p begin="00:44:06.240" end="00:44:09.920" style="s2">bunch of duct tape everywhere. You know,</p>
+<p begin="00:44:07.920" end="00:44:11.440" style="s2">you&#39;re in the filth of that code. Then</p>
+<p begin="00:44:09.920" end="00:44:13.760" style="s2">it&#39;s really hard to say what every</p>
+<p begin="00:44:11.440" end="00:44:17.040" style="s2">single line of code is doing. But what</p>
+<p begin="00:44:13.760" end="00:44:19.200" style="s2">is important here is to say this was my</p>
+<p begin="00:44:17.040" end="00:44:20.800" style="s2">thought process when I was adding this</p>
+<p begin="00:44:19.200" end="00:44:22.960" style="s2">diff.</p>
+<p begin="00:44:20.800" end="00:44:24.880" style="s2">This is how AI helped me decide. These</p>
+<p begin="00:44:22.960" end="00:44:26.800" style="s2">are the things that AI produced. This is</p>
+<p begin="00:44:24.880" end="00:44:29.680" style="s2">how I verified that code and then this</p>
+<p begin="00:44:26.800" end="00:44:32.319" style="s2">is what that file is doing. You should</p>
+<p begin="00:44:29.680" end="00:44:34.960" style="s2">understand at least at the file level</p>
+<p begin="00:44:32.319" end="00:44:37.200" style="s2">what is going on. Be able to understand</p>
+<p begin="00:44:34.960" end="00:44:39.599" style="s2">hey at the file level I am manipulating</p>
+<p begin="00:44:37.200" end="00:44:42.319" style="s2">this data in this way. As a result I&#39;m</p>
+<p begin="00:44:39.599" end="00:44:43.760" style="s2">getting X Y and Z output.</p>
+<p begin="00:44:42.319" end="00:44:45.599" style="s2">The another another question that&#39;s</p>
+<p begin="00:44:43.760" end="00:44:47.680" style="s2">often asked and I think the reason what</p>
+<p begin="00:44:45.599" end="00:44:50.000" style="s2">makes this hard is not enough people</p>
+<p begin="00:44:47.680" end="00:44:51.920" style="s2">actually plan and practice this question</p>
+<p begin="00:44:50.000" end="00:44:54.400" style="s2">which is what&#39;s your methodology with AI</p>
+<p begin="00:44:51.920" end="00:44:56.079" style="s2">first development. You really need to be</p>
+<p begin="00:44:54.400" end="00:44:58.400" style="s2">able to talk through the exact tools</p>
+<p begin="00:44:56.079" end="00:45:00.560" style="s2">that you use, be able to connect those</p>
+<p begin="00:44:58.400" end="00:45:02.720" style="s2">tools step by step, and then walk</p>
+<p begin="00:45:00.560" end="00:45:04.640" style="s2">through what would happen and how you</p>
+<p begin="00:45:02.720" end="00:45:07.200" style="s2">verify what&#39;s going on inside of that</p>
+<p begin="00:45:04.640" end="00:45:08.960" style="s2">sequence of actions. If you&#39;re now</p>
+<p begin="00:45:07.200" end="00:45:11.200" style="s2">managing or directing these coding</p>
+<p begin="00:45:08.960" end="00:45:13.440" style="s2">agents, you should be able to explain</p>
+<p begin="00:45:11.200" end="00:45:17.040" style="s2">exactly what you do at a manner that is</p>
+<p begin="00:45:13.440" end="00:45:19.040" style="s2">reliable, easy to understand, and um can</p>
+<p begin="00:45:17.040" end="00:45:21.359" style="s2">be understood by the manager who&#39;s</p>
+<p begin="00:45:19.040" end="00:45:23.119" style="s2">interviewing you on the other side.</p>
+<p begin="00:45:21.359" end="00:45:25.520" style="s2">Finally, deciding between two different</p>
+<p begin="00:45:23.119" end="00:45:28.880" style="s2">tools is sometimes difficult. You know,</p>
+<p begin="00:45:25.520" end="00:45:31.280" style="s2">for for example, we have Lang Chain AI</p>
+<p begin="00:45:28.880" end="00:45:34.640" style="s2">SDK by Versell, the agents SDK by</p>
+<p begin="00:45:31.280" end="00:45:36.079" style="s2">Claude, the OpenAI agents SDK. If you&#39;re</p>
+<p begin="00:45:34.640" end="00:45:39.200" style="s2">building an agent, how do you decide</p>
+<p begin="00:45:36.079" end="00:45:42.720" style="s2">what to use when? You have the the</p>
+<p begin="00:45:39.200" end="00:45:46.160" style="s2">Google models, Gemma, uh Gemini, you&#39;ll</p>
+<p begin="00:45:42.720" end="00:45:49.040" style="s2">have Anthropic, Opus, Sonnet, you have</p>
+<p begin="00:45:46.160" end="00:45:52.079" style="s2">OpenAI, all of these models that you can</p>
+<p begin="00:45:49.040" end="00:45:54.000" style="s2">use, Kimmy, Deepseek, a ton of open</p>
+<p begin="00:45:52.079" end="00:45:56.240" style="s2">source models. How do you decide what</p>
+<p begin="00:45:54.000" end="00:45:59.280" style="s2">model you should use when? How do you</p>
+<p begin="00:45:56.240" end="00:46:01.280" style="s2">manage your tokens? One of the key areas</p>
+<p begin="00:45:59.280" end="00:46:03.760" style="s2">I look for is when I ask somebody about</p>
+<p begin="00:46:01.280" end="00:46:05.440" style="s2">their methodology with AI, I always say,</p>
+<p begin="00:46:03.760" end="00:46:07.599" style="s2">&quot;How do you manage your token spend</p>
+<p begin="00:46:05.440" end="00:46:09.599" style="s2">across your coding agents?</p>
+<p begin="00:46:07.599" end="00:46:12.079" style="s2">that sometimes how do you decide to use</p>
+<p begin="00:46:09.599" end="00:46:14.240" style="s2">the dumber model over the smarter model</p>
+<p begin="00:46:12.079" end="00:46:16.240" style="s2">when you&#39;re building out an agent? What</p>
+<p begin="00:46:14.240" end="00:46:18.720" style="s2">do you do to decide what model to use</p>
+<p begin="00:46:16.240" end="00:46:20.800" style="s2">and what framework to use? This is</p>
+<p begin="00:46:18.720" end="00:46:22.960" style="s2">really important and sort of the best</p>
+<p begin="00:46:20.800" end="00:46:25.520" style="s2">way to sort of do this is to actually</p>
+<p begin="00:46:22.960" end="00:46:27.359" style="s2">build. So if you take nothing away from</p>
+<p begin="00:46:25.520" end="00:46:29.119" style="s2">what I&#39;m trying to tell you right now,</p>
+<p begin="00:46:27.359" end="00:46:32.319" style="s2">it&#39;s this that you have to build real</p>
+<p begin="00:46:29.119" end="00:46:34.319" style="s2">projects in these real areas, rag,</p>
+<p begin="00:46:32.319" end="00:46:36.000" style="s2">agents, graphs, and evals. And you have</p>
+<p begin="00:46:34.319" end="00:46:39.520" style="s2">to make sure that you know how to wield</p>
+<p begin="00:46:36.000" end="00:46:42.960" style="s2">your coding agent really, really well.</p>
+<p begin="00:46:39.520" end="00:46:44.560" style="s2">Okay. The mindset that wins is you need</p>
+<p begin="00:46:42.960" end="00:46:47.119" style="s2">to have a methodology that you can</p>
+<p begin="00:46:44.560" end="00:46:49.680" style="s2">articulate. You need to take ownership</p>
+<p begin="00:46:47.119" end="00:46:51.760" style="s2">that hey, you are using AI, but you</p>
+<p begin="00:46:49.680" end="00:46:54.240" style="s2">understand how that AI is doing work.</p>
+<p begin="00:46:51.760" end="00:46:56.160" style="s2">You can verify its output and you are</p>
+<p begin="00:46:54.240" end="00:46:58.960" style="s2">confident that you can wield it where</p>
+<p begin="00:46:56.160" end="00:47:01.520" style="s2">wield it well. You you can explain</p>
+<p begin="00:46:58.960" end="00:47:03.040" style="s2">tradeoffs not just implement them.</p>
+<p begin="00:47:01.520" end="00:47:04.960" style="s2">Meaning you have a higher level</p>
+<p begin="00:47:03.040" end="00:47:07.200" style="s2">understanding of architecture system</p>
+<p begin="00:47:04.960" end="00:47:09.920" style="s2">thinking and system design. You treat</p>
+<p begin="00:47:07.200" end="00:47:12.079" style="s2">evals as engineering fundamentals like</p>
+<p begin="00:47:09.920" end="00:47:14.000" style="s2">regression tests or scores on top of</p>
+<p begin="00:47:12.079" end="00:47:16.160" style="s2">something you&#39;re building. You&#39;re</p>
+<p begin="00:47:14.000" end="00:47:18.240" style="s2">adaptive. You understand that things are</p>
+<p begin="00:47:16.160" end="00:47:19.680" style="s2">changing. Workflows are changing. The</p>
+<p begin="00:47:18.240" end="00:47:22.800" style="s2">way we do work is fundamentally</p>
+<p begin="00:47:19.680" end="00:47:25.359" style="s2">changing. you understand that hey I can</p>
+<p begin="00:47:22.800" end="00:47:27.440" style="s2">move with the times</p>
+<p begin="00:47:25.359" end="00:47:29.520" style="s2">if you are interviewing for an AI first</p>
+<p begin="00:47:27.440" end="00:47:32.000" style="s2">engineer these are the things to keep in</p>
+<p begin="00:47:29.520" end="00:47:34.000" style="s2">mind.</p>
+<p begin="00:47:32.000" end="00:47:35.680" style="s2">All right the one thing I want to leave</p>
+<p begin="00:47:34.000" end="00:47:37.760" style="s2">you with at the end of this lecture</p>
+<p begin="00:47:35.680" end="00:47:41.760" style="s2">about 45 minutes in now before we start</p>
+<p begin="00:47:37.760" end="00:47:44.160" style="s2">Q&amp;A is this final checklist. This</p>
+<p begin="00:47:41.760" end="00:47:46.400" style="s2">checklist is exactly what I would do</p>
+<p begin="00:47:44.160" end="00:47:49.359" style="s2">before I walk into an interview for an</p>
+<p begin="00:47:46.400" end="00:47:51.839" style="s2">AI engineering role. Can you narrate</p>
+<p begin="00:47:49.359" end="00:47:54.480" style="s2">your AI coding workflow step by step</p>
+<p begin="00:47:51.839" end="00:47:57.040" style="s2">without notes? That means out loud,</p>
+<p begin="00:47:54.480" end="00:47:58.880" style="s2">slowly, clearly, and so that someone can</p>
+<p begin="00:47:57.040" end="00:48:02.319" style="s2">understand like a recipe exactly what</p>
+<p begin="00:47:58.880" end="00:48:03.839" style="s2">you do. Can you explain every file in</p>
+<p begin="00:48:02.319" end="00:48:06.240" style="s2">the projects that you&#39;ve added to your</p>
+<p begin="00:48:03.839" end="00:48:08.640" style="s2">portfolio? Doesn&#39;t have to be lines. It</p>
+<p begin="00:48:06.240" end="00:48:10.400" style="s2">could be the file itself. What is the</p>
+<p begin="00:48:08.640" end="00:48:12.000" style="s2">purpose of every single file? What are</p>
+<p begin="00:48:10.400" end="00:48:13.599" style="s2">we trying to get at? And what are we</p>
+<p begin="00:48:12.000" end="00:48:16.400" style="s2">trying to do in this structure of this</p>
+<p begin="00:48:13.599" end="00:48:18.640" style="s2">repository? Can you talk through rag,</p>
+<p begin="00:48:16.400" end="00:48:19.920" style="s2">agents, graphs, and evals coherently?</p>
+<p begin="00:48:18.640" end="00:48:21.920" style="s2">That doesn&#39;t mean you have to be perfect</p>
+<p begin="00:48:19.920" end="00:48:23.839" style="s2">in these areas. You have to understand</p>
+<p begin="00:48:21.920" end="00:48:26.240" style="s2">them at a certain level and be able to</p>
+<p begin="00:48:23.839" end="00:48:28.240" style="s2">showcase maybe a project in one or two</p>
+<p begin="00:48:26.240" end="00:48:30.400" style="s2">of those categories. Do you know what an</p>
+<p begin="00:48:28.240" end="00:48:32.319" style="s2">observability platform is? Langmith or</p>
+<p begin="00:48:30.400" end="00:48:34.400" style="s2">Langfuse? Can you walk through how you</p>
+<p begin="00:48:32.319" end="00:48:36.960" style="s2">use observability in your LLM</p>
+<p begin="00:48:34.400" end="00:48:40.160" style="s2">applications? Can you describe what an</p>
+<p begin="00:48:36.960" end="00:48:42.559" style="s2">eval is and your eval methodology? how</p>
+<p begin="00:48:40.160" end="00:48:44.960" style="s2">you went from just this basic LLM</p>
+<p begin="00:48:42.559" end="00:48:47.920" style="s2">application to the complete eval suite</p>
+<p begin="00:48:44.960" end="00:48:50.000" style="s2">with an agent. Have you practiced how</p>
+<p begin="00:48:47.920" end="00:48:52.160" style="s2">you use cloud code out loud? Do you have</p>
+<p begin="00:48:50.000" end="00:48:54.960" style="s2">a clear answer to how you stay ahead in</p>
+<p begin="00:48:52.160" end="00:48:57.440" style="s2">in the world of AI? Don&#39;t just say X.</p>
+<p begin="00:48:54.960" end="00:48:59.440" style="s2">You know, everybody just says X. No.</p>
+<p begin="00:48:57.440" end="00:49:01.520" style="s2">What do you do specifically to make sure</p>
+<p begin="00:48:59.440" end="00:49:04.400" style="s2">you can discern what is a real event in</p>
+<p begin="00:49:01.520" end="00:49:05.920" style="s2">AI and what is just another uh spammy</p>
+<p begin="00:49:04.400" end="00:49:07.760" style="s2">headline?</p>
+<p begin="00:49:05.920" end="00:49:10.000" style="s2">Are you ready to decide on a product</p>
+<p begin="00:49:07.760" end="00:49:11.680" style="s2">decision, not just the technical one? Do</p>
+<p begin="00:49:10.000" end="00:49:13.760" style="s2">you have some level of product judgment</p>
+<p begin="00:49:11.680" end="00:49:16.319" style="s2">or the ability to showcase your product</p>
+<p begin="00:49:13.760" end="00:49:20.000" style="s2">judgment out loud? So, this is what I</p>
+<p begin="00:49:16.319" end="00:49:22.319" style="s2">would take away from exactly what was</p>
+<p begin="00:49:20.000" end="00:49:24.079" style="s2">given in this class so far. Hopefully,</p>
+<p begin="00:49:22.319" end="00:49:26.160" style="s2">you can take this checklist, pick it up,</p>
+<p begin="00:49:24.079" end="00:49:28.880" style="s2">and then use it in your next interview.</p>
+<p begin="00:49:26.160" end="00:49:31.200" style="s2">All right.</p>
+<p begin="00:49:28.880" end="00:49:34.240" style="s2">Excuse me. We&#39;re going to start Q&amp;A now.</p>
+<p begin="00:49:31.200" end="00:49:36.880" style="s2">It&#39;s about 45 minutes into class</p>
+<p begin="00:49:34.240" end="00:49:38.240" style="s2">and what I&#39;m going to do for Q&amp;A is I&#39;m</p>
+<p begin="00:49:36.880" end="00:49:40.319" style="s2">going to have the team highlight some</p>
+<p begin="00:49:38.240" end="00:49:42.960" style="s2">questions here on my phone for me to</p>
+<p begin="00:49:40.319" end="00:49:44.800" style="s2">answer and then we&#39;ll also go into some</p>
+<p begin="00:49:42.960" end="00:49:49.520" style="s2">of the questions you&#39;ve been asking over</p>
+<p begin="00:49:44.800" end="00:49:51.359" style="s2">and over again inside of the Zoom chat.</p>
+<p begin="00:49:49.520" end="00:49:53.520" style="s2">Now, if any of you are interested in</p>
+<p begin="00:49:51.359" end="00:49:56.640" style="s2">Gauntlet AI, we do have a cohort</p>
+<p begin="00:49:53.520" end="00:49:58.880" style="s2">starting on April 27th. Gauntlet AI is a</p>
+<p begin="00:49:56.640" end="00:50:01.520" style="s2">10-week accelerator that is completely</p>
+<p begin="00:49:58.880" end="00:50:03.680" style="s2">free. We don&#39;t charge anything. There&#39;s</p>
+<p begin="00:50:01.520" end="00:50:05.680" style="s2">no clawbacks. There&#39;s no tuition. We</p>
+<p begin="00:50:03.680" end="00:50:07.359" style="s2">don&#39;t charge for food. Nothing at all.</p>
+<p begin="00:50:05.680" end="00:50:09.280" style="s2">You can you can join this program for</p>
+<p begin="00:50:07.359" end="00:50:12.800" style="s2">free and be an AI engineer on the other</p>
+<p begin="00:50:09.280" end="00:50:14.720" style="s2">side. And we only get paid is if you get</p>
+<p begin="00:50:12.800" end="00:50:17.040" style="s2">placed. This has never happened before</p>
+<p begin="00:50:14.720" end="00:50:19.359" style="s2">in the world of education. Every single</p>
+<p begin="00:50:17.040" end="00:50:21.040" style="s2">time you have to give tuition upfront,</p>
+<p begin="00:50:19.359" end="00:50:22.640" style="s2">you have to pay for things upfront.</p>
+<p begin="00:50:21.040" end="00:50:25.599" style="s2">Gauntlet doesn&#39;t charge you anything and</p>
+<p begin="00:50:22.640" end="00:50:27.119" style="s2">it never will. There&#39;s no ISA. There&#39;s</p>
+<p begin="00:50:25.599" end="00:50:29.920" style="s2">nothing. All you have to do is</p>
+<p begin="00:50:27.119" end="00:50:32.000" style="s2">participate and be involved. and we will</p>
+<p begin="00:50:29.920" end="00:50:34.640" style="s2">only make money when we place you on the</p>
+<p begin="00:50:32.000" end="00:50:35.440" style="s2">other side. So, Gauntlet AI, if you want</p>
+<p begin="00:50:34.640" end="00:50:38.440" style="s2">to check us out, it&#39;s</p>
+<p begin="00:50:35.440" end="00:50:38.440" style="s2">gauntletai.com/apply.</p>
+<p begin="00:50:39.200" end="00:50:43.640" style="s2">All right, what are some questions we&#39;re</p>
+<p begin="00:50:40.640" end="00:50:43.640" style="s2">getting?</p>
+<p begin="00:50:47.119" end="00:50:51.520" style="s2">Okay, first question is from Alicia,</p>
+<p begin="00:50:49.920" end="00:50:52.960" style="s2">which is, &quot;What are some good ways to</p>
+<p begin="00:50:51.520" end="00:50:54.720" style="s2">stay in control of codebase if you&#39;re</p>
+<p begin="00:50:52.960" end="00:50:57.520" style="s2">using AI to code using a tech stack that</p>
+<p begin="00:50:54.720" end="00:50:58.640" style="s2">is new to you?&quot; Go learn the tech stack</p>
+<p begin="00:50:57.520" end="00:51:00.079" style="s2">first.</p>
+<p begin="00:50:58.640" end="00:51:02.400" style="s2">Uh it doesn&#39;t have to be you don&#39;t have</p>
+<p begin="00:51:00.079" end="00:51:04.559" style="s2">to learn a text stack end to end. It</p>
+<p begin="00:51:02.400" end="00:51:06.319" style="s2">could be like a three-hour window. It</p>
+<p begin="00:51:04.559" end="00:51:07.920" style="s2">could be a 2-hour window where you take</p>
+<p begin="00:51:06.319" end="00:51:10.079" style="s2">a step back and you understand the</p>
+<p begin="00:51:07.920" end="00:51:11.440" style="s2">underlying principles. If you&#39;re already</p>
+<p begin="00:51:10.079" end="00:51:13.280" style="s2">good in one coding language, for</p>
+<p begin="00:51:11.440" end="00:51:15.040" style="s2">example, you can pretty much translate</p>
+<p begin="00:51:13.280" end="00:51:16.800" style="s2">to another coding language the same</p>
+<p begin="00:51:15.040" end="00:51:18.559" style="s2">principles and concepts. But it&#39;s</p>
+<p begin="00:51:16.800" end="00:51:20.240" style="s2">important for you to take some time and</p>
+<p begin="00:51:18.559" end="00:51:23.440" style="s2">fully understand exactly what you&#39;re</p>
+<p begin="00:51:20.240" end="00:51:25.839" style="s2">building. And for that reason, I would</p>
+<p begin="00:51:23.440" end="00:51:27.839" style="s2">take two to three hours, take a step</p>
+<p begin="00:51:25.839" end="00:51:30.720" style="s2">back and actually understand everything</p>
+<p begin="00:51:27.839" end="00:51:32.240" style="s2">you&#39;re doing. Once you do that, then you</p>
+<p begin="00:51:30.720" end="00:51:33.839" style="s2">can say, I&#39;m going to go back into the</p>
+<p begin="00:51:32.240" end="00:51:35.839" style="s2">coding agent and continue coding in the</p>
+<p begin="00:51:33.839" end="00:51:37.680" style="s2">language I would like. So that is my</p>
+<p begin="00:51:35.839" end="00:51:39.920" style="s2">recommendation. I say this to gauntlet</p>
+<p begin="00:51:37.680" end="00:51:42.079" style="s2">students as well. What I like to do is</p>
+<p begin="00:51:39.920" end="00:51:44.240" style="s2">have them take a step back, spend 2 to</p>
+<p begin="00:51:42.079" end="00:51:46.160" style="s2">four hours actually learning it. This</p>
+<p begin="00:51:44.240" end="00:51:48.400" style="s2">could be, I don&#39;t know, C, React,</p>
+<p begin="00:51:46.160" end="00:51:50.480" style="s2">whatever. And once they are more</p>
+<p begin="00:51:48.400" end="00:51:52.160" style="s2">familiar with it, they can add a skill</p>
+<p begin="00:51:50.480" end="00:51:53.520" style="s2">associated with that new language and</p>
+<p begin="00:51:52.160" end="00:51:56.520" style="s2">then continue coding with the coding</p>
+<p begin="00:51:53.520" end="00:51:56.520" style="s2">agent.</p>
+<p begin="00:52:05.599" end="00:52:10.880" style="s2">&gt;&gt; Another question from Anoop is how do</p>
+<p begin="00:52:07.599" end="00:52:12.720" style="s2">you handle the temptation to tell the AI</p>
+<p begin="00:52:10.880" end="00:52:14.240" style="s2">to just do it while building an</p>
+<p begin="00:52:12.720" end="00:52:16.000" style="s2">application?</p>
+<p begin="00:52:14.240" end="00:52:17.440" style="s2">you know, uh there&#39;s this thing that</p>
+<p begin="00:52:16.000" end="00:52:20.160" style="s2">happens with Gauntlet students. It&#39;s</p>
+<p begin="00:52:17.440" end="00:52:21.520" style="s2">like, uh they see an error that like you</p>
+<p begin="00:52:20.160" end="00:52:22.880" style="s2">can see it in the console log and</p>
+<p begin="00:52:21.520" end="00:52:26.720" style="s2">they&#39;re just like, &quot;Hey, there&#39;s an</p>
+<p begin="00:52:22.880" end="00:52:28.640" style="s2">error. Go fix it.&quot; I really think that</p>
+<p begin="00:52:26.720" end="00:52:30.160" style="s2">it&#39;s going to be hard to stop that</p>
+<p begin="00:52:28.640" end="00:52:32.079" style="s2">temptation from actually happening all</p>
+<p begin="00:52:30.160" end="00:52:33.839" style="s2">the time cuz sometimes even I just want</p>
+<p begin="00:52:32.079" end="00:52:35.680" style="s2">to kind of rip my coding agent and have</p>
+<p begin="00:52:33.839" end="00:52:36.800" style="s2">it build something end to end. And I</p>
+<p begin="00:52:35.680" end="00:52:38.720" style="s2">actually have a lesson on that. That&#39;s</p>
+<p begin="00:52:36.800" end="00:52:40.480" style="s2">called software factory where can you</p>
+<p begin="00:52:38.720" end="00:52:41.920" style="s2">give a ticket to a coding agent on</p>
+<p begin="00:52:40.480" end="00:52:44.000" style="s2">exactly what to build and can it just do</p>
+<p begin="00:52:41.920" end="00:52:46.319" style="s2">it for you but do it for you really well</p>
+<p begin="00:52:44.000" end="00:52:48.880" style="s2">with good coding standards good good</p>
+<p begin="00:52:46.319" end="00:52:50.960" style="s2">test suite a nice deployment pipeline</p>
+<p begin="00:52:48.880" end="00:52:53.280" style="s2">but that&#39;s a whole different scenario in</p>
+<p begin="00:52:50.960" end="00:52:55.760" style="s2">this scenario uh I to stop this</p>
+<p begin="00:52:53.280" end="00:52:57.760" style="s2">temptation even just walking through the</p>
+<p begin="00:52:55.760" end="00:52:59.680" style="s2">console having some sort of acceptance</p>
+<p begin="00:52:57.760" end="00:53:02.000" style="s2">criteria giving it a little bit more</p>
+<p begin="00:52:59.680" end="00:53:03.760" style="s2">detail is important the goal here is to</p>
+<p begin="00:53:02.000" end="00:53:06.400" style="s2">make sure</p>
+<p begin="00:53:03.760" end="00:53:08.720" style="s2">that what you&#39;re trying to build is not</p>
+<p begin="00:53:06.400" end="00:53:10.960" style="s2">you&#39;re not wasting tokens on it. Wasting</p>
+<p begin="00:53:08.720" end="00:53:13.040" style="s2">tokens is going to become one of the key</p>
+<p begin="00:53:10.960" end="00:53:15.200" style="s2">areas where engineers can actually learn</p>
+<p begin="00:53:13.040" end="00:53:17.040" style="s2">to excel because in the future the cost</p>
+<p begin="00:53:15.200" end="00:53:18.640" style="s2">of these tokens is going to skyrocket.</p>
+<p begin="00:53:17.040" end="00:53:20.400" style="s2">So we want to get really good at</p>
+<p begin="00:53:18.640" end="00:53:22.720" style="s2">managing these tokens and making sure</p>
+<p begin="00:53:20.400" end="00:53:25.119" style="s2">that we&#39;re not just saying hey go solve</p>
+<p begin="00:53:22.720" end="00:53:26.800" style="s2">this without more context or details</p>
+<p begin="00:53:25.119" end="00:53:28.480" style="s2">because if we did give it the context or</p>
+<p begin="00:53:26.800" end="00:53:30.480" style="s2">details then it would need to do less</p>
+<p begin="00:53:28.480" end="00:53:31.920" style="s2">thinking and maybe find the error much</p>
+<p begin="00:53:30.480" end="00:53:34.640" style="s2">quicker. Now, if it&#39;s something super</p>
+<p begin="00:53:31.920" end="00:53:38.839" style="s2">small, yeah, say that. But most of the</p>
+<p begin="00:53:34.640" end="00:53:38.839" style="s2">time, give it some level of context.</p>
+<p begin="00:53:41.599" end="00:53:45.680" style="s2">Question from Sean is how much weight is</p>
+<p begin="00:53:43.280" end="00:53:48.640" style="s2">given to having an active GitHub hugging</p>
+<p begin="00:53:45.680" end="00:53:51.760" style="s2">face with active repos for you to demo</p>
+<p begin="00:53:48.640" end="00:53:54.000" style="s2">or like is or HTML dashboards to share,</p>
+<p begin="00:53:51.760" end="00:53:55.920" style="s2">for example, something to sort of weigh</p>
+<p begin="00:53:54.000" end="00:53:57.760" style="s2">in on when you bring into an interview.</p>
+<p begin="00:53:55.920" end="00:54:00.480" style="s2">I think it&#39;s super important. I actually</p>
+<p begin="00:53:57.760" end="00:54:02.559" style="s2">use GitHub as high signal. One of the</p>
+<p begin="00:54:00.480" end="00:54:04.720" style="s2">best areas for me to find engineers is</p>
+<p begin="00:54:02.559" end="00:54:08.160" style="s2">like open- source contributions on some</p>
+<p begin="00:54:04.720" end="00:54:10.480" style="s2">of the top AI projects. So I really like</p>
+<p begin="00:54:08.160" end="00:54:13.200" style="s2">uh talking through that because what&#39;s</p>
+<p begin="00:54:10.480" end="00:54:16.319" style="s2">happening is the open source</p>
+<p begin="00:54:13.200" end="00:54:20.319" style="s2">contributions are going to be a nice way</p>
+<p begin="00:54:16.319" end="00:54:22.480" style="s2">to judge hey is something actually</p>
+<p begin="00:54:20.319" end="00:54:24.720" style="s2">or is somebody actually have the skills</p>
+<p begin="00:54:22.480" end="00:54:26.079" style="s2">necessary to build in this era? Do they</p>
+<p begin="00:54:24.720" end="00:54:28.000" style="s2">understand the the thing different</p>
+<p begin="00:54:26.079" end="00:54:29.920" style="s2">primitives of this era and are they</p>
+<p begin="00:54:28.000" end="00:54:33.520" style="s2">actually skilled in what they do? So in</p>
+<p begin="00:54:29.920" end="00:54:35.760" style="s2">my opinion, GitHub is a very very nice</p>
+<p begin="00:54:33.520" end="00:54:37.920" style="s2">location to better understand exactly</p>
+<p begin="00:54:35.760" end="00:54:40.400" style="s2">what to do. I would make sure you have</p>
+<p begin="00:54:37.920" end="00:54:42.400" style="s2">GitHub contributions. Hugging face maybe</p>
+<p begin="00:54:40.400" end="00:54:44.240" style="s2">if you&#39;re going for an ML role or maybe</p>
+<p begin="00:54:42.400" end="00:54:46.720" style="s2">like an AI platform role, that&#39;s more</p>
+<p begin="00:54:44.240" end="00:54:48.480" style="s2">important. But uh for an AI first</p>
+<p begin="00:54:46.720" end="00:54:52.839" style="s2">software engineer, you can actually go</p>
+<p begin="00:54:48.480" end="00:54:52.839" style="s2">straight and just focus on GitHub.</p>
+<p begin="00:54:53.680" end="00:54:59.000" style="s2">All right, what other cont uh questions</p>
+<p begin="00:54:55.680" end="00:54:59.000" style="s2">do we have?</p>
+<p begin="00:55:05.040" end="00:55:09.680" style="s2">I have a question here from D which is</p>
+<p begin="00:55:07.920" end="00:55:11.599" style="s2">I&#39;ve applied to gauntlet multiple times</p>
+<p begin="00:55:09.680" end="00:55:15.040" style="s2">scored in the 99 percentile crushed the</p>
+<p begin="00:55:11.599" end="00:55:17.839" style="s2">coding establishment have a portfolio</p>
+<p begin="00:55:15.040" end="00:55:19.280" style="s2">and I am a Navy veteran where I served</p>
+<p begin="00:55:17.839" end="00:55:22.319" style="s2">in most of the technical role in the</p>
+<p begin="00:55:19.280" end="00:55:23.920" style="s2">entire military now leaving active duty</p>
+<p begin="00:55:22.319" end="00:55:25.599" style="s2">would love to know any insights into</p>
+<p begin="00:55:23.920" end="00:55:27.920" style="s2">another I can pursue to get a spot into</p>
+<p begin="00:55:25.599" end="00:55:30.800" style="s2">the next gauntlet cohort I deeply</p>
+<p begin="00:55:27.920" end="00:55:32.800" style="s2">believe I would excel in every capacity.</p>
+<p begin="00:55:30.800" end="00:55:34.559" style="s2">Okay, so we have Gauntlet for America,</p>
+<p begin="00:55:32.800" end="00:55:35.839" style="s2">which I think is perfect for you,</p>
+<p begin="00:55:34.559" end="00:55:38.480" style="s2">especially coming from the Navy</p>
+<p begin="00:55:35.839" end="00:55:40.640" style="s2">background. Um, right now we have over</p>
+<p begin="00:55:38.480" end="00:55:44.400" style="s2">20 students in Gauntlet for America who</p>
+<p begin="00:55:40.640" end="00:55:46.559" style="s2">are going to serve um as engineers in</p>
+<p begin="00:55:44.400" end="00:55:49.200" style="s2">the IRS and the Department of Treasury.</p>
+<p begin="00:55:46.559" end="00:55:51.280" style="s2">So I think we are now partnering with</p>
+<p begin="00:55:49.200" end="00:55:53.920" style="s2">many civilian government organizations</p>
+<p begin="00:55:51.280" end="00:55:56.480" style="s2">and with your background, your ability</p>
+<p begin="00:55:53.920" end="00:55:59.440" style="s2">and your application that is going to be</p>
+<p begin="00:55:56.480" end="00:56:01.200" style="s2">a really nice location for you to excel.</p>
+<p begin="00:55:59.440" end="00:56:03.359" style="s2">So I would put in the gauntlet</p>
+<p begin="00:56:01.200" end="00:56:07.480" style="s2">application for cohort 5 uh and you&#39;d be</p>
+<p begin="00:56:03.359" end="00:56:07.480" style="s2">automatically considered for both.</p>
+<p begin="00:56:09.680" end="00:56:12.799" style="s2">for applying to Gauntlet AI. What would</p>
+<p begin="00:56:11.359" end="00:56:14.160" style="s2">you recommend for someone who scored a 4</p>
+<p begin="00:56:12.799" end="00:56:16.160" style="s2">to3 on the CCAT is currently building</p>
+<p begin="00:56:14.160" end="00:56:18.559" style="s2">but has weak formal engineering</p>
+<p begin="00:56:16.160" end="00:56:20.880" style="s2">experience? Great question here, Chris.</p>
+<p begin="00:56:18.559" end="00:56:22.640" style="s2">We do have a wonderkin program. Our</p>
+<p begin="00:56:20.880" end="00:56:24.480" style="s2">wonderkin program is essentially for</p>
+<p begin="00:56:22.640" end="00:56:26.400" style="s2">those who don&#39;t have 3 years of</p>
+<p begin="00:56:24.480" end="00:56:29.200" style="s2">experience but still want to be exposed</p>
+<p begin="00:56:26.400" end="00:56:30.799" style="s2">to the gauntlet program. Uh for those to</p>
+<p begin="00:56:29.200" end="00:56:32.559" style="s2">qualify under the wonderkin program,</p>
+<p begin="00:56:30.799" end="00:56:34.799" style="s2">it&#39;s the level of project that you can</p>
+<p begin="00:56:32.559" end="00:56:36.559" style="s2">send over to our admissions team. So we</p>
+<p begin="00:56:34.799" end="00:56:37.920" style="s2">have you submit sometimes your GitHub,</p>
+<p begin="00:56:36.559" end="00:56:40.079" style="s2">you can fill out your profile, add your</p>
+<p begin="00:56:37.920" end="00:56:43.839" style="s2">GitHub. What we&#39;re looking for is that</p>
+<p begin="00:56:40.079" end="00:56:46.079" style="s2">you have uh more than usual engineering</p>
+<p begin="00:56:43.839" end="00:56:48.720" style="s2">and coding ability and you would qualify</p>
+<p begin="00:56:46.079" end="00:56:51.280" style="s2">underneath the Wonderkin program. Now,</p>
+<p begin="00:56:48.720" end="00:56:52.640" style="s2">at the same time, uh you can also just</p>
+<p begin="00:56:51.280" end="00:56:54.240" style="s2">continue down the road, get the</p>
+<p begin="00:56:52.640" end="00:56:56.240" style="s2">experience, and then apply in a couple</p>
+<p begin="00:56:54.240" end="00:56:57.599" style="s2">of years. We plan to do Gauntlet for a</p>
+<p begin="00:56:56.240" end="00:57:00.599" style="s2">long time, so we&#39;re not going to go</p>
+<p begin="00:56:57.599" end="00:57:00.599" style="s2">anywhere.</p>
+<p begin="00:57:03.280" end="00:57:06.240" style="s2">Jacob is saying, &quot;I would love to hear</p>
+<p begin="00:57:04.640" end="00:57:07.760" style="s2">your lesson and insight on letting it</p>
+<p begin="00:57:06.240" end="00:57:09.839" style="s2">take over your entire end-to-end</p>
+<p begin="00:57:07.760" end="00:57:12.960" style="s2">software development life cycle. I just</p>
+<p begin="00:57:09.839" end="00:57:15.599" style="s2">got my agent schedule a cost swapped API</p>
+<p begin="00:57:12.960" end="00:57:17.520" style="s2">usage and it&#39;s somehow I need I need to</p>
+<p begin="00:57:15.599" end="00:57:18.799" style="s2">heavily optimize. When is the</p>
+<p begin="00:57:17.520" end="00:57:21.359" style="s2">application cut off for the next</p>
+<p begin="00:57:18.799" end="00:57:23.760" style="s2">cohort?&quot; The application cut off for the</p>
+<p begin="00:57:21.359" end="00:57:26.079" style="s2">next cohort is going to be the week</p>
+<p begin="00:57:23.760" end="00:57:27.680" style="s2">before the 27th. So, it&#39;s the graduation</p>
+<p begin="00:57:26.079" end="00:57:30.160" style="s2">date of the last cohort. I believe it&#39;s</p>
+<p begin="00:57:27.680" end="00:57:32.559" style="s2">the 24th or 25th. So you can you still</p>
+<p begin="00:57:30.160" end="00:57:34.160" style="s2">have some over three weeks to apply.</p>
+<p begin="00:57:32.559" end="00:57:36.240" style="s2">Jacob to answer your question directly</p>
+<p begin="00:57:34.160" end="00:57:39.040" style="s2">on sort of an endto-end implementation.</p>
+<p begin="00:57:36.240" end="00:57:41.359" style="s2">I like to call it a software factory. Um</p>
+<p begin="00:57:39.040" end="00:57:43.760" style="s2">I actually have a open source GitHub</p>
+<p begin="00:57:41.359" end="00:57:45.680" style="s2">repository called minimum viable factory</p>
+<p begin="00:57:43.760" end="00:57:47.920" style="s2">and I&#39;ve done a night school session on</p>
+<p begin="00:57:45.680" end="00:57:50.079" style="s2">this earlier</p>
+<p begin="00:57:47.920" end="00:57:52.240" style="s2">and the night school session on this</p>
+<p begin="00:57:50.079" end="00:57:55.359" style="s2">earlier that I did</p>
+<p begin="00:57:52.240" end="00:57:56.960" style="s2">was basically like how do you set up the</p>
+<p begin="00:57:55.359" end="00:57:59.280" style="s2">factory? How do you add a product</p>
+<p begin="00:57:56.960" end="00:58:00.799" style="s2">manager agent and a QA agent and a</p>
+<p begin="00:57:59.280" end="00:58:02.960" style="s2">deployment agent and connect all the</p>
+<p begin="00:58:00.799" end="00:58:04.960" style="s2">different platforms and actually build</p>
+<p begin="00:58:02.960" end="00:58:07.680" style="s2">an endto-end system that can ship</p>
+<p begin="00:58:04.960" end="00:58:08.880" style="s2">software for you? So, uh to answer your</p>
+<p begin="00:58:07.680" end="00:58:11.119" style="s2">question directly to give you a more</p>
+<p begin="00:58:08.880" end="00:58:12.960" style="s2">substantial answer, please check out my</p>
+<p begin="00:58:11.119" end="00:58:18.040" style="s2">open source project. It&#39;s called minimum</p>
+<p begin="00:58:12.960" end="00:58:18.040" style="s2">viable factory uh and it&#39;s on GitHub.</p>
+<p begin="00:58:20.240" end="00:58:24.359" style="s2">All right. What other questions</p>
+<p begin="00:58:26.480" end="00:58:32.400" style="s2">from a little document I have here is,</p>
+<p begin="00:58:30.480" end="00:58:34.799" style="s2">can I say I code in language if AI is</p>
+<p begin="00:58:32.400" end="00:58:37.200" style="s2">doing the work? The answer is no. The</p>
+<p begin="00:58:34.799" end="00:58:39.440" style="s2">goal here should be that you guys focus</p>
+<p begin="00:58:37.200" end="00:58:40.720" style="s2">in on what you have experience in</p>
+<p begin="00:58:39.440" end="00:58:42.319" style="s2">because you want to make sure that the</p>
+<p begin="00:58:40.720" end="00:58:43.920" style="s2">things that you&#39;re conveying out loud</p>
+<p begin="00:58:42.319" end="00:58:45.440" style="s2">cover the things that you have actual</p>
+<p begin="00:58:43.920" end="00:58:46.960" style="s2">experience building in it. Now, if you</p>
+<p begin="00:58:45.440" end="00:58:48.799" style="s2">did a significant project in them,</p>
+<p begin="00:58:46.960" end="00:58:52.079" style="s2">that&#39;s a different story, but you need</p>
+<p begin="00:58:48.799" end="00:58:54.000" style="s2">to have tangible proof. Number two, what</p>
+<p begin="00:58:52.079" end="00:58:56.000" style="s2">AI skill set should we start and acquire</p>
+<p begin="00:58:54.000" end="00:58:58.400" style="s2">for senior developers out there? The</p>
+<p begin="00:58:56.000" end="00:59:00.000" style="s2">ability to orchestrate agents and</p>
+<p begin="00:58:58.400" end="00:59:03.200" style="s2">actually change the way your entire team</p>
+<p begin="00:59:00.000" end="00:59:05.839" style="s2">is working. So, I did a training uh in</p>
+<p begin="00:59:03.200" end="00:59:07.359" style="s2">SF just about a week ago on changing the</p>
+<p begin="00:59:05.839" end="00:59:09.520" style="s2">entire software development life cycle</p>
+<p begin="00:59:07.359" end="00:59:12.559" style="s2">using spec driven development. If you&#39;re</p>
+<p begin="00:59:09.520" end="00:59:14.160" style="s2">a a staff engineer, uh if you&#39;re an</p>
+<p begin="00:59:12.559" end="00:59:15.839" style="s2">engineering manager, you should be</p>
+<p begin="00:59:14.160" end="00:59:18.160" style="s2">thinking about how to restructure your</p>
+<p begin="00:59:15.839" end="00:59:20.480" style="s2">work so that your entire team can</p>
+<p begin="00:59:18.160" end="00:59:23.200" style="s2">benefit from the ability to code much</p>
+<p begin="00:59:20.480" end="00:59:24.960" style="s2">faster. Think about shared context and</p>
+<p begin="00:59:23.200" end="00:59:27.119" style="s2">think about the ability to make sure</p>
+<p begin="00:59:24.960" end="00:59:28.960" style="s2">that everybody across the entire team</p>
+<p begin="00:59:27.119" end="00:59:31.520" style="s2">can code at the speed uh of the best</p>
+<p begin="00:59:28.960" end="00:59:33.280" style="s2">engineer. So check out specdriven</p>
+<p begin="00:59:31.520" end="00:59:35.440" style="s2">development, spec kitty, these are all</p>
+<p begin="00:59:33.280" end="00:59:36.880" style="s2">on GitHub.</p>
+<p begin="00:59:35.440" end="00:59:39.280" style="s2">What is the what are the compensation</p>
+<p begin="00:59:36.880" end="00:59:41.359" style="s2">expectations for AI engineers? 200k is</p>
+<p begin="00:59:39.280" end="00:59:44.319" style="s2">the full floor or the ceiling. In my</p>
+<p begin="00:59:41.359" end="00:59:47.119" style="s2">opinion, 200k is the floor. Uh what</p>
+<p begin="00:59:44.319" end="00:59:49.119" style="s2">happens with AI engineering is we need</p>
+<p begin="00:59:47.119" end="00:59:51.280" style="s2">less and less engineers that are just</p>
+<p begin="00:59:49.119" end="00:59:52.880" style="s2">doing day-to-day junior level work and</p>
+<p begin="00:59:51.280" end="00:59:55.040" style="s2">more engineers who are orchestrating</p>
+<p begin="00:59:52.880" end="00:59:56.240" style="s2">agents. And you could be orchestrating</p>
+<p begin="00:59:55.040" end="00:59:58.079" style="s2">agents across many different</p>
+<p begin="00:59:56.240" end="01:00:00.000" style="s2">organizations across several different</p>
+<p begin="00:59:58.079" end="01:00:02.000" style="s2">industries. And the thought process</p>
+<p begin="01:00:00.000" end="01:00:04.400" style="s2">there is even like for example in</p>
+<p begin="01:00:02.000" end="01:00:06.319" style="s2">gauntlet we have a minimum 200k bar but</p>
+<p begin="01:00:04.400" end="01:00:08.240" style="s2">based on your experience your skill set</p>
+<p begin="01:00:06.319" end="01:00:10.640" style="s2">and your ability to lead that could go</p>
+<p begin="01:00:08.240" end="01:00:13.599" style="s2">really really high. So it is a floor at</p>
+<p begin="01:00:10.640" end="01:00:15.440" style="s2">200k not a ceiling.</p>
+<p begin="01:00:13.599" end="01:00:17.520" style="s2">People keep asking this question and I</p>
+<p begin="01:00:15.440" end="01:00:19.280" style="s2">got multiple texts about it which is</p>
+<p begin="01:00:17.520" end="01:00:22.000" style="s2">will we have access to this recording</p>
+<p begin="01:00:19.280" end="01:00:25.280" style="s2">and the slides. The answer is yes. Uh we</p>
+<p begin="01:00:22.000" end="01:00:26.880" style="s2">are creating a free learn portal. So you</p>
+<p begin="01:00:25.280" end="01:00:28.640" style="s2">can actually go into the learn portal,</p>
+<p begin="01:00:26.880" end="01:00:31.440" style="s2">get this entire recording and then the</p>
+<p begin="01:00:28.640" end="01:00:32.880" style="s2">associated slides.</p>
+<p begin="01:00:31.440" end="01:00:35.119" style="s2">How much Python knowledge is essential</p>
+<p begin="01:00:32.880" end="01:00:36.480" style="s2">to hiring partners? I come from a Java</p>
+<p begin="01:00:35.119" end="01:00:38.559" style="s2">background and have some experience in</p>
+<p begin="01:00:36.480" end="01:00:41.359" style="s2">Python. This is a great question. Uh</p>
+<p begin="01:00:38.559" end="01:00:44.240" style="s2">it&#39;s not that a specific</p>
+<p begin="01:00:41.359" end="01:00:46.640" style="s2">coding language is required for certain</p>
+<p begin="01:00:44.240" end="01:00:48.720" style="s2">partners. It&#39;s that it&#39;s good to have</p>
+<p begin="01:00:46.640" end="01:00:50.960" style="s2">that coding language and understand the</p>
+<p begin="01:00:48.720" end="01:00:53.280" style="s2">primitives and the different concepts</p>
+<p begin="01:00:50.960" end="01:00:55.040" style="s2">behind that coding language. But the</p>
+<p begin="01:00:53.280" end="01:00:57.680" style="s2">goal here is that you&#39;re able to be</p>
+<p begin="01:00:55.040" end="01:00:59.680" style="s2">adaptable. Use what you know already to</p>
+<p begin="01:00:57.680" end="01:01:01.520" style="s2">understand and learn something new. One</p>
+<p begin="01:00:59.680" end="01:01:03.680" style="s2">of the most amazing parts of being a</p>
+<p begin="01:01:01.520" end="01:01:06.720" style="s2">Gauntlet graduate is that you understand</p>
+<p begin="01:01:03.680" end="01:01:08.559" style="s2">how to code with AI, build AI, and learn</p>
+<p begin="01:01:06.720" end="01:01:11.280" style="s2">with AI.</p>
+<p begin="01:01:08.559" end="01:01:13.839" style="s2">They&#39;re able to learn 10x faster and</p>
+<p begin="01:01:11.280" end="01:01:16.799" style="s2">say, &quot;Hey, I can put in 10 hours into</p>
+<p begin="01:01:13.839" end="01:01:19.200" style="s2">learning this skill, use AI to magnify</p>
+<p begin="01:01:16.799" end="01:01:20.960" style="s2">my usage of that skill, and then as a</p>
+<p begin="01:01:19.200" end="01:01:23.200" style="s2">result, be better at a concept much</p>
+<p begin="01:01:20.960" end="01:01:25.359" style="s2">quicker.&quot; So the thought process here is</p>
+<p begin="01:01:23.200" end="01:01:27.760" style="s2">you may not have any Python knowledge or</p>
+<p begin="01:01:25.359" end="01:01:29.599" style="s2">Java knowledge, whatever it is, but you</p>
+<p begin="01:01:27.760" end="01:01:31.760" style="s2">want to use what you know already to</p>
+<p begin="01:01:29.599" end="01:01:34.400" style="s2">then inform what you&#39;re working on next</p>
+<p begin="01:01:31.760" end="01:01:37.680" style="s2">and then use AI as a learning mechanism</p>
+<p begin="01:01:34.400" end="01:01:39.680" style="s2">to accelerate that.</p>
+<p begin="01:01:37.680" end="01:01:41.520" style="s2">If your experience is probably 7030</p>
+<p begin="01:01:39.680" end="01:01:42.720" style="s2">front end and back end, is that seen as</p>
+<p begin="01:01:41.520" end="01:01:46.160" style="s2">a negative for hiring partners coming</p>
+<p begin="01:01:42.720" end="01:01:47.440" style="s2">out of Glet? The answer is no. Uh you</p>
+<p begin="01:01:46.160" end="01:01:48.640" style="s2">need to have core engineering</p>
+<p begin="01:01:47.440" end="01:01:50.480" style="s2">experience. That&#39;s what we&#39;re looking</p>
+<p begin="01:01:48.640" end="01:01:53.359" style="s2">for here at Gauntlet. If that&#39;s front</p>
+<p begin="01:01:50.480" end="01:01:54.640" style="s2">end, back end, that&#39;s okay.</p>
+<p begin="01:01:53.359" end="01:01:56.000" style="s2">Are the partners you have more</p>
+<p begin="01:01:54.640" end="01:01:57.599" style="s2">established companies or they newer</p>
+<p begin="01:01:56.000" end="01:01:59.440" style="s2">startups looking for founding engineers,</p>
+<p begin="01:01:57.599" end="01:02:01.839" style="s2">AI first industry to move fast? There&#39;s</p>
+<p begin="01:01:59.440" end="01:02:05.359" style="s2">a combination. We have uh seed level</p>
+<p begin="01:02:01.839" end="01:02:08.160" style="s2">startups, series BC startups to publicly</p>
+<p begin="01:02:05.359" end="01:02:12.799" style="s2">traded companies. We have PE firms, we</p>
+<p begin="01:02:08.160" end="01:02:14.960" style="s2">have um conglomerates, we have huge uh</p>
+<p begin="01:02:12.799" end="01:02:16.720" style="s2">multinationals. There&#39;s so many</p>
+<p begin="01:02:14.960" end="01:02:19.040" style="s2">different gauntlet hiring partners and</p>
+<p begin="01:02:16.720" end="01:02:20.880" style="s2">we try to find the perfect spot for you.</p>
+<p begin="01:02:19.040" end="01:02:24.920" style="s2">We have a whole team dedicated to</p>
+<p begin="01:02:20.880" end="01:02:24.920" style="s2">matching you with a role.</p>
+<p begin="01:02:25.040" end="01:02:29.520" style="s2">Okay, so I think that was my last one</p>
+<p begin="01:02:27.119" end="01:02:32.160" style="s2">there because I answered the GitHub and</p>
+<p begin="01:02:29.520" end="01:02:35.799" style="s2">looking face one, but would love to see</p>
+<p begin="01:02:32.160" end="01:02:35.799" style="s2">more questions.</p>
+<p begin="01:02:37.200" end="01:02:41.200" style="s2">DevOps and network engineering are</p>
+<p begin="01:02:39.280" end="01:02:43.440" style="s2">things that you can use to join. We have</p>
+<p begin="01:02:41.200" end="01:02:46.760" style="s2">multiple DevOps engineers that uh were</p>
+<p begin="01:02:43.440" end="01:02:46.760" style="s2">in the program.</p>
+<p begin="01:02:48.240" end="01:02:51.200" style="s2">All right, we&#39;re at the hour. So, if</p>
+<p begin="01:02:49.760" end="01:02:53.359" style="s2">anybody wants to stay on and still ask</p>
+<p begin="01:02:51.200" end="01:02:54.880" style="s2">some questions, you totally can. But I</p>
+<p begin="01:02:53.359" end="01:02:56.160" style="s2">want to just say if you have any</p>
+<p begin="01:02:54.880" end="01:02:58.720" style="s2">questions about Gauntlet, you can go to</p>
+<p begin="01:02:56.160" end="01:03:02.240" style="s2">gauntleti.com/faq.</p>
+<p begin="01:02:58.720" end="01:03:04.720" style="s2">If you decide to apply and join us and</p>
+<p begin="01:03:02.240" end="01:03:07.760" style="s2">uh build with us for over a,000 hours</p>
+<p begin="01:03:04.720" end="01:03:11.200" style="s2">here at our Austin, Texas HQ, you can do</p>
+<p begin="01:03:07.760" end="01:03:14.920" style="s2">that by April 27th. Our cohort 5 starts</p>
+<p begin="01:03:11.200" end="01:03:14.920" style="s2">on April 27th.</p>
+<p begin="01:03:15.520" end="01:03:19.520" style="s2">Rajiv is asking how many applications do</p>
+<p begin="01:03:17.440" end="01:03:22.160" style="s2">I get and what&#39;s the acceptance rate? I</p>
+<p begin="01:03:19.520" end="01:03:25.359" style="s2">think we get like 12,000 applications.</p>
+<p begin="01:03:22.160" end="01:03:28.559" style="s2">Uh the acceptance rate is like 2%.</p>
+<p begin="01:03:25.359" end="01:03:31.119" style="s2">&gt;&gt; Ash, can you clarify G GFA?</p>
+<p begin="01:03:28.559" end="01:03:32.640" style="s2">&gt;&gt; GFA. Uh how many applications we get for</p>
+<p begin="01:03:31.119" end="01:03:34.400" style="s2">GFA?</p>
+<p begin="01:03:32.640" end="01:03:36.160" style="s2">&gt;&gt; No, just what the program is the</p>
+<p begin="01:03:34.400" end="01:03:38.000" style="s2">difference between the two.</p>
+<p begin="01:03:36.160" end="01:03:40.480" style="s2">&gt;&gt; Yes. So we have two programs running</p>
+<p begin="01:03:38.000" end="01:03:42.160" style="s2">which is our Gauntlet Prime and our GFA</p>
+<p begin="01:03:40.480" end="01:03:43.760" style="s2">or which is Gauntlet for America.</p>
+<p begin="01:03:42.160" end="01:03:45.680" style="s2">Gauntlet Prime is to work in the</p>
+<p begin="01:03:43.760" end="01:03:47.680" style="s2">commercial sector with our private</p>
+<p begin="01:03:45.680" end="01:03:49.119" style="s2">hiring partnerships. Uh all the</p>
+<p begin="01:03:47.680" end="01:03:51.839" style="s2">different companies that we partner with</p>
+<p begin="01:03:49.119" end="01:03:53.200" style="s2">per cohort. And then GFA is our Gauntlet</p>
+<p begin="01:03:51.839" end="01:03:55.440" style="s2">for America program where we&#39;re</p>
+<p begin="01:03:53.200" end="01:03:57.599" style="s2">partnering with the government. Uh so</p>
+<p begin="01:03:55.440" end="01:04:00.720" style="s2">different civilian agencies like the IRS</p>
+<p begin="01:03:57.599" end="01:04:02.799" style="s2">and Treasury to make sure that they get</p>
+<p begin="01:04:00.720" end="01:04:04.400" style="s2">the engineering talent that they need.</p>
+<p begin="01:04:02.799" end="01:04:05.760" style="s2">So both of these areas are looking for</p>
+<p begin="01:04:04.400" end="01:04:09.200" style="s2">talent and we have two different</p>
+<p begin="01:04:05.760" end="01:04:12.960" style="s2">programs situated uh to make sure that</p>
+<p begin="01:04:09.200" end="01:04:12.960" style="s2">they get the talent they need.</p>
+<p begin="01:04:14.160" end="01:04:17.599" style="s2">Chad is asking, &quot;What&#39;s the length and</p>
+<p begin="01:04:15.599" end="01:04:20.480" style="s2">time commitment for Gauntlet?&quot; It is 10</p>
+<p begin="01:04:17.599" end="01:04:22.799" style="s2">weeks starting April 27th for cohort 5</p>
+<p begin="01:04:20.480" end="01:04:25.359" style="s2">and it is 80 to 100 hours a week. I am</p>
+<p begin="01:04:22.799" end="01:04:27.200" style="s2">not joking. If you don&#39;t believe me, you</p>
+<p begin="01:04:25.359" end="01:04:30.319" style="s2">can ask any of our graduates. We follow</p>
+<p begin="01:04:27.200" end="01:04:32.880" style="s2">all of them on X. It is actually 80 to</p>
+<p begin="01:04:30.319" end="01:04:35.119" style="s2">100 hours a week. It is full-time. Our</p>
+<p begin="01:04:32.880" end="01:04:37.359" style="s2">goal is to completely immerse you in</p>
+<p begin="01:04:35.119" end="01:04:40.079" style="s2">learning. That complete immersion</p>
+<p begin="01:04:37.359" end="01:04:42.400" style="s2">results in the best engineers in the</p>
+<p begin="01:04:40.079" end="01:04:42.400" style="s2">world.</p>
+<p begin="01:04:44.559" end="01:04:48.000" style="s2">There is no remoteon only cohort. I</p>
+<p begin="01:04:46.640" end="01:04:49.680" style="s2">don&#39;t believe in that. So, it&#39;s never</p>
+<p begin="01:04:48.000" end="01:04:52.319" style="s2">going to happen.</p>
+<p begin="01:04:49.680" end="01:04:55.039" style="s2">We have to have some level of on-site</p>
+<p begin="01:04:52.319" end="01:04:57.280" style="s2">in-person learning. That is one of the</p>
+<p begin="01:04:55.039" end="01:05:00.799" style="s2">tenants and a standard here at a</p>
+<p begin="01:04:57.280" end="01:05:03.520" style="s2">Gauntlet AI that I will never as long as</p>
+<p begin="01:05:00.799" end="01:05:05.680" style="s2">I work here change. So, every single</p>
+<p begin="01:05:03.520" end="01:05:07.839" style="s2">program we do has some sort of in-person</p>
+<p begin="01:05:05.680" end="01:05:09.920" style="s2">portion. For Gauntlet, it is 3 weeks</p>
+<p begin="01:05:07.839" end="01:05:11.200" style="s2">remote, 7 weeks on-site. For our</p>
+<p begin="01:05:09.920" end="01:05:13.039" style="s2">corporate training, it&#39;s four weeks</p>
+<p begin="01:05:11.200" end="01:05:14.480" style="s2">remote, two weeks on-site. For our</p>
+<p begin="01:05:13.039" end="01:05:17.280" style="s2">custom courses, there&#39;s always going to</p>
+<p begin="01:05:14.480" end="01:05:20.520" style="s2">be one week to whatever number of weeks</p>
+<p begin="01:05:17.280" end="01:05:20.520" style="s2">on site.</p>
+<p begin="01:05:24.640" end="01:05:27.440" style="s2">&gt;&gt; Any more questions?</p>
+<p begin="01:05:26.079" end="01:05:29.920" style="s2">&gt;&gt; Ash, sorry, I have one more question</p>
+<p begin="01:05:27.440" end="01:05:32.079" style="s2">that someone&#39;s asking. Um, there&#39;s just</p>
+<p begin="01:05:29.920" end="01:05:34.799" style="s2">some confusion with GFA in general. Can</p>
+<p begin="01:05:32.079" end="01:05:36.720" style="s2">you talk about how you apply to GFA and</p>
+<p begin="01:05:34.799" end="01:05:38.799" style="s2">how there&#39;s really no difference?</p>
+<p begin="01:05:36.720" end="01:05:40.799" style="s2">&gt;&gt; Yep, great question. If you want or if</p>
+<p begin="01:05:38.799" end="01:05:42.960" style="s2">you&#39;re interested in Gauntlet Prime or</p>
+<p begin="01:05:40.799" end="01:05:44.559" style="s2">GFA, which is Gauntlet for America,</p>
+<p begin="01:05:42.960" end="01:05:47.760" style="s2">there is no different application</p>
+<p begin="01:05:44.559" end="01:05:50.240" style="s2">process. All you have to do is go on</p>
+<p begin="01:05:47.760" end="01:05:51.920" style="s2">gauntleti.com/apply.</p>
+<p begin="01:05:50.240" end="01:05:55.440" style="s2">You can go to the bottom of the page</p>
+<p begin="01:05:51.920" end="01:05:58.079" style="s2">here and you can click I&#39;m ready to</p>
+<p begin="01:05:55.440" end="01:06:01.760" style="s2">apply. Now, this application that you</p>
+<p begin="01:05:58.079" end="01:06:04.160" style="s2">fill out is for GFA and for G Prime and</p>
+<p begin="01:06:01.760" end="01:06:06.240" style="s2">makes you a contender for both of those</p>
+<p begin="01:06:04.160" end="01:06:10.920" style="s2">programs. So, if you would like to join</p>
+<p begin="01:06:06.240" end="01:06:10.920" style="s2">any of those programs, please apply now.</p>
+<p begin="01:06:16.240" end="01:06:19.359" style="s2">Jordan&#39;s asking, &quot;Have you thought about</p>
+<p begin="01:06:17.599" end="01:06:21.440" style="s2">creating a sort of transfer portal that</p>
+<p begin="01:06:19.359" end="01:06:22.799" style="s2">would allow previous grads who have been</p>
+<p begin="01:06:21.440" end="01:06:24.240" style="s2">working for a certain amount of time to</p>
+<p begin="01:06:22.799" end="01:06:26.960" style="s2">level up through hiring partners who</p>
+<p begin="01:06:24.240" end="01:06:30.400" style="s2">might have someone?&quot; Not really, Jordan.</p>
+<p begin="01:06:26.960" end="01:06:32.640" style="s2">Um, I want to make sure that</p>
+<p begin="01:06:30.400" end="01:06:34.640" style="s2">the standard I held for all of the</p>
+<p begin="01:06:32.640" end="01:06:36.720" style="s2">cohorts of gauntlet so far is the same</p>
+<p begin="01:06:34.640" end="01:06:39.119" style="s2">standard for everybody. So, if everybody</p>
+<p begin="01:06:36.720" end="01:06:40.319" style="s2">put in 1,000 hours, um, I think I&#39;m</p>
+<p begin="01:06:39.119" end="01:06:41.680" style="s2">going to make it fair by saying</p>
+<p begin="01:06:40.319" end="01:06:45.240" style="s2">everybody in the future also has to put</p>
+<p begin="01:06:41.680" end="01:06:45.240" style="s2">in 1,000 hours.</p>
+<p begin="01:06:45.440" end="01:06:48.480" style="s2">As someone who is in sales and doesn&#39;t</p>
+<p begin="01:06:47.119" end="01:06:49.839" style="s2">code, it seems like I can use a lot of</p>
+<p begin="01:06:48.480" end="01:06:52.000" style="s2">these core values you discussed to build</p>
+<p begin="01:06:49.839" end="01:06:53.440" style="s2">my own AI tools. Where would you</p>
+<p begin="01:06:52.000" end="01:06:55.440" style="s2">recommend I spend my time learning</p>
+<p begin="01:06:53.440" end="01:06:57.680" style="s2">something in that area? Great question,</p>
+<p begin="01:06:55.440" end="01:07:00.079" style="s2">Anthony. I just ran a go to market sales</p>
+<p begin="01:06:57.680" end="01:07:02.559" style="s2">and marketing training and the main area</p>
+<p begin="01:07:00.079" end="01:07:05.359" style="s2">you should focus your time on is claude</p>
+<p begin="01:07:02.559" end="01:07:08.079" style="s2">co-work and building skills on cloud</p>
+<p begin="01:07:05.359" end="01:07:09.119" style="s2">co-work scheduling those skills and then</p>
+<p begin="01:07:08.079" end="01:07:11.039" style="s2">connecting all the different</p>
+<p begin="01:07:09.119" end="01:07:13.039" style="s2">applications you use. So it might be</p>
+<p begin="01:07:11.039" end="01:07:15.119" style="s2">your CRM might be your enrichment</p>
+<p begin="01:07:13.039" end="01:07:17.119" style="s2">platform might be your email or your</p>
+<p begin="01:07:15.119" end="01:07:19.599" style="s2">calendar. What happens is when you</p>
+<p begin="01:07:17.119" end="01:07:22.319" style="s2">connect all these tools to a single um</p>
+<p begin="01:07:19.599" end="01:07:24.079" style="s2">app like co-work and then you add skills</p>
+<p begin="01:07:22.319" end="01:07:26.160" style="s2">on top which break down your domain</p>
+<p begin="01:07:24.079" end="01:07:28.000" style="s2">expertise in sales, they do a brilliant</p>
+<p begin="01:07:26.160" end="01:07:31.319" style="s2">job of pretty much automating all your</p>
+<p begin="01:07:28.000" end="01:07:31.319" style="s2">grunt work.</p>
+<p begin="01:07:36.000" end="01:07:42.079" style="s2">All right, I think Are we there Tom</p>
+<p begin="01:07:41.599" end="01:07:44.799" style="s2">Sunny?</p>
+<p begin="01:07:42.079" end="01:07:46.640" style="s2">&gt;&gt; Yeah, we&#39;re good. This has been amazing.</p>
+<p begin="01:07:44.799" end="01:07:49.200" style="s2">Um, there&#39;s someone actually raising</p>
+<p begin="01:07:46.640" end="01:07:50.480" style="s2">their hand. Do you want to We want them</p>
+<p begin="01:07:49.200" end="01:07:52.000" style="s2">to talk.</p>
+<p begin="01:07:50.480" end="01:07:53.599" style="s2">&gt;&gt; Sure. Who&#39;s raising their hand?</p>
+<p begin="01:07:52.000" end="01:07:54.559" style="s2">&gt;&gt; Let me I&#39;m going to make Let them come</p>
+<p begin="01:07:53.599" end="01:07:57.559" style="s2">off mute.</p>
+<p begin="01:07:54.559" end="01:07:57.559" style="s2">&gt;&gt; Okay.</p>
+<p begin="01:07:57.599" end="01:08:01.720" style="s2">&gt;&gt; All right. Wang, you&#39;re on.</p>
+<p begin="01:08:04.319" end="01:08:07.520" style="s2">&gt;&gt; Hello. You guys hear me? Okay.</p>
+<p begin="01:08:06.880" end="01:08:07.920" style="s2">&gt;&gt; Yes.</p>
+<p begin="01:08:07.520" end="01:08:10.960" style="s2">&gt;&gt; Yes.</p>
+<p begin="01:08:07.920" end="01:08:12.000" style="s2">&gt;&gt; Oh, okay. Sorry, I&#39;m not expecting you</p>
+<p begin="01:08:10.960" end="01:08:15.760" style="s2">guys.</p>
+<p begin="01:08:12.000" end="01:08:18.799" style="s2">Okay. So, I&#39;m Yeah, actually I&#39;m very uh</p>
+<p begin="01:08:15.760" end="01:08:20.880" style="s2">interested in this program. So, sorry I</p>
+<p begin="01:08:18.799" end="01:08:24.480" style="s2">I missed the first part. How much cost</p>
+<p begin="01:08:20.880" end="01:08:26.239" style="s2">per week and uh and the location wise</p>
+<p begin="01:08:24.480" end="01:08:28.000" style="s2">where you guys located? So, I just</p>
+<p begin="01:08:26.239" end="01:08:30.560" style="s2">trying to see that.</p>
+<p begin="01:08:28.000" end="01:08:32.880" style="s2">&gt;&gt; Yeah, we&#39;re located in Austin, Texas.</p>
+<p begin="01:08:30.560" end="01:08:35.600" style="s2">So, the program is three weeks remote,</p>
+<p begin="01:08:32.880" end="01:08:37.920" style="s2">seven weeks on site. Uh and it&#39;s and</p>
+<p begin="01:08:35.600" end="01:08:40.640" style="s2">it&#39;s completely free. So, we cover your</p>
+<p begin="01:08:37.920" end="01:08:42.960" style="s2">tuition, your food, your laundry, your</p>
+<p begin="01:08:40.640" end="01:08:45.759" style="s2">flights, your everything. The program is</p>
+<p begin="01:08:42.960" end="01:08:47.359" style="s2">completely free. The way we the way we</p>
+<p begin="01:08:45.759" end="01:08:49.120" style="s2">sort of make money on our side is if we</p>
+<p begin="01:08:47.359" end="01:08:51.359" style="s2">place you at a company, we get a</p>
+<p begin="01:08:49.120" end="01:08:53.839" style="s2">recruiting placement fee. So, we&#39;re like</p>
+<p begin="01:08:51.359" end="01:08:56.159" style="s2">a recruiting firm and a training center.</p>
+<p begin="01:08:53.839" end="01:08:57.600" style="s2">&gt;&gt; Okay. Okay. Yeah, I think I&#39;m going to</p>
+<p begin="01:08:56.159" end="01:08:59.120" style="s2">sign up. So</p>
+<p begin="01:08:57.600" end="01:09:02.159" style="s2">&gt;&gt; yeah, please do</p>
+<p begin="01:08:59.120" end="01:09:05.120" style="s2">&gt;&gt; because yeah I so I I I I started with</p>
+<p begin="01:09:02.159" end="01:09:07.199" style="s2">data migration engineer in Java and</p>
+<p begin="01:09:05.120" end="01:09:09.839" style="s2">&gt;&gt; and then later on add the devop and the</p>
+<p begin="01:09:07.199" end="01:09:13.279" style="s2">platform on AWS and</p>
+<p begin="01:09:09.839" end="01:09:15.759" style="s2">&gt;&gt; yeah the last one year I added AI so I</p>
+<p begin="01:09:13.279" end="01:09:18.400" style="s2">trying to go further go go deeper into</p>
+<p begin="01:09:15.759" end="01:09:21.839" style="s2">AI because I work for dental office I</p>
+<p begin="01:09:18.400" end="01:09:23.279" style="s2">built up a AI agent for them</p>
+<p begin="01:09:21.839" end="01:09:24.880" style="s2">&gt;&gt; so I trying to go a little bit further</p>
+<p begin="01:09:23.279" end="01:09:26.400" style="s2">like</p>
+<p begin="01:09:24.880" end="01:09:27.199" style="s2">go a little bit deeper</p>
+<p begin="01:09:26.400" end="01:09:29.120" style="s2">rather than</p>
+<p begin="01:09:27.199" end="01:09:30.400" style="s2">&gt;&gt; Oh, yeah.</p>
+<p begin="01:09:29.120" end="01:09:32.000" style="s2">Lang, we would we would love to have</p>
+<p begin="01:09:30.400" end="01:09:34.000" style="s2">you. Please apply someone of your</p>
+<p begin="01:09:32.000" end="01:09:35.440" style="s2">caliber. You do a great job.</p>
+<p begin="01:09:34.000" end="01:09:39.520" style="s2">&gt;&gt; Okay. Thank you so much.</p>
+<p begin="01:09:35.440" end="01:09:40.799" style="s2">&gt;&gt; Of course. Um questions in the chat. Is</p>
+<p begin="01:09:39.520" end="01:09:43.120" style="s2">the Oh, Anthony, you&#39;re asking if the</p>
+<p begin="01:09:40.799" end="01:09:44.880" style="s2">marketing class is online. It is not,</p>
+<p begin="01:09:43.120" end="01:09:47.279" style="s2">but I can make it one of the night</p>
+<p begin="01:09:44.880" end="01:09:48.400" style="s2">school sessions. So, Tom and Sunny,</p>
+<p begin="01:09:47.279" end="01:09:52.400" style="s2">we&#39;re going to have a go to market</p>
+<p begin="01:09:48.400" end="01:09:52.400" style="s2">session for night school coming up.</p>
+<p begin="01:09:52.719" end="01:09:56.400" style="s2">Um</p>
+<p begin="01:09:54.640" end="01:09:57.679" style="s2">Neil&#39;s asking who pays the fee, the</p>
+<p begin="01:09:56.400" end="01:10:00.000" style="s2">student or the hiring company? And how</p>
+<p begin="01:09:57.679" end="01:10:02.239" style="s2">much is the fee? Neil, the hiring</p>
+<p begin="01:10:00.000" end="01:10:03.760" style="s2">companies pay the fees. So we are</p>
+<p begin="01:10:02.239" end="01:10:05.679" style="s2">recruiting firm, right? So after we</p>
+<p begin="01:10:03.760" end="01:10:10.239" style="s2">train you, we place you and then we</p>
+<p begin="01:10:05.679" end="01:10:12.080" style="s2">charge 25% of first year salary.</p>
+<p begin="01:10:10.239" end="01:10:13.600" style="s2">It&#39;s like pretty standard recruiting</p>
+<p begin="01:10:12.080" end="01:10:16.400" style="s2">fee.</p>
+<p begin="01:10:13.600" end="01:10:20.000" style="s2">Uh Anup is saying, &quot;Silly question. If</p>
+<p begin="01:10:16.400" end="01:10:21.679" style="s2">you could only use</p>
+<p begin="01:10:20.000" end="01:10:23.280" style="s2">uh sorry I just lost that question. If</p>
+<p begin="01:10:21.679" end="01:10:25.199" style="s2">you could only use one AI model for</p>
+<p begin="01:10:23.280" end="01:10:27.360" style="s2">everything, which one would you pick?</p>
+<p begin="01:10:25.199" end="01:10:29.840" style="s2">The cheapest one, which is a</p>
+<p begin="01:10:27.360" end="01:10:34.400" style="s2">controversial question, but the answer</p>
+<p begin="01:10:29.840" end="01:10:36.640" style="s2">as a CTO, I would pick the cheapest one.</p>
+<p begin="01:10:34.400" end="01:10:38.159" style="s2">Um Verun is saying, &quot;Seven weeks in</p>
+<p begin="01:10:36.640" end="01:10:39.440" style="s2">Austin. If I live in Austin, do I have</p>
+<p begin="01:10:38.159" end="01:10:44.199" style="s2">to move to your location or can I</p>
+<p begin="01:10:39.440" end="01:10:44.199" style="s2">commute?&quot; You can commute, my friend.</p>
+<p begin="01:10:45.440" end="01:10:50.159" style="s2">All right, I&#39;m going to call it there,</p>
+<p begin="01:10:48.159" end="01:10:53.840" style="s2">guys. It was great having you join us</p>
+<p begin="01:10:50.159" end="01:10:56.960" style="s2">for night school. Gauntlet AI is trying</p>
+<p begin="01:10:53.840" end="01:10:59.600" style="s2">to retrain the entire workforce for</p>
+<p begin="01:10:56.960" end="01:11:02.000" style="s2">what&#39;s coming in the AI era, and it&#39;s</p>
+<p begin="01:10:59.600" end="01:11:03.600" style="s2">going to take us a long time to change</p>
+<p begin="01:11:02.000" end="01:11:07.520" style="s2">the way that we actually think about</p>
+<p begin="01:11:03.600" end="01:11:09.199" style="s2">work. If you like night school, if you</p>
+<p begin="01:11:07.520" end="01:11:10.719" style="s2">think night school gave you value,</p>
+<p begin="01:11:09.199" end="01:11:13.360" style="s2">please share night school with somebody</p>
+<p begin="01:11:10.719" end="01:11:14.800" style="s2">else. have them join night school next</p>
+<p begin="01:11:13.360" end="01:11:17.040" style="s2">week because I&#39;ll be doing this for a</p>
+<p begin="01:11:14.800" end="01:11:19.120" style="s2">long time and my goal is to provide you</p>
+<p begin="01:11:17.040" end="01:11:21.040" style="s2">with value and if you&#39;re getting value,</p>
+<p begin="01:11:19.120" end="01:11:23.040" style="s2">please share that across the board.</p>
+<p begin="01:11:21.040" end="01:11:24.719" style="s2">Thank you again for your time. If you&#39;re</p>
+<p begin="01:11:23.040" end="01:11:26.960" style="s2">interested in applying to Gauntletai</p>
+<p begin="01:11:24.719" end="01:11:28.400" style="s2">cohort 5, the cohort starts on April</p>
+<p begin="01:11:26.960" end="01:11:30.320" style="s2">27th and you can go to</p>
+<p begin="01:11:28.400" end="01:11:32.960" style="s2">gauntletai.com/apply</p>
+<p begin="01:11:30.320" end="01:11:34.560" style="s2">to do so. Thank you for your time and</p>
+<p begin="01:11:32.960" end="01:11:36.719" style="s2">thank you for all the questions and</p>
+<p begin="01:11:34.560" end="01:11:39.520" style="s2">thank you to my amazing staff for</p>
+<p begin="01:11:36.719" end="01:11:41.199" style="s2">helping facilitate everything. Thank</p>
+<p begin="01:11:39.520" end="01:11:44.159" style="s2">you. Have a good day. Thank you</p>
+<p begin="01:11:41.199" end="01:11:44.159" style="s2">everybody.</p>
+</div>
+</body>
+</tt>

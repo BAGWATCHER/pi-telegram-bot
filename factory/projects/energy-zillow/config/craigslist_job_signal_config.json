@@ -1,0 +1,127 @@
+{
+  "version": "2026-04-24-v3",
+  "source_policy": {
+    "mode": "manual_first",
+    "note": "Craigslist RSS is still preferred when reachable, but the active pilot should use supervised manual import first because Azure VM RSS requests are returning 403. Avoid direct HTML scraping. Focus the pilot on NH + nearby New England markets."
+  },
+  "markets": [
+    {
+      "market_id": "nh",
+      "label": "New Hampshire",
+      "rss_search_base": "https://nh.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "accounts payable",
+        "accounts receivable",
+        "data entry",
+        "administrative assistant",
+        "office manager",
+        "dispatcher"
+      ]
+    },
+    {
+      "market_id": "boston",
+      "label": "Boston",
+      "rss_search_base": "https://boston.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "accounts payable",
+        "accounts receivable",
+        "data entry",
+        "administrative assistant",
+        "office manager",
+        "dispatcher"
+      ]
+    },
+    {
+      "market_id": "worcester",
+      "label": "Worcester / Central MA",
+      "rss_search_base": "https://worcester.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "accounts payable",
+        "data entry",
+        "administrative assistant",
+        "office manager",
+        "dispatcher"
+      ]
+    },
+    {
+      "market_id": "maine",
+      "label": "Maine",
+      "rss_search_base": "https://maine.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "data entry",
+        "administrative assistant",
+        "office manager",
+        "dispatcher"
+      ]
+    },
+    {
+      "market_id": "providence",
+      "label": "Providence",
+      "rss_search_base": "https://providence.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "data entry",
+        "administrative assistant",
+        "office manager"
+      ]
+    },
+    {
+      "market_id": "vermont",
+      "label": "Vermont",
+      "rss_search_base": "https://vermont.craigslist.org/search/jjj",
+      "queries": [
+        "payroll",
+        "bookkeeper",
+        "data entry",
+        "administrative assistant",
+        "office manager"
+      ]
+    }
+  ],
+  "role_rules": [
+    {
+      "role_family": "payroll_finance_admin",
+      "keywords": ["payroll", "bookkeeper", "accounts payable", "accounts receivable", "ap/ar", "billing"],
+      "automation_hypotheses": [
+        "invoice and bill ingestion automation",
+        "payroll export validation and reconciliation",
+        "collections follow-up workflow automation"
+      ]
+    },
+    {
+      "role_family": "backoffice_data_ops",
+      "keywords": ["data entry", "admin", "administrative", "coordinator", "clerical", "scheduler", "dispatch"],
+      "automation_hypotheses": [
+        "intake-to-CRM data sync",
+        "document extraction and structured entry",
+        "appointment scheduling and reminder automation"
+      ]
+    },
+    {
+      "role_family": "customer_support_ops",
+      "keywords": ["customer service", "call center", "support", "inbound calls", "outbound calls"],
+      "automation_hypotheses": [
+        "AI-assisted call triage",
+        "auto-generated response drafts",
+        "FAQ/copilot for repetitive customer requests"
+      ]
+    }
+  ],
+  "negative_keywords": [
+    "senior engineer",
+    "software engineer",
+    "registered nurse",
+    "cna",
+    "electrician",
+    "plumber"
+  ]
+}

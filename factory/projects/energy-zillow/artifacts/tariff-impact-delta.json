@@ -1,0 +1,264 @@
+{
+  "generated_at": "2026-04-17T07:21:02Z",
+  "comparison": {
+    "current": "state + official utility overrides + manual utility map + site utility/tariff feed",
+    "baseline": "state + official utility overrides + manual utility map (site utility/tariff feed disabled)"
+  },
+  "sites_compared": 61834,
+  "non_zero_rate_delta_sites": 53965,
+  "non_zero_rate_delta_ratio": 0.872739916550765,
+  "rate_delta_stats": {
+    "mean": 0.024001472814334224,
+    "median": 0.03402,
+    "p10": 0.0,
+    "p90": 0.03402,
+    "min": -0.07602,
+    "max": 0.08242
+  },
+  "annual_savings_delta_usd": {
+    "total": 20855075.36,
+    "mean": 337.28,
+    "median": 279.65,
+    "p10": 0.0,
+    "p90": 785.59,
+    "min": -2122.94,
+    "max": 2404.2
+  },
+  "rate_method_transitions": {
+    "state_official_fallback -> official_utility_override": 53965,
+    "state_official_fallback -> state_official_fallback": 4429,
+    "official_utility_override -> official_utility_override": 3440
+  },
+  "top_zip_deltas": [
+    {
+      "zip": "01890",
+      "sites": 3763,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 1844479.99
+    },
+    {
+      "zip": "02492",
+      "sites": 2725,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 1509518.97
+    },
+    {
+      "zip": "02420",
+      "sites": 2182,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 1430868.54
+    },
+    {
+      "zip": "02186",
+      "sites": 3043,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 1423025.47
+    },
+    {
+      "zip": "01730",
+      "sites": 2173,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 1238830.28
+    },
+    {
+      "zip": "02090",
+      "sites": 1579,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 897417.5
+    },
+    {
+      "zip": "02052",
+      "sites": 1529,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03405,
+      "total_annual_delta_usd": 867072.4
+    },
+    {
+      "zip": "01776",
+      "sites": 1184,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 802323.39
+    },
+    {
+      "zip": "02667",
+      "sites": 1953,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 794896.26
+    },
+    {
+      "zip": "02067",
+      "sites": 1405,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 707312.8
+    },
+    {
+      "zip": "02118",
+      "sites": 2998,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 636203.93
+    },
+    {
+      "zip": "01778",
+      "sites": 846,
+      "non_zero_ratio": 1.0,
+      "avg_rate_delta": 0.03402,
+      "total_annual_delta_usd": 623066.69
+    }
+  ],
+  "top_site_deltas": [
+    {
+      "site_id": "site_89d9104e5699",
+      "zip": "06890",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 46413.1,
+      "annual_savings_delta_usd": 2404.2,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_dd5d72ba25a5",
+      "zip": "06525",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 45627.0,
+      "annual_savings_delta_usd": 2363.48,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_2cfcefcb240c",
+      "zip": "06824",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 45390.8,
+      "annual_savings_delta_usd": 2351.24,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_63e666cd335d",
+      "zip": "06525",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 44131.7,
+      "annual_savings_delta_usd": 2286.02,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_4e9fefdeae1d",
+      "zip": "06890",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 43867.4,
+      "annual_savings_delta_usd": 2272.33,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_0a25f523701a",
+      "zip": "02052",
+      "state": "NH",
+      "utility_name": "NSTAR Electric Company",
+      "current_rate": 0.34562,
+      "baseline_rate": 0.2632,
+      "rate_delta": 0.08242,
+      "annual_kwh_solar": 27535.3,
+      "annual_savings_delta_usd": 2269.46,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_481b2fc6eb4d",
+      "zip": "06525",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 42270.9,
+      "annual_savings_delta_usd": 2189.63,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_41ac2fecd7c7",
+      "zip": "06890",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 41559.6,
+      "annual_savings_delta_usd": 2152.79,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_7919ed1fd838",
+      "zip": "03854",
+      "state": "ME",
+      "utility_name": "Public Service Co of NH",
+      "current_rate": 0.23128,
+      "baseline_rate": 0.3073,
+      "rate_delta": -0.07602,
+      "annual_kwh_solar": 27926.1,
+      "annual_savings_delta_usd": -2122.94,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_97daed374366",
+      "zip": "06890",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 40357.1,
+      "annual_savings_delta_usd": 2090.5,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_6b21ca318eba",
+      "zip": "06525",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 40300.0,
+      "annual_savings_delta_usd": 2087.54,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    },
+    {
+      "site_id": "site_bc3ffa1472c4",
+      "zip": "06890",
+      "state": "CT",
+      "utility_name": "United Illuminating Co",
+      "current_rate": 0.3348,
+      "baseline_rate": 0.283,
+      "rate_delta": 0.0518,
+      "annual_kwh_solar": 39868.3,
+      "annual_savings_delta_usd": 2065.18,
+      "method_transition": "state_official_fallback -> official_utility_override"
+    }
+  ]
+}

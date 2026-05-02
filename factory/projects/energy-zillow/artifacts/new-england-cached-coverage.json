@@ -1,0 +1,742 @@
+{
+  "status": "ok",
+  "included_zip_count": 65,
+  "included_site_count": 66941,
+  "state_site_counts": {
+    "CT": 12862,
+    "MA": 116080,
+    "ME": 3038,
+    "NH": 802,
+    "RI": 246,
+    "VT": 421
+  },
+  "included": [
+    {
+      "zip": "06103",
+      "city": "Hartford",
+      "state": "CT",
+      "records": 745,
+      "file": "sites_06103_osm.csv",
+      "source_breakdown": {
+        "node": 669,
+        "way": 76
+      }
+    },
+    {
+      "zip": "06510",
+      "city": "New Haven",
+      "state": "CT",
+      "records": 512,
+      "file": "sites_06510_osm.csv",
+      "source_breakdown": {
+        "node": 405,
+        "way": 107
+      }
+    },
+    {
+      "zip": "06525",
+      "city": "Woodbridge",
+      "state": "CT",
+      "records": 1253,
+      "file": "sites_06525_osm.csv",
+      "source_breakdown": {
+        "node": 1248,
+        "way": 5
+      }
+    },
+    {
+      "zip": "06820",
+      "city": "Darien",
+      "state": "CT",
+      "records": 338,
+      "file": "sites_06820_osm.csv",
+      "source_breakdown": {
+        "node": 338
+      }
+    },
+    {
+      "zip": "06824",
+      "city": "Fairfield",
+      "state": "CT",
+      "records": 2139,
+      "file": "sites_06824_osm.csv",
+      "source_breakdown": {
+        "node": 2137,
+        "way": 2
+      }
+    },
+    {
+      "zip": "06831",
+      "city": "Greenwich",
+      "state": "CT",
+      "records": 523,
+      "file": "sites_06831_osm.csv",
+      "source_breakdown": {
+        "node": 518,
+        "way": 5
+      }
+    },
+    {
+      "zip": "06840",
+      "city": "New Canaan",
+      "state": "CT",
+      "records": 618,
+      "file": "sites_06840_osm.csv",
+      "source_breakdown": {
+        "node": 609,
+        "way": 9
+      }
+    },
+    {
+      "zip": "06870",
+      "city": "Greenwich",
+      "state": "CT",
+      "records": 433,
+      "file": "sites_06870_osm.csv",
+      "source_breakdown": {
+        "node": 431,
+        "way": 2
+      }
+    },
+    {
+      "zip": "06877",
+      "city": "Ridgefield",
+      "state": "CT",
+      "records": 1367,
+      "file": "sites_06877_osm.csv",
+      "source_breakdown": {
+        "node": 1306,
+        "way": 61
+      }
+    },
+    {
+      "zip": "06878",
+      "city": "Greenwich",
+      "state": "CT",
+      "records": 631,
+      "file": "sites_06878_osm.csv",
+      "source_breakdown": {
+        "node": 628,
+        "way": 3
+      }
+    },
+    {
+      "zip": "06880",
+      "city": "Westport",
+      "state": "CT",
+      "records": 340,
+      "file": "sites_06880_osm.csv",
+      "source_breakdown": {
+        "node": 339,
+        "way": 1
+      }
+    },
+    {
+      "zip": "06883",
+      "city": "Weston",
+      "state": "CT",
+      "records": 739,
+      "file": "sites_06883_osm.csv",
+      "source_breakdown": {
+        "node": 733,
+        "way": 6
+      }
+    },
+    {
+      "zip": "06890",
+      "city": "Fairfield",
+      "state": "CT",
+      "records": 1454,
+      "file": "sites_06890_osm.csv",
+      "source_breakdown": {
+        "node": 1434,
+        "way": 20
+      }
+    },
+    {
+      "zip": "06896",
+      "city": "Redding",
+      "state": "CT",
+      "records": 99,
+      "file": "sites_06896_osm.csv",
+      "source_breakdown": {
+        "node": 99
+      }
+    },
+    {
+      "zip": "06897",
+      "city": "Wilton",
+      "state": "CT",
+      "records": 593,
+      "file": "sites_06897_osm.csv",
+      "source_breakdown": {
+        "node": 585,
+        "way": 8
+      }
+    },
+    {
+      "zip": "06903",
+      "city": "Stamford",
+      "state": "CT",
+      "records": 1078,
+      "file": "sites_06903_osm.csv",
+      "source_breakdown": {
+        "node": 1078
+      }
+    },
+    {
+      "zip": "01450",
+      "city": "Groton",
+      "state": "MA",
+      "records": 412,
+      "file": "sites_01450_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 408
+      }
+    },
+    {
+      "zip": "01450",
+      "city": "Groton",
+      "state": "MA",
+      "records": 66508,
+      "file": "sites_multi_osm.csv",
+      "source_breakdown": {
+        "node": 15418,
+        "way": 51090
+      }
+    },
+    {
+      "zip": "01451",
+      "city": "Harvard",
+      "state": "MA",
+      "records": 405,
+      "file": "sites_01451_osm.csv",
+      "source_breakdown": {
+        "node": 2,
+        "way": 403
+      }
+    },
+    {
+      "zip": "01720",
+      "city": "Acton",
+      "state": "MA",
+      "records": 1426,
+      "file": "sites_01720_osm.csv",
+      "source_breakdown": {
+        "node": 29,
+        "way": 1397
+      }
+    },
+    {
+      "zip": "01730",
+      "city": "Bedford",
+      "state": "MA",
+      "records": 2173,
+      "file": "sites_01730_osm.csv",
+      "source_breakdown": {
+        "node": 73,
+        "way": 2100
+      }
+    },
+    {
+      "zip": "01740",
+      "city": "Bolton",
+      "state": "MA",
+      "records": 351,
+      "file": "sites_01740_osm.csv",
+      "source_breakdown": {
+        "node": 13,
+        "way": 338
+      }
+    },
+    {
+      "zip": "01741",
+      "city": "Carlisle",
+      "state": "MA",
+      "records": 470,
+      "file": "sites_01741_osm.csv",
+      "source_breakdown": {
+        "node": 3,
+        "way": 467
+      }
+    },
+    {
+      "zip": "01748",
+      "city": "Hopkinton",
+      "state": "MA",
+      "records": 1083,
+      "file": "sites_01748_osm.csv",
+      "source_breakdown": {
+        "node": 21,
+        "way": 1062
+      }
+    },
+    {
+      "zip": "01770",
+      "city": "Sherborn",
+      "state": "MA",
+      "records": 495,
+      "file": "sites_01770_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 491
+      }
+    },
+    {
+      "zip": "01772",
+      "city": "Southborough",
+      "state": "MA",
+      "records": 951,
+      "file": "sites_01772_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 947
+      }
+    },
+    {
+      "zip": "01776",
+      "city": "Sudbury",
+      "state": "MA",
+      "records": 1184,
+      "file": "sites_01776_osm.csv",
+      "source_breakdown": {
+        "node": 2,
+        "way": 1182
+      }
+    },
+    {
+      "zip": "01778",
+      "city": "Wayland",
+      "state": "MA",
+      "records": 846,
+      "file": "sites_01778_osm.csv",
+      "source_breakdown": {
+        "node": 3,
+        "way": 843
+      }
+    },
+    {
+      "zip": "01827",
+      "city": "Dunstable",
+      "state": "MA",
+      "records": 358,
+      "file": "sites_01827_osm.csv",
+      "source_breakdown": {
+        "node": 7,
+        "way": 351
+      }
+    },
+    {
+      "zip": "01886",
+      "city": "Westford",
+      "state": "MA",
+      "records": 831,
+      "file": "sites_01886_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 827
+      }
+    },
+    {
+      "zip": "01890",
+      "city": "Winchester",
+      "state": "MA",
+      "records": 3763,
+      "file": "sites_01890_osm.csv",
+      "source_breakdown": {
+        "node": 57,
+        "way": 3706
+      }
+    },
+    {
+      "zip": "01921",
+      "city": "Boxford",
+      "state": "MA",
+      "records": 436,
+      "file": "sites_01921_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 432
+      }
+    },
+    {
+      "zip": "01940",
+      "city": "Lynnfield",
+      "state": "MA",
+      "records": 1885,
+      "file": "sites_01940_osm.csv",
+      "source_breakdown": {
+        "node": 5,
+        "way": 1880
+      }
+    },
+    {
+      "zip": "01949",
+      "city": "Middleton",
+      "state": "MA",
+      "records": 1019,
+      "file": "sites_01949_osm.csv",
+      "source_breakdown": {
+        "node": 13,
+        "way": 1006
+      }
+    },
+    {
+      "zip": "01965",
+      "city": "Prides Crossing",
+      "state": "MA",
+      "records": 575,
+      "file": "sites_01965_osm.csv",
+      "source_breakdown": {
+        "node": 1,
+        "way": 574
+      }
+    },
+    {
+      "zip": "01983",
+      "city": "Topsfield",
+      "state": "MA",
+      "records": 990,
+      "file": "sites_01983_osm.csv",
+      "source_breakdown": {
+        "node": 3,
+        "way": 987
+      }
+    },
+    {
+      "zip": "01985",
+      "city": "West Newbury",
+      "state": "MA",
+      "records": 486,
+      "file": "sites_01985_osm.csv",
+      "source_breakdown": {
+        "node": 5,
+        "way": 481
+      }
+    },
+    {
+      "zip": "02030",
+      "city": "Dover",
+      "state": "MA",
+      "records": 689,
+      "file": "sites_02030_osm.csv",
+      "source_breakdown": {
+        "node": 3,
+        "way": 686
+      }
+    },
+    {
+      "zip": "02043",
+      "city": "Hingham",
+      "state": "MA",
+      "records": 1525,
+      "file": "sites_02043_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 1521
+      }
+    },
+    {
+      "zip": "02052",
+      "city": "Medfield",
+      "state": "MA",
+      "records": 1529,
+      "file": "sites_02052_osm.csv",
+      "source_breakdown": {
+        "node": 11,
+        "way": 1518
+      }
+    },
+    {
+      "zip": "02056",
+      "city": "Norfolk",
+      "state": "MA",
+      "records": 1023,
+      "file": "sites_02056_osm.csv",
+      "source_breakdown": {
+        "node": 12,
+        "way": 1011
+      }
+    },
+    {
+      "zip": "02061",
+      "city": "Norwell",
+      "state": "MA",
+      "records": 527,
+      "file": "sites_02061_osm.csv",
+      "source_breakdown": {
+        "node": 1,
+        "way": 526
+      }
+    },
+    {
+      "zip": "02067",
+      "city": "Sharon",
+      "state": "MA",
+      "records": 1405,
+      "file": "sites_02067_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 1401
+      }
+    },
+    {
+      "zip": "02090",
+      "city": "Westwood",
+      "state": "MA",
+      "records": 1579,
+      "file": "sites_02090_osm.csv",
+      "source_breakdown": {
+        "node": 7,
+        "way": 1572
+      }
+    },
+    {
+      "zip": "02118",
+      "city": "Boston",
+      "state": "MA",
+      "records": 2998,
+      "file": "sites_02118_osm.csv",
+      "source_breakdown": {
+        "node": 140,
+        "way": 2858
+      }
+    },
+    {
+      "zip": "02139",
+      "city": "Cambridge",
+      "state": "MA",
+      "records": 1825,
+      "file": "sites_02139_osm.csv",
+      "source_breakdown": {
+        "node": 228,
+        "way": 1597
+      }
+    },
+    {
+      "zip": "02186",
+      "city": "Milton",
+      "state": "MA",
+      "records": 3043,
+      "file": "sites_02186_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 3039
+      }
+    },
+    {
+      "zip": "02332",
+      "city": "Duxbury",
+      "state": "MA",
+      "records": 364,
+      "file": "sites_02332_osm.csv",
+      "source_breakdown": {
+        "way": 364
+      }
+    },
+    {
+      "zip": "02339",
+      "city": "Hanover",
+      "state": "MA",
+      "records": 1129,
+      "file": "sites_02339_osm.csv",
+      "source_breakdown": {
+        "node": 2,
+        "way": 1127
+      }
+    },
+    {
+      "zip": "02420",
+      "city": "Lexington",
+      "state": "MA",
+      "records": 2182,
+      "file": "sites_02420_osm.csv",
+      "source_breakdown": {
+        "node": 33,
+        "way": 2149
+      }
+    },
+    {
+      "zip": "02468",
+      "city": "Waban",
+      "state": "MA",
+      "records": 581,
+      "file": "sites_02468_osm.csv",
+      "source_breakdown": {
+        "node": 13,
+        "way": 568
+      }
+    },
+    {
+      "zip": "02482",
+      "city": "Wellesley",
+      "state": "MA",
+      "records": 2535,
+      "file": "sites_02482_osm.csv",
+      "source_breakdown": {
+        "node": 60,
+        "way": 2475
+      }
+    },
+    {
+      "zip": "02492",
+      "city": "Needham",
+      "state": "MA",
+      "records": 2725,
+      "file": "sites_02492_osm.csv",
+      "source_breakdown": {
+        "node": 53,
+        "way": 2672
+      }
+    },
+    {
+      "zip": "02493",
+      "city": "Weston",
+      "state": "MA",
+      "records": 541,
+      "file": "sites_02493_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 537
+      }
+    },
+    {
+      "zip": "02575",
+      "city": "Tisbury",
+      "state": "MA",
+      "records": 549,
+      "file": "sites_02575_osm.csv",
+      "source_breakdown": {
+        "way": 549
+      }
+    },
+    {
+      "zip": "02637",
+      "city": "Cummaquid",
+      "state": "MA",
+      "records": 731,
+      "file": "sites_02637_osm.csv",
+      "source_breakdown": {
+        "way": 731
+      }
+    },
+    {
+      "zip": "02667",
+      "city": "Wellfleet",
+      "state": "MA",
+      "records": 1953,
+      "file": "sites_02667_osm.csv",
+      "source_breakdown": {
+        "node": 5,
+        "way": 1948
+      }
+    },
+    {
+      "zip": "04006",
+      "city": "Biddeford Pool",
+      "state": "ME",
+      "records": 72,
+      "file": "sites_04006_osm.csv",
+      "source_breakdown": {
+        "node": 69,
+        "way": 3
+      }
+    },
+    {
+      "zip": "04101",
+      "city": "Portland",
+      "state": "ME",
+      "records": 2966,
+      "file": "sites_04101_osm.csv",
+      "source_breakdown": {
+        "node": 1868,
+        "way": 1098
+      }
+    },
+    {
+      "zip": "03087",
+      "city": "Windham",
+      "state": "NH",
+      "records": 387,
+      "file": "sites_03087_osm.csv",
+      "source_breakdown": {
+        "node": 6,
+        "way": 381
+      }
+    },
+    {
+      "zip": "03249",
+      "city": "Gilford",
+      "state": "NH",
+      "records": 150,
+      "file": "sites_03249_osm.csv",
+      "source_breakdown": {
+        "node": 8,
+        "way": 142
+      }
+    },
+    {
+      "zip": "03253",
+      "city": "Meredith",
+      "state": "NH",
+      "records": 191,
+      "file": "sites_03253_osm.csv",
+      "source_breakdown": {
+        "node": 37,
+        "way": 154
+      }
+    },
+    {
+      "zip": "03854",
+      "city": "New Castle",
+      "state": "NH",
+      "records": 74,
+      "file": "sites_03854_osm.csv",
+      "source_breakdown": {
+        "node": 4,
+        "way": 70
+      }
+    },
+    {
+      "zip": "02903",
+      "city": "Providence",
+      "state": "RI",
+      "records": 246,
+      "file": "sites_02903_osm.csv",
+      "source_breakdown": {
+        "node": 98,
+        "way": 148
+      }
+    },
+    {
+      "zip": "05486",
+      "city": "South Hero",
+      "state": "VT",
+      "records": 421,
+      "file": "sites_05486_osm.csv",
+      "source_breakdown": {
+        "node": 361,
+        "way": 60
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "file": "sites_78701_osm.csv",
+      "zip": "78701",
+      "state": "TX",
+      "reason": "non_new_england"
+    },
+    {
+      "file": "sites_78702_osm.csv",
+      "zip": "78702",
+      "state": "TX",
+      "reason": "non_new_england"
+    }
+  ],
+  "outputs": {
+    "sites_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites.csv",
+    "sites_multi_osm_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_multi_osm.csv"
+  }
+}

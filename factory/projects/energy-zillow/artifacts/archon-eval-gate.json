@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "timestamp_utc": "2026-04-21T20:35:16.567060+00:00",
+  "log_path": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-eval-gate.log",
+  "summary_path": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/eval-summary.md",
+  "summary_exists": true
+}

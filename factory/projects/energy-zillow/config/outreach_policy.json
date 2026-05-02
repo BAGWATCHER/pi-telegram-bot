@@ -1,0 +1,56 @@
+{
+  "version": "2026-04-17-v1",
+  "default": {
+    "confidence_min": 0.65,
+    "confidence_high_min": 0.82,
+    "channel_map": {
+      "hot": "phone",
+      "warm": "email",
+      "cold": "partner",
+      "skip": "review",
+      "default": "email"
+    },
+    "block_operator_statuses": ["closed", "skip"],
+    "block_lead_temperatures": ["skip"],
+    "block_risk_flags": [],
+    "review_risk_flags": ["requires_site_survey", "proxy_only_readiness", "multi_address_merged"]
+  },
+  "products": {
+    "solar": {
+      "confidence_min": 0.62,
+      "confidence_high_min": 0.82,
+      "channel_map": {
+        "hot": "phone",
+        "warm": "email",
+        "default": "email"
+      }
+    },
+    "roofing": {
+      "confidence_min": 0.67,
+      "confidence_high_min": 0.84,
+      "channel_map": {
+        "hot": "phone",
+        "warm": "email",
+        "default": "email"
+      }
+    },
+    "hvac_heat_pump": {
+      "confidence_min": 0.60,
+      "confidence_high_min": 0.79,
+      "channel_map": {
+        "hot": "phone",
+        "warm": "sms",
+        "default": "email"
+      }
+    },
+    "battery_backup": {
+      "confidence_min": 0.68,
+      "confidence_high_min": 0.85,
+      "channel_map": {
+        "hot": "phone",
+        "warm": "phone",
+        "default": "email"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "guest": {
+    "status": 200,
+    "user_id": "user_20260426T100622156916Z"
+  },
+  "cart_create": {
+    "status": 200,
+    "cart_id": "cart_20260426T100622158674Z"
+  },
+  "sample_product_id": "prod_saint_card_pack_gdl_005",
+  "cart_add": {
+    "status": 200,
+    "total_quantity": 2
+  },
+  "cart_update": {
+    "status": 200,
+    "total_quantity": 1
+  },
+  "intent_create": {
+    "status": 200,
+    "intent_id": "ord_20260426T100622164072Z",
+    "reused": false,
+    "checkout_mode": "dry_run"
+  },
+  "intent_replay": {
+    "status": 200,
+    "intent_id": "ord_20260426T100622164072Z",
+    "reused": true,
+    "same_intent": true
+  }
+}

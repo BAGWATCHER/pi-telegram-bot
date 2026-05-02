@@ -1,0 +1,83 @@
+# New England Cached Coverage
+
+- included ZIPs: **65**
+- included sites: **66,941**
+
+## State Totals
+- `CT`: **12,862**
+- `MA`: **116,080**
+- `ME`: **3,038**
+- `NH`: **802**
+- `RI`: **246**
+- `VT`: **421**
+
+## Included ZIPs
+- `06103` Hartford, CT: **745**
+- `06510` New Haven, CT: **512**
+- `06525` Woodbridge, CT: **1,253**
+- `06820` Darien, CT: **338**
+- `06824` Fairfield, CT: **2,139**
+- `06831` Greenwich, CT: **523**
+- `06840` New Canaan, CT: **618**
+- `06870` Greenwich, CT: **433**
+- `06877` Ridgefield, CT: **1,367**
+- `06878` Greenwich, CT: **631**
+- `06880` Westport, CT: **340**
+- `06883` Weston, CT: **739**
+- `06890` Fairfield, CT: **1,454**
+- `06896` Redding, CT: **99**
+- `06897` Wilton, CT: **593**
+- `06903` Stamford, CT: **1,078**
+- `01450` Groton, MA: **412**
+- `01450` Groton, MA: **66,508**
+- `01451` Harvard, MA: **405**
+- `01720` Acton, MA: **1,426**
+- `01730` Bedford, MA: **2,173**
+- `01740` Bolton, MA: **351**
+- `01741` Carlisle, MA: **470**
+- `01748` Hopkinton, MA: **1,083**
+- `01770` Sherborn, MA: **495**
+- `01772` Southborough, MA: **951**
+- `01776` Sudbury, MA: **1,184**
+- `01778` Wayland, MA: **846**
+- `01827` Dunstable, MA: **358**
+- `01886` Westford, MA: **831**
+- `01890` Winchester, MA: **3,763**
+- `01921` Boxford, MA: **436**
+- `01940` Lynnfield, MA: **1,885**
+- `01949` Middleton, MA: **1,019**
+- `01965` Prides Crossing, MA: **575**
+- `01983` Topsfield, MA: **990**
+- `01985` West Newbury, MA: **486**
+- `02030` Dover, MA: **689**
+- `02043` Hingham, MA: **1,525**
+- `02052` Medfield, MA: **1,529**
+- `02056` Norfolk, MA: **1,023**
+- `02061` Norwell, MA: **527**
+- `02067` Sharon, MA: **1,405**
+- `02090` Westwood, MA: **1,579**
+- `02118` Boston, MA: **2,998**
+- `02139` Cambridge, MA: **1,825**
+- `02186` Milton, MA: **3,043**
+- `02332` Duxbury, MA: **364**
+- `02339` Hanover, MA: **1,129**
+- `02420` Lexington, MA: **2,182**
+- `02468` Waban, MA: **581**
+- `02482` Wellesley, MA: **2,535**
+- `02492` Needham, MA: **2,725**
+- `02493` Weston, MA: **541**
+- `02575` Tisbury, MA: **549**
+- `02637` Cummaquid, MA: **731**
+- `02667` Wellfleet, MA: **1,953**
+- `04006` Biddeford Pool, ME: **72**
+- `04101` Portland, ME: **2,966**
+- `03087` Windham, NH: **387**
+- `03249` Gilford, NH: **150**
+- `03253` Meredith, NH: **191**
+- `03854` New Castle, NH: **74**
+- `02903` Providence, RI: **246**
+- `05486` South Hero, VT: **421**
+
+## Skipped
+- `sites_78701_osm.csv`: non_new_england
+- `sites_78702_osm.csv`: non_new_england

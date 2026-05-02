@@ -1,0 +1,59 @@
+name: demandgrid-eval-gate
+description: |
+  Use when: You want to run DemandGrid eval gates quickly and store a durable run artifact.
+  Triggers: "demandgrid eval", "run demandgrid eval", "dg eval gate", "dg regression gate".
+  Does: Runs `eval/run_eval.py`, captures full logs, asserts PASS, and writes a structured summary artifact.
+  NOT for: Feature implementation or data ingest lanes.
+
+nodes:
+  - id: run-eval
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      mkdir -p artifacts
+      LOG_PATH="artifacts/archon-eval-gate.log"
+
+      python3 eval/run_eval.py > "$LOG_PATH" 2>&1 || true
+
+      echo "=== demandgrid-eval-gate log tail ==="
+      tail -n 120 "$LOG_PATH" || true
+
+  - id: assert-eval-pass
+    depends_on: [run-eval]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      LOG_PATH="artifacts/archon-eval-gate.log"
+      STATUS_LINE="$(awk 'NF{line=$0} END{print line}' "$LOG_PATH" | tr -d '\r')"
+
+      if [ "$STATUS_LINE" != "PASS" ]; then
+        echo "FAIL: eval gate returned '$STATUS_LINE' (expected PASS)"
+        exit 1
+      fi
+
+      python3 - << 'PY'
+      import json
+      from datetime import datetime, timezone
+      from pathlib import Path
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      log_path = root / 'artifacts' / 'archon-eval-gate.log'
+      out_path = root / 'artifacts' / 'archon-eval-gate.json'
+      summary_path = root / 'artifacts' / 'eval-summary.md'
+
+      payload = {
+          'status': 'PASS',
+          'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          'log_path': str(log_path),
+          'summary_path': str(summary_path),
+          'summary_exists': summary_path.exists(),
+      }
+      out_path.write_text(json.dumps(payload, indent=2), encoding='utf-8')
+      print(out_path)
+      PY
+
+      echo "PASS: demandgrid eval gate"

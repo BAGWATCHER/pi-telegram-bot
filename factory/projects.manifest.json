@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-26T11:36:00Z",
+  "projects": [
+    {
+      "id": "bearingbrain",
+      "name": "PartsBrain / BearingBrain",
+      "path": "/home/ubuntu/partsbrain/web",
+      "riskLevel": "high",
+      "commands": {
+        "build": "npm run build",
+        "eval": "npm run eval:agentic-v1",
+        "deploy": "pm2 restart partsbrain"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "rico",
+      "name": "Rico / trenchfeed-trader",
+      "path": "/home/ubuntu/trenchfeed-trader",
+      "riskLevel": "high",
+      "commands": {
+        "build": "npm run build",
+        "eval": "npm run test || true",
+        "deploy": "pm2 restart rico-v3-shadow --update-env"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "bagwatcher",
+      "name": "BagWatcher AI",
+      "path": "/home/ubuntu/BAG-WATCHER-AI",
+      "riskLevel": "medium",
+      "commands": {
+        "build": "npm run build",
+        "eval": "npm run test || true",
+        "deploy": "pm2 restart bagwatcher-api --update-env"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "chow",
+      "name": "Chow / pi-telegram-bot",
+      "path": "/home/ubuntu/pi-telegram-bot",
+      "riskLevel": "medium",
+      "commands": {
+        "build": "npm run learn:status",
+        "eval": "npm run brain:consolidate || true",
+        "deploy": "pm2 restart chow --update-env"
+      },
+      "gates": {
+        "requireEvalPass": false,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "energy-zillow",
+      "name": "Energy Zillow (Gauntlet Practice)",
+      "path": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow",
+      "riskLevel": "medium",
+      "commands": {
+        "build": "python3 scripts/score_sites.py --solar-model proxy && python3 scripts/export_openapi.py",
+        "eval": "python3 eval/run_eval.py --require-min-zips 25 --min-rows-per-zip 20 --min-zip-stability 0.90",
+        "deploy": "echo 'Demo-only project: no deploy command'"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "catholic-shop",
+      "name": "Catholic Market",
+      "path": "/home/ubuntu/pi-telegram-bot/factory/projects/catholic-shop",
+      "riskLevel": "medium",
+      "commands": {
+        "build": "python3 -m py_compile backend/api/app.py",
+        "eval": "python3 eval/run_eval.py",
+        "deploy": "pm2 restart catholic-shop-demo"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    },
+    {
+      "id": "chow-meet-sidecar",
+      "name": "Chow Meet Sidecar",
+      "path": "/home/ubuntu/pi-telegram-bot",
+      "riskLevel": "medium",
+      "commands": {
+        "build": "node --import tsx/esm -e \"import('./src/meet-sidecar.ts')\"",
+        "eval": "python3 factory/projects/chow-meet-sidecar/eval/run_eval.py",
+        "deploy": "pm2 restart chow --update-env"
+      },
+      "gates": {
+        "requireEvalPass": true,
+        "requireHumanApprovalForDeploy": true
+      }
+    }
+  ]
+}

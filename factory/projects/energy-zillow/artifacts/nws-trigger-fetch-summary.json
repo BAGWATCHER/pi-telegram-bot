@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-04-16T23:09:36Z",
+  "sites": 5800,
+  "states": [
+    "CT",
+    "MA",
+    "VT"
+  ],
+  "state_rollup": {
+    "CT": {
+      "feed_ok": true,
+      "storm_trigger_status": "low",
+      "storm_trigger_score": 0.0,
+      "alert_count": 0,
+      "top_events": [],
+      "error": ""
+    },
+    "MA": {
+      "feed_ok": true,
+      "storm_trigger_status": "low",
+      "storm_trigger_score": 0.0,
+      "alert_count": 0,
+      "top_events": [],
+      "error": ""
+    },
+    "VT": {
+      "feed_ok": false,
+      "storm_trigger_status": "missing",
+      "storm_trigger_score": null,
+      "alert_count": 0,
+      "top_events": [],
+      "error": "HTTPSConnectionPool(host='api.weather.gov', port=443): Read timed out. (read timeout=12)"
+    }
+  },
+  "storm_status_counts": {
+    "low": 5379,
+    "missing": 421
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv"
+}

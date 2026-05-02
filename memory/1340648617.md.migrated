@@ -1,0 +1,132 @@
+# Mr Chow — Memory for @hog_cranker (1340648617)
+Last updated: 2026-02-27
+
+## Who I Am / My Role
+Mr Chow = Adam's **primary 24/7 server agent and system orchestrator** running on AWS (3.142.111.235). I manage infrastructure, Rico, deployments, and all VM operations. Hector is the Mac-side dev agent.
+Adam is an **AI builder/consultant** who builds and manages AI agents, bots, and systems for clients.
+I manage his whole stack: his own tools, client VMs, sub-agents, deployments, and projects.
+
+## Adam's Stack Overview
+
+### Local Mac (this machine)
+- **Hector** (me) — pi coding agent via Telegram (@Hog_hector_bot), pm2 process "hector"
+- **Rico** — AI memecoin trading system (`~/trenchfeed-trader/`)
+- **OpenClaw** — clawdbot successor at `~/.openclaw/`, repo `https://github.com/openclaw/openclaw`
+  - Rico agents: `~/.openclaw/agents/rico-engine`, `rico-brain`, `rico-v3-prediction`, `rico-trading`, `rico-v3-exit`, `rico-v3-memecoin`
+- Various other projects: slope-sniper, SubaruPartsFinder, HYDRA, CONVOY-manager, etc.
+
+### VM Infrastructure (exe.dev)
+- **Access method**: `ssh exe.dev` then `ssh <vm-name>` (need SSH key registered on exe.dev portal)
+- **chow** = VM name where FastBear runs (OpenClaw-based bot)
+- **FastBear** = VM bot on exe.dev, ran openclaw gateway on port 18789
+  - FastBear previously joined pi-messenger and built relay system (Feb 25)
+  - Restart cmd: `pkill -9 -f openclaw-gateway || true; nohup openclaw gateway run --bind loopback --port 18789 --force > /tmp/openclaw-gateway.log 2>&1 &`
+- **SSH keys**: `~/.ssh/id_ed25519` (exe.dev), `~/.ssh/hector_vm` (GCP 35.221.21.7), `~/.ssh/Hoss.pem` (AWS)
+- **TODO**: Register `~/.ssh/id_ed25519.pub` on exe.dev portal to regain access
+
+### Relay System (built, currently disabled)
+- Relay server: `~/pi-telegram-bot/relay/server.ts` — bridges Hector + FastBear in same group chat
+- Enable by setting `RELAY_URL=http://localhost:3001` in `~/pi-telegram-bot/.env`
+- Start relay: `cd ~/pi-telegram-bot && npm run relay`
+- FastBear needs its own bot token + points to same relay URL
+
+## Projects
+
+### Rico — AI memecoin trading system
+- Autonomous trading daemon: signal pipeline → policy gate → Rico (Claude/Gemini) → trade decision
+- Paper trading, 30s ticks, dashboard on port 3847
+- GitHub: BAGWATCHER account
+- **Cascade profiles (working)**: `AndreAPI|Pro`, `HogCrainker|Pro`, `AIconstruct4|Pro`
+- **Dead (removed)**: `rico-key2` (suspended key), flash-preview profiles, antigravity profiles
+- **Daemons**: main trading daemon, exit brain, x-research-swarm, skill-hunter, soul-updater
+- Predictions TG channel: -1003735720872
+- SOUL.md: shows 7-day buy rate (~4.1%, not all-time 1.7%)
+- Last issues resolved: sendPhoto error loop, discoverTokenSocialSeeds export, dead profiles removed
+
+### OpenClaw (product Adam helps build/maintain)
+- Repo: `https://github.com/openclaw/openclaw`
+- Local copy: `~/trenchfeed-trader/clawdbot/`
+- Docs: `https://docs.openclaw.ai`
+- VM deploy: via exe.dev platform
+- Extensions in `~/trenchfeed-trader/clawdbot/extensions/`
+
+### Client VMs / Managed Systems
+- Adam manages VMs and agents for clients
+- Approach: SSH via exe.dev jump host → vm-name
+- Track client VM names and what's running on each as we discover them
+
+## Hector Config
+- Token: @Hog_hector_bot (`8290119968:AAH7e-ZTi-UNmx92Y_0p3lY3n7gSFzPuq6o`)
+- Allowed: 1340648617 (personal @hog_cranker), 3843303884 / -1003843303884 (team group)
+- Sessions: `~/pi-telegram-bot/sessions/1340648617/`
+- Memory: this file
+- pi packages: 42 installed (see `~/.pi/agent/settings.json`)
+
+## Key Preferences
+- Hector = main agent for all work, not just Rico
+- Sub-agents under Hector for specialized tasks (FastBear on VM, Rico agents, etc.)
+- Keep codebase clean, use GitHub for all changes
+- Pro-tier Gemini only in Rico cascade (flash-preview = dead)
+- SOUL.md = 7-day buy rate
+- Full trading (not just paper) eventually
+
+---
+
+## AWS Account (us-east-2)
+AWS CLI: `aws` command available (v1.44, pip-installed at `~/Library/Python/3.9/bin/aws`)
+Credentials: `~/.aws/credentials` — full EC2 access
+
+### EC2 Instances
+| Name | State | IP | Type |
+|------|-------|----|------|
+| Clawdbot (chow's VM) | running | 3.142.111.235 | m7i-flex.large |
+| annas (client VM) | running | 3.17.57.39 | t3.xlarge |
+| JOB | running | 18.117.162.164 | m7i-flex.large |
+| Hydra | stopped | — | m7i-flex.large |
+
+### Anna's VM
+- SSH: `ssh -i ~/Downloads/annasvm.pem ec2-user@3.17.57.39`
+- Bot token: `8553991654:AAHV0xV5Zt-XX1SY7Ijjnz40MkJGO2idb3U`
+- Model: GPT-5.3-codex (OpenClaw framework)
+- Anna's Telegram ID: 7925747820 (unverified)
+- Status: Bootstrap phase — no name/identity set yet, no cron jobs, fresh
+- Adam set it up Feb 22 for client Anna
+
+### Managing EC2 via CLI
+- Start instance: `aws ec2 start-instances --instance-ids <id>`
+- Stop instance: `aws ec2 stop-instances --instance-ids <id>`
+- Open security group port: `aws ec2 authorize-security-group-ingress --group-id <sg> --protocol tcp --port 22 --cidr 0.0.0.0/0`
+- List all: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Tags[?Key=\`Name\`].Value|[0],State.Name,PublicIpAddress]' --output table`
+
+---
+
+## Recent Session Updates (2026-03-02)
+
+### Bot Fleet — All Migrated to Pi
+- **Chow** (Mr Chow): pi-telegram-bot on AWS 3.142.111.235, pm2 'chow' + 'chow-web'
+- **Hector**: pi-telegram-bot on Mac, pm2 'hector' + 'hector-dash'
+- **John + Tolerance**: Dad's VM 18.117.162.164, pm2 'john'/'tolerance'
+- **Anna**: Anna's VM 3.17.57.39, pm2 'anna' (had 1650 409-conflict restarts, fixed with retry logic)
+- All bots now use `SettingsManager.create()` (was `inMemory()` which silently broke auth/extensions)
+- Session rotation: 100 lines (was 600, caused 464KB session bloat + API timeouts)
+- `streamingBehavior: 'steer'` added — handles messages sent while agent is still processing
+
+### Rico System (on Chow VM ~/trenchfeed-trader/)
+- 15 pm2 daemons all online
+- Dashboard: port 3847, Rico chat: /api/chat SSE with gemini-2.5-pro
+- Oracle: gemini-2.5-flash on google provider, learning from trades
+- Birdeye: both API keys exhausted daily, circuit breaker silencing errors
+- X/Twitter: completely offline (all Nitter instances dead, Bird CLI not installed)
+- Reddit: switched from .json API to RSS feeds (working)
+- Attention scores: raised max age to 6h, 30 real narratives now
+- Jupiter: key #2 was idle, fixed rotation
+- Macro read: dropped broken Google Search grounding, using geminiSearch direct
+
+### Rico Fixes Shipped Today
+1. Snapshot query `LIKE ('%' || ca || '%')` — covers all signal_id formats
+2. GeckoTerminal wired as Jupiter fallback in refreshPaperPositionPrices()
+3. registerPaperBuy skips when Jupiter returns 0 price — 48 BUYs/week only 5 tracked. Need GT fallback + context price fallback
+4. Oracle toFixed crash fixed (pnl_percent derived from finalMultiple)
+5. Birdeye OHLCV circuit breaker silenced (CircuitBreakerOpenError early return)
+6. JupPrediction 429 cooldown (2-minute backoff)
+7. Zombie Chromium cleanup (22→fixed with per-scrape browser close in phanes-scraper.ts)

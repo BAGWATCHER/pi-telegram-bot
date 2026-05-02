@@ -1,0 +1,201 @@
+version: 2
+project_id: catholic-shop
+sprint: wave-2-destination-marketplace
+updated_at: '2026-05-01T21:56:00Z'
+run_status: planned
+context: "Full marketplace build-out based on deep research 2026-05-01. Goal: provenance-first browsing, real destination-sourced items, marketplace-lite model."
+
+tasks:
+- id: CS-019
+  title: Build destination page template with real copy for top 10 destinations
+  lane: platform
+  priority: p0
+  risk: low
+  status: todo
+  depends_on: [CS-012]
+  done_when:
+  - Each of 10 destinations has a dedicated page with hero image, story, and product grid
+  - Destination list API returns enriched destination objects (image, description, shop_count, item_count)
+  - Mobile UX: horizontal scroll cards on home, tap into full destination page
+  artifacts:
+  - frontend/destinations/*.html (or single-page routing)
+  - backend/api/app.py (destination endpoints)
+  - data/processed/destinations.json
+
+- id: CS-020
+  title: Provenance card on product detail page
+  lane: trust
+  priority: p0
+  risk: low
+  status: todo
+  depends_on: [CS-009]
+  done_when:
+  - Product detail shows provenance card: source, maker, blessed status, origin
+  - Provenance fields are rendered prominently on mobile
+  - "Unknown provenance" items show a placeholder badge
+  artifacts:
+  - frontend/index.html
+  - artifacts/provenance-card-smoke.png
+
+- id: CS-021
+  title: Destination-to-product mapping in data model
+  lane: data
+  priority: p0
+  risk: low
+  status: todo
+  depends_on: [CS-019]
+  done_when:
+  - products.json gains destination_id field linking to destinations.json
+  - Catalog feed supports ?destination= filter
+  - Destination counts are dynamically computed from product data
+  artifacts:
+  - data/processed/destinations.json
+  - data/processed/products.json (updated schema)
+  - backend/api/app.py
+
+- id: CS-022
+  title: Partner shop catalog intake flow
+  lane: partner-ops
+  priority: p0
+  risk: medium
+  status: todo
+  depends_on: [CS-006]
+  done_when:
+  - Shop onboarding form accepts product catalog upload (JSON/CSV)
+  - Ingested products enter review queue with provenance validation
+  - Operator can approve/reject items from ops.html dashboard
+  artifacts:
+  - backend/api/app.py (intake endpoints)
+  - frontend/ops.html (review queue UI)
+  - scripts/ingest_shop_catalog.py
+
+- id: CS-023
+  title: Email outreach templates for monastery/shrine shops
+  lane: partner-ops
+  priority: p1
+  risk: low
+  status: todo
+  depends_on: []
+  done_when:
+  - Templates exist in 3 languages (EN, ES, IT) for initial contact
+  - Follow-up template for shops that don't respond
+  - Onboarding one-pager PDF for shops explaining the marketplace
+  artifacts:
+  - artifacts/outreach/email-template-en.md
+  - artifacts/outreach/email-template-es.md
+  - artifacts/outreach/email-template-it.md
+  - artifacts/outreach/shop-onboarding-one-pager.pdf
+
+- id: CS-024
+  title: Shipping rate calculator for international shrine-to-customer flows
+  lane: commerce
+  priority: p1
+  risk: high
+  status: todo
+  depends_on: [CS-005]
+  done_when:
+  - API estimates shipping cost/time for origin→destination pairs
+  - Product page shows estimated delivery window
+  - Free shipping threshold computed per destination
+  artifacts:
+  - backend/api/app.py (shipping estimator)
+  - artifacts/shipping-matrix.json
+
+- id: CS-025
+  title: AI destination-aware recommendations
+  lane: ai
+  priority: p1
+  risk: medium
+  status: todo
+  depends_on: [CS-017, CS-021]
+  done_when:
+  - /api/v1/ai/recommend weights results by destination proximity when user shows intent
+  - "I'm going to Rome" → surfaces Vatican-sourced items first
+  - "I love Lourdes" → surfaces Lourdes items
+  artifacts:
+  - backend/api/app.py
+  - artifacts/ai-destination-recs-eval.json
+
+- id: CS-026
+  title: Gift finder flow (occasion + destination + recipient)
+  lane: platform
+  priority: p1
+  risk: low
+  status: todo
+  depends_on: [CS-020]
+  done_when:
+  - Mobile wizard: occasion? → destination? → recipient? → budget? → results
+  - Each step is a single-choice tappable card
+  - Results show provenance badges
+  artifacts:
+  - frontend/index.html
+  - artifacts/gift-finder-smoke.png
+
+- id: CS-027
+  title: Public Caddy route for catholic-shop on a domain
+  lane: ops
+  priority: p1
+  risk: low
+  status: todo
+  depends_on: [CS-001]
+  done_when:
+  - Caddy reverse-proxies a domain/subdomain to 127.0.0.1:8110
+  - HTTPS working
+  - Mobile smoke test passes on real device
+  artifacts:
+  - Caddyfile (or Caddy config snippet)
+  - artifacts/public-route-smoke.json
+
+- id: CS-028
+  title: Monastery-made consumables category (food, candles, incense)
+  lane: commerce
+  priority: p2
+  risk: medium
+  status: todo
+  depends_on: [CS-022]
+  done_when:
+  - Product taxonomy extended with consumables subcategories
+  - At least 3 monastery-sourced consumable products live
+  - Shipping considerations documented (perishables, wax, etc.)
+  artifacts:
+  - data/processed/products.json
+  - spec/consumables-shipping-policy.md
+
+- id: CS-029
+  title: Conversational shopping chat UI (artifact-style)
+  lane: ai
+  priority: p2
+  risk: high
+  status: planned
+  depends_on: [CS-025]
+  description: |
+    Vision: A "Have a Conversation" button in the bottom nav (next to Concierge)
+    that opens a full-screen chat interface. Users chat naturally with an AI
+    shopping assistant that surfaces products as rich inline "artifacts" —
+    think Claude artifacts but for Catholic devotional items.
+
+    Core experience:
+    - User: "I'm looking for a first communion gift for my goddaughter. She
+      loves St. Thérèse."
+    - AI: responds conversationally, then drops in 2-3 product cards as
+      browsable artifacts right in the chat stream
+    - Each artifact has: image, title, price, provenance badge, "View Details"
+      and "Add to Cart" actions — all inline, no modal
+    - User can keep chatting to refine ("Something under $50" → artifacts update)
+    - Chat history persists per session
+    - Eventually: multi-turn, remembers context, can compare products side-by-side
+
+    UI pattern: Claude-style chat panel — messages on the left, artifacts can
+    expand inline. Mobile-first: chat input at bottom, artifacts scroll naturally
+    in the message stream.
+  done_when:
+  - "Have a Conversation" button visible in bottom nav (next to Concierge)
+  - Tapping opens full chat UI with message history
+  - AI responds conversationally with inline product artifact cards
+  - Artifacts are interactive (view details, add to cart) without leaving chat
+  - Chat context persists for the session (multi-turn)
+  - Graceful fallback when AI is unavailable
+  artifacts:
+  - frontend/chat.html (or integrated into index.html as a view)
+  - backend/api/app.py (chat/conversation endpoint)
+  - spec/conversational-shopping-ux-spec.md

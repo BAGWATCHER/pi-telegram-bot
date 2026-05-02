@@ -1,0 +1,10 @@
+{
+  "runId": "fbe8354a",
+  "agent": "crew-planner",
+  "index": 0,
+  "exitCode": 1,
+  "durationMs": 4808,
+  "tokens": 0,
+  "truncated": false,
+  "error": "Failed to load extension \"/home/ubuntu/.pi/agent/extensions/pi-messenger/index.ts\": Tool \"pi_messenger\" conflicts with /home/ubuntu/.npm-global/lib/node_modules/pi-messenger/index.ts\nFailed to load extension \"/home/ubuntu/.pi/agent/extensions/pi-messenger/index.ts\": Command \"/messenger\" conflicts with /home/ubuntu/.npm-global/lib/node_modules/pi-messenger/index.ts\nfile:///home/ubuntu/pi-telegram-bot/node_modules/@mariozechner/pi-coding-agent/dist/core/agent-session.js:552\n                throw new Error(`Authentication failed for \"${this.model.provider}\". ` +\n                      ^\n\nError: Authentication failed for \"anthropic\". Credentials may have expired or network is unavailable. Run '/login anthropic' to re-authenticate.\n    at AgentSession.prompt (file:///home/ubuntu/pi-telegram-bot/node_modules/@mariozechner/pi-coding-agent/dist/core/agent-session.js:552:23)\n    at async runPrintMode (file:///home/ubuntu/pi-telegram-bot/node_modules/@mariozechner/pi-coding-agent/dist/modes/print-mode.js:69:9)\n    at async main (file:///home/ubuntu/pi-telegram-bot/node_modules/@mariozechner/pi-coding-agent/dist/main.js:638:9)\n\nNode.js v24.13.0\n"
+}

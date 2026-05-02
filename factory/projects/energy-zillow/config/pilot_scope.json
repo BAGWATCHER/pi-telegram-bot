@@ -1,0 +1,8 @@
+{
+  "pilot_id": "lakes-region-nh-v1",
+  "label": "Lakes Region NH",
+  "summary": "Focused pilot territory for Meredith and Gilford before wider New England expansion.",
+  "primary_zip": "03253",
+  "zips": ["03253", "03249"],
+  "chat_example_zip": "03253"
+}

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-21T23:00:00Z",
+  "materials": [
+    {
+      "id": "mat_pi_coding_agent",
+      "category": "coding-harness",
+      "name": "Pi Coding Agent",
+      "url": "https://github.com/badlogic/pi-mono",
+      "use_case": "Lightweight coding-agent runtime",
+      "auth_hosting": "OAuth or API keys",
+      "confidence": "tested-local",
+      "notes": "Active in this VM"
+    },
+    {
+      "id": "mat_archon",
+      "category": "workflow-orchestration",
+      "name": "Archon",
+      "url": "https://github.com/coleam00/Archon",
+      "use_case": "Multi-node harnesses, approval gates, replay",
+      "auth_hosting": "CLI + repo config",
+      "confidence": "tested-local",
+      "notes": "Used for DemandGrid harnesses"
+    },
+    {
+      "id": "mat_plannotator_pi_extension",
+      "category": "plan-review-hitl",
+      "name": "Plannotator Pi extension",
+      "url": "https://www.npmjs.com/package/@plannotator/pi-extension",
+      "use_case": "Human review/approval for generated plans",
+      "auth_hosting": "Pi extension install",
+      "confidence": "tested-local",
+      "notes": "Installed locally"
+    },
+    {
+      "id": "mat_cal_diy",
+      "category": "scheduling",
+      "name": "Cal.diy",
+      "url": "https://www.cal.diy/",
+      "use_case": "Self-hosted scheduling/calendar layer for agent appointment workflows",
+      "auth_hosting": "Self-hosted; evaluate API/OAuth",
+      "confidence": "candidate",
+      "notes": "Added per user request"
+    }
+  ]
+}

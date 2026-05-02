@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-04-23T02:29:41Z",
+  "config": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/craigslist_job_signal_config.json",
+  "output_json": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/craigslist_job_signals.json",
+  "output_csv": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/craigslist_job_signals.csv",
+  "total_opportunities": 0,
+  "role_counts": {},
+  "channel_counts": {},
+  "query_stats": [
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "payroll",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=payroll&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "bookkeeper",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=bookkeeper&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "accounts payable",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=accounts+payable&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "accounts receivable",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=accounts+receivable&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "data entry",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=data+entry&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "administrative assistant",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=administrative+assistant&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "boston",
+      "market_label": "Boston",
+      "query": "dispatcher",
+      "search_url": "https://boston.craigslist.org/search/jjj?query=dispatcher&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "providence",
+      "market_label": "Providence",
+      "query": "payroll",
+      "search_url": "https://providence.craigslist.org/search/jjj?query=payroll&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "providence",
+      "market_label": "Providence",
+      "query": "bookkeeper",
+      "search_url": "https://providence.craigslist.org/search/jjj?query=bookkeeper&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "providence",
+      "market_label": "Providence",
+      "query": "data entry",
+      "search_url": "https://providence.craigslist.org/search/jjj?query=data+entry&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "market_id": "providence",
+      "market_label": "Providence",
+      "query": "administrative assistant",
+      "search_url": "https://providence.craigslist.org/search/jjj?query=administrative+assistant&format=rss",
+      "fetched_items": 0,
+      "new_opportunities": 0,
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

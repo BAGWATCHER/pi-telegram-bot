@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-04-17T19:14:39Z",
+  "zips": [
+    "02139"
+  ],
+  "sites_in_scope": 1825,
+  "raw_fetched_by_zip": {
+    "02139": 7928
+  },
+  "raw_fetched_by_dataset": {
+    "cambridge_roof_permits": 719,
+    "cambridge_solar_permits": 210,
+    "cambridge_mechanical_permits": 1307,
+    "cambridge_gas_permits": 2176,
+    "cambridge_plumbing_permits": 3516
+  },
+  "rows_added": 4171,
+  "rows_total_output": 6562,
+  "matched_sites_added": 918,
+  "matched_site_ratio_added": 0.503013698630137,
+  "permit_type_counts_added": {
+    "roof": 388,
+    "solar": 101,
+    "hvac": 3682
+  },
+  "permit_source_counts_added": {
+    "cambridge_roof_permits": 388,
+    "cambridge_solar_permits": 101,
+    "cambridge_mechanical_permits": 842,
+    "cambridge_gas_permits": 1199,
+    "cambridge_plumbing_permits": 1641
+  },
+  "fallback_match_rows": 1505,
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/parcel_permit_feed.csv"
+}

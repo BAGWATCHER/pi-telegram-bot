@@ -1,0 +1,306 @@
+{
+  "write": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-learning-loop-v1",
+      "site_id": "site_ab25957991a6",
+      "lead_outcome": {
+        "status": "won",
+        "note": "",
+        "objection": "timing",
+        "reason": "strong_solar_economics",
+        "product": "solar",
+        "realized_revenue_usd": 18000.0,
+        "realized_profit_usd": 6200.0,
+        "updated_at": "2026-04-18T06:54:45Z",
+        "won_at": "2026-04-18T06:54:45Z",
+        "lost_at": null,
+        "attribution_channel": "phone",
+        "attribution_playbook_id": "playbook_test_attr",
+        "attribution_orchestrator_run_id": "orchestrator_test_attr",
+        "attribution_signal_keys": [
+          "outage",
+          "flood_risk"
+        ],
+        "attribution_source_session_id": "call_session_test",
+        "attribution_source_job_id": ""
+      }
+    }
+  },
+  "summary": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-learning-loop-v1",
+      "scope": {
+        "zip": null,
+        "h3_cell": null
+      },
+      "summary": {
+        "label": "learning_scope",
+        "outcome_count": 2,
+        "won_count": 1,
+        "lost_count": 0,
+        "contacted_count": 0,
+        "responded_count": 0,
+        "qualified_count": 1,
+        "win_rate_pct": 50.0,
+        "loss_rate_pct": 0.0,
+        "response_rate_pct": 100.0,
+        "profit_total_usd": 6200.0,
+        "revenue_total_usd": 18000.0,
+        "avg_profit_per_win_usd": 6200.0,
+        "avg_revenue_per_win_usd": 18000.0,
+        "status_counts": {
+          "qualified": 1,
+          "won": 1
+        },
+        "top_products": [
+          {
+            "label": "roofing",
+            "count": 1
+          },
+          {
+            "label": "solar",
+            "count": 1
+          }
+        ],
+        "top_objections": [
+          {
+            "label": "timing",
+            "count": 2
+          }
+        ],
+        "top_reasons": [
+          {
+            "label": "storm concern",
+            "count": 1
+          },
+          {
+            "label": "strong_solar_economics",
+            "count": 1
+          }
+        ],
+        "top_channels": [
+          {
+            "label": "phone",
+            "count": 1
+          }
+        ],
+        "top_signal_keys": [
+          {
+            "label": "flood_risk",
+            "count": 1
+          },
+          {
+            "label": "outage",
+            "count": 1
+          }
+        ],
+        "attributed_outcome_count": 1,
+        "attribution_completeness_pct": 50.0,
+        "avg_attribution_field_completeness_pct": 50.0
+      },
+      "promotion_readiness": {
+        "minimum_recommended_attribution_pct": 75.0,
+        "current_avg_attribution_field_completeness_pct": 50.0,
+        "passes_recommended_threshold": false
+      }
+    }
+  },
+  "job_dry": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-learning-loop-v1",
+      "job_id": "learning_job_20260418T065502983100Z",
+      "created_at": "2026-04-18T06:55:02Z",
+      "status": "dry_run_complete",
+      "dry_run": true,
+      "note": "",
+      "approver": null,
+      "checks": [
+        {
+          "check": "minimum_outcomes",
+          "required": 1,
+          "actual": 2,
+          "pass": true
+        },
+        {
+          "check": "attribution_completeness",
+          "required_pct": 20.0,
+          "actual_pct": 50.0,
+          "pass": true
+        },
+        {
+          "check": "approver_present_for_live_promotion",
+          "required": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "summary": {
+        "label": "global_learning_scope",
+        "outcome_count": 2,
+        "won_count": 1,
+        "lost_count": 0,
+        "contacted_count": 0,
+        "responded_count": 0,
+        "qualified_count": 1,
+        "win_rate_pct": 50.0,
+        "loss_rate_pct": 0.0,
+        "response_rate_pct": 100.0,
+        "profit_total_usd": 6200.0,
+        "revenue_total_usd": 18000.0,
+        "avg_profit_per_win_usd": 6200.0,
+        "avg_revenue_per_win_usd": 18000.0,
+        "status_counts": {
+          "qualified": 1,
+          "won": 1
+        },
+        "top_products": [
+          {
+            "label": "roofing",
+            "count": 1
+          },
+          {
+            "label": "solar",
+            "count": 1
+          }
+        ],
+        "top_objections": [
+          {
+            "label": "timing",
+            "count": 2
+          }
+        ],
+        "top_reasons": [
+          {
+            "label": "storm concern",
+            "count": 1
+          },
+          {
+            "label": "strong_solar_economics",
+            "count": 1
+          }
+        ],
+        "top_channels": [
+          {
+            "label": "phone",
+            "count": 1
+          }
+        ],
+        "top_signal_keys": [
+          {
+            "label": "flood_risk",
+            "count": 1
+          },
+          {
+            "label": "outage",
+            "count": 1
+          }
+        ],
+        "attributed_outcome_count": 1,
+        "attribution_completeness_pct": 50.0,
+        "avg_attribution_field_completeness_pct": 50.0
+      },
+      "promotion_safe": true
+    }
+  },
+  "job_live": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-learning-loop-v1",
+      "job_id": "learning_job_20260418T065509869079Z",
+      "created_at": "2026-04-18T06:55:09Z",
+      "status": "blocked",
+      "dry_run": false,
+      "note": "",
+      "approver": "adam",
+      "checks": [
+        {
+          "check": "minimum_outcomes",
+          "required": 50,
+          "actual": 2,
+          "pass": false
+        },
+        {
+          "check": "attribution_completeness",
+          "required_pct": 95.0,
+          "actual_pct": 50.0,
+          "pass": false
+        },
+        {
+          "check": "approver_present_for_live_promotion",
+          "required": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "summary": {
+        "label": "global_learning_scope",
+        "outcome_count": 2,
+        "won_count": 1,
+        "lost_count": 0,
+        "contacted_count": 0,
+        "responded_count": 0,
+        "qualified_count": 1,
+        "win_rate_pct": 50.0,
+        "loss_rate_pct": 0.0,
+        "response_rate_pct": 100.0,
+        "profit_total_usd": 6200.0,
+        "revenue_total_usd": 18000.0,
+        "avg_profit_per_win_usd": 6200.0,
+        "avg_revenue_per_win_usd": 18000.0,
+        "status_counts": {
+          "qualified": 1,
+          "won": 1
+        },
+        "top_products": [
+          {
+            "label": "roofing",
+            "count": 1
+          },
+          {
+            "label": "solar",
+            "count": 1
+          }
+        ],
+        "top_objections": [
+          {
+            "label": "timing",
+            "count": 2
+          }
+        ],
+        "top_reasons": [
+          {
+            "label": "storm concern",
+            "count": 1
+          },
+          {
+            "label": "strong_solar_economics",
+            "count": 1
+          }
+        ],
+        "top_channels": [
+          {
+            "label": "phone",
+            "count": 1
+          }
+        ],
+        "top_signal_keys": [
+          {
+            "label": "flood_risk",
+            "count": 1
+          },
+          {
+            "label": "outage",
+            "count": 1
+          }
+        ],
+        "attributed_outcome_count": 1,
+        "attribution_completeness_pct": 50.0,
+        "avg_attribution_field_completeness_pct": 50.0
+      },
+      "promotion_safe": false
+    }
+  }
+}

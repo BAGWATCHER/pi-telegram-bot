@@ -1,0 +1,104 @@
+version: 1
+project:
+  id: energy-zillow
+  name: DemandGrid
+  mode: gauntlet-dark-factory
+  requested_by: adam
+  owner_agent: Mr Chow
+  status: active
+
+goal:
+  one_liner: "AI sales operating system: find the best targets, investigate them, tell the operator exactly what to do next, generate outreach, and learn from outcomes."
+  target_user: "Operator or sales team using AI to maximize profit per address/business through targeting, outreach, workflow guidance, and learning"
+  north_star_metric: "Revenue and gross profit per 1,000 scored opportunities, with low false-positive outreach"
+  strategic_context: "Private multi-product sales machine for turning location/data intelligence into profitable sales execution, not just lead scoring"
+  north_star_doc: "spec/north-star-sales-ai-platform.md"
+  lane_plan_doc: "spec/dg-superhuman-sales-lane-plan-v1.md"
+  research_context: "Free/public data should be exhausted first for geometry, storms, rates, flood, solar resource, building-age, and commercial territory signals before paid vendor expansion"
+
+scope:
+  in:
+    - Multi-product recommendation by address
+    - H3 neighborhood opportunity heatmap
+    - Ranked address list per selected hex
+    - Address detail card with primary/secondary product recommendation plus economics/confidence/reasons
+    - Initial active product lanes: roofing, solar, hvac / heat pump, battery / backup power
+    - Wind/hybrid as constrained flags (not high-precision default)
+  out:
+    - Permitting interconnection automation
+    - Fully accurate rooftop CFD wind simulation
+    - Financing marketplace integrations
+
+architecture:
+  frontend:
+    - MapLibre
+    - h3-js
+    - GeoJSON H3 polygon layers
+  backend:
+    - Python FastAPI
+    - Postgres + PostGIS (or DuckDB for MVP)
+  modeling:
+    - PVWatts-first production estimates
+    - NSRDB inputs for irradiance/weather
+    - REopt-style economics sizing phase after MVP
+  outputs:
+    - primary_product
+    - secondary_product
+    - lead_temperature
+    - operator_next_step
+    - operator_status
+    - operator_playbook
+    - investigation_payload
+    - outreach_payload
+    - route_plan
+    - primary_product_readiness
+    - secondary_product_readiness
+    - trigger_data_gaps
+    - trigger_statuses
+    - trigger_scores
+    - recommended_pitch
+    - product_reasons
+    - annual_kwh
+    - annual_savings_usd
+    - payback_years
+    - npv_15y_usd
+    - best_option
+    - confidence
+    - reasons
+    - outcome_feedback
+
+data_contracts:
+  primary_entities:
+    - site
+    - site_score
+    - h3_cell_aggregate
+    - investigation_payload
+    - outreach_payload
+    - lead_outcome
+  confidence_policy:
+    solar_confidence: "high if rooftop geometry + irradiance + tariff inputs complete"
+    wind_confidence: "default low/medium unless strong local exposure evidence"
+
+environment:
+  repo_root: /home/ubuntu/pi-telegram-bot
+  working_dir: /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow
+  secrets_required:
+    - PVWATTS_API_KEY
+    - NSRDB_API_KEY
+
+delivery:
+  artifact_dir: /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts
+  required_artifacts:
+    - architecture-diagram.md
+    - api-sample-responses.json
+    - eval-summary.md
+    - demo-script.md
+    - outreach-investigation-contract.md
+
+rules:
+  - "No deploy/prod claims without eval pass"
+  - "No high-confidence wind recommendation without explicit confidence evidence"
+  - "Keep non-solar product lanes visibly proxy-based until external trigger layers are loaded"
+  - "Document assumptions for tariff, install cost, and incentive models"
+  - "Prefer one shared opportunity engine over fragmented single-vertical tooling"
+  - "Prioritize operator clarity and profit impact over dashboard complexity"

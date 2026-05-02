@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Product Story | Catholic Market</title>
+  <meta name="description" content="A Catholic Market product story with provenance, shop details, materials, and devotional context." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: { DEFAULT: '#f5f0e8', light: '#faf8f4', dark: '#e8e0d0' },
+            ink: { DEFAULT: '#2c1810', light: '#5c3d2e', muted: '#8b7355' },
+            gold: { DEFAULT: '#b8860b', light: '#d4a843', pale: '#f0e6c8' },
+            rubric: { DEFAULT: '#722f37', light: '#964b53' }
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body: ['"Crimson Text"', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 1000; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+    .gold-rule { border: 0; height: 1px; background: linear-gradient(to right, transparent, #b8860b44, #b8860b88, #b8860b44, transparent); }
+    .drop-cap::first-letter { float: left; font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; line-height: .75; padding-right: 8px; padding-top: 2px; color: #722f37; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-parchment text-ink font-body antialiased" x-data="productPage()" x-init="init()" @keydown.escape.window="message=''">
+  <main class="max-w-3xl mx-auto min-h-screen px-5 sm:px-6 pb-24">
+    <header class="pt-8 pb-6">
+      <a :href="sitePath('')" class="inline-flex items-center gap-2 text-ink-muted hover:text-gold transition-colors font-display italic text-lg">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Back to the marketplace
+      </a>
+    </header>
+
+    <section x-show="loading" class="py-16" x-cloak>
+      <div class="animate-pulse space-y-5">
+        <div class="h-80 bg-parchment-dark"></div>
+        <div class="h-7 bg-parchment-dark w-3/4"></div>
+        <div class="h-4 bg-parchment-dark w-1/2"></div>
+      </div>
+    </section>
+
+    <section x-show="error" class="py-20 text-center" x-cloak>
+      <p class="font-display text-2xl text-ink">We could not find that item.</p>
+      <p class="text-ink-muted italic mt-2" x-text="error"></p>
+      <a :href="sitePath('')" class="inline-block mt-6 px-5 py-2 border border-gold text-gold font-display uppercase tracking-widest text-xs hover:bg-gold hover:text-parchment-light transition-colors">Return to market</a>
+    </section>
+
+    <article x-show="product && !loading && !error" x-cloak>
+      <section class="grid md:grid-cols-[1.05fr_.95fr] gap-8 items-start">
+        <div class="bg-parchment-dark overflow-hidden border border-parchment-dark">
+          <img :src="product.image_url || placeholderImage()" :alt="product.title" class="w-full aspect-[4/5] object-cover" @error="$el.src=placeholderImage()" />
+        </div>
+        <div class="pt-1">
+          <p class="text-xs uppercase tracking-[0.22em] text-gold font-display" x-text="locationLine()"></p>
+          <h1 class="font-display text-4xl sm:text-5xl font-semibold leading-none mt-3" x-text="product.title"></h1>
+          <p class="text-ink-light italic text-lg mt-4 leading-relaxed" x-text="lede()"></p>
+          <div class="mt-6 flex items-baseline gap-3">
+            <span class="font-display text-3xl font-bold" x-text="formatMoney(product.price_cents)"></span>
+            <span class="text-sm text-ink-muted italic" x-text="inventoryText()"></span>
+          </div>
+          <div class="mt-6 grid gap-3">
+            <button @click="addToCart()" class="w-full py-3 bg-ink text-parchment-light font-display uppercase tracking-widest text-sm font-semibold hover:bg-ink-light transition-colors">
+              Add to cart
+            </button>
+            <a :href="sitePath('chat') + '?product=' + encodeURIComponent(product.product_id || '')" class="text-center w-full py-3 border border-gold text-gold font-display uppercase tracking-widest text-sm font-semibold hover:bg-gold hover:text-parchment-light transition-colors">
+              Ask the concierge about this item
+            </a>
+            <p x-show="message" class="text-center text-sm italic" :class="messageError ? 'text-rubric' : 'text-ink-muted'" x-text="message"></p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="gold-rule my-10" />
+
+      <section class="max-w-2xl mx-auto">
+        <p class="text-xs uppercase tracking-[0.22em] text-gold font-display mb-3">Provenance</p>
+        <p class="drop-cap text-lg leading-relaxed text-ink-light" x-text="product.story || 'A Catholic devotional sourced through a shop or artisan connected to its local community.'"></p>
+      </section>
+
+      <hr class="gold-rule my-10" />
+
+      <section class="grid md:grid-cols-3 gap-4">
+        <div class="border border-parchment-dark bg-parchment-light p-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-gold font-display mb-2">Materials</p>
+          <p class="text-ink-light" x-text="listText(product.materials, 'Material details pending')"></p>
+        </div>
+        <div class="border border-parchment-dark bg-parchment-light p-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-gold font-display mb-2">Occasions</p>
+          <p class="text-ink-light" x-text="humanTags(product.sacrament_tags || product.tags)"></p>
+        </div>
+        <div class="border border-parchment-dark bg-parchment-light p-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-gold font-display mb-2">Fulfillment</p>
+          <p class="text-ink-light" x-text="fulfillmentText()"></p>
+        </div>
+      </section>
+
+      <hr class="gold-rule my-10" />
+
+      <section class="bg-parchment-light border border-parchment-dark p-6 sm:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 border border-gold/50 flex items-center justify-center text-gold shrink-0" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M7 8h10"/></svg>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.22em] text-gold font-display">From the shop</p>
+            <h2 class="font-display text-3xl font-semibold mt-2" x-text="shopName()"></h2>
+            <p class="text-ink-muted italic mt-1" x-text="locationLine()"></p>
+            <p class="text-ink-light leading-relaxed mt-4" x-text="shopStory()"></p>
+            <div class="flex flex-wrap gap-2 mt-5" x-show="shippingRegions().length">
+              <template x-for="region in shippingRegions()" :key="region">
+                <span class="px-3 py-1 border border-ink/15 text-[11px] uppercase tracking-wide font-display text-ink-muted" x-text="region"></span>
+              </template>
+            </div>
+            <a :href="sitePath('shop/' + encodeURIComponent(product.shop_id || product.shop?.shop_id || ''))" class="inline-flex items-center gap-2 mt-6 text-gold hover:text-gold-light font-display uppercase tracking-widest text-xs font-semibold">
+              View shop profile
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    function productPage() {
+      return {
+        product: null,
+        loading: true,
+        error: '',
+        message: '',
+        messageError: false,
+        cartId: localStorage.getItem('catholicMarketCartId') || '',
+        userId: localStorage.getItem('catholicMarketUserId') || '',
+
+        async init() {
+          const productId = this.productIdFromUrl();
+          if (!productId) {
+            this.error = 'No product identifier was provided.';
+            this.loading = false;
+            return;
+          }
+          try {
+            const data = await this.api(`api/v1/products/${encodeURIComponent(productId)}`);
+            this.product = data.product;
+            if (this.product?.title) document.title = `${this.product.title} | Catholic Market`;
+          } catch (e) {
+            this.error = e.message || 'Product unavailable.';
+          }
+          this.loading = false;
+        },
+
+        basePath() { return window.location.pathname.startsWith('/catholic-shop') ? '/catholic-shop' : ''; },
+        sitePath(path = '') {
+          const clean = String(path || '').replace(/^\/+/, '');
+          return clean ? `${this.basePath()}/${clean}` : `${this.basePath()}/`;
+        },
+        apiUrl(path) { return `${this.basePath()}/${String(path || '').replace(/^\/+/, '')}`; },
+        productIdFromUrl() {
+          const qs = new URLSearchParams(window.location.search);
+          if (qs.get('id')) return qs.get('id');
+          const parts = window.location.pathname.split('/').filter(Boolean);
+          const idx = parts.indexOf('product');
+          return idx >= 0 ? decodeURIComponent(parts[idx + 1] || '') : '';
+        },
+        async api(path, opts = {}) {
+          const res = await fetch(this.apiUrl(path), opts);
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(typeof data?.detail === 'string' ? data.detail : `Request failed (${res.status})`);
+          return data;
+        },
+        placeholderImage() { return 'https://via.placeholder.com/800x1000/f5f0e8/8b7355?text=CM'; },
+        formatMoney(cents) { return '$' + (Number(cents || 0) / 100).toFixed(2); },
+        listText(values, fallback) { return Array.isArray(values) && values.length ? values.join(', ') : fallback; },
+        humanTags(values) {
+          if (!Array.isArray(values) || !values.length) return 'Devotion';
+          return values.map(v => String(v).replace(/_/g, ' ')).join(', ');
+        },
+        locationLine() { return [this.product?.city, this.product?.country].filter(Boolean).join(', '); },
+        lede() {
+          const story = String(this.product?.story || '').trim();
+          return story ? story.split('.').filter(Boolean)[0] + '.' : 'A devotional item from a Catholic shop or artisan.';
+        },
+        inventoryText() {
+          const status = String(this.product?.inventory_status || '').replace(/_/g, ' ');
+          if (status === 'low stock') return 'Only a few left';
+          if (status === 'out of stock') return 'Currently unavailable';
+          return status || 'Inventory being verified';
+        },
+        fulfillmentText() {
+          const days = Number(this.product?.lead_time_days || 0);
+          const lead = days ? `Ships in about ${days} day${days === 1 ? '' : 's'}.` : 'Lead time pending.';
+          return `${lead} Inventory is verified before live payment.`;
+        },
+        shopName() { return this.product?.shop?.name || this.product?.shop_name || 'Catholic artisan shop'; },
+        shopStory() { return this.product?.shop?.story || this.product?.shop_story || 'Shop story and verification notes are being prepared.'; },
+        shippingRegions() { return this.product?.shop?.shipping_regions || []; },
+        async ensureCartSession() {
+          if (this.cartId) return this.cartId;
+          const data = await this.api('api/v1/carts', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user_id: this.userId || null }) });
+          this.cartId = data?.cart?.cart_id || '';
+          if (this.cartId) localStorage.setItem('catholicMarketCartId', this.cartId);
+          return this.cartId;
+        },
+        async addToCart() {
+          if (!this.product?.product_id) return;
+          this.message = 'Adding to cart...'; this.messageError = false;
+          try {
+            const cartId = await this.ensureCartSession();
+            await this.api(`api/v1/carts/${cartId}/items`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ product_id: this.product.product_id, quantity: 1 }) });
+            this.message = 'Added to cart. Payments remain paused until inventory is verified.';
+          } catch (e) {
+            this.message = e.message || 'Unable to add item.';
+            this.messageError = true;
+          }
+        }
+      };
+    }
+  </script>
+</body>
+</html>

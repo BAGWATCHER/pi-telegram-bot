@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://demandgrid.ai/schema/sales-core.schema.json",
+  "title": "DemandGrid Sales Core Schema v1",
+  "type": "object",
+  "required": ["site", "account", "contact", "opportunity", "outcome"],
+  "properties": {
+    "site": {
+      "type": "object",
+      "required": ["site_id", "address", "zip", "h3_cell", "primary_product", "priority_score", "confidence"],
+      "properties": {
+        "site_id": { "type": "string" },
+        "address": { "type": "string" },
+        "zip": { "type": "string" },
+        "h3_cell": { "type": "string" },
+        "primary_product": { "type": "string" },
+        "secondary_product": { "type": ["string", "null"] },
+        "priority_score": { "type": "number" },
+        "confidence": { "type": "number" }
+      }
+    },
+    "account": {
+      "type": "object",
+      "required": ["account_id", "segment", "tier"],
+      "properties": {
+        "account_id": { "type": "string" },
+        "name": { "type": "string" },
+        "segment": { "type": "string" },
+        "tier": { "type": "string" },
+        "owner_mode": { "type": "string" }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "required": ["contact_id", "account_id", "site_id", "entity_type", "role", "display_name", "preferred_channel"],
+      "properties": {
+        "contact_id": { "type": "string" },
+        "account_id": { "type": "string" },
+        "site_id": { "type": "string" },
+        "entity_type": { "type": "string" },
+        "role": { "type": "string" },
+        "display_name": { "type": "string" },
+        "preferred_channel": { "type": "string" },
+        "contactability_score": { "type": ["number", "null"] },
+        "contactability_label": { "type": ["string", "null"] },
+        "website_url": { "type": ["string", "null"] },
+        "contact_form_url": { "type": ["string", "null"] },
+        "mailing_address": { "type": ["string", "null"] }
+      }
+    },
+    "interaction": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["interaction_id", "site_id", "contact_id", "account_id", "channel", "interaction_type", "result_status", "started_at"],
+        "properties": {
+          "interaction_id": { "type": "string" },
+          "site_id": { "type": "string" },
+          "contact_id": { "type": "string" },
+          "account_id": { "type": "string" },
+          "channel": { "type": "string" },
+          "interaction_type": { "type": "string" },
+          "result_status": { "type": "string" },
+          "started_at": { "type": "string" },
+          "next_follow_up_at": { "type": ["string", "null"] },
+          "next_best_action": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "required": ["opportunity_score", "win_probability_proxy", "next_best_action", "recommended_channel"],
+      "properties": {
+        "opportunity_score": { "type": "number" },
+        "win_probability_proxy": { "type": "number" },
+        "next_best_action": { "type": "string" },
+        "recommended_channel": { "type": "string" },
+        "auto_outreach_eligible": { "type": "boolean" }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "reason": { "type": ["string", "null"] },
+        "objection": { "type": ["string", "null"] },
+        "product": { "type": ["string", "null"] },
+        "realized_revenue_usd": { "type": ["number", "null"] },
+        "realized_profit_usd": { "type": ["number", "null"] },
+        "updated_at": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

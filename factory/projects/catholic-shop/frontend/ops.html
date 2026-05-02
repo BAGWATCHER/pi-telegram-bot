@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Catholic Market Ops</title>
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --text: #1a1a1a;
+      --muted: #6f675f;
+      --line: #ddd6cf;
+      --accent: #7a3b10;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Avenir Next", "Segoe UI", Inter, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .app {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 14px 14px 30px;
+    }
+    .top {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    .muted { color: var(--muted); font-size: 13px; }
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    input, select, button {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--white);
+      padding: 8px 10px;
+    }
+    button { color: var(--accent); font-weight: 620; }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .order {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+    .order-title {
+      font-weight: 640;
+      margin-bottom: 3px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .events {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+    .empty {
+      color: var(--muted);
+      padding: 16px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="top">
+      <h1>Order Ops</h1>
+      <div class="muted">Dispatch notes and status updates for partner-managed fulfillment.</div>
+      <div class="row">
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option value="checkout_pending">checkout_pending</option>
+          <option value="paid">paid</option>
+          <option value="partner_notified">partner_notified</option>
+          <option value="fulfilled">fulfilled</option>
+          <option value="cancelled">cancelled</option>
+        </select>
+        <button class="primary" id="refreshBtn">Refresh</button>
+      </div>
+    </section>
+
+    <section id="orders"></section>
+  </main>
+
+  <script>
+    const ordersEl = document.getElementById('orders');
+    const statusFilterEl = document.getElementById('statusFilter');
+
+    function fmtMoney(cents, currency='USD') {
+      return `${currency} ${(Number(cents || 0)/100).toFixed(2)}`;
+    }
+
+    async function fetchOrders() {
+      const status = statusFilterEl.value;
+      const params = new URLSearchParams({ limit: '100' });
+      if (status) params.set('status', status);
+      const res = await fetch(`/api/v1/orders?${params.toString()}`);
+      if (!res.ok) {
+        ordersEl.innerHTML = `<div class="empty">Failed to load orders (${res.status}).</div>`;
+        return;
+      }
+      const data = await res.json();
+      const items = data.items || [];
+      if (!items.length) {
+        ordersEl.innerHTML = `<div class="empty">No orders yet for this filter.</div>`;
+        return;
+      }
+
+      ordersEl.innerHTML = items.map((order) => {
+        const events = (order.event_log || []).slice(-4).map((e) => {
+          const label = e.event || 'event';
+          const at = e.at || '';
+          const note = e.note ? ` — ${e.note}` : '';
+          return `• ${at} ${label}${note}`;
+        }).join('\n');
+
+        return `
+          <article class="order" id="ord-${order.order_id}">
+            <div class="order-title">${order.product_title} · ${fmtMoney(order.total_amount_cents, order.currency)}</div>
+            <div class="meta">
+              ${order.order_id}<br>
+              status: <strong>${order.status}</strong> · qty: ${order.quantity} · mode: ${order.checkout_mode}<br>
+              shop: ${order.shop_id} · created: ${order.created_at}
+            </div>
+            <div class="row">
+              <select data-order-status="${order.order_id}">
+                <option value="checkout_pending">checkout_pending</option>
+                <option value="paid">paid</option>
+                <option value="partner_notified">partner_notified</option>
+                <option value="fulfilled">fulfilled</option>
+                <option value="cancelled">cancelled</option>
+              </select>
+              <button data-set-status="${order.order_id}">Set status</button>
+            </div>
+            <div class="row">
+              <input data-note="${order.order_id}" placeholder="Add dispatch note (e.g., sent to shop WhatsApp)" style="flex:1; min-width:220px;" />
+              <button data-add-note="${order.order_id}">Add note</button>
+            </div>
+            <div class="events">${events || 'No events yet.'}</div>
+          </article>
+        `;
+      }).join('');
+
+      items.forEach((order) => {
+        const sel = document.querySelector(`select[data-order-status="${order.order_id}"]`);
+        if (sel) sel.value = order.status || 'checkout_pending';
+      });
+    }
+
+    async function setStatus(orderId) {
+      const sel = document.querySelector(`select[data-order-status="${orderId}"]`);
+      if (!sel) return;
+      const status = sel.value;
+      const res = await fetch(`/api/v1/orders/${orderId}/status`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ status, actor: 'ops-dashboard', note: 'Updated from ops dashboard' })
+      });
+      if (!res.ok) {
+        alert(`Status update failed (${res.status})`);
+        return;
+      }
+      await fetchOrders();
+    }
+
+    async function addNote(orderId) {
+      const input = document.querySelector(`input[data-note="${orderId}"]`);
+      if (!input) return;
+      const note = input.value.trim();
+      if (!note) return;
+      const res = await fetch(`/api/v1/orders/${orderId}/dispatch-note`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ note, actor: 'ops-dashboard' })
+      });
+      if (!res.ok) {
+        alert(`Dispatch note failed (${res.status})`);
+        return;
+      }
+      input.value = '';
+      await fetchOrders();
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', fetchOrders);
+    statusFilterEl.addEventListener('change', fetchOrders);
+
+    document.body.addEventListener('click', (e) => {
+      const statusBtn = e.target.closest('[data-set-status]');
+      if (statusBtn) {
+        setStatus(statusBtn.getAttribute('data-set-status'));
+        return;
+      }
+      const noteBtn = e.target.closest('[data-add-note]');
+      if (noteBtn) {
+        addNote(noteBtn.getAttribute('data-add-note'));
+      }
+    });
+
+    fetchOrders();
+  </script>
+</body>
+</html>

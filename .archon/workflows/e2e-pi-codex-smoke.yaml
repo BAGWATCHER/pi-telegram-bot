@@ -1,0 +1,26 @@
+name: e2e-pi-codex-smoke
+description: Smoke test for Pi provider using openai-codex auth.
+provider: pi
+model: openai-codex/gpt-5.4
+
+nodes:
+  - id: simple
+    prompt: 'What is 2+2? Answer with just the number, nothing else.'
+    allowed_tools: []
+    effort: low
+    idle_timeout: 30000
+
+  - id: assert
+    bash: |
+      raw="$simple.output"
+      output=$(printf "%s" "$raw" | tr -d "'\"[:space:]")
+      if [ -z "$output" ]; then
+        echo "FAIL: simple node returned empty output"
+        exit 1
+      fi
+      if [ "$output" != "4" ]; then
+        echo "FAIL: unexpected output='$raw' normalized='$output'"
+        exit 1
+      fi
+      echo "PASS: simple=$output"
+    depends_on: [simple]

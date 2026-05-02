@@ -1,0 +1,235 @@
+name: optimizedworkflow-site-optimizer
+description: |
+  Use when: You want a reliability-first optimization workflow for optimizedworkflow.dev (or another Next.js site path).
+  Triggers: "optimize website workflow", "optimizedworkflow site optimize", "site optimizer".
+  Does: preflight -> lint/build audit -> SEO/content audit -> writes prioritized action plan -> approval gate -> optional implementation -> verification.
+  NOT for: demandgrid lanes or non-web projects.
+provider: pi
+model: openai-codex/gpt-5.4
+interactive: true
+worktree:
+  enabled: false
+
+nodes:
+  - id: preflight
+    bash: |
+      set -euo pipefail
+      SITE_ROOT="$(printf "%s" "$ARGUMENTS" | awk '{print $1}')"
+      BASE_URL="$(printf "%s" "$ARGUMENTS" | awk '{print $2}')"
+
+      if [ -z "$SITE_ROOT" ]; then
+        SITE_ROOT="/home/ubuntu/adam-landing"
+      fi
+      if [ -z "$BASE_URL" ]; then
+        BASE_URL="https://optimizedworkflow.dev"
+      fi
+
+      if [ ! -d "$SITE_ROOT" ]; then
+        echo "FAIL: site root not found: $SITE_ROOT"
+        exit 1
+      fi
+      if [ ! -f "$SITE_ROOT/package.json" ]; then
+        echo "FAIL: package.json missing at $SITE_ROOT"
+        exit 1
+      fi
+
+      mkdir -p "$SITE_ROOT/artifacts"
+
+      cat > "$SITE_ROOT/artifacts/site-optimizer-context.json" <<EOF
+      {
+        "site_root": "$SITE_ROOT",
+        "base_url": "$BASE_URL"
+      }
+      EOF
+
+      echo "PASS: preflight site_root=$SITE_ROOT base_url=$BASE_URL"
+
+  - id: audit-build
+    depends_on: [preflight]
+    bash: |
+      set -euo pipefail
+      SITE_ROOT=$(python3 - << 'PY'
+      import json
+      from pathlib import Path
+      p=Path('/home/ubuntu/adam-landing/artifacts/site-optimizer-context.json')
+      print(json.loads(p.read_text(encoding='utf-8'))['site_root'])
+      PY
+      )
+      cd "$SITE_ROOT"
+
+      npm run lint > artifacts/site-optimizer-lint.log 2>&1 || true
+      npm run build > artifacts/site-optimizer-build.log 2>&1 || true
+
+      echo "=== lint tail ==="
+      tail -n 80 artifacts/site-optimizer-lint.log || true
+      echo "=== build tail ==="
+      tail -n 80 artifacts/site-optimizer-build.log || true
+
+      python3 - << 'PY'
+      from pathlib import Path
+      import json
+
+      root=Path('/home/ubuntu/adam-landing')
+      lint=(root/'artifacts/site-optimizer-lint.log').read_text(encoding='utf-8',errors='replace') if (root/'artifacts/site-optimizer-lint.log').exists() else ''
+      build=(root/'artifacts/site-optimizer-build.log').read_text(encoding='utf-8',errors='replace') if (root/'artifacts/site-optimizer-build.log').exists() else ''
+
+      lint_ok = 'error' not in lint.lower()
+      build_ok = 'failed' not in build.lower() and 'error' not in build.lower()
+
+      out={
+        'lint_ok': lint_ok,
+        'build_ok': build_ok,
+      }
+      (root/'artifacts/site-optimizer-build-audit.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
+      print('PASS')
+      PY
+
+  - id: audit-seo-content
+    depends_on: [audit-build]
+    bash: |
+      set -euo pipefail
+      python3 - << 'PY'
+      import json
+      from pathlib import Path
+
+      root=Path('/home/ubuntu/adam-landing')
+      base_url='https://optimizedworkflow.dev'
+      ctx=root/'artifacts/site-optimizer-context.json'
+      if ctx.exists():
+          base_url=json.loads(ctx.read_text(encoding='utf-8')).get('base_url',base_url)
+
+      robots=(root/'public/robots.txt').read_text(encoding='utf-8',errors='replace') if (root/'public/robots.txt').exists() else ''
+      sitemap=(root/'public/sitemap.xml').read_text(encoding='utf-8',errors='replace') if (root/'public/sitemap.xml').exists() else ''
+      llms=(root/'public/llms.txt').read_text(encoding='utf-8',errors='replace') if (root/'public/llms.txt').exists() else ''
+
+      checks={
+        'robots_exists': bool(robots),
+        'sitemap_exists': bool(sitemap),
+        'llms_exists': bool(llms),
+        'robots_has_sitemap': 'Sitemap:' in robots,
+        'sitemap_has_base_url': base_url in sitemap,
+        'llms_mentions_agents': 'agent' in llms.lower(),
+      }
+
+      (root/'artifacts/site-optimizer-seo-audit.json').write_text(json.dumps(checks,indent=2),encoding='utf-8')
+      print('PASS')
+      PY
+
+  - id: write-plan
+    depends_on: [audit-seo-content]
+    bash: |
+      set -euo pipefail
+      python3 - << 'PY'
+      import json
+      from pathlib import Path
+
+      root=Path('/home/ubuntu/adam-landing')
+      build=json.loads((root/'artifacts/site-optimizer-build-audit.json').read_text(encoding='utf-8'))
+      seo=json.loads((root/'artifacts/site-optimizer-seo-audit.json').read_text(encoding='utf-8'))
+
+      lines=[
+        '# Website optimization plan',
+        '',
+        '## Current checks',
+        f"- lint_ok: {build.get('lint_ok')}",
+        f"- build_ok: {build.get('build_ok')}",
+        f"- robots_exists: {seo.get('robots_exists')}",
+        f"- sitemap_exists: {seo.get('sitemap_exists')}",
+        f"- llms_exists: {seo.get('llms_exists')}",
+        f"- robots_has_sitemap: {seo.get('robots_has_sitemap')}",
+        f"- sitemap_has_base_url: {seo.get('sitemap_has_base_url')}",
+        f"- llms_mentions_agents: {seo.get('llms_mentions_agents')}",
+        '',
+        '## Prioritized actions',
+      ]
+
+      prio=[]
+      if not build.get('lint_ok'):
+          prio.append('P0: Resolve lint issues until npm run lint passes cleanly.')
+      if not build.get('build_ok'):
+          prio.append('P0: Resolve build issues until npm run build passes cleanly.')
+      if not seo.get('robots_exists') or not seo.get('robots_has_sitemap'):
+          prio.append('P1: Fix robots.txt and ensure Sitemap directive is correct.')
+      if not seo.get('sitemap_exists') or not seo.get('sitemap_has_base_url'):
+          prio.append('P1: Fix sitemap.xml URLs to canonical domain.')
+      if not seo.get('llms_exists'):
+          prio.append('P2: Add llms.txt with concise product + capability summary.')
+
+      if not prio:
+          prio.append('P1: Run content/UX pass for conversion clarity (hero, CTA, social proof, offer segmentation).')
+
+      for item in prio:
+          lines.append(f'- [ ] {item}')
+
+      lines += [
+        '',
+        '## Guardrails',
+        '- Keep edits surgical and reversible.',
+        '- Do not break existing route structure.',
+        '- Re-run lint/build after changes.',
+      ]
+
+      (root/'artifacts/site-optimizer-plan.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+      print('PASS')
+      PY
+
+  - id: approve-plan
+    depends_on: [write-plan]
+    approval:
+      message: |
+        Review website optimization plan:
+        - /home/ubuntu/adam-landing/artifacts/site-optimizer-plan.md
+
+        Approve to apply optimization edits and run verification.
+      capture_response: true
+
+  - id: implement-optimizations
+    depends_on: [approve-plan]
+    provider: pi
+    model: openai-codex/gpt-5.4
+    allowed_tools: [read, grep, find, ls, bash, edit, write]
+    prompt: |
+      Apply the approved optimization plan for this website.
+
+      Work only under: /home/ubuntu/adam-landing
+      Inputs:
+      - /home/ubuntu/adam-landing/artifacts/site-optimizer-plan.md
+      - Reviewer notes: $approve-plan.output
+
+      Requirements:
+      1) Make only the minimum edits needed to satisfy the plan checkboxes.
+      2) Run lint/build to verify no regressions.
+      3) Write implementation summary to:
+         /home/ubuntu/adam-landing/artifacts/site-optimizer-implementation.md
+         Include changed files + why.
+      4) Include literal marker line: WEBSITE_OPT_DONE
+
+  - id: verify
+    depends_on: [implement-optimizations]
+    bash: |
+      set -euo pipefail
+      cd /home/ubuntu/adam-landing
+
+      if [ ! -f artifacts/site-optimizer-implementation.md ]; then
+        echo "FAIL: missing implementation report"
+        exit 1
+      fi
+      if ! grep -q "WEBSITE_OPT_DONE" artifacts/site-optimizer-implementation.md; then
+        echo "FAIL: implementation marker missing"
+        exit 1
+      fi
+
+      npm run lint > artifacts/site-optimizer-post-lint.log 2>&1 || true
+      npm run build > artifacts/site-optimizer-post-build.log 2>&1 || true
+
+      LINT_OK=1
+      BUILD_OK=1
+      if rg -qi "error" artifacts/site-optimizer-post-lint.log; then LINT_OK=0; fi
+      if rg -qi "failed|error" artifacts/site-optimizer-post-build.log; then BUILD_OK=0; fi
+
+      if [ "$LINT_OK" -ne 1 ] || [ "$BUILD_OK" -ne 1 ]; then
+        echo "FAIL: post-check failed (lint_ok=$LINT_OK build_ok=$BUILD_OK)"
+        exit 1
+      fi
+
+      echo "PASS: website optimization workflow verified"

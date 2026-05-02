@@ -1,0 +1,73 @@
+version: 1
+project:
+  id: catholic-shop
+  name: Catholic Market
+  mode: gauntlet-dark-factory
+  requested_by: adam
+  owner_agent: Mr Chow
+  status: active
+
+goal:
+  one_liner: "Mobile-first Catholic commerce OS: aggregate authentic global Catholic shop items, convert intent to checkout, and automate social distribution with AI."
+  target_user: "Catholic shoppers and small Catholic merchants worldwide"
+  north_star_metric: "Mobile conversion rate and repeat purchase rate per 1,000 sessions with low support burden"
+  strategic_context: "Two-sided marketplace that helps local Catholic shops sell globally while preserving provenance and trust"
+  lane_plan_doc: "spec/dark-factory-lane-plan-v1.md"
+
+scope:
+  in:
+    - Mobile-first storefront and catalog discovery
+    - Shop onboarding and partner intake workflow
+    - AI concierge recommendations and social content generation
+    - Marketplace checkout and order lifecycle (phased)
+    - Provenance-first item metadata model
+  out:
+    - Warehouse ownership in v1
+    - Multi-vendor tax/legal localization for every country in v1
+
+architecture:
+  frontend:
+    - Responsive HTML/JS v0 (upgrade path: Next.js)
+    - 390px-first interaction model
+  backend:
+    - FastAPI service
+    - JSON stores for v0, Postgres upgrade lane for v1
+  ai:
+    - intent-to-product recommendation scoring
+    - social caption/reel script generation
+  operations:
+    - dark-factory lane ownership + eval gates + run-status artifacts
+
+data_contracts:
+  primary_entities:
+    - shop
+    - product
+    - onboarding_lead
+    - ai_recommendation
+    - social_draft
+  trust_fields:
+    - country
+    - city
+    - maker_story
+    - material
+    - inventory_status
+    - shop_verified
+
+environment:
+  repo_root: /home/ubuntu/pi-telegram-bot
+  working_dir: /home/ubuntu/pi-telegram-bot/factory/projects/catholic-shop
+  service_port: 8110
+
+delivery:
+  artifact_dir: /home/ubuntu/pi-telegram-bot/factory/projects/catholic-shop/artifacts
+  required_artifacts:
+    - eval-summary.md
+    - dark-factory-lane-plan-v1.md
+    - run-status-2026-04-25.md
+    - smoke-2026-04-25.json
+
+rules:
+  - "No deploy claims without eval pass"
+  - "Mobile UX is primary acceptance gate"
+  - "AI outputs must be source-grounded to known product/shop metadata"
+  - "Dad item list import is a dedicated lane after core platform gates are green"

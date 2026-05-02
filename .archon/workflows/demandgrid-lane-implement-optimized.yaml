@@ -1,0 +1,310 @@
+name: demandgrid-lane-implement-optimized
+description: |
+  Use when: You want a reliability-first, approval-gated DemandGrid lane execution.
+  Triggers: "optimized lane implement", "implement lane optimized", "dg lane optimize".
+  Does: preflight checks -> deterministic lane context + plan -> approval gate -> AI implementation -> hard eval/smoke gates.
+  NOT for: Ad-hoc experiments without lane IDs.
+provider: pi
+model: openai-codex/gpt-5.4
+interactive: true
+worktree:
+  enabled: false
+
+nodes:
+  - id: preflight-disk
+    bash: |
+      set -euo pipefail
+      # Require at least 512MB free to reduce mid-run ENOSPC failures.
+      AVAIL_KB=$(df -Pk /home/ubuntu | awk 'NR==2 {print $4}')
+      if [ "${AVAIL_KB:-0}" -lt 524288 ]; then
+        echo "FAIL: low disk space (${AVAIL_KB} KB free). Need >= 524288 KB"
+        exit 1
+      fi
+      echo "PASS: disk preflight (${AVAIL_KB} KB free)"
+
+  - id: preflight-pi-oauth
+    depends_on: [preflight-disk]
+    bash: |
+      set -euo pipefail
+      python3 - << 'PY'
+      import json
+      from datetime import datetime, timezone
+      from pathlib import Path
+
+      p = Path('/home/ubuntu/.pi/agent/auth.json')
+      if not p.exists() or p.stat().st_size <= 10:
+          raise SystemExit('FAIL: missing/empty ~/.pi/agent/auth.json')
+
+      obj = json.loads(p.read_text(encoding='utf-8'))
+      codex = obj.get('openai-codex')
+      if not isinstance(codex, dict):
+          raise SystemExit('FAIL: openai-codex oauth entry missing in auth.json')
+
+      expires = codex.get('expires')
+      if isinstance(expires, (int, float)):
+          # Pi stores ms epoch; require > now-5min.
+          now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
+          if int(expires) < now_ms - 300000:
+              raise SystemExit('FAIL: openai-codex oauth token appears expired')
+
+      print('PASS: pi oauth preflight (auth file)')
+      PY
+
+  - id: prep-lane-context
+    depends_on: [preflight-pi-oauth]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      LANE_ID="$(printf "%s" "$ARGUMENTS" | awk '{print $1}')"
+      BASE_URL="$(printf "%s" "$ARGUMENTS" | awk '{print $2}')"
+      if [ -z "$LANE_ID" ]; then
+        echo "FAIL: provide lane id (example: EZ-022 http://127.0.0.1:8099)"
+        exit 1
+      fi
+      if [ -z "$BASE_URL" ]; then
+        BASE_URL="http://127.0.0.1:8099"
+      fi
+
+      export LANE_ID BASE_URL
+      python3 - << 'PY'
+      import json
+      import os
+      from datetime import datetime, timezone
+      from pathlib import Path
+      import yaml
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      lane_id = os.environ['LANE_ID']
+      base_url = os.environ['BASE_URL']
+
+      queue = yaml.safe_load((root / 'queue.yaml').read_text(encoding='utf-8'))
+      lane = next((t for t in (queue.get('tasks') or []) if str(t.get('id')) == lane_id), None)
+      if lane is None:
+          raise SystemExit(f'FAIL: lane {lane_id} not found in queue.yaml')
+
+      payload = {
+          'lane_id': lane_id,
+          'base_url': base_url,
+          'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          'queue_updated_at': queue.get('updated_at'),
+          'lane': lane,
+      }
+
+      art = root / 'artifacts'
+      art.mkdir(parents=True, exist_ok=True)
+      (art / 'archon-lane-context.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
+
+      md = [
+          f'# DemandGrid lane context - {lane_id}',
+          '',
+          f'- base_url: {base_url}',
+          f'- queue_updated_at: {payload["queue_updated_at"]}',
+          f'- status: {lane.get("status")}',
+          f'- priority: {lane.get("priority")}',
+          f'- risk: {lane.get("risk")}',
+          '',
+          '## title',
+          str(lane.get('title', '')),
+          '',
+          '## done_when',
+      ]
+      for d in lane.get('done_when') or []:
+          md.append(f'- {d}')
+      md += ['', '## artifacts']
+      for a in lane.get('artifacts') or []:
+          md.append(f'- {a}')
+      (art / 'archon-lane-context.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
+
+      print('PASS')
+      PY
+
+  - id: build-plan
+    depends_on: [prep-lane-context]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      python3 - << 'PY'
+      import json
+      from pathlib import Path
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      ctx = json.loads((root / 'artifacts' / 'archon-lane-context.json').read_text(encoding='utf-8'))
+      lane = ctx['lane']
+      lane_id = ctx['lane_id']
+
+      lines = [
+          f'# DemandGrid optimized lane plan - {lane_id}',
+          '',
+          '## Objective',
+          str(lane.get('title', '')),
+          '',
+          '## Sequence',
+          '- [ ] Confirm touched files and existing artifacts',
+          '- [ ] Apply minimum changes to satisfy done_when',
+          '- [ ] Write implementation report artifact',
+          '- [ ] Run eval gate',
+          '- [ ] Run live smoke gate',
+          '',
+          '## done_when',
+      ]
+      for d in lane.get('done_when') or []:
+          lines.append(f'- {d}')
+      lines += ['', '## expected artifacts']
+      for a in lane.get('artifacts') or []:
+          lines.append(f'- {a}')
+      lines += ['', '## constraints', '- Low-collision edits only', '- Keep API contracts stable unless lane contract requires change']
+
+      (root / 'artifacts' / 'archon-lane-plan.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+      (root / 'artifacts' / 'archon-lane-plan.json').write_text(
+          json.dumps({'lane_id': lane_id, 'base_url': ctx['base_url'], 'has_checkboxes': True}, indent=2),
+          encoding='utf-8'
+      )
+      print('PASS')
+      PY
+
+  - id: approve-plan
+    depends_on: [build-plan]
+    approval:
+      message: |
+        Review optimized plan before implementation:
+        - /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-plan.md
+
+        Approve to execute implementation + eval + smoke gates.
+      capture_response: true
+
+  - id: implement-lane
+    depends_on: [approve-plan]
+    provider: pi
+    model: openai-codex/gpt-5.4
+    allowed_tools: [read, grep, find, ls, bash, edit, write]
+    idle_timeout: 3600000
+    prompt: |
+      Execute the approved DemandGrid lane plan.
+
+      Required inputs:
+      - /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-context.md
+      - /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-plan.md
+      - reviewer notes: $approve-plan.output
+
+      Rules:
+      - Work only under /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow
+      - Keep edits minimal and lane-scoped
+      - Do not claim completion unless files were actually changed as needed
+
+      Mandatory artifact:
+      - Write /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-implementation.md
+      - Include sections: changed_files, lane_requirements_met, remaining_risks
+      - Include literal marker line: IMPLEMENTATION_DONE
+
+  - id: eval-gate
+    depends_on: [implement-lane]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      if [ ! -f artifacts/archon-lane-implementation.md ]; then
+        echo "FAIL: missing artifacts/archon-lane-implementation.md"
+        exit 1
+      fi
+      if ! grep -q "IMPLEMENTATION_DONE" artifacts/archon-lane-implementation.md; then
+        echo "FAIL: implementation artifact missing IMPLEMENTATION_DONE marker"
+        exit 1
+      fi
+
+      python3 eval/run_eval.py > artifacts/archon-lane-eval.log 2>&1 || true
+      tail -n 120 artifacts/archon-lane-eval.log || true
+      STATUS_LINE="$(awk 'NF{line=$0} END{print line}' artifacts/archon-lane-eval.log | tr -d '\r')"
+      if [ "$STATUS_LINE" != "PASS" ]; then
+        echo "FAIL: eval returned '$STATUS_LINE'"
+        exit 1
+      fi
+      echo "PASS: eval gate"
+
+  - id: live-smoke-gate
+    depends_on: [eval-gate]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      BASE_URL="$(python3 - << 'PY'
+      import json
+      from pathlib import Path
+      p=Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-context.json')
+      print(json.loads(p.read_text(encoding='utf-8')).get('base_url','http://127.0.0.1:8099'))
+      PY
+      )"
+
+      export BASE_URL
+      python3 - << 'PY'
+      import csv
+      import json
+      import os
+      import urllib.request
+      from pathlib import Path
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      base_url = os.environ.get('BASE_URL','http://127.0.0.1:8099').rstrip('/')
+      site_id = 'site_unknown'
+      fp = root / 'data' / 'processed' / 'site_scores.csv'
+      if fp.exists():
+          with fp.open('r', encoding='utf-8') as f:
+              row = next(csv.DictReader(f), None)
+              if row and row.get('site_id'):
+                  site_id = row['site_id']
+
+      endpoints = ['/health','/api/v1/signals/coverage','/api/v1/outcomes/summary','/api/v1/governance/policies',f'/api/v1/site/{site_id}']
+      checks=[]
+      all_ok=True
+      for e in endpoints:
+          url=f'{base_url}{e}'
+          ok=False; status=None
+          try:
+              with urllib.request.urlopen(urllib.request.Request(url, method='GET'), timeout=20) as r:
+                  status=int(r.status); ok=200 <= status < 300
+          except Exception:
+              ok=False
+          all_ok = all_ok and ok
+          checks.append({'url':url,'ok':ok,'status':status})
+
+      out={'base_url':base_url,'all_ok':all_ok,'checks':checks}
+      p=root/'artifacts'/'archon-lane-live-smoke.json'
+      p.write_text(json.dumps(out, indent=2), encoding='utf-8')
+      print('PASS' if all_ok else 'FAIL')
+      PY
+
+      python3 - << 'PY'
+      import json
+      from pathlib import Path
+      p=Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/archon-lane-live-smoke.json')
+      if not json.loads(p.read_text(encoding='utf-8')).get('all_ok'):
+          raise SystemExit('FAIL: live smoke gate failed')
+      print('PASS: live smoke gate')
+      PY
+
+  - id: finalize
+    depends_on: [live-smoke-gate]
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+      LANE_ID="$(printf "%s" "$ARGUMENTS" | awk '{print $1}')"
+      if [ -z "$LANE_ID" ]; then LANE_ID="unknown"; fi
+
+      cat > artifacts/archon-lane-final-summary.md <<EOF
+      # DemandGrid optimized lane summary
+
+      - lane_id: $LANE_ID
+      - context: artifacts/archon-lane-context.md
+      - plan: artifacts/archon-lane-plan.md
+      - implementation: artifacts/archon-lane-implementation.md
+      - eval_log: artifacts/archon-lane-eval.log
+      - smoke: artifacts/archon-lane-live-smoke.json
+      - status: PASS
+      EOF
+      echo "PASS: optimized lane workflow complete"

@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-04-17T07:21:02Z",
+  "sites": 61834,
+  "tariff_feed_rows": 53965,
+  "utility_mapped": 53965,
+  "utility_mapped_ratio": 0.872739916550765,
+  "rate_filled": 53965,
+  "rate_filled_ratio": 0.872739916550765,
+  "zip_coverage": {
+    "01450": {
+      "sites": 412,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "01451": {
+      "sites": 405,
+      "mapped": 405,
+      "with_rate": 405
+    },
+    "01720": {
+      "sites": 1426,
+      "mapped": 1426,
+      "with_rate": 1426
+    },
+    "01730": {
+      "sites": 2173,
+      "mapped": 2173,
+      "with_rate": 2173
+    },
+    "01740": {
+      "sites": 351,
+      "mapped": 351,
+      "with_rate": 351
+    },
+    "01741": {
+      "sites": 470,
+      "mapped": 470,
+      "with_rate": 470
+    },
+    "01748": {
+      "sites": 1083,
+      "mapped": 1083,
+      "with_rate": 1083
+    },
+    "01770": {
+      "sites": 495,
+      "mapped": 495,
+      "with_rate": 495
+    },
+    "01772": {
+      "sites": 951,
+      "mapped": 951,
+      "with_rate": 951
+    },
+    "01776": {
+      "sites": 1184,
+      "mapped": 1184,
+      "with_rate": 1184
+    },
+    "01778": {
+      "sites": 846,
+      "mapped": 846,
+      "with_rate": 846
+    },
+    "01827": {
+      "sites": 358,
+      "mapped": 358,
+      "with_rate": 358
+    },
+    "01886": {
+      "sites": 831,
+      "mapped": 831,
+      "with_rate": 831
+    },
+    "01890": {
+      "sites": 3763,
+      "mapped": 3763,
+      "with_rate": 3763
+    },
+    "01921": {
+      "sites": 436,
+      "mapped": 436,
+      "with_rate": 436
+    },
+    "01940": {
+      "sites": 1885,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "01949": {
+      "sites": 1019,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "01965": {
+      "sites": 575,
+      "mapped": 575,
+      "with_rate": 575
+    },
+    "01983": {
+      "sites": 990,
+      "mapped": 990,
+      "with_rate": 990
+    },
+    "01985": {
+      "sites": 486,
+      "mapped": 486,
+      "with_rate": 486
+    },
+    "02030": {
+      "sites": 689,
+      "mapped": 689,
+      "with_rate": 689
+    },
+    "02043": {
+      "sites": 1525,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "02052": {
+      "sites": 1529,
+      "mapped": 1529,
+      "with_rate": 1529
+    },
+    "02056": {
+      "sites": 1023,
+      "mapped": 1023,
+      "with_rate": 1023
+    },
+    "02061": {
+      "sites": 527,
+      "mapped": 527,
+      "with_rate": 527
+    },
+    "02067": {
+      "sites": 1405,
+      "mapped": 1405,
+      "with_rate": 1405
+    },
+    "02090": {
+      "sites": 1579,
+      "mapped": 1579,
+      "with_rate": 1579
+    },
+    "02118": {
+      "sites": 2998,
+      "mapped": 2998,
+      "with_rate": 2998
+    },
+    "02186": {
+      "sites": 3043,
+      "mapped": 3043,
+      "with_rate": 3043
+    },
+    "02332": {
+      "sites": 364,
+      "mapped": 364,
+      "with_rate": 364
+    },
+    "02339": {
+      "sites": 1129,
+      "mapped": 1129,
+      "with_rate": 1129
+    },
+    "02420": {
+      "sites": 2182,
+      "mapped": 2182,
+      "with_rate": 2182
+    },
+    "02482": {
+      "sites": 2535,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "02492": {
+      "sites": 2725,
+      "mapped": 2725,
+      "with_rate": 2725
+    },
+    "02493": {
+      "sites": 541,
+      "mapped": 541,
+      "with_rate": 541
+    },
+    "02575": {
+      "sites": 549,
+      "mapped": 549,
+      "with_rate": 549
+    },
+    "02637": {
+      "sites": 731,
+      "mapped": 731,
+      "with_rate": 731
+    },
+    "02667": {
+      "sites": 1953,
+      "mapped": 1953,
+      "with_rate": 1953
+    },
+    "02903": {
+      "sites": 246,
+      "mapped": 246,
+      "with_rate": 246
+    },
+    "03087": {
+      "sites": 387,
+      "mapped": 387,
+      "with_rate": 387
+    },
+    "03854": {
+      "sites": 74,
+      "mapped": 74,
+      "with_rate": 74
+    },
+    "04006": {
+      "sites": 72,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "04101": {
+      "sites": 2966,
+      "mapped": 2966,
+      "with_rate": 2966
+    },
+    "05486": {
+      "sites": 421,
+      "mapped": 0,
+      "with_rate": 0
+    },
+    "06103": {
+      "sites": 745,
+      "mapped": 745,
+      "with_rate": 745
+    },
+    "06510": {
+      "sites": 512,
+      "mapped": 512,
+      "with_rate": 512
+    },
+    "06525": {
+      "sites": 1253,
+      "mapped": 1253,
+      "with_rate": 1253
+    },
+    "06824": {
+      "sites": 2139,
+      "mapped": 2139,
+      "with_rate": 2139
+    },
+    "06831": {
+      "sites": 523,
+      "mapped": 523,
+      "with_rate": 523
+    },
+    "06877": {
+      "sites": 1367,
+      "mapped": 1367,
+      "with_rate": 1367
+    },
+    "06883": {
+      "sites": 739,
+      "mapped": 739,
+      "with_rate": 739
+    },
+    "06890": {
+      "sites": 1454,
+      "mapped": 1454,
+      "with_rate": 1454
+    },
+    "06896": {
+      "sites": 99,
+      "mapped": 99,
+      "with_rate": 99
+    },
+    "06897": {
+      "sites": 593,
+      "mapped": 593,
+      "with_rate": 593
+    },
+    "06903": {
+      "sites": 1078,
+      "mapped": 1078,
+      "with_rate": 1078
+    }
+  },
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/site_utility_tariff.csv"
+}

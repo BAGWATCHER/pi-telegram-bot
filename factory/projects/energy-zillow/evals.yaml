@@ -1,0 +1,147 @@
+version: 1
+project_id: energy-zillow
+
+runtime:
+  local_entrypoint: "python3 eval/run_eval.py --zip ${ZIP:-00000}"
+  report_path: "artifacts/eval-summary.md"
+
+gates:
+  - id: coverage
+    description: "Address scoring coverage in target ZIP"
+    metric: "scored_addresses / candidate_addresses"
+    threshold: ">= 0.80"
+    severity: fail
+
+  - id: ranking_stability
+    description: "Top-N ranking stability across repeated runs with same inputs"
+    metric: "jaccard(top_50_run_a, top_50_run_b)"
+    threshold: ">= 0.90"
+    severity: fail
+
+  - id: multi_zip_regression
+    description: "Regression gates hold across multiple ZIP slices"
+    metric: "zip_count >= target && per_zip_coverage >= 0.80 && per_zip_top20_jaccard >= 0.90"
+    threshold: "pass"
+    severity: fail
+
+  - id: product_flow
+    description: "Core user flow works end-to-end"
+    checks:
+      - "heatmap loads"
+      - "hex click returns ranked sites"
+      - "site detail card returns recommendation"
+    threshold: "all true"
+    severity: fail
+
+  - id: agent_copilot_contract
+    description: "Pi-style agent chat endpoint returns grounded cards + explain response"
+    metric: "POST /api/v1/agent/chat top-leads + why-this-site smoke"
+    threshold: "pass"
+    severity: fail
+
+  - id: flood_gap_coverage
+    description: "Flood lane covers at least one outage-gap geography (or at minimum one ZIP)"
+    metric: "exists(zip where outage_trigger_status has missing and flood_risk_trigger_status is non-missing)"
+    threshold: "true"
+    severity: fail
+
+  - id: equipment_age_coverage
+    description: "Equipment-age lane has non-missing proxy coverage for at least one ZIP"
+    metric: "count(zip with equipment_age_trigger_status != missing)"
+    threshold: ">= 1"
+    severity: fail
+
+
+  - id: outreach_policy_config_contract
+    description: "Outreach policy endpoint exposes configurable confidence/channel guardrails"
+    metric: "GET /api/v1/outreach/policy returns version + default + product overrides"
+    threshold: "pass"
+    severity: fail
+
+  - id: outreach_payload_contract
+    description: "Ranked lead outputs can be transformed into machine-usable outreach payloads"
+    metric: "required outreach fields present for sampled top leads"
+    threshold: "pass"
+    severity: fail
+
+  - id: investigation_traceability
+    description: "Each high-priority recommendation includes traceable evidence metadata"
+    metric: "top leads with source+as_of evidence references"
+    threshold: ">= 0.95"
+    severity: fail
+
+  - id: permit_evidence_contract
+    description: "Permit-backed leads expose structured permit evidence in investigation payloads"
+    metric: "sampled permit leads include trigger_permit status + history objects"
+    threshold: "pass"
+    severity: fail
+
+  - id: outreach_safety_guardrails
+    description: "Low-confidence or suppressed leads are blocked from auto-outreach"
+    metric: "auto-outreach candidates violating confidence/suppression policy"
+    threshold: "== 0"
+    severity: fail
+
+  - id: action_handoff_contract
+    description: "Investigation output can hand off cleanly to outreach orchestrator"
+    metric: "h5 contract schema validation on sampled payloads"
+    threshold: "pass"
+    severity: fail
+
+  - id: closed_loop_feedback_contract
+    description: "Outcome feedback fields exist for learning loop integration"
+    metric: "presence of contacted/responded/qualified/won-lost reason fields"
+    threshold: "pass"
+    severity: warn
+
+  - id: honesty_wind
+    description: "No high-confidence wind claims without strong evidence"
+    metric: "percent_of_wind_recs_with_confidence_lt_0.7"
+    threshold: "== 0"
+    severity: fail
+
+  - id: solar_first_default
+    description: "Hybrid should only appear when wind add-on evidence exists"
+    metric: "hybrid_recommendations_without_wind_output"
+    threshold: "== 0"
+    severity: fail
+
+  - id: perf_api
+    description: "API latency on 1k-site slice"
+    metric: "p95_ms(GET /api/v1/hex/{h3}/sites)"
+    threshold: "<= 700"
+    severity: warn
+
+  - id: explanation_quality
+    description: "Each recommendation includes reason codes"
+    metric: "sites_with_nonempty_reasons / scored_sites"
+    threshold: ">= 0.98"
+    severity: fail
+
+  - id: assumption_traceability
+    description: "Tariff/install/incentive assumptions are documented"
+    checks:
+      - "artifacts/scoring-assumptions.md exists"
+      - "artifacts/limitations.md exists"
+    threshold: "all true"
+    severity: fail
+
+output_contract:
+  required_site_fields:
+    - site_id
+    - address
+    - h3_cell
+    - annual_kwh_solar
+    - annual_savings_usd
+    - payback_years
+    - npv_15y_usd
+    - best_option
+    - confidence
+    - reasons
+
+release_policy:
+  can_demo_if:
+    - "all fail-severity gates pass"
+  can_claim_production_readiness_if:
+    - "all gates pass"
+    - "human review signed"

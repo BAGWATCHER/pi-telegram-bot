@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://demandgrid.ai/schema/revenue-graph.schema.json",
+  "title": "DemandGrid Revenue Graph v1",
+  "type": "object",
+  "required": ["framework", "site", "account", "primary_contact", "workflow", "payload_refs", "provenance"],
+  "properties": {
+    "framework": { "type": "string", "const": "dg-revenue-graph-v1" },
+    "site": {
+      "type": "object",
+      "required": ["site_id", "address", "zip", "h3_cell", "primary_product", "opportunity_score", "confidence"],
+      "properties": {
+        "site_id": { "type": "string" },
+        "address": { "type": "string" },
+        "zip": { "type": "string" },
+        "h3_cell": { "type": "string" },
+        "primary_product": { "type": "string" },
+        "secondary_product": { "type": ["string", "null"] },
+        "opportunity_score": { "type": "number" },
+        "confidence": { "type": "number" }
+      }
+    },
+    "account": {
+      "type": "object",
+      "required": ["account_id", "segment", "tier"],
+      "properties": {
+        "account_id": { "type": "string" },
+        "name": { "type": "string" },
+        "segment": { "type": "string" },
+        "tier": { "type": "string" },
+        "owner_mode": { "type": "string" }
+      }
+    },
+    "primary_contact": {
+      "type": "object",
+      "required": ["contact_id", "role", "preferred_channel"],
+      "properties": {
+        "contact_id": { "type": "string" },
+        "role": { "type": "string" },
+        "preferred_channel": { "type": "string" },
+        "contactability_confidence": { "type": "string" },
+        "display_name": { "type": ["string", "null"] },
+        "mailing_address": { "type": ["string", "null"] }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "required": ["operator_status", "operator_next_step", "lead_outcome"],
+      "properties": {
+        "operator_status": { "type": "string" },
+        "operator_next_step": { "type": "string" },
+        "lead_outcome": { "type": "object" },
+        "last_interaction_at": { "type": ["string", "null"] }
+      }
+    },
+    "payload_refs": { "type": "object" },
+    "provenance": { "type": "object" }
+  }
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lourdes Holy Water | Catholic Market</title>
+    <meta name="description" content="Holy water drawn from the spring Our Lady revealed to St. Bernadette in 1858. Bottled at the Sanctuary of Lourdes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Garamond', 'serif'],
+                        body: ['"Crimson Text"', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        parchment: '#f5f0e8',
+                        ink: '#2c1810',
+                        'ink-light': '#4a3728',
+                        gold: '#b8860b',
+                        'gold-light': '#d4a843',
+                        rubric: '#722f37',
+                        'rubric-light': '#944a53',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Noise grain overlay */
+        .grain::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Cormorant Garamond', Garamond, serif;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 8px;
+            padding-top: 4px;
+            color: #2c1810;
+            font-weight: 600;
+        }
+        .gold-rule {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #b8860b 20%, #d4a843 50%, #b8860b 80%, transparent);
+            margin: 2rem 0;
+        }
+        /* Card rise animation */
+        @keyframes cardRise {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-rise {
+            animation: cardRise 0.7s ease-out forwards;
+        }
+        .card-rise-1 { animation-delay: 0.1s; opacity: 0; }
+        .card-rise-2 { animation-delay: 0.2s; opacity: 0; }
+        .card-rise-3 { animation-delay: 0.3s; opacity: 0; }
+        .card-rise-4 { animation-delay: 0.4s; opacity: 0; }
+        .card-rise-5 { animation-delay: 0.5s; opacity: 0; }
+
+        /* x-cloak safe */
+        [x-cloak-safe] { opacity: 0; }
+        @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+        .reveal-fallback { animation: reveal 0.6s ease-out 3.5s forwards; }
+
+        /* Timeline connector */
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2rem;
+            width: 1px;
+            height: 2rem;
+            background: linear-gradient(to bottom, #b8860b, transparent);
+        }
+        .timeline-dot:last-child::after { display: none; }
+    </style>
+</head>
+<body class="bg-parchment text-ink font-body grain min-h-screen" x-data="productPage()" x-init="init()" x-cloak-safe :class="{ 'reveal-fallback': !loaded }">
+
+    <!-- Back navigation -->
+    <div class="max-w-3xl mx-auto px-6 pt-8 pb-2">
+        <a href="/" class="inline-flex items-center text-ink-light hover:text-gold transition-colors font-display italic text-lg">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back to all destinations
+        </a>
+    </div>
+
+    <!-- Loading state -->
+    <div x-show="!loaded" class="max-w-3xl mx-auto px-6 py-24 text-center">
+        <div class="animate-pulse space-y-4">
+            <div class="h-80 bg-ink/5 rounded"></div>
+            <div class="h-6 bg-ink/5 rounded w-2/3 mx-auto"></div>
+            <div class="h-4 bg-ink/5 rounded w-1/2 mx-auto"></div>
+        </div>
+    </div>
+
+    <!-- Product content -->
+    <div x-show="loaded" class="max-w-3xl mx-auto px-6 pb-24">
+
+        <!-- ═══════ SECTION 1: HERO ═══════ -->
+        <section class="card-rise card-rise-1">
+            <div class="relative rounded overflow-hidden" style="max-height: 480px;">
+                <img :src="product.image_url" :alt="product.title" class="w-full object-cover" style="max-height: 480px;">
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent"></div>
+            </div>
+            <div class="text-center -mt-16 relative z-10">
+                <p x-text="product.city + ', ' + product.country" class="font-display text-gold tracking-widest uppercase text-xs mb-2"></p>
+                <h1 class="font-display text-4xl md:text-5xl text-ink font-semibold leading-tight" x-text="product.title"></h1>
+                <p class="font-display italic text-xl text-ink-light mt-3 max-w-lg mx-auto leading-relaxed" x-text="product.tagline"></p>
+                <div class="mt-6">
+                    <span class="font-display text-3xl text-ink font-semibold" x-text="'$' + (product.price_cents / 100).toFixed(2)"></span>
+                    <span class="text-ink-light font-body text-sm ml-2" x-show="product.inventory_status === 'low_stock'">— Only a few left</span>
+                    <span class="text-ink-light font-body text-sm ml-2" x-show="product.inventory_status === 'in_stock'">— In stock</span>
+                </div>
+                <button @click="addToCart()" class="mt-6 px-10 py-3 bg-ink text-parchment font-display text-lg tracking-wide hover:bg-ink-light transition-colors rounded">
+                    Add to Cart
+                </button>
+                <p x-show="addedToCart" class="text-rubic font-display italic mt-3">Added to your cart. <a href="/" class="underline">Continue browsing →</a></p>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 2: PROVENANCE TIMELINE ═══════ -->
+        <section class="card-rise card-rise-2">
+            <h2 class="font-display text-2xl text-center text-ink mb-8">The Journey of This Water</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <template x-for="(step, i) in product.provenance" :key="i">
+                    <div class="text-center px-4 relative timeline-dot">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+                            <span class="font-display text-2xl text-gold" x-text="i + 1"></span>
+                        </div>
+                        <h3 class="font-display text-lg font-semibold text-ink" x-text="step.title"></h3>
+                        <p class="font-body text-sm text-ink-light italic mt-1" x-text="step.location"></p>
+                        <p class="font-body text-ink-light mt-2 leading-relaxed text-sm" x-text="step.description"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 3: THE ARTISAN ═══════ -->
+        <section class="card-rise card-rise-3">
+            <h2 class="font-display text-2xl text-center text-ink mb-6">The People Behind This</h2>
+            <div class="bg-white/40 rounded p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-24 h-24 rounded-full bg-gold/10 flex-shrink-0 flex items-center justify-center">
+                    <span class="font-display text-4xl text-gold">✝</span>
+                </div>
+                <div>
+                    <p class="font-display text-xl text-ink font-semibold" x-text="product.artisan.name"></p>
+                    <p class="font-body text-ink-light italic text-sm mt-1" x-text="product.artisan.role"></p>
+                    <p class="font-body text-ink-light mt-3 leading-relaxed drop-cap" x-text="product.artisan.quote"></p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 4: THE HOLY GROUND ═══════ -->
+        <section class="card-rise card-rise-4">
+            <h2 class="font-display text-2xl text-center text-ink mb-6">Holy Ground</h2>
+            <div class="rounded overflow-hidden mb-4" style="max-height: 300px;">
+                <img :src="product.holy_ground.image" :alt="product.holy_ground.name" class="w-full object-cover" style="max-height: 300px;">
+            </div>
+            <h3 class="font-display text-xl text-ink font-semibold text-center mt-4" x-text="product.holy_ground.name"></h3>
+            <div class="max-w-lg mx-auto mt-4">
+                <p class="font-body text-ink-light leading-relaxed text-center italic drop-cap" x-text="product.holy_ground.narrative"></p>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 5: THE PRAYER ═══════ -->
+        <section class="card-rise card-rise-5">
+            <h2 class="font-display text-2xl text-center text-ink mb-6">The Prayer</h2>
+            <div class="max-w-lg mx-auto bg-white/30 rounded p-6 md:p-8 text-center">
+                <p class="font-display text-xl md:text-2xl italic text-ink leading-relaxed" x-text="product.prayer.text"></p>
+                <p class="font-body text-ink-light text-xs mt-4" x-text="'— ' + product.prayer.source"></p>
+                <button @click="savePrayer()" class="mt-4 px-6 py-2 border border-gold text-gold font-display text-sm tracking-wide hover:bg-gold hover:text-parchment transition-colors rounded" x-text="prayerSaved ? 'Prayer Saved ✧' : 'Save This Prayer'"></button>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 6: SACRAMENT CONTEXT ═══════ -->
+        <section>
+            <h2 class="font-display text-2xl text-center text-ink mb-6">Given For</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-lg mx-auto">
+                <template x-for="ctx in product.sacrament_contexts" :key="ctx">
+                    <div class="text-center p-4 bg-white/20 rounded">
+                        <span class="text-2xl" x-text="ctx.icon"></span>
+                        <p class="font-body text-sm text-ink-light mt-1" x-text="ctx.label"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 7: THE UNBOXING ═══════ -->
+        <section>
+            <h2 class="font-display text-2xl text-center text-ink mb-6">How It Arrives</h2>
+            <div class="max-w-lg mx-auto bg-white/30 rounded p-6 text-center">
+                <p class="font-body text-ink-light leading-relaxed italic" x-text="product.packaging"></p>
+            </div>
+            <p class="text-center mt-4 text-sm text-ink-light font-body" x-text="'Ships in ' + product.lead_time_days + ' days'"></p>
+        </section>
+
+        <hr class="gold-rule">
+
+        <!-- ═══════ SECTION 8: FROM THE SHOP ═══════ -->
+        <section>
+            <h2 class="font-display text-2xl text-center text-ink mb-6">From the Shop</h2>
+            <div class="max-w-lg mx-auto bg-white/40 rounded p-6 text-center">
+                <h3 class="font-display text-xl text-ink font-semibold" x-text="product.shop_name"></h3>
+                <p class="font-body text-ink-light text-sm" x-text="product.city + ', ' + product.country"></p>
+                <p class="font-body text-ink-light mt-3 leading-relaxed italic text-sm" x-text="product.shop_story"></p>
+                <a href="/" class="inline-block mt-4 text-gold font-display text-sm tracking-wide hover:text-gold-light transition-colors">View all products from this shop →</a>
+            </div>
+        </section>
+
+        <!-- Back to top -->
+        <div class="text-center mt-16">
+            <a href="/" class="font-display italic text-ink-light hover:text-gold transition-colors">← Return to the marketplace</a>
+        </div>
+
+    </div>
+
+    <script>
+    function productPage() {
+        return {
+            product: {},
+            loaded: false,
+            addedToCart: false,
+            prayerSaved: false,
+
+            async init() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('id') || 'prod_shop-sanctuaire-lourdes_fr-water-001';
+
+                try {
+                    // Fetch product from API
+                    const resp = await fetch(`/api/v1/catalog/feed?limit=50`);
+                    const data = await resp.json();
+                    const raw = data.items.find(p => p.product_id === productId);
+
+                    if (!raw) {
+                        this.product = this.codexData()['prod_shop-sanctuaire-lourdes_fr-water-001'];
+                    } else {
+                        this.product = this.augmentProduct(raw);
+                    }
+                } catch (e) {
+                    this.product = this.codexData()['prod_shop-sanctuaire-lourdes_fr-water-001'];
+                }
+
+                this.loaded = true;
+                // Remove x-cloak-safe
+                document.body.removeAttribute('x-cloak-safe');
+                document.body.classList.remove('reveal-fallback');
+
+                // Check if prayer already saved
+                this.prayerSaved = localStorage.getItem('saved_prayers')?.includes(this.product.title) || false;
+            },
+
+            augmentProduct(raw) {
+                const rich = this.codexData()[raw.product_id];
+                if (rich) return rich;
+                return {
+                    ...raw,
+                    tagline: raw.story?.split('.')[0] + '.',
+                    provenance: [
+                        { title: 'Made', location: raw.city + ', ' + raw.country, description: 'Crafted by skilled artisans.' },
+                        { title: 'Blessed', location: raw.city, description: 'Blessed at the holy site.' },
+                        { title: 'Yours', location: 'Your home', description: 'Ships in ' + raw.lead_time_days + ' days.' }
+                    ],
+                    artisan: { name: 'Local Artisan', role: 'Catholic artisan in ' + raw.city, quote: raw.story || '' },
+                    holy_ground: { name: raw.city, image: raw.image_url, narrative: raw.story || '' },
+                    prayer: { text: 'Prayer associated with this devotional object.', source: 'Catholic tradition' },
+                    sacrament_contexts: (raw.sacrament_tags || ['devotion']).map(t => ({ icon: '🕯️', label: t.replace(/_/g, ' ') })),
+                    packaging: 'Shipped with care from ' + (raw.city || '') + '.',
+                    shop_name: raw.shop_id || 'Sanctuary Shop',
+                    shop_story: raw.story || ''
+                };
+            },
+
+            codexData() {
+                return {
+
+'prod_shop-sanctuaire-lourdes_fr-water-001': {
+    product_id:'prod_shop-sanctuaire-lourdes_fr-water-001',title:'Lourdes Holy Water Bottle',
+    tagline:'Drawn from the spring Our Lady revealed. Bottled where St. Bernadette knelt.',
+    price_cents:1600,city:'Lourdes',country:'France',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/6/65/People_filling_their_bottles_with_Holy_Water_from_Lourdes_-_panoramio.jpg',
+    inventory_status:'in_stock',lead_time_days:2,
+    shop_name:'Sanctuaire Notre-Dame de Lourdes',shop_story:'Official sanctuary shop offering devotional articles blessed at the Grotto of Massabielle.',
+    provenance:[{title:'The Spring',location:'Massabielle Grotto, Lourdes',description:'Pyrenees mountain water flows from the rock that Our Lady revealed to St. Bernadette on February 25, 1858. The spring has never stopped.'},{title:'The Blessing',location:'Sanctuary Bottling Room, Lourdes',description:'Drawn by hand each morning by sanctuary sacristans. Blessed at the Grotto during morning prayers. Sealed in glass without treatment or alteration.'},{title:'Your Door',location:'Shipped worldwide',description:'Ships in 2 days, wrapped in undyed linen with a prayer card showing the Grotto and the date your water was drawn.'}],
+    artisan:{name:'The Sacristans of Lourdes',role:'Custodians of the spring since 1858',quote:'Each morning before the pilgrims arrive, we draw water from the spring. It is the same water that Bernadette drank — cold, clear, unchanged. We bottle it with a prayer: that whoever receives it feels the peace of this place.'},
+    holy_ground:{name:'The Grotto of Massabielle',image:'https://upload.wikimedia.org/wikipedia/commons/6/65/People_filling_their_bottles_with_Holy_Water_from_Lourdes_-_panoramio.jpg',narrative:'On February 11, 1858, a 14-year-old girl named Bernadette Soubirous saw a lady dressed in white. Over 18 apparitions, the Lady revealed herself as the Immaculate Conception. Water sprang forth and has never stopped. Over 70 million pilgrims have come.'},
+    prayer:{text:'O ever-Immaculate Virgin, Mother of Mercy, health of the sick, refuge of sinners, comfort of the afflicted, you know my wants, my troubles, my sufferings. Deign to cast upon me a look of mercy. By appearing in the Grotto of Lourdes, you were pleased to make it a privileged sanctuary from which you dispense your graces. Obtain for me the graces I so desperately need. Amen.',source:'Traditional Prayer to Our Lady of Lourdes'},
+    sacrament_contexts:[{icon:'🏠',label:'House blessing'},{icon:'🕯️',label:'Vigil for the sick'},{icon:'👶',label:'Baptism gift'},{icon:'✈️',label:'Traveler protection'},{icon:'🙏',label:'Prayer corner'},{icon:'💧',label:'Anointing'}],
+    packaging:'Your holy water arrives in a glass bottle within an undyed linen pouch. Inside: a card showing the Grotto of Massabielle, the date your water was drawn and blessed, and the Prayer to Our Lady of Lourdes. The pouch is sealed with the Sanctuary wax stamp.'
+},
+
+'prod_shop-bottega-san-michele_italy-tau-001': {
+    product_id:'prod_shop-bottega-san-michele_italy-tau-001',title:'Olive Wood Tau Cross',
+    tagline:'Carved from the olive groves of Assisi. A cross that St. Francis himself wore.',
+    price_cents:3200,city:'Assisi',country:'Italy',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/0/0d/Tau_cross.jpg',
+    inventory_status:'in_stock',lead_time_days:3,
+    shop_name:'Bottega San Michele',shop_story:'A family workshop in a stone building on Via San Francesco, 200 meters from the Basilica of St. Francis. Three generations have carved olive wood here, each piece carrying the peace of Assisi.',
+    provenance:[{title:'The Grove',location:'Umbrian hills above Assisi',description:'Olive branches pruned from trees rooted in the same red soil that St. Francis walked. Harvested after the autumn pressing, when the wood is strongest.'},{title:'The Workshop',location:'Bottega San Michele, Assisi',description:'Hand-carved by Marco Benedetti, whose grandfather opened this workshop in 1947. Each tau cross takes two days — carved, sanded, oiled with beeswax, and held in prayer before leaving the bench.'},{title:'The Basilica',location:'Basilica of St. Francis, Assisi',description:'Before shipping, each cross is brought to the tomb of St. Francis for a silent blessing. The friars know Marco by name.'}],
+    artisan:{name:'Marco Benedetti',role:'Third-generation olive wood carver, Assisi',quote:'My grandfather said: the tau is the simplest cross. No body on it — because you are the body. When you wear it, you are saying: here I am, Lord. Send me. I carve each one slowly. It is not factory work. It is prayer.'},
+    holy_ground:{name:'The Tomb of St. Francis',image:'https://upload.wikimedia.org/wikipedia/commons/0/0d/Tau_cross.jpg',narrative:'In a crypt beneath the Basilica of St. Francis lies the simple stone tomb of il Poverello — the little poor one. Pilgrims have knelt here for 800 years. The tau cross was Francis' signature — he traced it on doors, walls, and foreheads as a sign of blessing and penance.'},
+    prayer:{text:'Lord, make me an instrument of your peace. Where there is hatred, let me sow love. Where there is injury, pardon. Where there is doubt, faith. Where there is despair, hope. Where there is darkness, light. Where there is sadness, joy. O Divine Master, grant that I may not so much seek to be consoled as to console, to be understood as to understand, to be loved as to love. For it is in giving that we receive, it is in pardoning that we are pardoned, and it is in dying that we are born to eternal life. Amen.',source:'Peace Prayer of St. Francis'},
+    sacrament_contexts:[{icon:'🕊️',label:'Confirmation gift'},{icon:'🙏',label:'Daily wear'},{icon:'✝️',label:'Franciscan devotion'},{icon:'🏠',label:'Home blessing'},{icon:'🎓',label:'Graduation'},{icon:'💚',label:'Peace intention'}],
+    packaging:'Your tau cross arrives in a small linen pouch, hand-stamped with the Bottega San Michele seal — an olive branch forming the letter T. Inside: a card with Marco name and the Peace Prayer of St. Francis in his own handwriting (printed).'
+},
+
+'prod_shop-atelier-divina_pol-ros-002': {
+    product_id:'prod_shop-atelier-divina_pol-ros-002',title:'Hand-Knotted Mercy Rosary',
+    tagline:'Knotted by Carmelite sisters in the city where St. Faustina saw Divine Mercy.',
+    price_cents:4800,city:'Krak\u00f3w',country:'Poland',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/4/47/Catholic_Picture_Dictionary_%28Pfeiffer%29_-_Beads.jpg',
+    inventory_status:'low_stock',lead_time_days:7,
+    shop_name:'Atelier Divina Misericordia',shop_story:'A small atelier run by the Sisters of Merciful Jesus in the shadow of the Divine Mercy Shrine. Every rosary is knotted during Adoration.',
+    provenance:[{title:'The Wool',location:'Podhale highlands, southern Poland',description:'Undyed wool from mountain sheep, spun by hand in a village cooperative. The sisters chose this wool because it is warm — like mercy.'},{title:'The Knotting',location:'Carmelite cell, Krak\u00f3w',description:'Knotted by Sister Faustina Maria during her Adoration hour. Each Hail Mary knot takes about forty seconds — the length of the prayer itself. A rosary takes two full Adoration hours.'},{title:'The Shrine',location:'Divine Mercy Shrine, Krak\u00f3w-\u0141agiewniki',description:'Blessed at the chapel where St. Faustina Kowalska is entombed and where the Divine Mercy image hangs above the tabernacle.'}],
+    artisan:{name:'Sister Faustina Maria',role:'Carmelite Sister of Merciful Jesus, Krak\u00f3w',quote:'I knot during Adoration. The rope passes through my fingers as the prayers pass through my heart. I cannot know who will hold this rosary one day, but I pray for them already. That is the mercy — it goes ahead of us.'},
+    holy_ground:{name:'The Divine Mercy Shrine, \u0141agiewniki',image:'https://upload.wikimedia.org/wikipedia/commons/4/47/Catholic_Picture_Dictionary_%28Pfeiffer%29_-_Beads.jpg',narrative:'In 1931, a young Polish nun named Faustina Kowalska saw Jesus with rays of red and pale light streaming from His heart. \u201cPaint an image according to the pattern you see,\u201d He said, \u201cwith the words: Jesus, I trust in You.\u201d The Divine Mercy devotion spread from this convent to the entire world. St. John Paul II canonized Faustina here in Krak\u00f3w. The shrine receives millions of pilgrims who come to whisper those same words at her tomb.'},
+    prayer:{text:'Eternal God, in whom mercy is endless and the treasury of compassion inexhaustible, look kindly upon us and increase Your mercy in us, that in difficult moments we might not despair nor become despondent, but with great confidence submit ourselves to Your holy will, which is Love and Mercy itself. Amen.',source:'Divine Mercy Chaplet prayer'},
+    sacrament_contexts:[{icon:'🕯️',label:'First Communion'},{icon:'💍',label:'Wedding rosary'},{icon:'🤍',label:'Divine Mercy devotion'},{icon:'🏥',label:'Hospital visit'},{icon:'🎁',label:'Easter gift'},{icon:'👵',label:'Comfort in sorrow'}],
+    packaging:'Your rosary arrives in a simple cotton pouch dyed pale blue — the color associated with Divine Mercy. Inside: a card with Sister Faustina Maria name, the date of her Adoration when your rosary was knotted, and the Divine Mercy Chaplet prayer.'
+},
+
+'prod_shop-santuario-fatima_pt-statue-001': {
+    product_id:'prod_shop-santuario-fatima_pt-statue-001',title:'Our Lady of F\u00e1tima Statue',
+    tagline:'A hand-painted statue from the Cova da Iria, where Our Lady appeared to three shepherd children.',
+    price_cents:3800,city:'F\u00e1tima',country:'Portugal',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/d/d1/Nossa_Senhora_de_F%C3%A1tima.jpg',
+    inventory_status:'in_stock',lead_time_days:5,
+    shop_name:'Santu\u00e1rio de F\u00e1tima Artes\u00e3os',shop_story:'Official sanctuary artisans working in workshops adjacent to the Basilica of Our Lady of the Rosary. Their work supports the shrine and the local community of F\u00e1tima.',
+    provenance:[{title:'The Mould',location:'Santu\u00e1rio de F\u00e1tima workshops',description:'Cast from a mould based on the original statue in the Chapel of the Apparitions. The mould was made by sanctuary artisans in 1947, exactly thirty years after the Miracle of the Sun.'},{title:'The Painting',location:'F\u00e1tima, Portugal',description:'Hand-painted by Ana Silva, who has worked at the sanctuary workshops for 22 years. The white robe, gold trim, and serene face are painted in thin layers — four days of work per statue.'},{title:'The Blessing',location:'Capelinha das Apari\u00e7\u00f5es, F\u00e1tima',description:'Blessed at the exact spot where Our Lady appeared — the little chapel built around the holm oak tree. The statue is touched to the crown of the original image.'}],
+    artisan:{name:'Ana Silva',role:'Sanctuary artisan, 22 years at F\u00e1tima',quote:'I paint her face from memory now. After twenty-two years, you know her. The expression is the hardest part — she must look at you with love but also with a question. Are you ready to do what she asked? Prayer, penance, conversion. When I finish a statue, I always pray the rosary with it before it leaves my bench.'},
+    holy_ground:{name:'The Cova da Iria, F\u00e1tima',image:'https://upload.wikimedia.org/wikipedia/commons/d/d1/Nossa_Senhora_de_F%C3%A1tima.jpg',narrative:'In 1917, in a rocky pasture called Cova da Iria, three children — L\u00facia, Francisco, and Jacinta — saw a Lady \u201cbrighter than the sun\u201d standing on a small holm oak tree. Over six months, she appeared on the 13th of each month, revealing three secrets and calling the world to prayer and penance. On October 13, 70,000 people witnessed the Miracle of the Sun — the sun danced, plunged toward the earth, and returned to its place. Today, F\u00e1tima receives over 6 million pilgrims annually.'},
+    prayer:{text:'O Most Holy Virgin Mary, Queen of the most holy Rosary, you were pleased to appear to the children of F\u00e1tima and reveal a glorious message. We implore you, inspire in our hearts a fervent love for the recitation of the Rosary. By meditating on the mysteries of the redemption that are recalled therein, may we obtain the graces and virtues that we ask, through the merits of Jesus Christ our Lord. Amen.',source:'Prayer to Our Lady of F\u00e1tima'},
+    sacrament_contexts:[{icon:'🏠',label:'Home altar'},{icon:'🕯️',label:'Rosary devotion'},{icon:'👶',label:'Baptism gift'},{icon:'💒',label:'Parish gift'},{icon:'🇵🇹',label:'Portuguese heritage'},{icon:'🙏',label:'Conversion prayer'}],
+    packaging:'Your statue arrives wrapped in white tissue paper within a sturdy box marked with the F\u00e1tima sanctuary seal. Inside: a card with the date and location of blessing at the Capelinha, Ana name, and the Prayer to Our Lady of F\u00e1tima in English and Portuguese.'
+},
+
+'prod_shop-holy-sepulchre_il-ros-001': {
+    product_id:'prod_shop-holy-sepulchre_il-ros-001',title:'Olive Wood Rosary from Jerusalem',
+    tagline:'Carved from Bethlehem olive wood. Blessed at the tomb where Christ rose.',
+    price_cents:5500,city:'Jerusalem',country:'Israel',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/4/47/Catholic_Picture_Dictionary_%28Pfeiffer%29_-_Beads.jpg',
+    inventory_status:'in_stock',lead_time_days:5,
+    shop_name:'Holy Sepulchre Workshop',shop_story:'A Christian family workshop in the Christian Quarter of the Old City, steps from the Church of the Holy Sepulchre. For four generations, the Mansour family has carved devotional objects from the wood of the Holy Land.',
+    provenance:[{title:'The Wood',location:'Bethlehem olive groves',description:'Branches pruned from olive trees in the hills around Bethlehem after the autumn harvest. Some of these trees are over 500 years old — they were growing when the Ottoman Empire ruled this land.'},{title:'The Carving',location:'Old City workshop, Jerusalem',description:'Hand-turned on a small lathe by Ibrahim Mansour, who learned from his father, who learned from his. Each bead is formed, sanded, and polished with olive oil. Fifty-nine beads, each one touched a dozen times before it is strung.'},{title:'The Tomb',location:'Church of the Holy Sepulchre',description:'Laid on the Stone of Unction — the slab where tradition holds Christ body was prepared for burial — during the Saturday vigil before Easter. The Franciscan friars of the Custody of the Holy Land perform this blessing for the Mansour family four times a year.'}],
+    artisan:{name:'Ibrahim Mansour',role:'Fourth-generation olive wood carver, Jerusalem',quote:'My great-grandfather began carving in 1892. The same lathe — we still use it. When I carve, I think about the hands that will hold these beads. Someone in America, someone in Brazil, someone who may never see Jerusalem with their own eyes. But through this wood, they touch this land. They touch Bethlehem. They touch the place where He walked.'},
+    holy_ground:{name:'The Church of the Holy Sepulchre',image:'https://upload.wikimedia.org/wikipedia/commons/6/65/People_filling_their_bottles_with_Holy_Water_from_Lourdes_-_panoramio.jpg',narrative:'The Church of the Holy Sepulchre encloses both Golgotha, where Christ was crucified, and the empty tomb where He rose. It is the holiest site in Christianity. Pilgrims entering the church pass the Stone of Unction — a pink limestone slab where, according to tradition, Jesus body was laid and anointed before burial. The scent of incense hangs perpetually in the air. Franciscan friars have been custodians of this site since 1342.'},
+    prayer:{text:'We adore You, O Christ, and we praise You. Because by Your holy cross You have redeemed the world. Lord Jesus Christ, You carried Your cross to Golgotha and laid down Your life for us. Grant that we, who hold this rosary made from the wood of Your land, may carry our own crosses with the same trust and love with which You carried Yours. Through the intercession of Our Lady of Sorrows, who stood at the foot of the cross, be with us now and at the hour of our death. Amen.',source:'Traditional Stations of the Cross prayer, adapted'},
+    sacrament_contexts:[{icon:'🕯️',label:'Lenten devotion'},{icon:'💍',label:'Wedding rosary'},{icon:'✝️',label:'Holy Land connection'},{icon:'🎁',label:'Ordination gift'},{icon:'🙏',label:'Daily rosary'},{icon:'⚰️',label:'Comfort in grief'}],
+    packaging:'Your rosary arrives in an olive wood box — plain, unvarnished, made from the same Bethlehem wood as the beads. Inside: a card with Ibrahim name, the date of the blessing at the Holy Sepulchre, and the adapted Stations prayer in English. The box smells faintly of olive wood. It will for years.'
+},
+
+'prod_shop-casa-guadalupe_mex-medal-006': {
+    product_id:'prod_shop-casa-guadalupe_mex-medal-006',title:'Our Lady of Guadalupe Medal',
+    tagline:'A sterling silver medal from the city where the Basilica stands. \u00bfNo estoy yo aqu\u00ed que soy tu madre?',
+    price_cents:2400,city:'Guadalajara',country:'Mexico',
+    image_url:'https://upload.wikimedia.org/wikipedia/commons/7/79/Saint_Benedict_Medal.jpg',
+    inventory_status:'in_stock',lead_time_days:4,
+    shop_name:'Casa Guadalupe',shop_story:'A silver workshop in Tlaquepaque, Guadalajara, run by the Ortega family. They have crafted Guadalupe medals for over 50 years, sending them to devotees across Mexico and the Americas.',
+    provenance:[{title:'The Silver',location:'Taxco, Guerrero, Mexico',description:'Mexican sterling silver from the historic silver city of Taxco, mined and refined in the same region that has produced silver for five centuries.'},{title:'The Casting',location:'Ortega workshop, Tlaquepaque, Guadalajara',description:'Cast from a master mould that was struck from an 18th-century Guadalupe medal found in a Mexico City antique shop. Each medal is hand-finished — the rays around Our Lady polished to a mirror shine, her robe left with a soft satin texture.'},{title:'The Blessing',location:'Basilica of Our Lady of Guadalupe, Mexico City',description:'Brought to the Basilica on the 12th of each month — the feast day — and touched to the original tilma of St. Juan Diego, where the miraculous image appeared in 1531.'}],
+    artisan:{name:'Rafael Ortega',role:'Master silversmith, third generation, Guadalajara',quote:'The image of Guadalupe is not a painting. It is on a cactus-fiber tilma that should have disintegrated in 20 years. It has lasted almost 500. Scientists cannot explain the eyes — they contain reflections of people standing in the room when Juan Diego opened his cloak. When I make this medal, I am not making jewelry. I am making a reminder: she is here. She said it herself: \u00bfNo estoy yo aqu\u00ed que soy tu madre? Am I not here, I who am your mother?'},
+    holy_ground:{name:'The Basilica of Our Lady of Guadalupe, Tepeyac Hill',image:'https://upload.wikimedia.org/wikipedia/commons/7/79/Saint_Benedict_Medal.jpg',narrative:'On December 9, 1531, on Tepeyac Hill outside Mexico City, an indigenous man named Juan Diego saw a woman clothed in sunlight. She asked him to tell the bishop to build a church there. As proof, she caused roses to bloom in winter and imprinted her image on his tilma. Within seven years, nine million indigenous Mexicans entered the Church. Our Lady of Guadalupe is the patroness of the Americas and of the unborn. Her Basilica is the most visited Catholic shrine in the world after St. Peter.'},
+    prayer:{text:'Our Lady of Guadalupe, Mystical Rose, make intercession for the Holy Church, protect the Holy Father the Pope, help all who invoke you in their necessities. Since you are the ever Virgin Mary and Mother of the true God, obtain for us from your most holy Son the grace of keeping our faith, sweet hope in the midst of the bitterness of life, burning charity, and the precious gift of final perseverance. Amen.',source:'Traditional Prayer to Our Lady of Guadalupe'},
+    sacrament_contexts:[{icon:'🕯️',label:'Confirmation'},{icon:'🌹',label:'Guadalupe feast day'},{icon:'👶',label:'Expectant mother'},{icon:'🇲🇽',label:'Mexican heritage'},{icon:'💪',label:'Protection'},{icon:'🙏',label:'Daily wear'}],
+    packaging:'Your medal arrives in a small velvet pouch in the colors of the Mexican flag — green, white, and red. Inside: a card with Rafael name, the Basilica blessing date, and the Prayer to Our Lady of Guadalupe in English and Spanish. The medal is on an 18-inch sterling silver chain.'
+}
+
+                };
+            },
+
+            addToCart() {
+                this.addedToCart = true;
+                // Placeholder — real cart integration via API
+                setTimeout(() => { this.addedToCart = false; }, 4000);
+            },
+
+            savePrayer() {
+                const saved = JSON.parse(localStorage.getItem('saved_prayers') || '[]');
+                if (!saved.includes(this.product.title)) {
+                    saved.push(this.product.title);
+                    localStorage.setItem('saved_prayers', JSON.stringify(saved));
+                }
+                this.prayerSaved = true;
+            }
+        }
+    }
+    </script>
+</body>
+</html>

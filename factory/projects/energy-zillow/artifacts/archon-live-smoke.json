@@ -1,0 +1,43 @@
+{
+  "timestamp_utc": "2026-04-21T20:35:31.748454+00:00",
+  "base_url": "http://127.0.0.1:8099",
+  "site_id": "site_5dbcd14616d9",
+  "all_ok": true,
+  "checks": [
+    {
+      "name": "health",
+      "url": "http://127.0.0.1:8099/health",
+      "ok": true,
+      "status": 200,
+      "preview": "{\"ok\":true,\"sites\":66941,\"source\":\"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/site_scores.csv\",\"source_mode\":\"scored_csv\"}"
+    },
+    {
+      "name": "signals_coverage",
+      "url": "http://127.0.0.1:8099/api/v1/signals/coverage",
+      "ok": true,
+      "status": 200,
+      "preview": "{\"framework\":\"dg-signal-mesh-v1\",\"scope\":{\"zip\":null,\"h3_cell\":null},\"row_count\":66941,\"signals\":{\"storm\":{\"verified\":0,\"proxy\":1056,\"missing\":65885,\"verified_pct\":0.0,\"proxy_or_be"
+    },
+    {
+      "name": "outcomes_summary",
+      "url": "http://127.0.0.1:8099/api/v1/outcomes/summary",
+      "ok": true,
+      "status": 200,
+      "preview": "{\"framework\":\"dg-learning-loop-v1\",\"scope\":{\"zip\":null,\"h3_cell\":null},\"summary\":{\"label\":\"learning_scope\",\"outcome_count\":2,\"won_count\":1,\"lost_count\":0,\"contacted_count\":0,\"respo"
+    },
+    {
+      "name": "governance_policies",
+      "url": "http://127.0.0.1:8099/api/v1/governance/policies",
+      "ok": true,
+      "status": 200,
+      "preview": "{\"framework\":\"dg-orchestrator-v1\",\"policy\":{\"version\":\"2026-04-18-v1\",\"approvals\":{\"roles_allowed\":{\"create_outreach_job\":[\"manager\",\"owner\",\"admin\"],\"create_calling_session\":[\"man"
+    },
+    {
+      "name": "site_detail",
+      "url": "http://127.0.0.1:8099/api/v1/site/site_5dbcd14616d9",
+      "ok": true,
+      "status": 200,
+      "preview": "{\"site_id\":\"site_5dbcd14616d9\",\"address\":\"333 Harvard Street, Cambridge, MA, 02139\",\"zip\":\"02139\",\"city\":\"Cambridge\",\"state\":\"MA\",\"data_source\":\"osm_real_footprint\",\"source_type\":\""
+    }
+  ]
+}

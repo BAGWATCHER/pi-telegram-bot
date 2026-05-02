@@ -1,0 +1,430 @@
+{
+  "create": {
+    "status_code": 200,
+    "body": {
+      "reused": false,
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "gov-smoke-1",
+      "created_at": "2026-04-18T07:04:52Z",
+      "updated_at": "2026-04-18T07:04:52Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "awaiting_approval",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T070452748224Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T070452748224Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T070452748224Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "pending",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_03_create_calling_session"
+          ]
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T070452748224Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound",
+        "governance_policy_version": "2026-04-18-v1",
+        "governance_policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json"
+      },
+      "governance_audit": [
+        {
+          "event": "run_created",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "allowed": true,
+          "policy_version": "2026-04-18-v1",
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        }
+      ]
+    }
+  },
+  "validate_bad": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+      "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+      "action_type": "create_outreach_job",
+      "actor_id": "rep_1",
+      "actor_role": "rep",
+      "allowed": false,
+      "reasons": [
+        "role_not_allowed:rep"
+      ],
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+      "policy_version": "2026-04-18-v1",
+      "allowed_roles": [
+        "manager",
+        "owner",
+        "admin"
+      ],
+      "evaluated_at": "2026-04-18T07:04:52Z"
+    }
+  },
+  "validate_good": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+      "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+      "action_type": "create_outreach_job",
+      "actor_id": "adam",
+      "actor_role": "manager",
+      "allowed": true,
+      "reasons": [],
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+      "policy_version": "2026-04-18-v1",
+      "allowed_roles": [
+        "manager",
+        "owner",
+        "admin"
+      ],
+      "evaluated_at": "2026-04-18T07:04:52Z"
+    }
+  },
+  "approve_bad": {
+    "status_code": 403,
+    "body": {
+      "detail": {
+        "message": "Governance validation failed",
+        "framework": "dg-orchestrator-v1",
+        "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+        "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+        "action_type": "create_outreach_job",
+        "actor_id": "rep_1",
+        "actor_role": "rep",
+        "allowed": false,
+        "reasons": [
+          "role_not_allowed:rep"
+        ],
+        "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+        "policy_version": "2026-04-18-v1",
+        "allowed_roles": [
+          "manager",
+          "owner",
+          "admin"
+        ],
+        "evaluated_at": "2026-04-18T07:04:52Z"
+      }
+    }
+  },
+  "approve_good": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+      "site_id": "site_ab25957991a6",
+      "idempotency_key": "gov-smoke-1",
+      "created_at": "2026-04-18T07:04:52Z",
+      "updated_at": "2026-04-18T07:04:52Z",
+      "approval_required": true,
+      "auto_execute": false,
+      "execution_mode": "agent_assist",
+      "strict_guardrails": true,
+      "status": "awaiting_approval",
+      "site": {
+        "address": "19 Old Colony Drive, Dover, MA, 02030",
+        "zip": "02030",
+        "primary_product": "solar",
+        "secondary_product": "roofing",
+        "lead_temperature": "hot",
+        "opportunity_score": 78.2,
+        "confidence": 0.83
+      },
+      "playbook_id": "playbook_site-ab25957991a6_20260418T070452748224Z",
+      "actions": [
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook",
+          "action_type": "compile_playbook",
+          "title": "Compile playbook",
+          "status": "completed",
+          "requires_approval": false,
+          "depends_on": [],
+          "playbook_id": "playbook_site-ab25957991a6_20260418T070452748224Z",
+          "resource_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T070452748224Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "title": "Create outreach job",
+          "status": "completed",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook"
+          ],
+          "approved_by": "adam",
+          "approved_at": "2026-04-18T07:04:52Z",
+          "approved_role": "manager",
+          "approval_note": "ok",
+          "resource_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T070452765883Z",
+          "result": {
+            "job_id": "outreach_job_site-ab25957991a6_20260418T070452765883Z",
+            "job_status": "queued"
+          },
+          "updated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_03_create_calling_session",
+          "action_type": "create_calling_session",
+          "title": "Create calling session",
+          "status": "awaiting_approval",
+          "requires_approval": true,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_01_compile_playbook"
+          ],
+          "blocked_reason": "approval_required"
+        },
+        {
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_04_schedule_follow_up_review",
+          "action_type": "schedule_follow_up_review",
+          "title": "Schedule follow-up review",
+          "status": "pending",
+          "requires_approval": false,
+          "depends_on": [
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+            "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_03_create_calling_session"
+          ]
+        }
+      ],
+      "refs": {
+        "playbook_ref": "/api/v1/playbooks/playbook_site-ab25957991a6_20260418T070452748224Z",
+        "decision_ref": "/api/v1/decision/site/site_ab25957991a6",
+        "signals_ref": "/api/v1/signals/site/site_ab25957991a6",
+        "outreach_job_ref": "/api/v1/agents/outreach/jobs/outreach_job_site-ab25957991a6_20260418T070452765883Z"
+      },
+      "policy": {
+        "approval_required": true,
+        "auto_execute": false,
+        "call_direction": "outbound",
+        "governance_policy_version": "2026-04-18-v1",
+        "governance_policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json"
+      },
+      "governance_audit": [
+        {
+          "event": "run_created",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "allowed": true,
+          "policy_version": "2026-04-18-v1",
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "event": "policy_validate",
+          "framework": "dg-orchestrator-v1",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "actor_id": "rep_1",
+          "actor_role": "rep",
+          "allowed": false,
+          "reasons": [
+            "role_not_allowed:rep"
+          ],
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "policy_version": "2026-04-18-v1",
+          "allowed_roles": [
+            "manager",
+            "owner",
+            "admin"
+          ],
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "event": "policy_validate",
+          "framework": "dg-orchestrator-v1",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "actor_id": "adam",
+          "actor_role": "manager",
+          "allowed": true,
+          "reasons": [],
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "policy_version": "2026-04-18-v1",
+          "allowed_roles": [
+            "manager",
+            "owner",
+            "admin"
+          ],
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "event": "approval_validation",
+          "framework": "dg-orchestrator-v1",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "actor_id": "rep_1",
+          "actor_role": "rep",
+          "allowed": false,
+          "reasons": [
+            "role_not_allowed:rep"
+          ],
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "policy_version": "2026-04-18-v1",
+          "allowed_roles": [
+            "manager",
+            "owner",
+            "admin"
+          ],
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "event": "approval_validation",
+          "framework": "dg-orchestrator-v1",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "actor_id": "adam",
+          "actor_role": "manager",
+          "allowed": true,
+          "reasons": [],
+          "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+          "policy_version": "2026-04-18-v1",
+          "allowed_roles": [
+            "manager",
+            "owner",
+            "admin"
+          ],
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        },
+        {
+          "event": "action_executed",
+          "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+          "action_id": "action_orchestrator-run-site-ab25957991a6-20260418t070452753368z_02_create_outreach_job",
+          "action_type": "create_outreach_job",
+          "allowed": true,
+          "mode": "approved",
+          "evaluated_at": "2026-04-18T07:04:52Z"
+        }
+      ]
+    }
+  },
+  "manager": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "site_id": "site_ab25957991a6",
+      "run_id": "orchestrator_run_site-ab25957991a6_20260418T070452753368Z",
+      "risk_alerts": [
+        {
+          "level": "high",
+          "code": "approval_queue",
+          "message": "Run is waiting on approval for downstream autonomous actions."
+        },
+        {
+          "level": "medium",
+          "code": "low_attribution",
+          "message": "Average attribution completeness 50.0% is below target 60.0%."
+        }
+      ],
+      "coaching_actions": [
+        "Review queued outreach/calling actions and approve only the ones that match policy and field reality.",
+        "Push reps/agents to log channel, playbook, orchestrator run, and signal attribution on every meaningful outcome."
+      ],
+      "pipeline_truth": {
+        "run_status": "awaiting_approval",
+        "site_confidence": 0.83,
+        "lead_outcome_status": "won",
+        "learning_avg_attribution_field_completeness_pct": 50.0
+      },
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json",
+      "policy_version": "2026-04-18-v1"
+    }
+  },
+  "policies": {
+    "status_code": 200,
+    "body": {
+      "framework": "dg-orchestrator-v1",
+      "policy": {
+        "version": "2026-04-18-v1",
+        "approvals": {
+          "roles_allowed": {
+            "create_outreach_job": [
+              "manager",
+              "owner",
+              "admin"
+            ],
+            "create_calling_session": [
+              "manager",
+              "owner",
+              "admin"
+            ],
+            "default": [
+              "manager",
+              "owner",
+              "admin"
+            ]
+          },
+          "require_actor_id": true
+        },
+        "autonomy": {
+          "allow_auto_execute_when_approval_required": false,
+          "require_audit_record": true
+        },
+        "manager_command": {
+          "risk_alert_thresholds": {
+            "low_attribution_pct": 60.0,
+            "low_confidence": 0.65
+          }
+        }
+      },
+      "policy_source": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/config/governance_policy.json"
+    }
+  }
+}

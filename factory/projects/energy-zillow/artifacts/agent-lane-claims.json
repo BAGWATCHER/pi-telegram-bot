@@ -1,0 +1,196 @@
+[
+  {
+    "agent": "chow",
+    "lane": "EZ-022-join-quality-hardening",
+    "scope_files": [
+      "scripts/fetch_boston_permit_feed.py",
+      "scripts/fetch_providence_permit_feed.py",
+      "scripts/fetch_cambridge_permit_feed.py",
+      "scripts/project_parcel_permit_triggers.py",
+      "artifacts/permit-*",
+      "artifacts/cambridge-permit-fetch-summary.*"
+    ],
+    "started_at": "2026-04-17T17:40:00Z",
+    "status": "active",
+    "notes": "range/multi-house-number matching + pipeline rerun"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-COORD-wave1",
+    "scope_files": [
+      "queue.yaml",
+      "manifest.yaml",
+      "spec/dg-superhuman-sales-lane-plan-v1.md",
+      "artifacts/run-status-2026-04-17.md",
+      "artifacts/agent-lane-claims.json"
+    ],
+    "started_at": "2026-04-17T21:08:00Z",
+    "status": "active",
+    "notes": "activate DG-001..DG-010 queue + coordinate parallel wave sequencing"
+  },
+  {
+    "agent": "parallel-data-core",
+    "lane": "DG-001-revenue-graph-core",
+    "scope_files": [
+      "schema/revenue-graph.schema.json",
+      "backend/api/app.py",
+      "artifacts/revenue-graph-quality.md"
+    ],
+    "started_at": "2026-04-17T21:08:00Z",
+    "status": "ready-for-handoff",
+    "notes": "wave1 scaffold shipped in shared branch; parallel agent can harden lane and close done_when gates"
+  },
+  {
+    "agent": "parallel-data-ingest",
+    "lane": "DG-002-signal-mesh-normalization",
+    "scope_files": [
+      "spec/signal-mesh-contract.md",
+      "backend/api/app.py",
+      "artifacts/signal-mesh-coverage.md"
+    ],
+    "started_at": "2026-04-17T21:08:00Z",
+    "status": "ready-for-handoff",
+    "notes": "wave1 scaffold shipped in shared branch; parallel agent can harden lane and close done_when gates"
+  },
+  {
+    "agent": "parallel-model-policy",
+    "lane": "DG-003-decision-engine-v1",
+    "scope_files": [
+      "backend/api/app.py",
+      "artifacts/decision-engine-v1.md",
+      "artifacts/decision-delta-vs-baseline.md"
+    ],
+    "started_at": "2026-04-17T21:08:00Z",
+    "status": "ready-for-handoff",
+    "notes": "wave1 scaffold shipped in shared branch; parallel agent can harden lane and close done_when gates"
+  },
+  {
+    "agent": "parallel-schema-platform",
+    "lane": "DG-004-universal-sales-schema",
+    "scope_files": [
+      "schema/sales-core.schema.json",
+      "schema/vertical-pack.schema.json",
+      "spec/vertical-pack-contract.md"
+    ],
+    "started_at": "2026-04-17T21:08:00Z",
+    "status": "ready-for-handoff",
+    "notes": "wave1 scaffold shipped in shared branch; parallel agent can harden lane and close done_when gates"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-wave1-api-scaffold",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "schema/revenue-graph.schema.json",
+      "schema/sales-core.schema.json",
+      "schema/vertical-pack.schema.json",
+      "spec/signal-mesh-contract.md",
+      "spec/vertical-pack-contract.md",
+      "artifacts/revenue-graph-quality.md",
+      "artifacts/signal-mesh-coverage.md",
+      "artifacts/decision-engine-v1.md",
+      "artifacts/decision-delta-vs-baseline.md"
+    ],
+    "started_at": "2026-04-17T21:20:00Z",
+    "status": "active",
+    "notes": "DG-001..004 endpoint and contract scaffolds shipped; ready for hardening handoff"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-005-playbook-compiler-v1",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "artifacts/playbook-compiler-v1.md",
+      "artifacts/playbook-examples.json",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T05:05:07Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; no PM2 reload yet"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-006-outreach-agent-connector",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "spec/agent-outreach-contract.md",
+      "artifacts/outreach-job-lifecycle.md",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T05:19:45Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; persisted job lifecycle + idempotency + policy blocking, no PM2 reload yet"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-007-calling-agent-connector",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "spec/agent-calling-contract.md",
+      "artifacts/calling-session-eval.md",
+      "artifacts/calling-session-smoke.json",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T05:57:26Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; pre-call brief + live assist state + lead outcome sync, no PM2 reload yet"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-008-orchestrator-v1",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "spec/orchestrator-state-machine.md",
+      "artifacts/orchestrator-runbook.md",
+      "artifacts/orchestrator-smoke.json",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T06:36:46Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; deterministic action graph + approval gate + idempotent run create, no PM2 reload yet"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-009-learning-loop-v1",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "schema/lead-outcome.schema.json",
+      "artifacts/learning-loop-v1.md",
+      "artifacts/policy-promotion-checklist.md",
+      "artifacts/learning-loop-smoke.json",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T06:54:27Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; attribution-aware outcomes + summary + retrain job safety checks, no PM2 reload yet"
+  },
+  {
+    "agent": "chow",
+    "lane": "DG-010-governance-manager-layer",
+    "scope_files": [
+      "backend/api/app.py",
+      "backend/openapi.yaml",
+      "README.md",
+      "config/governance_policy.json",
+      "spec/governance-controls-v1.md",
+      "artifacts/manager-command-spec.md",
+      "artifacts/governance-smoke.json",
+      "queue.yaml"
+    ],
+    "started_at": "2026-04-18T07:04:31Z",
+    "status": "active",
+    "notes": "local scaffold build while Codex tests current stack; governance policy validation + approval role checks + manager command surface, no PM2 reload yet"
+  }
+]

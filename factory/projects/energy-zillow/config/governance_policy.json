@@ -1,0 +1,21 @@
+{
+  "version": "2026-04-18-v1",
+  "approvals": {
+    "roles_allowed": {
+      "create_outreach_job": ["manager", "owner", "admin"],
+      "create_calling_session": ["manager", "owner", "admin"],
+      "default": ["manager", "owner", "admin"]
+    },
+    "require_actor_id": true
+  },
+  "autonomy": {
+    "allow_auto_execute_when_approval_required": false,
+    "require_audit_record": true
+  },
+  "manager_command": {
+    "risk_alert_thresholds": {
+      "low_attribution_pct": 60.0,
+      "low_confidence": 0.65
+    }
+  }
+}

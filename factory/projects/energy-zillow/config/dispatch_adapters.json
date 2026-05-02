@@ -1,0 +1,45 @@
+{
+  "version": "2026-04-22-v1",
+  "supervision": {
+    "require_actor_id": true,
+    "roles_allowed": {
+      "email": ["manager", "owner", "admin"],
+      "calling": ["manager", "owner", "admin"],
+      "default": ["manager", "owner", "admin"]
+    }
+  },
+  "email": {
+    "enabled": true,
+    "allow_live_dispatch": true,
+    "default_provider": "resend",
+    "providers": {
+      "resend": {
+        "mode": "live_api",
+        "label": "Resend email adapter"
+      },
+      "mock": {
+        "mode": "mock",
+        "label": "Mock email adapter"
+      },
+      "disabled": {
+        "mode": "disabled",
+        "label": "Disabled email adapter"
+      }
+    }
+  },
+  "calling": {
+    "enabled": true,
+    "allow_live_dispatch": false,
+    "default_provider": "mock",
+    "providers": {
+      "mock": {
+        "mode": "mock",
+        "label": "Mock calling adapter"
+      },
+      "disabled": {
+        "mode": "disabled",
+        "label": "Disabled calling adapter"
+      }
+    }
+  }
+}

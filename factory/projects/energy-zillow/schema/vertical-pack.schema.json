@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://demandgrid.ai/schema/vertical-pack.schema.json",
+  "title": "DemandGrid Vertical Pack Schema v1",
+  "type": "object",
+  "required": ["vertical_id", "required_signal_keys", "offer_types", "primary_kpis"],
+  "properties": {
+    "vertical_id": { "type": "string" },
+    "required_signal_keys": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "offer_types": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "primary_kpis": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "notes": { "type": "string" }
+  }
+}

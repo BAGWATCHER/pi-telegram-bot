@@ -1,0 +1,22 @@
+assistant: pi
+
+assistants:
+  pi:
+    # Keep Pi as default for this repo.
+    # Extensions are temporarily disabled for stable non-plannotator lane execution.
+    model: openai-codex/gpt-5.4
+    enableExtensions: false
+    extensionFlags:
+      plan: true
+    env:
+      PLANNOTATOR_REMOTE: "1"
+
+  # Keep Claude/Codex available for mixed-provider workflows.
+  claude:
+    model: sonnet
+  codex:
+    model: gpt-5.3-codex
+    modelReasoningEffort: medium
+
+worktree:
+  baseBranch: main

@@ -1,0 +1,722 @@
+version: 1
+project_id: energy-zillow
+sprint: gauntlet-72h-mvp
+updated_at: '2026-04-18T07:04:31Z'
+run_status: active
+tasks:
+- id: EZ-001
+  title: Lock product contract + API/output schema
+  lane: spec
+  priority: p0
+  risk: low
+  status: done
+  depends_on: []
+  done_when:
+  - manifest.yaml finalized
+  - site score schema documented
+  - no-scope list approved
+  artifacts:
+  - manifest.yaml
+  - schema/site-score.schema.json
+- id: EZ-002
+  title: Build data ingest for one ZIP (footprints/parcels + geocoding)
+  lane: data
+  priority: p0
+  risk: medium
+  status: done-real-osm
+  depends_on:
+  - EZ-001
+  done_when:
+  - '>= 80% candidate addresses in selected ZIP have lat/lon + site_id'
+  - data provenance logged
+  artifacts:
+  - data/processed/sites_78701_osm.csv
+  - data/processed/sites.csv
+  - artifacts/data-coverage.md
+  - artifacts/data-provenance.json
+- id: EZ-003
+  title: Implement solar-first production/economics scorer
+  lane: model
+  priority: p0
+  risk: medium
+  status: done-real-osm
+  depends_on:
+  - EZ-001
+  - EZ-002
+  done_when:
+  - annual_kwh, annual_savings, payback, npv calculated
+  - confidence + reasons generated per site
+  artifacts:
+  - backend/scoring/solar.py
+  - artifacts/scoring-assumptions.md
+- id: EZ-004
+  title: Aggregate site scores into H3 heatmap layers
+  lane: model
+  priority: p0
+  risk: low
+  status: done
+  depends_on:
+  - EZ-003
+  done_when:
+  - h3_cell_aggregate materialized
+  - heatmap metrics exposed via API
+  artifacts:
+  - data/processed/h3_scores.csv
+  - artifacts/h3-aggregation-notes.md
+- id: EZ-005
+  title: Ship backend API endpoints
+  lane: api
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-003
+  - EZ-004
+  endpoints:
+  - GET /api/v1/zip/{zip}/heatmap
+  - GET /api/v1/hex/{h3}/sites
+  - GET /api/v1/site/{site_id}
+  done_when:
+  - all 3 endpoints return documented response shape
+  - p95 < 700ms on 1k-site dataset
+  artifacts:
+  - backend/openapi.yaml
+  - artifacts/api-sample-responses.json
+- id: EZ-006
+  title: Frontend map + ranked list + site detail flow
+  lane: frontend
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-005
+  done_when:
+  - heatmap renders
+  - hex click shows ranked list
+  - site click shows recommendation card
+  artifacts:
+  - frontend/screenshots/
+  - artifacts/demo-script.md
+- id: EZ-007
+  title: Add wind/hybrid constrained flag logic
+  lane: model
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-003
+  done_when:
+  - wind add-on only appears when confidence threshold met
+  - default recommendation remains solar-first
+  artifacts:
+  - backend/scoring/wind_flag.py
+  - artifacts/wind-confidence-policy.md
+- id: EZ-008
+  title: Build eval harness + quality gates
+  lane: eval
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-005
+  - EZ-006
+  done_when:
+  - coverage gate passes
+  - ranking stability gate passes
+  - honesty gate passes
+  - perf gate passes
+  artifacts:
+  - eval/run_eval.py
+  - artifacts/eval-summary.md
+- id: EZ-009
+  title: Demo bundle and technical narrative
+  lane: narrative
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-008
+  done_when:
+  - 3-minute demo flow recorded
+  - limitations + assumptions documented
+  - interview talking points prepared
+  artifacts:
+  - artifacts/demo-script.md
+  - artifacts/demo-recording-checklist.md
+  - artifacts/demo-recording-one-command.md
+  - scripts/demo_recording_runbook.sh
+  - scripts/record_demo.py
+  - scripts/close_ez009.py
+  - artifacts/limitations.md
+  - artifacts/interview-brief.md
+- id: EZ-010
+  title: Integrate PVWatts/NSRDB signals into default scoring path
+  lane: model
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-008
+  done_when:
+  - score pipeline supports pvwatts-backed production mode with bounded API call volume
+  - default scoring assumptions doc updated for pvwatts/nsrdb mode
+  - eval harness passes with proxy default and pvwatts mode smoke check
+  artifacts:
+  - backend/scoring/pvwatts_hook.py
+  - backend/scoring/nsrdb_hook.py
+  - scripts/score_sites.py
+  - scripts/check_pvwatts_key.py
+  - artifacts/scoring-assumptions.md
+  - artifacts/pvwatts-calibration.md
+- id: EZ-011
+  title: Add multi-ZIP regression gates + orchestrated regression run
+  lane: eval
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-008
+  done_when:
+  - eval harness enforces multi-zip coverage + per-zip stability gate
+  - orchestrator runs ingest + score + eval across at least 2 ZIPs
+  - multi-zip regression artifact emitted
+  artifacts:
+  - eval/run_eval.py
+  - eval/run_multi_zip_regression.py
+  - artifacts/multi-zip-regression.md
+  - artifacts/multi-zip-regression.json
+- id: EZ-012
+  title: Add operator lead buckets (hot/warm/skip) + next-step guidance across scorer/API/UI
+  lane: model
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-003
+  - EZ-005
+  - EZ-006
+  done_when:
+  - site scores include lead_temperature and operator_next_step
+  - API responses expose operator workflow labels
+  - frontend detail card shows lead bucket and next step
+  - eval includes operator workflow label gate
+  artifacts:
+  - scripts/score_sites.py
+  - backend/api/app.py
+  - frontend/index.html
+  - eval/run_eval.py
+  - schema/site-score.schema.json
+- id: EZ-013
+  title: Add operator workflow state persistence (visited/contacted/follow-up/closed)
+  lane: api
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-012
+  done_when:
+  - status updates persist outside transient frontend state
+  - workflow status is queryable by ZIP/hex
+  - status changes are auditable with timestamps
+  artifacts:
+  - backend/api/app.py
+  - data/processed/operator_status.json
+  - backend/openapi.yaml
+- id: EZ-014
+  title: Add route-day planning output (work-now clusters + ordered stops)
+  lane: model
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-012
+  done_when:
+  - route endpoint returns ordered hot/warm stops
+  - route output uses distance + priority weighting
+  - demo script includes route-day operator workflow
+  artifacts:
+  - backend/api/app.py
+  - artifacts/demo-script.md
+  - artifacts/interview-brief.md
+- id: EZ-015
+  title: Add operator quick actions in frontend + route CSV export
+  lane: frontend
+  priority: p1
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-013
+  - EZ-014
+  done_when:
+  - detail card supports workflow status update without manual API calls
+  - topbar route actions can plan route and export CSV
+  - route CSV endpoint is documented in OpenAPI/README
+  artifacts:
+  - frontend/index.html
+  - backend/api/app.py
+  - backend/openapi.yaml
+  - README.md
+- id: EZ-016
+  title: Add external trigger merge adapter for storm/outage/equipment/flood layers
+  lane: data
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-013
+  done_when:
+  - trigger merge script can safely overlay external trigger feeds by site_id
+  - missing external feed still produces full contract-complete trigger file
+  - scoring/eval remain PASS after trigger merge run
+  artifacts:
+  - scripts/merge_property_triggers.py
+  - scripts/fetch_nws_storm_triggers.py
+  - spec/trigger-feed-contract.md
+  - data/raw/property_triggers_external.template.csv
+  - data/raw/property_triggers_external.csv
+  - artifacts/nws-trigger-fetch-summary.md
+  - data/processed/property_triggers.csv
+  - artifacts/eval-summary.md
+- id: EZ-017
+  title: Add outage trigger ingest lane (state/utility reliability feed) into merge
+    pipeline
+  lane: data
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-016
+  done_when:
+  - external feed populates outage_trigger_status for non-trivial share of sites
+  - merge + score + eval pass with outage signals present
+  - outage source assumptions documented
+  artifacts:
+  - scripts/fetch_eversource_outage_feed.py
+  - scripts/project_state_outage_triggers.py
+  - scripts/merge_property_triggers.py
+  - data/raw/state_outage_feed.template.csv
+  - data/raw/state_outage_feed.csv
+  - data/raw/property_triggers_external.csv
+  - artifacts/eversource-outage-fetch-summary.md
+  - artifacts/outage-trigger-coverage.md
+  - artifacts/eval-summary.md
+  - artifacts/limitations.md
+- id: EZ-018
+  title: Add flood-risk trigger lane for non-covered geographies (starting with VT
+    gap)
+  lane: data
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-017
+  done_when:
+  - external feed populates flood_risk_trigger_status for at least one currently-missing
+    ZIP
+  - merge + score + eval pass with flood signals present
+  - limitations and trigger contract updated with flood source details
+  artifacts:
+  - scripts/project_nws_flood_triggers.py
+  - scripts/merge_property_triggers.py
+  - data/raw/property_triggers_external.csv
+  - artifacts/nws-flood-trigger-summary.md
+  - artifacts/flood-trigger-coverage.md
+  - artifacts/eval-summary.md
+  - artifacts/limitations.md
+- id: EZ-019
+  title: Add equipment-age trigger lane via free public proxy feed
+  lane: data
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-018
+  done_when:
+  - external feed populates equipment_age_trigger_status for non-trivial share of
+    sites
+  - merge + score + eval pass with equipment-age signals present
+  - limitations and trigger contract updated with equipment proxy details
+  artifacts:
+  - scripts/project_census_equipment_age_triggers.py
+  - data/raw/zip_equipment_age_feed.csv
+  - data/raw/property_triggers_external.csv
+  - artifacts/equipment-age-trigger-summary.md
+  - artifacts/equipment-age-trigger-coverage.md
+  - eval/run_eval.py
+  - eval/run_multi_zip_regression.py
+  - artifacts/eval-summary.md
+  - artifacts/limitations.md
+- id: EZ-020A
+  title: Add pi-style agent chat copilot (tool-routed) across API + frontend
+  lane: agent
+  priority: p1
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-015
+  - EZ-019
+  done_when:
+  - agent endpoints expose capabilities + chat with grounded tool calls
+  - frontend includes chat panel wired to agent endpoint
+  - eval includes agent copilot contract gate
+  - openapi/readme/docs updated
+  artifacts:
+  - backend/api/app.py
+  - frontend/index.html
+  - eval/run_eval.py
+  - evals.yaml
+  - backend/openapi.yaml
+  - artifacts/agent-copilot-contract.md
+  - artifacts/eval-summary.md
+- id: EZ-021
+  title: Add parcel-level FEMA floodplain trigger lane (authoritative flood-risk upgrade)
+  lane: data
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-020A
+  done_when:
+  - FEMA/NFHL parcel/site feed maps flood_risk_trigger_status for non-trivial share
+    of active sites
+  - external trigger merge preserves existing storm/outage/equipment fields while
+    upgrading flood where available
+  - flood coverage artifact clearly separates event-based NWS vs parcel-level FEMA
+    coverage
+  - merge + score + eval pass after FEMA overlay
+  artifacts:
+  - scripts/fetch_fema_floodplain_site_feed.py
+  - scripts/project_fema_floodplain_triggers.py
+  - data/raw/fema_floodplain_site_feed.template.csv
+  - data/raw/fema_floodplain_site_feed.csv
+  - data/raw/property_triggers_external.csv
+  - artifacts/fema-floodplain-fetch-summary.md
+  - artifacts/fema-floodplain-fetch-summary.json
+  - artifacts/fema-floodplain-trigger-summary.md
+  - artifacts/fema-floodplain-trigger-summary.json
+  - artifacts/fema-floodplain-coverage.md
+  - artifacts/eval-summary.md
+- id: EZ-022
+  title: Add parcel permit-history lane (roof/HVAC/solar timing signals)
+  lane: data
+  priority: p0
+  risk: medium
+  status: in-progress
+  depends_on:
+  - EZ-021
+  done_when:
+  - permit feed normalizes to site_id or deterministic parcel/address key
+  - roofing/HVAC recency triggers populate non-trivial share of active sites
+  - trigger notes include permit recency fields and source provenance
+  - merge + score + eval pass with permit lane enabled
+  artifacts:
+  - scripts/fetch_boston_permit_feed.py
+  - scripts/fetch_providence_permit_feed.py
+  - scripts/fetch_cambridge_permit_feed.py
+  - scripts/project_parcel_permit_triggers.py
+  - data/raw/parcel_permit_feed.template.csv
+  - data/raw/parcel_permit_feed.csv
+  - data/raw/property_triggers_external.csv
+  - artifacts/boston-permit-fetch-summary.md
+  - artifacts/boston-permit-fetch-summary.json
+  - artifacts/providence-permit-fetch-summary.md
+  - artifacts/providence-permit-fetch-summary.json
+  - artifacts/cambridge-permit-fetch-summary.md
+  - artifacts/cambridge-permit-fetch-summary.json
+  - artifacts/permit-trigger-summary.md
+  - artifacts/permit-trigger-summary.json
+  - artifacts/permit-trigger-coverage.md
+  - artifacts/eval-summary.md
+- id: EZ-023
+  title: Add utility-territory + tariff normalization lane for address economics
+  lane: data
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-022
+  done_when:
+  - each active site has utility_id/utility_name coverage above threshold
+  - default tariff screening fields are attached for savings/payback calibration
+  - scoring path consumes tariff-normalized fields without breaking proxy fallback
+  - regression artifacts show economics deltas vs pre-tariff baseline
+  artifacts:
+  - scripts/fetch_openei_utility_tariff_feed.py
+  - scripts/project_utility_tariff_baseline.py
+  - data/raw/utility_tariff_feed.template.csv
+  - data/raw/utility_tariff_feed.csv
+  - data/processed/site_scores.csv
+  - artifacts/openei-utility-fetch-summary.md
+  - artifacts/openei-utility-fetch-summary.json
+  - artifacts/utility-tariff-summary.md
+  - artifacts/utility-tariff-summary.json
+  - artifacts/tariff-impact-delta.md
+  - artifacts/tariff-impact-delta.json
+  - artifacts/eval-summary.md
+- id: EZ-024
+  title: North-star alignment + outreach/investigation eval contract wiring
+  lane: strategy
+  priority: p0
+  risk: low
+  status: done-local
+  depends_on:
+  - EZ-020A
+  done_when:
+  - north-star mission spec exists and is linked from manifest
+  - outreach/investigation contract artifact exists
+  - eval catalog includes outreach/investigation/guardrail gates
+  - queue and run-status reflect channel-agnostic sales AI direction
+  artifacts:
+  - spec/north-star-sales-ai-platform.md
+  - artifacts/outreach-investigation-contract.md
+  - evals.yaml
+  - manifest.yaml
+  - queue.yaml
+- id: EZ-025
+  title: Add investigation/outreach API surface + endpoint-backed eval checks
+  lane: api
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-024
+  done_when:
+  - investigation endpoint returns evidence + suppression metadata per site
+  - outreach endpoint returns machine-usable payloads with guardrail flags
+  - eval gates for outreach/investigation are validated against API endpoint responses
+  - openapi/readme include new endpoint surface
+  artifacts:
+  - backend/api/app.py
+  - eval/run_eval.py
+  - backend/openapi.yaml
+  - README.md
+  - artifacts/eval-summary.md
+- id: EZ-026
+  title: Usability unblock pass (outreach eligibility + address quality + economics
+    clarity)
+  lane: ux-data
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-025
+  done_when:
+  - outreach queue yields non-zero auto_outreach_eligible candidates in broad scope
+  - malformed semicolon addresses are sanitized in API response payloads
+  - economics field meanings are documented to reduce price/savings confusion
+  - eval remains PASS after usability adjustments
+  artifacts:
+  - backend/api/app.py
+  - artifacts/economics-field-glossary.md
+  - artifacts/eval-summary.md
+  - README.md
+- id: EZ-027
+  title: Configurable outreach policy by product lane (confidence bands + channels)
+  lane: api
+  priority: p0
+  risk: medium
+  status: done-local
+  depends_on:
+  - EZ-026
+  done_when:
+  - outreach confidence/channel/suppression policy loads from config file
+  - API exposes policy endpoint and item-level policy metadata
+  - eval validates outreach policy contract endpoint
+  - demo remains PASS after policy-driven routing changes
+  artifacts:
+  - config/outreach_policy.json
+  - backend/api/app.py
+  - eval/run_eval.py
+  - evals.yaml
+  - backend/openapi.yaml
+  - artifacts/outreach-policy-config-v1.md
+  - artifacts/eval-summary.md
+- id: EZ-028
+  title: Build closed-loop sales OS layer (playbooks + outcomes + profit learning)
+  lane: strategy-api
+  priority: p0
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - EZ-025
+  - EZ-027
+  done_when:
+  - site detail and list surfaces expose operator-simple playbooks, not just analytics
+  - outcome schema exists for contacted/responded/qualified/won/lost plus reason and
+    profit
+  - API can capture win/loss reason, objection, and realized value per lead
+  - ranking roadmap explicitly feeds closed-loop outcomes back into scoring and channel
+    guidance
+  artifacts:
+  - spec/north-star-sales-ai-platform.md
+  - manifest.yaml
+  - backend/api/app.py
+  - frontend/index.html
+  - schema/lead-outcome.schema.json
+  - artifacts/closed-loop-sales-os.md
+- id: DG-001
+  title: Revenue Graph core entity layer (site/account/contact/outcome)
+  lane: data-core
+  priority: p0
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - EZ-028
+  done_when:
+  - revenue graph schema published with provenance + dedupe confidence
+  - site/account/contact graph endpoint family returns contract-complete payloads
+  - identity collision rate and provenance coverage artifacts generated
+  artifacts:
+  - schema/revenue-graph.schema.json
+  - backend/api/app.py
+  - artifacts/revenue-graph-quality.md
+- id: DG-002
+  title: Signal Mesh normalization layer (trigger + behavior + ops)
+  lane: data
+  priority: p0
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-001
+  done_when:
+  - signal mesh contract documents recency/provenance fields
+  - site-level signal endpoint and coverage endpoint return normalized schema
+  - overlay/merge pipeline preserves full trigger contract columns
+  artifacts:
+  - spec/signal-mesh-contract.md
+  - backend/api/app.py
+  - artifacts/signal-mesh-coverage.md
+- id: DG-003
+  title: Decision Engine v1 (opportunity + next-best-action)
+  lane: model-policy
+  priority: p0
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-001
+  - DG-002
+  done_when:
+  - decision endpoint emits opportunity score, win-proxy, and next_best_action
+  - deterministic replay stability and ranking delta artifacts generated
+  - false-positive outreach rate does not regress vs baseline
+  artifacts:
+  - backend/api/app.py
+  - artifacts/decision-engine-v1.md
+  - artifacts/decision-delta-vs-baseline.md
+- id: DG-004
+  title: Universal sales schema (vertical-agnostic core + vertical packs)
+  lane: schema-platform
+  priority: p0
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-001
+  done_when:
+  - sales-core schema exists and passes validation
+  - vertical-pack schema exists with at least two validated packs
+  - current energy API surfaces remain backward-compatible
+  artifacts:
+  - schema/sales-core.schema.json
+  - schema/vertical-pack.schema.json
+  - spec/vertical-pack-contract.md
+- id: DG-005
+  title: Playbook Compiler v1 (strategy -> executable workflow)
+  lane: workflow
+  priority: p1
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-003
+  - DG-004
+  done_when:
+  - playbook compile endpoint emits objective, channel order, objection map, and stop
+    conditions
+  - compiled playbooks include guardrail flags on every step
+  - compile latency and contract checks pass eval thresholds
+  artifacts:
+  - backend/api/app.py
+  - artifacts/playbook-compiler-v1.md
+  - artifacts/playbook-examples.json
+- id: DG-006
+  title: Outreach agent connector (job lifecycle + policy-safe sends)
+  lane: agent-outreach
+  priority: p1
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-005
+  done_when:
+  - outreach job create/status/event endpoints are live
+  - delivery lifecycle state transitions persist with idempotency
+  - suppression policy enforcement validated in eval
+  artifacts:
+  - spec/agent-outreach-contract.md
+  - backend/api/app.py
+  - artifacts/outreach-job-lifecycle.md
+- id: DG-007
+  title: Calling agent connector (brief + live assist + outcome extraction)
+  lane: agent-calling
+  priority: p1
+  risk: medium
+  status: in-progress-local
+  depends_on:
+  - DG-005
+  done_when:
+  - calling session create/status/event endpoints are live
+  - pre-call brief and post-call extraction contracts validated
+  - call outcomes sync into lead outcome schema
+  artifacts:
+  - spec/agent-calling-contract.md
+  - backend/api/app.py
+  - artifacts/calling-session-eval.md
+- id: DG-008
+  title: Multi-agent orchestrator v1 (decision -> outreach/call/follow-up)
+  lane: orchestration
+  priority: p0
+  risk: high
+  status: in-progress-local
+  depends_on:
+  - DG-006
+  - DG-007
+  done_when:
+  - orchestrator run endpoint emits deterministic action graph
+  - approval-required policies block autonomous execution when configured
+  - retry/idempotency semantics validated and documented
+  artifacts:
+  - spec/orchestrator-state-machine.md
+  - backend/api/app.py
+  - artifacts/orchestrator-runbook.md
+- id: DG-009
+  title: Closed-loop learning pipeline (outcomes -> policy/model updates)
+  lane: learning
+  priority: p0
+  risk: high
+  status: in-progress-local
+  depends_on:
+  - DG-008
+  done_when:
+  - outcome write/summary endpoints capture conversion + reason + value
+  - learning job endpoint exists with promotion safety checks
+  - attribution fields (signal/playbook/channel) meet completeness thresholds
+  artifacts:
+  - schema/lead-outcome.schema.json
+  - backend/api/app.py
+  - artifacts/learning-loop-v1.md
+  - artifacts/policy-promotion-checklist.md
+- id: DG-010
+  title: Governance + manager command layer for safe autonomy
+  lane: governance
+  priority: p0
+  risk: high
+  status: in-progress-local
+  depends_on:
+  - DG-008
+  - DG-009
+  done_when:
+  - governance policy endpoints enforce role + approval boundaries
+  - autonomous action audit trail is complete and queryable
+  - manager command endpoint surfaces forecast risk/coaching actions
+  artifacts:
+  - spec/governance-controls-v1.md
+  - backend/api/app.py
+  - artifacts/manager-command-spec.md

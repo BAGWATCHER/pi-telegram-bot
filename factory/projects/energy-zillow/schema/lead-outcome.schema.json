@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DemandGrid Lead Outcome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["unknown", "contacted", "responded", "qualified", "won", "lost"]
+    },
+    "note": {
+      "type": "string"
+    },
+    "objection": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "realized_revenue_usd": {
+      "type": ["number", "null"]
+    },
+    "realized_profit_usd": {
+      "type": ["number", "null"]
+    },
+    "updated_at": {
+      "type": ["string", "null"]
+    },
+    "won_at": {
+      "type": ["string", "null"]
+    },
+    "lost_at": {
+      "type": ["string", "null"]
+    },
+    "attribution_channel": {
+      "type": "string"
+    },
+    "attribution_playbook_id": {
+      "type": "string"
+    },
+    "attribution_orchestrator_run_id": {
+      "type": "string"
+    },
+    "attribution_signal_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "attribution_source_session_id": {
+      "type": "string"
+    },
+    "attribution_source_job_id": {
+      "type": "string"
+    }
+  }
+}

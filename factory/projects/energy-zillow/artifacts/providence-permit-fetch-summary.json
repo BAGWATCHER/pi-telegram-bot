@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-04-17T19:14:42Z",
+  "zips": [
+    "02903"
+  ],
+  "sites_in_scope": 246,
+  "raw_fetched": {
+    "02903": 8959
+  },
+  "rows_added": 909,
+  "rows_total_output": 7471,
+  "matched_sites": 138,
+  "matched_site_ratio": 0.5609756097560976,
+  "permit_type_counts_added": {
+    "hvac": 693,
+    "roof": 202,
+    "solar": 14
+  },
+  "fallback_match_rows": 580,
+  "output": "/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/parcel_permit_feed.csv"
+}

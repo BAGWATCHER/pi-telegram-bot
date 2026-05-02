@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "zips": [
+    "01730",
+    "02667",
+    "05486",
+    "06525"
+  ],
+  "solar_model": "proxy",
+  "steps": [
+    {
+      "cmd": "python3 scripts/ingest_multi_zip_osm.py --zips 01730,02667,05486,06525 --half-span-deg 0.02 --min-records-per-zip 80",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"zips\": [\n    \"01730\",\n    \"02667\",\n    \"05486\",\n    \"06525\"\n  ],\n  \"records\": 5800,\n  \"output\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/sites_multi_osm.csv\"\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/fetch_nws_storm_triggers.py --sites-csv data/processed/sites.csv --output data/raw/property_triggers_external.csv",
+      "returncode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"sites\": 5800,\n  \"output\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv\",\n  \"summary\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/nws-trigger-fetch-summary.json\"\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/fetch_eversource_outage_feed.py --output data/raw/state_outage_feed.csv",
+      "returncode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"states\": 3,\n  \"output\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/state_outage_feed.csv\"\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/project_state_outage_triggers.py --sites-csv data/processed/sites.csv --external data/raw/property_triggers_external.csv --state-feed data/raw/state_outage_feed.csv --output data/raw/property_triggers_external.csv",
+      "returncode": 0,
+      "stdout": "wrote /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv rows=5800 matched_state_rows=5379 state_feed=present",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/project_nws_flood_triggers.py --sites-csv data/processed/sites.csv --external data/raw/property_triggers_external.csv --output data/raw/property_triggers_external.csv",
+      "returncode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"sites\": 5800,\n  \"status_counts\": {\n    \"low\": 5800\n  },\n  \"output\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv\"\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/project_census_equipment_age_triggers.py --sites-csv data/processed/sites.csv --external data/raw/property_triggers_external.csv --output data/raw/property_triggers_external.csv",
+      "returncode": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"sites\": 5800,\n  \"feed_source\": \"live-census\",\n  \"status_counts\": {\n    \"high\": 4126,\n    \"medium\": 421,\n    \"event_detected\": 1253\n  },\n  \"output\": \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv\"\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/merge_property_triggers.py --sites-csv data/processed/sites.csv --external data/raw/property_triggers_external.csv --output data/processed/property_triggers.csv",
+      "returncode": 0,
+      "stdout": "wrote /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/property_triggers.csv rows=5800 matched_external=5800 external_path=/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/raw/property_triggers_external.csv",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 scripts/score_sites.py --solar-model proxy",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"solar_model\": \"proxy\",\n  \"sites\": 5800,\n  \"h3_cells\": 102,\n  \"pvwatts\": null,\n  \"outputs\": [\n    \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/site_scores.csv\",\n    \"/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/data/processed/h3_scores.csv\"\n  ]\n}",
+      "stderr": ""
+    },
+    {
+      "cmd": "python3 eval/run_eval.py --require-min-zips 4 --min-rows-per-zip 80 --min-zip-stability 0.90",
+      "returncode": 0,
+      "stdout": "Wrote /home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow/artifacts/eval-summary.md\nPASS",
+      "stderr": ""
+    }
+  ],
+  "env": {
+    "PVWATTS_API_KEY_set": false,
+    "NSRDB_API_KEY_set": false
+  }
+}

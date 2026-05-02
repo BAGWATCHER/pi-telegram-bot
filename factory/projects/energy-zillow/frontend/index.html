@@ -1,0 +1,3811 @@
+<!doctype html>
+<!-- Core product flow: heatmap -> hex ranked list -> site detail -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DemandGrid — Gauntlet MVP</title>
+    <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f9f7f4;
+        --text: #1a1a1a;
+        --line: #d9d2c6;
+        --accent: #2e5ea3;
+        --brown: #7a3b10;
+        --topbar-h: 58px;
+        --tabs-h: 0px;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .topbar button,
+      .panel button,
+      .topbar select,
+      .panel select,
+      .panel input,
+      .panel textarea {
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+
+      .topbar button:hover,
+      .panel button:hover {
+        border-color: var(--brown);
+      }
+
+      .panel input::placeholder,
+      .panel textarea::placeholder {
+        color: #7a7467;
+      }
+
+      .topbar {
+        padding: 11px 14px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .topbar-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-right: auto;
+      }
+
+      .topbar-title {
+        line-height: 1;
+        letter-spacing: 0.01em;
+      }
+
+      .topbar-controls,
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .topbar-status {
+        width: 100%;
+        color: #555;
+        font-size: 12px;
+      }
+
+      .mobile-tabs {
+        display: none;
+        padding: 8px 16px;
+        border-bottom: 1px solid var(--line);
+        gap: 8px;
+      }
+
+      .mobile-tabs button {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--text);
+        padding: 6px 10px;
+        border-radius: 0;
+      }
+
+      .mobile-tabs button.active {
+        border-color: var(--brown);
+        color: var(--brown);
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: minmax(430px, 38%) 1fr;
+        height: calc(100vh - var(--topbar-h) - var(--tabs-h));
+        min-height: 0;
+      }
+
+      .panel {
+        border-right: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .section {
+        padding: 12px 14px;
+        min-height: 0;
+      }
+
+      .section + .section {
+        border-top: 1px solid var(--line);
+      }
+
+      .meta {
+        font-size: 12px;
+        color: #5b5345;
+      }
+
+      .section-kicker {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--brown);
+        margin-bottom: 4px;
+      }
+
+      .section-title {
+        font-size: 17px;
+        margin-bottom: 4px;
+      }
+
+      .guide-text {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 1.45;
+        color: #3f3a31;
+      }
+
+      .today-plan {
+        margin-top: 10px;
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        background: #f4efe8;
+        max-height: 320px;
+        overflow: auto;
+      }
+
+      .today-plan-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .today-plan-title {
+        font-size: 15px;
+        margin-bottom: 3px;
+      }
+
+      .today-plan-subtitle {
+        font-size: 12px;
+        color: #4a4339;
+        line-height: 1.4;
+      }
+
+      .today-plan-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .today-plan-box {
+        border-top: 1px solid var(--line);
+        padding-top: 8px;
+      }
+
+      .today-plan-label {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--brown);
+        margin-bottom: 4px;
+      }
+
+      .today-plan-copy {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .today-plan-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .today-plan-actions button {
+        flex: 1 1 140px;
+      }
+
+      .territory-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .territory-item {
+        border-top: 1px solid var(--line);
+        padding-top: 8px;
+      }
+
+      .territory-item button {
+        margin-top: 6px;
+      }
+
+      #site-list {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+
+      #site-list th,
+      #site-list td {
+        padding: 8px 6px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      #site-list th {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: var(--bg);
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      #site-list tbody tr {
+        cursor: pointer;
+      }
+
+      #site-list tbody tr:hover {
+        background: #ece8dd;
+      }
+
+      .section-list {
+        flex: 1;
+        overflow: auto;
+        min-height: 220px;
+      }
+
+      .section-chat {
+        max-height: 240px;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        background: var(--bg);
+        flex: none;
+      }
+
+      .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .chat-close-btn {
+        display: none;
+        border: 1px solid var(--line);
+        background: transparent;
+        border-radius: 0;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .chat-scope-badge {
+        margin-top: 6px;
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        padding: 2px 8px;
+        background: transparent;
+        width: fit-content;
+      }
+
+      .section-detail {
+        flex: 1;
+        min-height: 260px;
+        max-height: 40vh;
+        overflow: auto;
+      }
+
+      .detail-mode-tabs {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
+
+      .detail-mode-tabs button.active {
+        border-color: var(--brown);
+        background: #ece8dd;
+      }
+
+      .craigslist-toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+
+      .craigslist-queue-list {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .craigslist-queue-item {
+        border: 1px solid var(--line);
+        padding: 8px;
+        background: rgba(255,255,255,0.45);
+        cursor: pointer;
+      }
+
+      .craigslist-queue-item.active {
+        border-color: var(--brown);
+        background: #ece8dd;
+      }
+
+      .craigslist-queue-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .craigslist-queue-meta {
+        font-size: 12px;
+        color: #5b5345;
+        line-height: 1.45;
+      }
+
+      .craigslist-review-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+        margin-bottom: 12px;
+      }
+
+      .craigslist-draft-grid {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .craigslist-draft-grid textarea {
+        width: 100%;
+        min-height: 110px;
+        resize: vertical;
+        box-sizing: border-box;
+      }
+
+      .craigslist-draft-grid input,
+      .craigslist-draft-grid textarea,
+      .craigslist-draft-grid select {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .craigslist-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+        margin-bottom: 10px;
+      }
+
+      .craigslist-badge-row {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin: 6px 0;
+      }
+
+      .list-toolbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 8px;
+        gap: 8px;
+      }
+
+      .list-toolbar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .queue-chip-row {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .queue-chip {
+        border: 1px solid var(--line);
+        background: transparent;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .queue-chip.active {
+        border-color: var(--brown);
+        background: #ece8dd;
+      }
+
+      #hex-selected {
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      #chat-open-inline {
+        display: none;
+      }
+
+      .list-action-btn {
+        border: 1px solid var(--line);
+        background: transparent;
+        border-radius: 0;
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+
+      .list-action-btn:hover {
+        border-color: var(--brown);
+      }
+
+      .site-cards {
+        display: none;
+        gap: 8px;
+      }
+
+      .site-card {
+        border: 1px solid var(--line);
+        border-radius: 0;
+        padding: 9px;
+        background: transparent;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .site-card-title {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .site-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 6px;
+      }
+
+      .site-card-meta {
+        font-size: 12px;
+        color: #555;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .site-card-metric {
+        font-weight: 600;
+        color: #1f1f1f;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px 10px;
+        margin: 8px 0;
+      }
+
+      .detail-grid .kpi {
+        display: block;
+      }
+
+      .detail-summary {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: transparent;
+        padding: 8px 0;
+      }
+
+      .playbook-card {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+        margin-bottom: 10px;
+      }
+
+      .playbook-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .playbook-title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .playbook-subtitle {
+        margin-top: 3px;
+        color: #5b5345;
+        font-size: 12px;
+      }
+
+      .playbook-actions {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .playbook-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+      }
+
+      .playbook-block {
+        border: 1px solid var(--line);
+        padding: 8px;
+      }
+
+      .playbook-label {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--brown);
+        margin-bottom: 4px;
+      }
+
+      .playbook-copy {
+        margin-top: 4px;
+        font-size: 12px;
+        color: #2d2922;
+      }
+
+      .playbook-list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .playbook-list li + li {
+        margin-top: 4px;
+      }
+
+      .operator-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+        margin: 0 0 10px 0;
+      }
+
+      .operator-card {
+        border: 1px solid var(--line);
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.45);
+      }
+
+      .operator-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .operator-card-title {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .operator-copy {
+        font-size: 12px;
+        color: #2d2922;
+      }
+
+      .operator-copy + .operator-copy {
+        margin-top: 6px;
+      }
+
+      .operator-meta-list {
+        margin: 6px 0 0 0;
+        padding-left: 18px;
+      }
+
+      .operator-meta-list li + li {
+        margin-top: 4px;
+      }
+
+      .task-runner {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+        margin-bottom: 10px;
+      }
+
+      .task-runner-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: flex-start;
+        margin-bottom: 8px;
+      }
+
+      .task-runner-title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .task-runner-subtitle {
+        margin-top: 3px;
+        color: #5b5345;
+        font-size: 12px;
+      }
+
+      .task-runner-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+        gap: 10px 12px;
+      }
+
+      .task-runner-box {
+        border: 1px solid var(--line);
+        padding: 8px;
+      }
+
+      .task-runner-steps {
+        margin: 6px 0 0 18px;
+      }
+
+      .task-runner-steps li + li {
+        margin-top: 4px;
+      }
+
+      .learning-list {
+        margin: 6px 0 0 18px;
+      }
+
+      .learning-list li + li {
+        margin-top: 4px;
+      }
+
+      .workflow-row {
+        margin: 8px 0 10px 0;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .outcome-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 10px;
+        margin: 8px 0;
+      }
+
+      .outcome-grid label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+        color: #3f3a31;
+      }
+
+      .workflow-quick {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .workflow-quick button {
+        border: 1px solid var(--line);
+        background: transparent;
+        border-radius: 0;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .workflow-quick button:hover {
+        border-color: var(--brown);
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+        padding-top: 6px;
+        margin-top: 6px;
+      }
+
+      details summary {
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+      }
+
+      #detail-card {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .muted {
+        color: #666;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 2px 7px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        font-size: 12px;
+        background: transparent;
+      }
+
+      .pill.warn {
+        border-color: #b38b5a;
+        color: #7a3b10;
+      }
+
+      .pill.good {
+        border-color: #7b9a77;
+      }
+
+      .kpi {
+        font-weight: 600;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .chat-log {
+        border: 1px solid var(--line);
+        background: transparent;
+        min-height: 120px;
+        max-height: 220px;
+        overflow: auto;
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .chat-msg {
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+
+      .chat-msg strong {
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .chat-trace {
+        margin-top: 6px;
+        font-size: 11px;
+        color: #4d4d4d;
+        border-left: 2px solid #d5c6b8;
+        padding-left: 7px;
+      }
+
+      .chat-suggested {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .chat-suggested button {
+        border: 1px solid var(--line);
+        background: transparent;
+        border-radius: 0;
+        padding: 2px 8px;
+        font-size: 11px;
+      }
+
+      .chat-input-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .chat-input-row input {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .chat-cards {
+        margin: 6px 0 0 0;
+        padding-left: 16px;
+      }
+
+      .chat-cards li {
+        margin-bottom: 4px;
+      }
+
+      .chat-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .chat-chip {
+        border: 1px solid var(--line);
+        background: transparent;
+        border-radius: 0;
+        padding: 3px 8px;
+        font-size: 11px;
+      }
+
+      .chat-launcher {
+        display: none;
+      }
+
+      /* Trigger mobile UX earlier; desktop-mode-on-phone often reports ~980px width */
+      @media (max-width: 1200px) {
+        .mobile-tabs {
+          display: flex;
+        }
+
+        .topbar {
+          padding: 8px 10px;
+          gap: 6px;
+          align-items: stretch;
+        }
+
+        .topbar-brand {
+          width: 100%;
+          margin-right: 0;
+        }
+
+        .topbar-title {
+          font-size: 21px;
+        }
+
+        .topbar-controls {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 6px;
+        }
+
+        .topbar-controls label {
+          display: none;
+        }
+
+        #zip-select {
+          min-width: 0;
+          width: 100%;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+
+        .topbar-status {
+          font-size: 11px;
+        }
+
+        .app {
+          display: block;
+          height: calc(100vh - var(--topbar-h) - var(--tabs-h));
+        }
+
+        .panel {
+          display: flex;
+          flex-direction: column;
+          border-right: none;
+          border-bottom: none;
+          height: calc(100vh - var(--topbar-h) - var(--tabs-h));
+          overflow: auto;
+          box-sizing: border-box;
+          padding-bottom: 84px;
+        }
+
+        .section-summary { order: 1; flex: none; }
+        .section-list { order: 2; overflow: visible; flex: none; }
+        .section-detail { order: 3; max-height: none; overflow: visible; flex: none; }
+
+        .section-chat {
+          order: 4;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 55;
+          height: 68vh;
+          max-height: 68vh;
+          border-top: 1px solid var(--line);
+          transform: translateY(104%);
+          transition: transform 0.2s ease;
+          padding: 10px 12px;
+        }
+
+        body.chat-open .section-chat {
+          transform: translateY(0);
+        }
+
+        .chat-close-btn {
+          display: inline-block;
+        }
+
+        .chat-launcher {
+          display: inline-flex;
+          position: fixed;
+          right: 14px;
+          bottom: calc(10px + env(safe-area-inset-bottom));
+          z-index: 56;
+          border: 1px solid var(--line);
+          background: var(--bg);
+          border-radius: 0;
+          padding: 7px 10px;
+          font-size: 11px;
+        }
+
+        body.chat-open .chat-launcher {
+          display: none;
+        }
+
+        #site-list {
+          display: none;
+        }
+
+        .site-cards {
+          display: grid;
+        }
+
+        .list-toolbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .list-toolbar-right {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        #hex-selected {
+          max-width: 100%;
+        }
+
+        #chat-open-inline {
+          display: inline-flex;
+        }
+
+        body.mobile-list .chat-launcher {
+          display: none;
+        }
+
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .operator-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .playbook-grid,
+        .craigslist-review-grid,
+        .craigslist-form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .outcome-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .today-plan-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .today-plan-head {
+          flex-direction: column;
+        }
+
+        .today-plan-actions button {
+          flex: 1 1 auto;
+        }
+
+        .today-plan {
+          max-height: none;
+          overflow: visible;
+        }
+
+        #map {
+          height: calc(100vh - var(--topbar-h) - var(--tabs-h));
+        }
+
+        body.mobile-map .panel {
+          display: none;
+        }
+
+        body.mobile-list #map {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="mobile-map">
+    <div class="topbar" id="topbar">
+      <div class="topbar-brand">
+        <strong class="topbar-title">DemandGrid</strong>
+        <span class="meta">Data-to-sales operator console</span>
+      </div>
+      <div class="topbar-controls">
+        <label for="zip-select">Scope:</label>
+        <select id="zip-select"></select>
+        <button id="reload-btn">Reload</button>
+      </div>
+      <div class="topbar-actions">
+        <button id="route-btn" disabled onclick="window.__demandGridRunRoutePlan && window.__demandGridRunRoutePlan()">Plan Route</button>
+        <button id="route-csv-btn" disabled onclick="window.__demandGridRunRouteCsv && window.__demandGridRunRouteCsv()">Export CSV</button>
+      </div>
+      <span id="status" class="topbar-status"></span>
+    </div>
+
+    <div class="mobile-tabs" id="mobile-tabs">
+      <button id="tab-map" class="active">Map</button>
+      <button id="tab-list">Workspace</button>
+    </div>
+
+    <div class="app">
+      <aside class="panel">
+        <div class="section section-summary">
+          <div class="section-kicker">Operator Workspace</div>
+          <div class="section-title"><strong>Opportunity Heatmap</strong></div>
+          <div class="meta" id="heatmap-meta">Loading...</div>
+          <div class="guide-text" id="workflow-guide">DemandGrid auto-loads the best hex and first lead for you. Stay inside the current pilot ZIP unless you intentionally want the next pilot territory. Start with the task runner, use the opener, make contact, then log the real outcome.</div>
+          <div id="today-plan" class="today-plan">
+            <div class="meta">Loading today's plan...</div>
+          </div>
+        </div>
+
+        <div class="section section-list">
+          <div class="list-toolbar">
+            <div>
+              <strong>Ranked Addresses</strong>
+              <div class="meta" id="list-meta">Select a hex to load ranked addresses. Sorted by route score.</div>
+              <div id="queue-chip-row" class="queue-chip-row"></div>
+            </div>
+            <div class="list-toolbar-right">
+              <span id="hex-selected" class="pill">No hex selected</span>
+              <button id="route-btn-inline" class="list-action-btn" disabled onclick="window.__demandGridRunRoutePlan && window.__demandGridRunRoutePlan()">Plan Route</button>
+              <button id="route-csv-btn-inline" class="list-action-btn" disabled onclick="window.__demandGridRunRouteCsv && window.__demandGridRunRouteCsv()">Export CSV</button>
+              <button id="chat-open-inline" class="list-action-btn">Chow</button>
+            </div>
+          </div>
+          <table id="site-list">
+            <thead>
+              <tr>
+                <th>Address</th>
+                <th>Primary</th>
+                <th>Route</th>
+                <th>Workflow</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody id="site-list-body"></tbody>
+          </table>
+          <div id="site-cards" class="site-cards"></div>
+        </div>
+
+        <div class="section section-chat">
+          <div class="chat-header">
+            <div>
+              <strong>Chow</strong>
+              <span class="meta">dg-chow-mode-v1</span>
+            </div>
+            <button id="chat-close-btn" class="chat-close-btn">Close</button>
+          </div>
+          <div id="chat-scope" class="chat-scope-badge">Scope: all ZIPs</div>
+          <div id="chat-log" class="chat-log" style="margin-top:8px;"></div>
+          <div class="chat-chips" id="chat-chips">
+            <button class="chat-chip" data-prompt="What should I work next?">Next task</button>
+            <button class="chat-chip" data-prompt="Claim next task">Claim task</button>
+            <button class="chat-chip" data-prompt="Plan route for today">Plan route</button>
+            <button class="chat-chip" data-prompt="Why this site">Why this site</button>
+          </div>
+          <div class="chat-input-row">
+            <input id="chat-input" type="text" placeholder="Ask Chow: what should I work next?" />
+            <button id="chat-send-btn">Send</button>
+          </div>
+          <div class="meta" style="margin-top:6px;">Chow uses live platform tools: next task, top leads, site explain, route plan, workflow updates, supervised call/email queueing, approvals, and dispatch tracking.</div>
+        </div>
+
+        <div class="section section-detail" id="detail-section">
+          <strong>Workspace Detail</strong>
+          <div class="detail-mode-tabs">
+            <button id="detail-mode-site-btn" type="button" class="active">Site</button>
+            <button id="detail-mode-craigslist-btn" type="button">Craigslist</button>
+          </div>
+          <div id="detail-card" class="muted" style="margin-top:8px;">Click a row to load recommendation card.</div>
+        </div>
+      </aside>
+
+      <main id="map"></main>
+    </div>
+
+    <button id="chat-launcher" class="chat-launcher">Chow</button>
+
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/h3-js@4.1.0/dist/h3-js.umd.js"></script>
+    <script>
+      const state = {
+        map: null,
+        zip: null,
+        cells: [],
+        selectedHex: null,
+        selectedSiteId: null,
+        userSelectedHex: false,
+        zipCount: 0,
+        totalSites: 0,
+        currentSites: [],
+        queueFilter: 'all',
+        pilotScope: null,
+        detailMode: 'site',
+        craigslistQueueStatus: 'queued_review',
+        craigslistQueueItems: [],
+        selectedCraigslistQueueId: null,
+      };
+
+      const topbarEl = document.getElementById('topbar');
+      const tabsEl = document.getElementById('mobile-tabs');
+      const tabMapBtn = document.getElementById('tab-map');
+      const tabListBtn = document.getElementById('tab-list');
+      const zipSelect = document.getElementById('zip-select');
+      const reloadBtn = document.getElementById('reload-btn');
+      const routeBtn = document.getElementById('route-btn');
+      const routeCsvBtn = document.getElementById('route-csv-btn');
+      const routeBtnInline = document.getElementById('route-btn-inline');
+      const routeCsvBtnInline = document.getElementById('route-csv-btn-inline');
+      const chatOpenInline = document.getElementById('chat-open-inline');
+      const statusEl = document.getElementById('status');
+      const heatmapMeta = document.getElementById('heatmap-meta');
+      const todayPlan = document.getElementById('today-plan');
+      const hexSelected = document.getElementById('hex-selected');
+      const listMeta = document.getElementById('list-meta');
+      const queueChipRow = document.getElementById('queue-chip-row');
+      const listBody = document.getElementById('site-list-body');
+      const siteCards = document.getElementById('site-cards');
+      const detailCard = document.getElementById('detail-card');
+      const detailModeSiteBtn = document.getElementById('detail-mode-site-btn');
+      const detailModeCraigslistBtn = document.getElementById('detail-mode-craigslist-btn');
+      const workflowGuide = document.getElementById('workflow-guide');
+      const chatLog = document.getElementById('chat-log');
+      const chatInput = document.getElementById('chat-input');
+      const chatSendBtn = document.getElementById('chat-send-btn');
+      const chatScope = document.getElementById('chat-scope');
+      const chatChips = document.getElementById('chat-chips');
+      const chatLauncher = document.getElementById('chat-launcher');
+      const chatCloseBtn = document.getElementById('chat-close-btn');
+
+      const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+      const MOBILE_BREAKPOINT_PX = 1200;
+      const BASE_PREFIX = window.location.pathname.startsWith('/energy-zillow') ? '/energy-zillow' : '';
+      const API_BASE = `${BASE_PREFIX}/api/v1`;
+
+      function setRouteControlsEnabled(enabled) {
+        [routeBtn, routeCsvBtn, routeBtnInline, routeCsvBtnInline].forEach(btn => {
+          if (btn) btn.disabled = !enabled;
+        });
+      }
+
+      function setStatus(msg) {
+        statusEl.textContent = msg;
+        if (isMobileLikeLayout()) updateTopbarHeight();
+      }
+
+      function setStatusIfStill(expected, next) {
+        if (!statusEl) return;
+        if ((statusEl.textContent || '') !== expected) return;
+        setStatus(next);
+      }
+
+      function workQueueInfo(site) {
+        return site && site.work_queue ? site.work_queue : { bucket: 'park', label: 'Park', reason_label: 'Hold', action: 'Lower-priority lead.' };
+      }
+
+      function currentQueueSites() {
+        if (!Array.isArray(state.currentSites)) return [];
+        if (state.queueFilter === 'all') return state.currentSites.slice();
+        return state.currentSites.filter(site => workQueueInfo(site).bucket === state.queueFilter);
+      }
+
+      function nextSiteIdInQueue(currentSiteId) {
+        const queueSites = currentQueueSites();
+        if (!queueSites.length) return null;
+        const idx = queueSites.findIndex(site => site.site_id === currentSiteId);
+        if (idx === -1) return queueSites[0].site_id;
+        if (idx + 1 < queueSites.length) return queueSites[idx + 1].site_id;
+        return null;
+      }
+
+      function renderTodayPlan(data) {
+        if (!todayPlan) return;
+        if (!data || typeof data !== 'object') {
+          todayPlan.innerHTML = '<div class="meta">Unable to load today\'s plan.</div>';
+          return;
+        }
+
+        const counts = data.counts || {};
+        const command = data.command || {};
+        const nextAction = data.next_action || {};
+        const bestLead = data.best_lead || null;
+        const routePreview = data.route_preview || null;
+        const learning = data.learning_summary || {};
+        const topLanes = Array.isArray(data.top_lanes) ? data.top_lanes : [];
+        const territories = Array.isArray(data.territory_recommendations) ? data.territory_recommendations : [];
+        const topObjection = Array.isArray(learning.top_objections) && learning.top_objections.length ? learning.top_objections[0] : null;
+        const routeNote = routePreview && routePreview.first_stop
+          ? `${routePreview.count} route-ready stops. First stop: ${routePreview.first_stop.address}.`
+          : 'No route-ready stops yet in this scope.';
+        const laneText = topLanes.length
+          ? topLanes.map(item => `${humanizeLabel(item.lane)} ${item.count}`).join(' • ')
+          : 'No actionable lane concentration yet.';
+        const learningText = learning.won_count
+          ? `${learning.won_count} logged wins in this scope${learning.avg_profit_per_win_usd ? ` • avg profit ${usd.format(learning.avg_profit_per_win_usd)}` : ''}${learning.win_rate_pct ? ` • win rate ${learning.win_rate_pct}%` : ''}`
+          : 'No closed-loop wins logged in this scope yet.';
+        const territoryHtml = territories.length
+          ? `<div class="territory-list">${territories.map(item => `
+              <div class="territory-item" data-territory-zip="${item.zip}">
+                <strong>ZIP ${item.zip}</strong> • ${humanizeLabel(item.focus_lane || 'sales')} focus • work now ${((item.counts || {}).work_now || 0)} • follow up ${((item.counts || {}).follow_up || 0)}
+                <div class="meta">${item.best_lead ? `Best lead: ${item.best_lead.address}` : 'No lead loaded'} • avg route ${item.avg_route_score || 0}</div>
+                <button type="button" data-switch-zip="${item.zip}">Work ZIP ${item.zip}</button>
+              </div>
+            `).join('')}</div>`
+          : 'Current scope is already narrowed. Change ZIP or click a hex to shift territory.';
+        const managerPrompt = bestLead
+          ? `What should I work today in ${state.zip && state.zip !== '__all__' ? `ZIP ${state.zip}` : 'this territory'}? Start with ${bestLead.address}.`
+          : 'What should I work today?';
+        const commandLabel = command.label || 'Prospect now';
+        const commandReason = command.reason || data.rationale || 'Work the strongest live leads first.';
+        const commandTarget = command.target || {};
+        const agentSummary = data.agent_summary || null;
+        const chowTask = agentSummary && agentSummary.current_task ? agentSummary.current_task : null;
+        const chowTaskSite = chowTask && chowTask.site ? chowTask.site : {};
+        const chowExecution = agentSummary && agentSummary.execution ? agentSummary.execution : {};
+        const chowCall = chowExecution.calling_session || null;
+        const chowEmail = chowExecution.outreach_job || null;
+        const chowApprovals = Array.isArray(agentSummary && agentSummary.pending_approvals) ? agentSummary.pending_approvals : [];
+        const chowAdapters = agentSummary && agentSummary.adapters ? agentSummary.adapters : {};
+        const chowCopy = agentSummary
+          ? [
+              `<strong>${agentSummary.headline || 'Chow is idle'}</strong>`,
+              agentSummary.rationale || 'No live Chow activity in this scope yet.',
+              chowTask ? `Current task: ${chowTaskSite.address || chowTask.task_id} • ${humanizeLabel(chowTask.primary_action || 'ready')}` : 'No scoped task claimed yet.',
+              chowApprovals.length ? `Pending approvals: ${chowApprovals.map(item => item.label || humanizeLabel(item.action_type || 'approval')).join(', ')}` : 'No approvals waiting right now.',
+              chowCall ? `Latest call: ${humanizeLabel(chowCall.status || 'ready')}${chowCall.dispatch && chowCall.dispatch.status ? ` • ${humanizeLabel(chowCall.dispatch.status)}` : ''}` : null,
+              chowEmail ? `Latest email: ${humanizeLabel(chowEmail.status || 'queued')}${chowEmail.dispatch && chowEmail.dispatch.status ? ` • ${humanizeLabel(chowEmail.dispatch.status)}` : ''}` : null,
+              chowAdapters.calling ? `Calling adapter: ${humanizeLabel(chowAdapters.calling.provider || 'unknown')} (${chowAdapters.calling.allow_live_dispatch ? 'live allowed' : 'mock-only'})` : null,
+              chowAdapters.email ? `Email adapter: ${humanizeLabel(chowAdapters.email.provider || 'unknown')} (${chowAdapters.email.allow_live_dispatch ? 'live allowed' : 'mock-only'})` : null,
+            ].filter(Boolean).join('<br>')
+          : 'Chow status is unavailable right now.';
+
+        todayPlan.innerHTML = `
+          <div class="today-plan-head">
+            <div>
+              <div class="today-plan-title"><strong>${data.headline || 'Today\'s Plan'}</strong></div>
+              <div class="today-plan-subtitle">${data.rationale || 'Work the strongest live leads first.'}</div>
+            </div>
+            <span class="pill">Manager Mode • ${humanizeLabel(data.focus_lane || 'sales')} focus</span>
+          </div>
+          <div class="today-plan-box" style="margin-top:10px;">
+            <span class="today-plan-label">Daily Command</span>
+            <div class="today-plan-copy"><strong>${commandLabel}</strong><br>${commandReason}</div>
+          </div>
+          <div class="queue-chip-row" style="margin-top:10px;">
+            <span class="pill">Work now ${counts.work_now || 0}</span>
+            <span class="pill">Follow up ${counts.follow_up || 0}</span>
+            <span class="pill">Verify ${counts.verify_first || 0}</span>
+            <span class="pill">Park ${counts.park || 0}</span>
+          </div>
+          <div class="today-plan-grid">
+            <div class="today-plan-box">
+              <span class="today-plan-label">Best Lead</span>
+              <div class="today-plan-copy">${bestLead ? `<strong>${bestLead.address}</strong><br>${humanizeLabel(bestLead.primary_product)} first • ${humanizeLabel((bestLead.work_queue || {}).reason_label || 'Hold')} • ${usd.format(bestLead.annual_savings_usd || 0)}/yr` : 'No lead loaded for this scope yet.'}</div>
+            </div>
+            <div class="today-plan-box">
+              <span class="today-plan-label">Today’s Objective</span>
+              <div class="today-plan-copy">${nextAction.headline ? `<strong>${nextAction.headline}</strong><br>${nextAction.rationale || ''}` : 'Open the first lead and work the task runner.'}</div>
+            </div>
+            <div class="today-plan-box">
+              <span class="today-plan-label">Best Territory</span>
+              <div class="today-plan-copy">${territoryHtml}</div>
+            </div>
+            <div class="today-plan-box">
+              <span class="today-plan-label">Bottleneck + Learning</span>
+              <div class="today-plan-copy">${routeNote}<br>${learningText}${topObjection ? `<br>Top objection so far: ${topObjection.label}` : ''}<br>${laneText}</div>
+            </div>
+            <div class="today-plan-box">
+              <span class="today-plan-label">Chow Lane</span>
+              <div class="today-plan-copy">${chowCopy}</div>
+            </div>
+          </div>
+          <div class="today-plan-actions">
+            <button id="today-run-command-btn" type="button">Run daily command</button>
+            <button id="today-open-best-btn" type="button"${bestLead ? '' : ' disabled'}>Open best lead</button>
+            <button id="today-route-btn" type="button"${routePreview ? '' : ' disabled'}>Plan today’s route</button>
+            <button id="today-follow-ups-btn" type="button"${(counts.follow_up || 0) > 0 ? '' : ' disabled'}>Clear follow-ups</button>
+            <button id="today-next-task-btn" type="button">Claim next Chow task</button>
+            <button id="today-ai-brief-btn" type="button">Ask Chow for daily plan</button>
+          </div>
+        `;
+
+        const runDailyCommand = async () => {
+          if (command.mode === 'clear_follow_ups') {
+            await navigateToManagerTarget(commandTarget, { queueFilter: 'follow_up' });
+            setStatus('Manager mode: clear follow-ups first.');
+            return;
+          }
+
+          if (command.mode === 'switch_territory' && commandTarget.zip) {
+            await navigateToManagerTarget(commandTarget, { queueFilter: 'all' });
+            setStatus(`Manager mode: switched territory to ZIP ${commandTarget.zip}.`);
+            return;
+          }
+
+          if (command.mode === 'verify_before_pitch' && (commandTarget.site_id || (bestLead && bestLead.site_id))) {
+            await navigateToManagerTarget(commandTarget, { queueFilter: 'verify_first' });
+            setStatus(`Manager mode: verify before pitch on ${bestLead.address}.`);
+            return;
+          }
+
+          if (commandTarget.site_id || (bestLead && bestLead.site_id)) {
+            await navigateToManagerTarget(commandTarget, { queueFilter: 'all' });
+            setStatus(`Manager mode: prospect ${bestLead.address}.`);
+          }
+        };
+
+        const runCommandBtn = document.getElementById('today-run-command-btn');
+        if (runCommandBtn) {
+          runCommandBtn.addEventListener('click', () => {
+            void runDailyCommand();
+          });
+        }
+
+        const openBestBtn = document.getElementById('today-open-best-btn');
+        if (openBestBtn && bestLead && bestLead.site_id) {
+          openBestBtn.addEventListener('click', () => {
+            void loadSite(bestLead.site_id);
+            setStatus(`Opened best lead: ${bestLead.address}`);
+          });
+        }
+
+        const todayRouteBtn = document.getElementById('today-route-btn');
+        if (todayRouteBtn && routePreview) {
+          todayRouteBtn.addEventListener('click', () => {
+            void window.__demandGridRunRoutePlan();
+          });
+        }
+
+        const followUpsBtn = document.getElementById('today-follow-ups-btn');
+        if (followUpsBtn && (counts.follow_up || 0) > 0) {
+          followUpsBtn.addEventListener('click', async () => {
+            await runDailyCommand();
+          });
+        }
+
+        const nextTaskBtn = document.getElementById('today-next-task-btn');
+        if (nextTaskBtn) {
+          nextTaskBtn.addEventListener('click', async () => {
+            try {
+              const task = await claimNextChowTask();
+              const taskSite = (task && (task.site || {})) || {};
+              setStatus(`Chow claimed next task: ${taskSite.address || task.task_id}`);
+            } catch (err) {
+              setStatus(`Chow task claim failed: ${err.message}`);
+            }
+          });
+        }
+
+        const aiBriefBtn = document.getElementById('today-ai-brief-btn');
+        if (aiBriefBtn) {
+          aiBriefBtn.addEventListener('click', () => {
+            void sendChatMessage(managerPrompt);
+          });
+        }
+
+        todayPlan.querySelectorAll('[data-switch-zip]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const nextZip = btn.getAttribute('data-switch-zip');
+            if (!nextZip) return;
+            state.zip = nextZip;
+            zipSelect.value = nextZip;
+            document.body.classList.remove('chat-open');
+            await loadHeatmap(state.zip);
+            setStatus(`Switched territory to ZIP ${nextZip}.`);
+          });
+        });
+      }
+
+      async function loadTodayPlan(zip, h3Cell = null) {
+        if (!todayPlan) return;
+        todayPlan.innerHTML = '<div class="meta">Loading today\'s plan...</div>';
+        try {
+          const params = new URLSearchParams();
+          if (zip && zip !== '__all__') params.set('zip', zip);
+          if (h3Cell) params.set('h3_cell', h3Cell);
+          const query = params.toString();
+          const [briefResult, agentResult] = await Promise.allSettled([
+            api(`${API_BASE}/operator/today-brief${query ? `?${query}` : ''}`),
+            api(`${API_BASE}/agent/live-summary${query ? `?${query}&agent_id=chow` : '?agent_id=chow'}`),
+          ]);
+          if (briefResult.status !== 'fulfilled') throw briefResult.reason;
+          const data = briefResult.value || {};
+          data.agent_summary = agentResult.status === 'fulfilled' ? agentResult.value : null;
+          renderTodayPlan(data);
+        } catch (err) {
+          todayPlan.innerHTML = `<div class="meta">Today's plan failed: ${err.message}</div>`;
+        }
+      }
+
+      async function navigateToManagerTarget(target = {}, opts = {}) {
+        const nextZip = target.zip && target.zip !== '__all__' ? target.zip : '__all__';
+        const nextH3 = target.h3_cell || null;
+        const nextSiteId = target.site_id || null;
+        const nextFilter = opts.queueFilter || 'all';
+
+        if (state.zip !== nextZip) {
+          state.zip = nextZip;
+          zipSelect.value = nextZip;
+          document.body.classList.remove('chat-open');
+          await loadHeatmap(state.zip);
+        }
+
+        state.queueFilter = nextFilter;
+
+        if (nextH3) {
+          await loadHexSites(nextH3, { userInitiated: false, preserveQueueFilter: true, skipFit: false });
+        } else if (Array.isArray(state.currentSites) && state.selectedHex) {
+          renderQueueChips(state.currentSites, state.selectedHex);
+          await renderHexSites(state.currentSites, state.selectedHex, { skipAutoSite: false });
+        }
+
+        if (nextSiteId) {
+          await loadSite(nextSiteId);
+        }
+      }
+
+      function renderQueueChips(sites, h3Cell) {
+        if (!queueChipRow) return;
+        const counts = { all: sites.length, work_now: 0, follow_up: 0, verify_first: 0, park: 0 };
+        for (const site of sites) {
+          const bucket = workQueueInfo(site).bucket;
+          if (bucket in counts) counts[bucket] += 1;
+        }
+        const defs = [
+          ['all', 'All'],
+          ['work_now', 'Work Now'],
+          ['follow_up', 'Follow Up'],
+          ['verify_first', 'Verify First'],
+          ['park', 'Park'],
+        ];
+        queueChipRow.innerHTML = defs.map(([key, label]) => `
+          <button type="button" class="queue-chip ${state.queueFilter === key ? 'active' : ''}" data-queue-filter="${key}">
+            ${label} ${counts[key] || 0}
+          </button>
+        `).join('');
+        queueChipRow.querySelectorAll('[data-queue-filter]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            state.queueFilter = btn.getAttribute('data-queue-filter') || 'all';
+            renderQueueChips(state.currentSites, h3Cell);
+            await renderHexSites(state.currentSites, h3Cell, { skipAutoSite: false });
+          });
+        });
+      }
+
+      async function renderHexSites(allSites, h3Cell, opts = {}) {
+        const filteredSites = state.queueFilter === 'all'
+          ? allSites
+          : allSites.filter(site => workQueueInfo(site).bucket === state.queueFilter);
+
+        listBody.innerHTML = '';
+        if (siteCards) siteCards.innerHTML = '';
+
+        if (listMeta) {
+          const scopeLabel = state.zip && state.zip !== '__all__' ? `ZIP ${state.zip}` : 'All ZIPs';
+          const filterLabel = state.queueFilter === 'all' ? 'all queues' : humanizeLabel(state.queueFilter);
+          listMeta.textContent = `${filteredSites.length} addresses in hex ${h3Cell.slice(0, 8)}… (${scopeLabel}) • ${filterLabel} • sorted by route score.`;
+        }
+
+        for (const site of filteredSites) {
+          const statusText = (site.operator_status && site.operator_status.status) ? humanizeLabel(site.operator_status.status) : 'Unworked';
+          const queue = workQueueInfo(site);
+
+          const tr = document.createElement('tr');
+          tr.dataset.siteId = site.site_id;
+          tr.innerHTML = `
+            <td>${site.address}<div class="meta">${queue.label}${queue.reason_label ? ` • ${queue.reason_label}` : ''}: ${queue.action}</div></td>
+            <td>${humanizeLabel(site.primary_product)}</td>
+            <td>${site.sales_route_score.toFixed(1)}</td>
+            <td>${statusText}</td>
+            <td>${usd.format(site.annual_savings_usd)}</td>
+          `;
+          tr.addEventListener('click', () => loadSite(site.site_id));
+          listBody.appendChild(tr);
+
+          if (siteCards) {
+            const card = document.createElement('button');
+            card.className = 'site-card';
+            card.dataset.siteId = site.site_id;
+            card.innerHTML = `
+              <div class="site-card-title">${site.address}</div>
+              <div class="site-card-tags">
+                <span class="pill">${humanizeLabel(site.primary_product)}</span>
+                <span class="pill">${queue.label}</span>
+                ${queue.reason_label ? `<span class="pill">${queue.reason_label}</span>` : ''}
+                <span class="pill">${statusText}</span>
+              </div>
+              <div class="site-card-meta">
+                <span class="site-card-metric">Route ${site.sales_route_score.toFixed(1)}</span>
+                <span class="site-card-metric">${usd.format(site.annual_savings_usd)}</span>
+              </div>
+            `;
+            card.addEventListener('click', () => loadSite(site.site_id));
+            siteCards.appendChild(card);
+          }
+        }
+
+        if (filteredSites.length > 0) {
+          if (!opts.skipAutoSite) {
+            await loadSite(filteredSites[0].site_id);
+          }
+        } else {
+          detailCard.classList.add('muted');
+          detailCard.textContent = 'No leads match this queue filter in the selected hex.';
+        }
+      }
+
+      function updateChatScope() {
+        if (!chatScope) return;
+        const zipLabel = state.zip && state.zip !== '__all__' ? state.zip : 'all ZIPs';
+        const hexLabel = state.selectedHex ? ` · hex ${state.selectedHex.slice(0, 8)}…` : '';
+        const siteLabel = state.selectedSiteId ? ` · site ${state.selectedSiteId}` : '';
+        const scopeText = `Scope: ${zipLabel}${hexLabel}${siteLabel}`;
+        chatScope.textContent = scopeText;
+        if (chatLauncher) {
+          if (isMobileLikeLayout()) {
+            chatLauncher.textContent = 'Chow';
+          } else {
+            const launcherScope = state.selectedSiteId ? state.selectedSiteId : (state.zip && state.zip !== '__all__' ? state.zip : 'all');
+            chatLauncher.textContent = `Chow · ${launcherScope}`;
+          }
+        }
+      }
+
+      function isMobileLikeLayout() {
+        return window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`).matches;
+      }
+
+      function updateTopbarHeight() {
+        const topH = topbarEl?.offsetHeight || 58;
+        const tabsH = isMobileLikeLayout() ? (tabsEl?.offsetHeight || 52) : 0;
+        document.documentElement.style.setProperty('--topbar-h', `${topH}px`);
+        document.documentElement.style.setProperty('--tabs-h', `${tabsH}px`);
+      }
+
+      function setMobileView(view) {
+        if (view === 'list') {
+          document.body.classList.remove('mobile-map');
+          document.body.classList.add('mobile-list');
+          tabMapBtn.classList.remove('active');
+          tabListBtn.classList.add('active');
+          return;
+        }
+
+        document.body.classList.remove('chat-open');
+        document.body.classList.remove('mobile-list');
+        document.body.classList.add('mobile-map');
+        tabMapBtn.classList.add('active');
+        tabListBtn.classList.remove('active');
+        if (state.map) {
+          setTimeout(() => {
+            state.map.resize();
+            if (state.selectedHex) {
+              if (state.userSelectedHex || isMobileLikeLayout()) fitToHex(state.selectedHex);
+              else fitToCells(state.cells);
+            } else {
+              fitToCells(state.cells);
+            }
+          }, 120);
+        }
+      }
+
+      async function api(path, options = undefined) {
+        const r = await fetch(path, options);
+        if (!r.ok) {
+          const txt = await r.text();
+          throw new Error(`${r.status} ${txt}`);
+        }
+        return r.json();
+      }
+
+      async function loadPilotScope() {
+        const scope = await api(`${API_BASE}/pilot-scope`).catch(() => null);
+        state.pilotScope = scope;
+        const pilotLabel = scope && scope.label ? scope.label : 'current pilot';
+        const pilotSummary = scope && scope.summary ? scope.summary : '';
+        if (workflowGuide) {
+          workflowGuide.textContent = `DemandGrid auto-loads the best hex and first lead for you. This pilot is currently focused on ${pilotLabel}${pilotSummary ? `: ${pilotSummary}` : ''} Stay inside the current pilot ZIP unless you intentionally want the next pilot territory. Start with the task runner, use the opener, make contact, then log the real outcome.`;
+        }
+        if (chatInput) {
+          const exampleZip = scope && scope.chat_example_zip ? scope.chat_example_zip : 'current pilot ZIP';
+          chatInput.placeholder = `Ask: top hot solar leads in ${exampleZip}`;
+        }
+      }
+
+      function humanizeLabel(value) {
+        if (!value && value !== 0) return '';
+        return String(value)
+          .replaceAll('_', ' ')
+          .replace(/\b\w/g, ch => ch.toUpperCase());
+      }
+
+      function renderList(items) {
+        if (!Array.isArray(items) || items.length === 0) return '<div class="muted">None loaded.</div>';
+        return `<ul class="playbook-list">${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+      }
+
+      function summarizeEvidence(evidence) {
+        if (!Array.isArray(evidence)) return '';
+        const labels = [];
+        for (const item of evidence) {
+          const source = String(item && item.source ? item.source : '');
+          const quality = String(item && item.quality ? item.quality : '');
+          if (!source.startsWith('trigger_')) continue;
+          const lane = humanizeLabel(source.replace('trigger_', ''));
+          if (quality === 'verified') labels.push(`${lane} verified`);
+          else if (quality === 'proxy') labels.push(`${lane} proxy loaded`);
+        }
+        return [...new Set(labels)].slice(0, 3).join(' • ');
+      }
+
+      function riskFlagGuidance(flag) {
+        const mapping = {
+          recent_permit_activity: 'Recent permit activity is loaded. Confirm what work already happened before pitching.',
+          requires_site_survey: 'Treat this as screening-grade until roof, equipment, or utility details are verified.',
+          proxy_only_readiness: 'This lane is still proxy-ranked, so confirm fit before pushing hard.',
+          multi_address_merged: 'Verify the exact property first because the address may be merged or messy.',
+          flood_exposure_high: 'If they mention water issues, keep the conversation tied to protection or restoration.',
+          outage_exposure_high: 'Ask outage and backup-power questions early before pitching battery.',
+          high_priority_lead: 'Move quickly. This is already ranking as a high-priority opportunity.',
+        };
+        return mapping[flag] || `${humanizeLabel(flag)} needs review before you push the offer.`;
+      }
+
+      function buildSitePlaybook(site, outreachBundle) {
+        const investigation = outreachBundle && outreachBundle.investigation ? outreachBundle.investigation : {};
+        const outreach = outreachBundle && outreachBundle.outreach ? outreachBundle.outreach : {};
+        const messageAngles = Array.isArray(outreach.message_angles) ? outreach.message_angles.filter(Boolean) : [];
+        const reviewFlags = Array.isArray(outreach.review_flags) ? outreach.review_flags : [];
+        const complianceFlags = Array.isArray(outreach.compliance_flags) ? outreach.compliance_flags : [];
+        const evidence = Array.isArray(investigation.evidence) ? investigation.evidence : [];
+        const channel = outreach.recommended_channel ? humanizeLabel(outreach.recommended_channel) : 'Direct outreach';
+        const opener = site.recommended_pitch || messageAngles[0] || site.operator_pitch_angle || 'Lead with the best-fit product and confirm timing.';
+        const whyItMatters = site.why_now_summary || messageAngles[0] || 'This address is worth a first conversation based on current fit and economics.';
+        const nextStep = outreach.cta || site.operator_action_summary || 'Make contact and move this lead to the next workflow stage.';
+        const verify = [];
+
+        if (site.primary_product_trigger_gap) verify.push(site.primary_product_trigger_gap);
+        if (site.requires_site_survey) {
+          verify.push('Inputs are still screening-grade. Verify roof, utility, or equipment specifics before quoting.');
+        }
+        if (site.primary_product_readiness && site.primary_product_readiness !== 'ready') {
+          verify.push(`Current readiness is ${humanizeLabel(site.primary_product_readiness)}.`);
+        }
+        for (const flag of [...reviewFlags, ...complianceFlags]) {
+          verify.push(riskFlagGuidance(flag));
+        }
+        if (verify.length === 0) {
+          verify.push('Confirm homeowner interest, timing, and property fit, then move directly to inspection or quote.');
+        }
+
+        const proof = [];
+        proof.push(whyItMatters);
+        if (site.annual_savings_usd > 0) {
+          proof.push(`Modeled savings are about ${usd.format(site.annual_savings_usd)}/yr.`);
+        }
+        if (site.operator_lane) {
+          proof.push(`Best lane right now is ${humanizeLabel(site.operator_lane)}.`);
+        }
+        const evidenceSummary = summarizeEvidence(evidence);
+        if (evidenceSummary) {
+          proof.push(`Evidence loaded: ${evidenceSummary}.`);
+        }
+
+        return {
+          title: `${humanizeLabel(site.primary_product)} playbook`,
+          subtitle: `Start with ${channel}. Treat this as a ${humanizeLabel(site.lead_temperature)} ${humanizeLabel(site.operator_lane || site.primary_product)} lead.`,
+          opener,
+          whyItMatters,
+          nextStep,
+          verify: [...new Set(verify)].slice(0, 4),
+          proof: [...new Set(proof)].slice(0, 4),
+        };
+      }
+
+      function renderOutcomeScopeSummary(scope, fallbackLabel) {
+        if (!scope || !scope.outcome_count) {
+          return `<li>${fallbackLabel}: no logged outcomes yet.</li>`;
+        }
+        const profit = scope.profit_total_usd ? usd.format(scope.profit_total_usd) : 'n/a';
+        return `<li>${humanizeLabel(scope.label || fallbackLabel)}: ${scope.outcome_count} outcomes, ${scope.won_count} wins, ${scope.win_rate_pct.toFixed(1)}% win rate, ${profit} total profit.</li>`;
+      }
+
+      function formatTimestamp(value) {
+        if (!value) return 'n/a';
+        const d = new Date(value);
+        if (Number.isNaN(d.getTime())) return String(value);
+        return d.toLocaleString();
+      }
+
+      function renderOperatorMetaList(items) {
+        if (!Array.isArray(items) || items.length === 0) return '<div class="muted">Nothing logged yet.</div>';
+        return `<ul class="operator-meta-list">${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+      }
+
+      function buildContactSummary(contact, contactability) {
+        const source = contact || contactability || {};
+        const methods = [];
+        if (source.primary_phone) methods.push(`Phone: ${source.primary_phone}`);
+        if (source.primary_email) methods.push(`Email: ${source.primary_email}`);
+        if (source.website_url) methods.push(`Website: ${source.website_url}`);
+        if (source.contact_form_url) methods.push(`Contact form: ${source.contact_form_url}`);
+        if (source.mailing_address) methods.push(`Mail: ${source.mailing_address}`);
+        if (!methods.length && Array.isArray(source.contact_paths)) {
+          for (const path of source.contact_paths.slice(0, 4)) {
+            methods.push(`${humanizeLabel(path.type || 'path')}: ${path.value}`);
+          }
+        }
+        return {
+          name: source.display_name || 'Unresolved owner',
+          role: humanizeLabel(source.role || 'owner operator proxy'),
+          preferredChannel: humanizeLabel(source.preferred_channel || 'mail'),
+          contactability: source.contactability_label ? `${humanizeLabel(source.contactability_label)} (${source.contactability_score ?? 'n/a'})` : 'Unknown',
+          methods,
+          identitySources: Array.isArray(source.identity_sources) ? source.identity_sources.map(humanizeLabel) : [],
+        };
+      }
+
+      function buildTimelineSummary(interactions) {
+        if (!Array.isArray(interactions) || interactions.length === 0) {
+          return {
+            headline: 'No touches logged yet',
+            items: ['This lead has no interaction history yet. First touch should be logged immediately after contact.'],
+          };
+        }
+        const latest = interactions[0];
+        const headline = `${humanizeLabel(latest.result_status || latest.interaction_type || 'interaction')} on ${formatTimestamp(latest.started_at)}`;
+        const items = interactions.slice(0, 4).map(item => {
+          const parts = [
+            `${humanizeLabel(item.interaction_type || 'touch')} via ${humanizeLabel(item.channel || 'unknown')}`,
+            humanizeLabel(item.result_status || 'unknown'),
+          ];
+          if (item.objection) parts.push(`objection: ${item.objection}`);
+          if (item.next_follow_up_at) parts.push(`follow up ${formatTimestamp(item.next_follow_up_at)}`);
+          return parts.join(' • ');
+        });
+        return { headline, items };
+      }
+
+      async function copyToClipboard(text, label) {
+        try {
+          await navigator.clipboard.writeText(String(text || ''));
+          setStatus(`Copied ${label}.`);
+        } catch (err) {
+          setStatus(`Copy failed: ${err.message}`);
+        }
+      }
+
+      function formatIntentLabel(intent) {
+        if (!intent) return '';
+        return String(intent).replaceAll('_', ' ');
+      }
+
+      function buildChatTrace(payload) {
+        if (!payload || typeof payload !== 'object') return '';
+        const bits = [];
+
+        if (payload.intent) bits.push(`intent: ${formatIntentLabel(payload.intent)}`);
+
+        if (Array.isArray(payload.tool_calls) && payload.tool_calls.length > 0) {
+          const toolNames = payload.tool_calls.slice(0, 3).map(t => t.tool).filter(Boolean);
+          if (toolNames.length > 0) bits.push(`tools: ${toolNames.join(', ')}`);
+        }
+
+        const scope = payload.scope || {};
+        if (scope.zip || scope.h3_cell || scope.site_id) {
+          const scopeBits = [];
+          if (scope.zip) scopeBits.push(`zip ${scope.zip}`);
+          if (scope.h3_cell) scopeBits.push(`hex ${String(scope.h3_cell).slice(0, 8)}…`);
+          if (scope.site_id) scopeBits.push(`site ${scope.site_id}`);
+          bits.push(`scope: ${scopeBits.join(' · ')}`);
+        }
+
+        if (Array.isArray(payload.cards) && payload.cards.length > 0) {
+          const confidenceRows = payload.cards.filter(card => typeof card.confidence === 'number');
+          if (confidenceRows.length > 0) {
+            const avg = confidenceRows.reduce((acc, c) => acc + c.confidence, 0) / confidenceRows.length;
+            bits.push(`confidence: ${(avg * 100).toFixed(0)}%`);
+          }
+        }
+
+        return bits.join(' • ');
+      }
+
+      function appendChat(role, text, payload = null) {
+        if (!chatLog) return;
+        const msg = document.createElement('div');
+        msg.className = 'chat-msg';
+
+        const who = role === 'user' ? 'You' : 'Chow';
+        const whoEl = document.createElement('strong');
+        whoEl.textContent = `${who}:`;
+        msg.appendChild(whoEl);
+        const textEl = document.createElement('span');
+        textEl.textContent = ` ${text}`;
+        msg.appendChild(textEl);
+
+        if (payload && Array.isArray(payload.cards) && payload.cards.length > 0) {
+          const list = document.createElement('ul');
+          list.className = 'chat-cards';
+          for (const card of payload.cards.slice(0, 4)) {
+            const li = document.createElement('li');
+            if (card.site_id) {
+              const link = document.createElement('a');
+              link.href = '#';
+              link.setAttribute('data-site-id', card.site_id);
+              link.textContent = card.address || card.site_id;
+              li.appendChild(link);
+            } else if (card.h3_cell) {
+              const link = document.createElement('a');
+              link.href = '#';
+              link.setAttribute('data-h3-cell', card.h3_cell);
+              link.textContent = card.h3_cell;
+              li.appendChild(link);
+            } else {
+              li.textContent = JSON.stringify(card);
+            }
+            list.appendChild(li);
+          }
+          msg.appendChild(list);
+
+          list.addEventListener('click', async evt => {
+            const target = evt.target;
+            if (!target || target.tagName !== 'A') return;
+            evt.preventDefault();
+            const siteId = target.getAttribute('data-site-id');
+            const h3Cell = target.getAttribute('data-h3-cell');
+            try {
+              if (siteId) {
+                await loadSite(siteId);
+                setStatus(`Loaded site ${siteId} from Chow.`);
+              } else if (h3Cell) {
+                await loadHexSites(h3Cell);
+                setStatus(`Loaded hex ${h3Cell} from Chow.`);
+              }
+            } catch (err) {
+              setStatus(`Chow action failed: ${err.message}`);
+            }
+          });
+        }
+
+        if (role !== 'user' && payload) {
+          const traceText = buildChatTrace(payload);
+          if (traceText) {
+            const trace = document.createElement('div');
+            trace.className = 'chat-trace';
+            trace.textContent = traceText;
+            msg.appendChild(trace);
+          }
+
+          if (Array.isArray(payload.suggested_actions) && payload.suggested_actions.length > 0) {
+            const suggested = document.createElement('div');
+            suggested.className = 'chat-suggested';
+            for (const action of payload.suggested_actions.slice(0, 3)) {
+              const btn = document.createElement('button');
+              btn.type = 'button';
+              btn.textContent = action;
+              btn.addEventListener('click', () => sendChatMessage(action));
+              suggested.appendChild(btn);
+            }
+            msg.appendChild(suggested);
+          }
+        }
+
+        chatLog.appendChild(msg);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+
+      async function sendChatMessage(raw) {
+        const message = String(raw || '').trim();
+        if (!message) return;
+
+        appendChat('user', message);
+        chatInput.value = '';
+
+        try {
+          const payload = {
+            message,
+            zip: state.zip && state.zip !== '__all__' ? state.zip : null,
+            h3_cell: state.selectedHex || null,
+            site_id: state.selectedSiteId || null,
+            max_results: 8,
+          };
+          const res = await api(`${API_BASE}/agent/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          appendChat('assistant', res.reply || 'No response', res);
+          if (Array.isArray(res.cards) && res.cards.length > 0 && res.cards[0].site_id && !state.selectedSiteId) {
+            await loadSite(res.cards[0].site_id);
+          }
+        } catch (err) {
+          appendChat('assistant', `Error: ${err.message}`);
+        }
+      }
+
+      async function claimTaskForSite(siteId, agentId = 'chow') {
+        const taskId = `task_${siteId}`;
+        const res = await api(`${API_BASE}/agent/tasks/${taskId}/claim`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ agent_id: agentId, note: 'claimed_from_dashboard' }),
+        });
+        return res && res.task ? res.task : null;
+      }
+
+      async function claimNextChowTask() {
+        const query = new URLSearchParams();
+        if (state.zip && state.zip !== '__all__') query.set('zip', state.zip);
+        if (state.selectedHex) query.set('h3_cell', state.selectedHex);
+        query.set('agent_id', 'chow');
+        const res = await api(`${API_BASE}/agent/tasks/next?${query.toString()}`);
+        const task = res && res.task ? res.task : null;
+        if (!task || !task.task_id) throw new Error('No Chow task available in this scope');
+        const claimed = await claimTaskForSite(task.site_id || (task.site || {}).site_id || state.selectedSiteId || '');
+        const targetSiteId = (claimed && (claimed.site_id || (claimed.site || {}).site_id)) || (task.site || {}).site_id;
+        if (targetSiteId) await loadSite(targetSiteId);
+        return claimed || task;
+      }
+
+      async function queueChowCall(siteId) {
+        return api(`${API_BASE}/agents/calling/sessions`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            site_id: siteId,
+            preferred_channels: ['phone'],
+            execution_mode: 'agent_assist',
+            strict_guardrails: true,
+            call_direction: 'outbound',
+          }),
+        });
+      }
+
+      async function queueChowEmail(siteId) {
+        return api(`${API_BASE}/agents/outreach/jobs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            site_id: siteId,
+            requested_channel: 'email',
+            execution_mode: 'agent_assist',
+            strict_guardrails: true,
+            dry_run: true,
+          }),
+        });
+      }
+
+      async function createChowSupervisedRun(siteId) {
+        return api(`${API_BASE}/orchestrator/runs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            site_id: siteId,
+            approval_required: true,
+            auto_execute: false,
+            execution_mode: 'agent_assist',
+            strict_guardrails: true,
+            call_direction: 'outbound',
+          }),
+        });
+      }
+
+      async function approveChowAction(actionId, note = 'approved_from_dashboard') {
+        return api(`${API_BASE}/orchestrator/actions/${actionId}/approve`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            approver: 'dashboard_manager',
+            actor_role: 'manager',
+            note,
+          }),
+        });
+      }
+
+      async function getChowExecution(siteId) {
+        return api(`${API_BASE}/agents/site/${siteId}/execution`);
+      }
+
+      async function logChowCallEvent(sessionId, eventType, detail) {
+        return api(`${API_BASE}/agents/calling/events`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: sessionId,
+            event_type: eventType,
+            detail,
+          }),
+        });
+      }
+
+      async function logChowEmailEvent(jobId, eventType, detail) {
+        return api(`${API_BASE}/agents/outreach/events`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            job_id: jobId,
+            event_type: eventType,
+            detail,
+          }),
+        });
+      }
+
+      async function dispatchChowCall(sessionId, note = 'dispatch_from_dashboard') {
+        return api(`${API_BASE}/agents/calling/sessions/${sessionId}/dispatch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            note,
+          }),
+        });
+      }
+
+      async function dispatchChowEmail(jobId, { note = 'dispatch_from_dashboard', promoteToLive = false } = {}) {
+        return api(`${API_BASE}/agents/outreach/jobs/${jobId}/dispatch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            note,
+            promote_to_live: !!promoteToLive,
+          }),
+        });
+      }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#39;');
+      }
+
+      function detailDefaultText() {
+        return 'Click a row to load recommendation card.';
+      }
+
+      function updateDetailModeButtons() {
+        if (detailModeSiteBtn) detailModeSiteBtn.classList.toggle('active', state.detailMode === 'site');
+        if (detailModeCraigslistBtn) detailModeCraigslistBtn.classList.toggle('active', state.detailMode === 'craigslist');
+      }
+
+      async function getCraigslistQueue(status = null, limit = 20) {
+        const params = new URLSearchParams();
+        if (status && status !== 'all') params.set('status', status);
+        params.set('limit', String(limit));
+        return api(`${API_BASE}/signals/jobs/craigslist/outreach-queue?${params.toString()}`);
+      }
+
+      async function getCraigslistQueueRecord(queueId) {
+        return api(`${API_BASE}/signals/jobs/craigslist/outreach-queue/${encodeURIComponent(queueId)}`);
+      }
+
+      async function reviewCraigslistQueue(queueId, payload = {}) {
+        return api(`${API_BASE}/signals/jobs/craigslist/outreach-queue/${encodeURIComponent(queueId)}/review`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            ...payload,
+          }),
+        });
+      }
+
+      async function dispatchCraigslistQueue(queueId, { note = 'dispatch_from_dashboard', promoteToLive = true } = {}) {
+        return api(`${API_BASE}/signals/jobs/craigslist/outreach-queue/${encodeURIComponent(queueId)}/dispatch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            note,
+            promote_to_live: !!promoteToLive,
+          }),
+        });
+      }
+
+      async function importInboxMessages(payload = {}) {
+        return api(`${API_BASE}/inbox/import`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            source: 'dashboard_manual_import',
+            mark_reply_received: true,
+            ...payload,
+          }),
+        });
+      }
+
+      async function pollInbox(payload = {}) {
+        return api(`${API_BASE}/inbox/poll`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            limit: 10,
+            unseen_only: true,
+            dry_run: false,
+            ...payload,
+          }),
+        });
+      }
+
+      async function refreshCraigslistResearch(opportunityId, payload = {}) {
+        return api(`${API_BASE}/signals/jobs/craigslist/opportunity/${encodeURIComponent(opportunityId)}/research-refresh`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            actor_id: 'dashboard_manager',
+            actor_role: 'manager',
+            search_provider: 'auto',
+            text_provider: 'auto',
+            timeout_sec: 45,
+            max_fetch_pages: 3,
+            limit_per_query: 5,
+            ...payload,
+          }),
+        });
+      }
+
+      function linkHtml(url, label = null) {
+        if (!url) return '<span class="meta">n/a</span>';
+        const safeUrl = escapeHtml(url);
+        const safeLabel = escapeHtml(label || url);
+        return `<a href="${safeUrl}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
+      }
+
+      function renderCraigslistMetaList(items, empty = 'n/a') {
+        const rows = Array.isArray(items) ? items.filter(Boolean) : [];
+        if (!rows.length) return `<div class="meta">${escapeHtml(empty)}</div>`;
+        return `<ul class="playbook-list">${rows.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+      }
+
+      function renderInboxThreadMessages(thread) {
+        const messages = thread && Array.isArray(thread.messages) ? thread.messages.slice(-6) : [];
+        if (!messages.length) return '<div class="meta">No imported thread messages yet.</div>';
+        return messages.map(message => {
+          const direction = humanizeLabel(message.direction || 'message');
+          const fromEmail = message.from_email || 'unknown sender';
+          const occurredAt = message.occurred_at ? formatTimestamp(message.occurred_at) : 'unknown time';
+          const subject = message.subject || thread.subject || 'No subject';
+          const preview = message.body_preview || message.body_text || '(no preview)';
+          return `
+            <div class="operator-card" style="margin-bottom:8px;">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">${escapeHtml(direction)} · ${escapeHtml(fromEmail)}</div>
+                  <div class="meta">${escapeHtml(occurredAt)} · ${escapeHtml(subject)}</div>
+                </div>
+              </div>
+              <div class="operator-copy">${escapeHtml(preview)}</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      async function renderCraigslistLane({ queueId = null, forceRefresh = false } = {}) {
+        state.detailMode = 'craigslist';
+        updateDetailModeButtons();
+        detailCard.classList.remove('muted');
+        detailCard.innerHTML = '<div class="meta">Loading Craigslist review lane...</div>';
+
+        try {
+          const queuePayload = await getCraigslistQueue(state.craigslistQueueStatus, 20);
+          const items = Array.isArray(queuePayload && queuePayload.items) ? queuePayload.items : [];
+          state.craigslistQueueItems = items;
+          if (queueId) state.selectedCraigslistQueueId = queueId;
+          if (!state.selectedCraigslistQueueId || !items.some(item => item.queue_id === state.selectedCraigslistQueueId)) {
+            state.selectedCraigslistQueueId = items.length ? items[0].queue_id : null;
+          }
+
+          let selectedRecord = null;
+          let selectedThread = null;
+          let selectedMailbox = null;
+          if (state.selectedCraigslistQueueId) {
+            const recordPayload = await getCraigslistQueueRecord(state.selectedCraigslistQueueId);
+            selectedRecord = recordPayload && recordPayload.record ? recordPayload.record : null;
+            selectedThread = recordPayload && recordPayload.thread ? recordPayload.thread : null;
+            selectedMailbox = recordPayload && recordPayload.mailbox ? recordPayload.mailbox : null;
+          }
+
+          const selected = selectedRecord || null;
+          const queueItemsHtml = items.length
+            ? items.map(item => {
+                const recipient = item.recipient_preview || {};
+                const researchTone = item.research_feedback ? 'suppressed' : (item.research_identity_trustworthy ? 'strong match' : (item.research_trustworthy ? 'contact only' : 'needs review'));
+                const draftStatus = item.review && item.review.draft_status ? humanizeLabel(item.review.draft_status) : 'Needs review';
+                const dispatchState = item.dispatch && item.dispatch.status ? humanizeLabel(item.dispatch.status) : null;
+                const inbox = item.inbox || {};
+                return `
+                  <div class="craigslist-queue-item ${item.queue_id === state.selectedCraigslistQueueId ? 'active' : ''}" data-queue-id="${escapeHtml(item.queue_id)}">
+                    <div class="craigslist-queue-title">${escapeHtml((item.opportunity || {}).title || item.queue_id)}</div>
+                    <div class="craigslist-queue-meta">${escapeHtml(((item.research_identity_trustworthy ? ((item.research || {}).resolved_company_name) : ((item.opportunity || {}).company_name_guess)) || 'Unknown company'))}</div>
+                    <div class="craigslist-badge-row">
+                      <span class="pill">${escapeHtml(humanizeLabel(item.status || 'queued_review'))}</span>
+                      <span class="pill">${escapeHtml(draftStatus)}</span>
+                      <span class="pill">${escapeHtml(researchTone)}</span>
+                      ${dispatchState ? `<span class="pill">${escapeHtml(dispatchState)}</span>` : ''}
+                      ${inbox.has_reply ? '<span class="pill">Reply received</span>' : ''}
+                    </div>
+                    <div class="craigslist-queue-meta">Recipient: ${escapeHtml(recipient.selected_email || 'none')} ${recipient.source ? `• ${escapeHtml(humanizeLabel(recipient.source))}` : ''}</div>
+                  </div>
+                `;
+              }).join('')
+            : '<div class="meta">No Craigslist queue records for this filter yet.</div>';
+
+          if (!selected) {
+            detailCard.innerHTML = `
+              <div class="craigslist-toolbar">
+                <div>
+                  <strong>Craigslist Queue Review</strong>
+                  <div class="meta">Review enriched Chow drafts, contact paths, and research quality before sending.</div>
+                </div>
+                <div class="playbook-actions">
+                  <select id="craigslist-status-filter">
+                    <option value="all"${state.craigslistQueueStatus === 'all' ? ' selected' : ''}>All</option>
+                    <option value="queued_review"${state.craigslistQueueStatus === 'queued_review' ? ' selected' : ''}>Queued review</option>
+                    <option value="sent"${state.craigslistQueueStatus === 'sent' ? ' selected' : ''}>Sent</option>
+                    <option value="replied"${state.craigslistQueueStatus === 'replied' ? ' selected' : ''}>Replied</option>
+                  </select>
+                  <button id="craigslist-refresh-btn" type="button">Refresh</button>
+                </div>
+              </div>
+              <div class="craigslist-queue-list">${queueItemsHtml}</div>
+            `;
+          } else {
+            const opportunity = selected.opportunity || {};
+            const research = selected.research || {};
+            const review = selected.review || {};
+            const drafts = selected.drafts || {};
+            const generatedDrafts = selected.generated_drafts || {};
+            const recipient = selected.recipient_preview || {};
+            const feedback = selected.research_feedback || null;
+            const dispatch = selected.dispatch || {};
+            const inbox = selected.inbox || {};
+            const mailbox = selectedMailbox || {};
+            const thread = selectedThread || null;
+            const eventLog = Array.isArray(selected.event_log) ? selected.event_log : [];
+            const latestEvent = eventLog.length ? eventLog[eventLog.length - 1] : null;
+            const researchConfidence = research.research_confidence == null ? 'n/a' : String(research.research_confidence);
+            const companyDisplay = selected.research_identity_trustworthy ? (research.resolved_company_name || opportunity.company_name_guess) : (opportunity.company_name_guess || research.resolved_company_name || 'Unknown company');
+            const replyLogged = !!(inbox.has_reply || eventLog.some(item => String(item.event_type || '') === 'reply_received'));
+            const dispatchDisabled = !recipient.selected_email || ['sent', 'replied'].includes(String(selected.status || ''));
+            const replySubjectDefault = thread && thread.subject ? `Re: ${thread.subject}` : `Re: ${drafts.email_subject || opportunity.title || 'Chow outreach'}`;
+            const mailboxReady = !!mailbox.ready;
+            detailCard.innerHTML = `
+              <div class="craigslist-toolbar">
+                <div>
+                  <strong>Craigslist Queue Review</strong>
+                  <div class="meta">Review enriched Chow drafts, contact paths, and research quality before sending.</div>
+                </div>
+                <div class="playbook-actions">
+                  <select id="craigslist-status-filter">
+                    <option value="all"${state.craigslistQueueStatus === 'all' ? ' selected' : ''}>All</option>
+                    <option value="queued_review"${state.craigslistQueueStatus === 'queued_review' ? ' selected' : ''}>Queued review</option>
+                    <option value="sent"${state.craigslistQueueStatus === 'sent' ? ' selected' : ''}>Sent</option>
+                    <option value="replied"${state.craigslistQueueStatus === 'replied' ? ' selected' : ''}>Replied</option>
+                  </select>
+                  <button id="craigslist-refresh-btn" type="button">Refresh</button>
+                </div>
+              </div>
+
+              <div class="craigslist-queue-list">${queueItemsHtml}</div>
+
+              <div class="craigslist-badge-row">
+                <span class="pill">${escapeHtml(humanizeLabel(selected.status || 'queued_review'))}</span>
+                <span class="pill">${escapeHtml(humanizeLabel(review.draft_status || 'needs_review'))}</span>
+                <span class="pill">Research ${escapeHtml(feedback ? 'suppressed' : (selected.research_identity_trustworthy ? 'company match' : (selected.research_trustworthy ? 'contact fallback only' : 'needs review')))}</span>
+                <span class="pill">Recipient ${escapeHtml(humanizeLabel(recipient.source || 'none'))}</span>
+                ${dispatch.status ? `<span class="pill">${escapeHtml(humanizeLabel(dispatch.status))}</span>` : ''}
+                ${replyLogged ? '<span class="pill">Reply received</span>' : ''}
+              </div>
+
+              ${feedback ? `<div class="operator-card" style="margin-bottom:10px;"><div class="operator-card-head"><div><div class="operator-card-title">Suppression Memory</div><div class="meta">Chow will avoid this research host on future enrich runs.</div></div><span class="pill">${escapeHtml(humanizeLabel(feedback.reason || 'suppressed'))}</span></div><div class="operator-copy"><strong>Suppressed host:</strong> ${escapeHtml(feedback.resolved_host || 'n/a')}</div><div class="operator-copy"><strong>Website:</strong> ${feedback.website_url ? linkHtml(feedback.website_url) : '<span class="meta">n/a</span>'}</div><div class="operator-copy"><strong>Updated:</strong> ${escapeHtml(feedback.updated_at ? formatTimestamp(feedback.updated_at) : 'unknown')}</div></div>` : ''}
+
+              <div class="playbook-card">
+                <div class="playbook-header">
+                  <div>
+                    <div class="playbook-title">${escapeHtml(opportunity.title || selected.queue_id)}</div>
+                    <div class="playbook-subtitle">${escapeHtml(companyDisplay)}</div>
+                  </div>
+                  <div class="playbook-actions">
+                    ${opportunity.posting_url ? `<a href="${escapeHtml(opportunity.posting_url)}" target="_blank" rel="noreferrer"><button type="button">Open post</button></a>` : ''}
+                    ${research.website_url ? `<a href="${escapeHtml(research.website_url)}" target="_blank" rel="noreferrer"><button type="button">Open website</button></a>` : ''}
+                    <button id="craigslist-rerun-research-btn" type="button">Rerun Chow research</button>
+                  </div>
+                </div>
+
+                <div class="craigslist-review-grid">
+                  <div class="playbook-block">
+                    <span class="playbook-label">Company Resolution</span>
+                    <div class="playbook-copy"><strong>Original hint:</strong> ${escapeHtml(opportunity.company_name_guess || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Resolved company:</strong> ${escapeHtml(research.resolved_company_name || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Website:</strong> ${linkHtml(research.website_url)}</div>
+                    <div class="playbook-copy"><strong>Contact page:</strong> ${linkHtml(research.contact_page_url)}</div>
+                    <div class="playbook-copy"><strong>About page:</strong> ${linkHtml(research.about_page_url)}</div>
+                    <div class="playbook-copy"><strong>Research confidence:</strong> ${escapeHtml(researchConfidence)}</div>
+                    <div class="playbook-copy"><strong>Research generated:</strong> ${escapeHtml(research.research_generated_at ? formatTimestamp(research.research_generated_at) : 'unknown')}</div>
+                  </div>
+
+                  <div class="playbook-block">
+                    <span class="playbook-label">Contact Path</span>
+                    <div class="playbook-copy"><strong>Chosen recipient:</strong> ${escapeHtml(recipient.selected_email || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Recipient source:</strong> ${escapeHtml(humanizeLabel(recipient.source || 'none'))}</div>
+                    <div class="playbook-copy"><strong>Opportunity hint emails:</strong> ${escapeHtml((recipient.hint_emails || []).join(', ') || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Research emails:</strong> ${escapeHtml((recipient.research_emails || []).join(', ') || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Phones:</strong> ${escapeHtml((research.phones || []).join(', ') || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Contact form:</strong> ${research.contact_forms && research.contact_forms.length ? linkHtml(research.contact_forms[0]) : '<span class="meta">n/a</span>'}</div>
+                  </div>
+
+                  <div class="playbook-block">
+                    <span class="playbook-label">Chow Reasoning</span>
+                    <div class="playbook-copy"><strong>Role context:</strong> ${escapeHtml(research.role_context_summary || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Likely pain:</strong> ${escapeHtml(research.likely_operational_pain || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>First automation win:</strong> ${escapeHtml(research.likely_first_automation_win || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Business summary:</strong> ${escapeHtml(research.business_summary || 'n/a')}</div>
+                  </div>
+
+                  <div class="playbook-block">
+                    <span class="playbook-label">Review State</span>
+                    <div class="playbook-copy"><strong>Research quality:</strong> ${escapeHtml(humanizeLabel(review.research_quality || 'unscored'))}</div>
+                    <div class="playbook-copy"><strong>Company match:</strong> ${escapeHtml(humanizeLabel(review.company_match || 'unscored'))}</div>
+                    <div class="playbook-copy"><strong>Contact path:</strong> ${escapeHtml(humanizeLabel(review.contact_path_status || 'unscored'))}</div>
+                    <div class="playbook-copy"><strong>Draft status:</strong> ${escapeHtml(humanizeLabel(review.draft_status || 'needs_review'))}</div>
+                    <div class="playbook-copy"><strong>Last reviewed:</strong> ${escapeHtml(review.reviewed_at ? formatTimestamp(review.reviewed_at) : 'never')}</div>
+                  </div>
+
+                  <div class="playbook-block">
+                    <span class="playbook-label">Send / Reply State</span>
+                    <div class="playbook-copy"><strong>Dispatch:</strong> ${escapeHtml(humanizeLabel(dispatch.status || 'not_sent'))}</div>
+                    <div class="playbook-copy"><strong>Sent at:</strong> ${escapeHtml(selected.sent_at ? formatTimestamp(selected.sent_at) : 'not sent')}</div>
+                    <div class="playbook-copy"><strong>Provider id:</strong> ${escapeHtml(dispatch.provider_message_id || 'n/a')}</div>
+                    <div class="playbook-copy"><strong>Latest event:</strong> ${escapeHtml(latestEvent ? (latestEvent.detail || latestEvent.event_type || 'n/a') : 'No events logged yet')}</div>
+                    <div class="playbook-copy"><strong>Reply state:</strong> ${escapeHtml(replyLogged ? 'reply received' : 'no reply imported yet')}</div>
+                    <div class="playbook-copy"><strong>Thread id:</strong> ${escapeHtml(inbox.thread_id || 'none')}</div>
+                    <div class="playbook-copy"><strong>Last inbound:</strong> ${escapeHtml(inbox.last_inbound_at ? formatTimestamp(inbox.last_inbound_at) : 'none')}</div>
+                  </div>
+
+                  <div class="playbook-block">
+                    <span class="playbook-label">Inbox Thread</span>
+                    <div class="playbook-copy"><strong>Mailbox provider:</strong> ${escapeHtml(humanizeLabel(mailbox.provider || 'manual'))}</div>
+                    <div class="playbook-copy"><strong>Poll ready:</strong> ${escapeHtml(mailboxReady ? 'yes' : `no${Array.isArray(mailbox.missing_requirements) && mailbox.missing_requirements.length ? ` • missing ${mailbox.missing_requirements.join(', ')}` : ''}`)}</div>
+                    <div class="playbook-copy"><strong>Thread status:</strong> ${escapeHtml(humanizeLabel(inbox.status || 'not_connected'))}</div>
+                    <div class="playbook-copy"><strong>Messages:</strong> ${escapeHtml(String(inbox.message_count || 0))}</div>
+                    <div class="playbook-copy"><strong>Latest preview:</strong> ${escapeHtml(inbox.latest_message_preview || 'n/a')}</div>
+                    <div style="margin-top:8px;">${renderInboxThreadMessages(thread)}</div>
+                  </div>
+                </div>
+
+                <div class="craigslist-form-grid">
+                  <label>
+                    Research quality
+                    <select id="craigslist-review-quality">
+                      <option value="">Unscored</option>
+                      <option value="good"${review.research_quality === 'good' ? ' selected' : ''}>Good</option>
+                      <option value="mixed"${review.research_quality === 'mixed' ? ' selected' : ''}>Mixed</option>
+                      <option value="bad"${review.research_quality === 'bad' ? ' selected' : ''}>Bad</option>
+                    </select>
+                  </label>
+                  <label>
+                    Company match
+                    <select id="craigslist-company-match">
+                      <option value="">Unscored</option>
+                      <option value="confirmed"${review.company_match === 'confirmed' ? ' selected' : ''}>Confirmed</option>
+                      <option value="uncertain"${review.company_match === 'uncertain' ? ' selected' : ''}>Uncertain</option>
+                      <option value="wrong"${review.company_match === 'wrong' ? ' selected' : ''}>Wrong</option>
+                    </select>
+                  </label>
+                  <label>
+                    Contact path status
+                    <select id="craigslist-contact-path-status">
+                      <option value="">Unscored</option>
+                      <option value="good"${review.contact_path_status === 'good' ? ' selected' : ''}>Good</option>
+                      <option value="weak"${review.contact_path_status === 'weak' ? ' selected' : ''}>Weak</option>
+                      <option value="unusable"${review.contact_path_status === 'unusable' ? ' selected' : ''}>Unusable</option>
+                    </select>
+                  </label>
+                  <label>
+                    Draft status
+                    <select id="craigslist-draft-status">
+                      <option value="needs_review"${(review.draft_status || 'needs_review') === 'needs_review' ? ' selected' : ''}>Needs review</option>
+                      <option value="ready"${review.draft_status === 'ready' ? ' selected' : ''}>Ready</option>
+                      <option value="needs_edit"${review.draft_status === 'needs_edit' ? ' selected' : ''}>Needs edit</option>
+                      <option value="reject"${review.draft_status === 'reject' ? ' selected' : ''}>Reject</option>
+                    </select>
+                  </label>
+                  <label style="grid-column: 1 / -1;">
+                    Final recipient email
+                    <input id="craigslist-recipient-email" type="text" value="${escapeHtml(review.recipient_email || recipient.selected_email || '')}" placeholder="recipient@example.com" />
+                  </label>
+                </div>
+
+                <div class="craigslist-draft-grid">
+                  <label>
+                    Email subject
+                    <input id="craigslist-email-subject" type="text" value="${escapeHtml(drafts.email_subject || '')}" />
+                  </label>
+                  <label>
+                    Email body
+                    <textarea id="craigslist-email-body">${escapeHtml(drafts.email_body || '')}</textarea>
+                  </label>
+                  <label>
+                    Call opening
+                    <textarea id="craigslist-call-opening">${escapeHtml(drafts.call_opening || '')}</textarea>
+                  </label>
+                </div>
+
+                <div class="craigslist-draft-grid">
+                  <label>
+                    Reply from
+                    <input id="craigslist-reply-from" type="text" value="" placeholder="reply@company.com" />
+                  </label>
+                  <label>
+                    Reply subject
+                    <input id="craigslist-reply-subject" type="text" value="${escapeHtml(replySubjectDefault)}" />
+                  </label>
+                  <label>
+                    Reply body
+                    <textarea id="craigslist-reply-body" placeholder="Paste the reply Chow received here."></textarea>
+                  </label>
+                </div>
+
+                <div class="playbook-actions">
+                  <button id="craigslist-save-review-btn" type="button">Save review</button>
+                  <button id="craigslist-mark-ready-btn" type="button">Mark ready</button>
+                  <button id="craigslist-mark-needs-edit-btn" type="button">Needs edit</button>
+                  <button id="craigslist-mark-reject-btn" type="button">Reject</button>
+                  <button id="craigslist-reset-draft-btn" type="button">Reset to Chow draft</button>
+                  <button id="craigslist-copy-body-btn" type="button">Copy email body</button>
+                  <button id="craigslist-import-reply-btn" type="button">Import pasted reply</button>
+                  <button id="craigslist-poll-inbox-btn" type="button"${mailboxReady ? '' : ' disabled'}>Poll Chow inbox</button>
+                  <button id="craigslist-dispatch-btn" type="button"${dispatchDisabled ? ' disabled' : ''}>Dispatch Chow email</button>
+                </div>
+              </div>
+            `;
+
+            const filterEl = document.getElementById('craigslist-status-filter');
+            if (filterEl) {
+              filterEl.addEventListener('change', async () => {
+                state.craigslistQueueStatus = filterEl.value;
+                state.selectedCraigslistQueueId = null;
+                await renderCraigslistLane({ forceRefresh: true });
+              });
+            }
+            const refreshBtn = document.getElementById('craigslist-refresh-btn');
+            if (refreshBtn) refreshBtn.addEventListener('click', async () => renderCraigslistLane({ queueId: state.selectedCraigslistQueueId, forceRefresh: true }));
+
+            const subjectEl = document.getElementById('craigslist-email-subject');
+            const bodyEl = document.getElementById('craigslist-email-body');
+            const callEl = document.getElementById('craigslist-call-opening');
+            const recipientEl = document.getElementById('craigslist-recipient-email');
+            const qualityEl = document.getElementById('craigslist-review-quality');
+            const companyMatchEl = document.getElementById('craigslist-company-match');
+            const contactPathEl = document.getElementById('craigslist-contact-path-status');
+            const draftStatusEl = document.getElementById('craigslist-draft-status');
+            const replyFromEl = document.getElementById('craigslist-reply-from');
+            const replySubjectEl = document.getElementById('craigslist-reply-subject');
+            const replyBodyEl = document.getElementById('craigslist-reply-body');
+
+            const buildPayload = extra => ({
+              email_subject: subjectEl ? subjectEl.value : '',
+              email_body: bodyEl ? bodyEl.value : '',
+              call_opening: callEl ? callEl.value : '',
+              recipient_email: recipientEl ? recipientEl.value.trim() : '',
+              research_quality: qualityEl ? qualityEl.value : '',
+              company_match: companyMatchEl ? companyMatchEl.value : '',
+              contact_path_status: contactPathEl ? contactPathEl.value : '',
+              draft_status: draftStatusEl ? draftStatusEl.value : 'needs_review',
+              ...extra,
+            });
+
+            const rerunResearchBtn = document.getElementById('craigslist-rerun-research-btn');
+            if (rerunResearchBtn) {
+              rerunResearchBtn.addEventListener('click', async () => {
+                try {
+                  setStatus(`Refreshing Chow research for ${companyDisplay}...`);
+                  await refreshCraigslistResearch(opportunity.opportunity_id, { note: 'dashboard_rerun_research' });
+                  setStatus(`Refreshed Chow research for ${companyDisplay}.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Craigslist research refresh failed: ${err.message}`);
+                }
+              });
+            }
+
+            const saveBtn = document.getElementById('craigslist-save-review-btn');
+            if (saveBtn) {
+              saveBtn.addEventListener('click', async () => {
+                try {
+                  const res = await reviewCraigslistQueue(selected.queue_id, buildPayload({ note: 'dashboard_review_save' }));
+                  setStatus(`Saved Craigslist review for ${companyDisplay}.`);
+                  await renderCraigslistLane({ queueId: ((res && res.record) || {}).queue_id || selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Craigslist review save failed: ${err.message}`);
+                }
+              });
+            }
+
+            const markReadyBtn = document.getElementById('craigslist-mark-ready-btn');
+            if (markReadyBtn) {
+              markReadyBtn.addEventListener('click', async () => {
+                try {
+                  await reviewCraigslistQueue(selected.queue_id, buildPayload({ draft_status: 'ready', note: 'dashboard_mark_ready' }));
+                  setStatus(`Marked Craigslist draft ready for ${companyDisplay}.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Mark ready failed: ${err.message}`);
+                }
+              });
+            }
+
+            const markNeedsEditBtn = document.getElementById('craigslist-mark-needs-edit-btn');
+            if (markNeedsEditBtn) {
+              markNeedsEditBtn.addEventListener('click', async () => {
+                try {
+                  await reviewCraigslistQueue(selected.queue_id, buildPayload({ draft_status: 'needs_edit', note: 'dashboard_mark_needs_edit' }));
+                  setStatus(`Marked Craigslist draft needs edit for ${companyDisplay}.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Needs edit update failed: ${err.message}`);
+                }
+              });
+            }
+
+            const markRejectBtn = document.getElementById('craigslist-mark-reject-btn');
+            if (markRejectBtn) {
+              markRejectBtn.addEventListener('click', async () => {
+                try {
+                  await reviewCraigslistQueue(selected.queue_id, buildPayload({ draft_status: 'reject', note: 'dashboard_mark_reject' }));
+                  setStatus(`Rejected Craigslist draft for ${companyDisplay}.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Reject update failed: ${err.message}`);
+                }
+              });
+            }
+
+            const resetBtn = document.getElementById('craigslist-reset-draft-btn');
+            if (resetBtn) {
+              resetBtn.addEventListener('click', () => {
+                if (subjectEl) subjectEl.value = generatedDrafts.email_subject || '';
+                if (bodyEl) bodyEl.value = generatedDrafts.email_body || '';
+                if (callEl) callEl.value = generatedDrafts.call_opening || '';
+                setStatus('Reset draft fields to Chow generated copy.');
+              });
+            }
+
+            const copyBtn = document.getElementById('craigslist-copy-body-btn');
+            if (copyBtn) {
+              copyBtn.addEventListener('click', async () => {
+                await copyToClipboard(bodyEl ? bodyEl.value : '', 'Craigslist email body');
+              });
+            }
+
+            const importReplyBtn = document.getElementById('craigslist-import-reply-btn');
+            if (importReplyBtn) {
+              importReplyBtn.addEventListener('click', async () => {
+                try {
+                  const fromEmail = replyFromEl ? replyFromEl.value.trim() : '';
+                  const subjectValue = replySubjectEl ? replySubjectEl.value.trim() : replySubjectDefault;
+                  const bodyValue = replyBodyEl ? replyBodyEl.value.trim() : '';
+                  if (!fromEmail) throw new Error('Reply-from email is required.');
+                  if (!bodyValue) throw new Error('Reply body is required.');
+                  const res = await importInboxMessages({
+                    queue_id: selected.queue_id,
+                    thread_id: inbox.thread_id || null,
+                    messages: [
+                      {
+                        direction: 'inbound',
+                        from_email: fromEmail,
+                        to_emails: [mailbox.reply_to || 'chow@optimizedworkflow.dev'],
+                        subject: subjectValue,
+                        body_text: bodyValue,
+                        received_at: new Date().toISOString(),
+                      },
+                    ],
+                  });
+                  const threadId = res && res.thread_summary ? res.thread_summary.thread_id : null;
+                  setStatus(`Imported reply for ${companyDisplay}${threadId ? ` (${threadId})` : ''}.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Reply import failed: ${err.message}`);
+                }
+              });
+            }
+
+            const pollInboxBtn = document.getElementById('craigslist-poll-inbox-btn');
+            if (pollInboxBtn) {
+              pollInboxBtn.addEventListener('click', async () => {
+                try {
+                  setStatus('Polling Chow inbox...');
+                  const res = await pollInbox({ dry_run: false, limit: 10, unseen_only: true });
+                  setStatus(`Inbox poll finished: ${res.imports ? res.imports.length : 0} imported from ${res.candidate_count || 0} candidates.`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Inbox poll failed: ${err.message}`);
+                }
+              });
+            }
+
+            const dispatchBtn = document.getElementById('craigslist-dispatch-btn');
+            if (dispatchBtn) {
+              dispatchBtn.addEventListener('click', async () => {
+                try {
+                  await reviewCraigslistQueue(selected.queue_id, buildPayload({ draft_status: 'ready', note: 'dashboard_save_before_dispatch' }));
+                  const res = await dispatchCraigslistQueue(selected.queue_id, { note: 'dashboard_dispatch_craigslist_queue', promoteToLive: true });
+                  const statusLabel = res && res.record ? humanizeLabel((res.record.dispatch || {}).status || res.record.status || 'sent') : 'sent';
+                  setStatus(`Craigslist Chow email dispatched for ${companyDisplay} (${statusLabel}).`);
+                  await renderCraigslistLane({ queueId: selected.queue_id, forceRefresh: true });
+                } catch (err) {
+                  setStatus(`Craigslist dispatch failed: ${err.message}`);
+                }
+              });
+            }
+          }
+
+          if (!selected) {
+            const filterEl = document.getElementById('craigslist-status-filter');
+            if (filterEl) {
+              filterEl.addEventListener('change', async () => {
+                state.craigslistQueueStatus = filterEl.value;
+                state.selectedCraigslistQueueId = null;
+                await renderCraigslistLane({ forceRefresh: true });
+              });
+            }
+            const refreshBtn = document.getElementById('craigslist-refresh-btn');
+            if (refreshBtn) refreshBtn.addEventListener('click', async () => renderCraigslistLane({ forceRefresh: true }));
+          }
+
+          detailCard.querySelectorAll('[data-queue-id]').forEach(el => {
+            el.addEventListener('click', async () => {
+              const nextId = el.getAttribute('data-queue-id');
+              if (!nextId) return;
+              state.selectedCraigslistQueueId = nextId;
+              await renderCraigslistLane({ queueId: nextId });
+            });
+          });
+        } catch (err) {
+          detailCard.classList.remove('muted');
+          detailCard.innerHTML = `<div class="meta">Craigslist lane failed: ${escapeHtml(err.message)}</div>`;
+        }
+      }
+
+      async function setDetailMode(mode) {
+        state.detailMode = mode === 'craigslist' ? 'craigslist' : 'site';
+        updateDetailModeButtons();
+        if (state.detailMode === 'craigslist') {
+          await renderCraigslistLane();
+        } else if (state.selectedSiteId) {
+          await loadSite(state.selectedSiteId);
+        } else {
+          detailCard.classList.add('muted');
+          detailCard.textContent = detailDefaultText();
+        }
+      }
+
+      function initChat() {
+        appendChat('assistant', 'Chow ready. Ask what to work next, queue a call or email, or get a lead-specific pitch.');
+        if (!chatSendBtn || !chatInput) return;
+
+        chatSendBtn.addEventListener('click', () => sendChatMessage(chatInput.value));
+        chatInput.addEventListener('keydown', evt => {
+          if (evt.key === 'Enter') {
+            evt.preventDefault();
+            sendChatMessage(chatInput.value);
+          }
+        });
+
+        if (chatChips) {
+          chatChips.addEventListener('click', evt => {
+            const btn = evt.target;
+            if (!btn || !btn.dataset || !btn.dataset.prompt) return;
+            sendChatMessage(btn.dataset.prompt);
+          });
+        }
+
+        if (chatLauncher) {
+          chatLauncher.addEventListener('click', () => {
+            if (isMobileLikeLayout() && document.body.classList.contains('mobile-map')) {
+              setMobileView('list');
+            }
+            document.body.classList.add('chat-open');
+          });
+        }
+
+        if (chatCloseBtn) {
+          chatCloseBtn.addEventListener('click', () => {
+            document.body.classList.remove('chat-open');
+          });
+        }
+      }
+
+      function initMap() {
+        state.map = new maplibregl.Map({
+          container: 'map',
+          style: 'https://demotiles.maplibre.org/style.json',
+          center: [-71.08, 42.34],
+          zoom: 9,
+        });
+
+        state.map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+
+        state.map.on('load', () => {
+          ensureHeatmapLayers();
+        });
+      }
+
+      function waitForMapReady() {
+        return new Promise(resolve => {
+          if (!state.map) return resolve();
+          if (state.map.loaded()) return resolve();
+          state.map.once('load', () => resolve());
+        });
+      }
+
+      function colorFor(value, min, max) {
+        const span = Math.max(max - min, 1);
+        const t = Math.max(0, Math.min(1, (value - min) / span));
+        const r = Math.round(40 + 210 * t);
+        const g = Math.round(150 - 70 * t);
+        const b = Math.round(220 - 170 * t);
+        return [r, g, b, 180];
+      }
+
+      function rgbaToCss([r, g, b, a = 255]) {
+        return `rgba(${r}, ${g}, ${b}, ${(a / 255).toFixed(3)})`;
+      }
+
+      function h3BoundaryToRing(h3Cell) {
+        const boundary = window.h3.cellToBoundary(h3Cell);
+        const ring = boundary.map(([lat, lng]) => [lng, lat]);
+        if (ring.length > 0) {
+          const [fx, fy] = ring[0];
+          const [lx, ly] = ring[ring.length - 1];
+          if (fx !== lx || fy !== ly) ring.push([fx, fy]);
+        }
+        return ring;
+      }
+
+      function ensureHeatmapLayers() {
+        if (!state.map || state.map.getSource('h3-cells')) return;
+
+        state.map.addSource('h3-cells', {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: [] },
+        });
+
+        state.map.addLayer({
+          id: 'h3-cells-fill',
+          type: 'fill',
+          source: 'h3-cells',
+          paint: {
+            'fill-color': ['get', 'fill_color'],
+            'fill-opacity': 0.65,
+          },
+        });
+
+        state.map.addLayer({
+          id: 'h3-cells-line',
+          type: 'line',
+          source: 'h3-cells',
+          paint: {
+            'line-color': '#4a4a4a',
+            'line-width': 1,
+            'line-opacity': 0.65,
+          },
+        });
+
+        state.map.addLayer({
+          id: 'h3-cells-selected-fill',
+          type: 'fill',
+          source: 'h3-cells',
+          paint: {
+            'fill-color': '#7a3b10',
+            'fill-opacity': 0.18,
+          },
+          filter: ['==', ['get', 'h3_cell'], ''],
+        });
+
+        state.map.addLayer({
+          id: 'h3-cells-selected',
+          type: 'line',
+          source: 'h3-cells',
+          paint: {
+            'line-color': '#7a3b10',
+            'line-width': 4.2,
+          },
+          filter: ['==', ['get', 'h3_cell'], ''],
+        });
+
+        state.map.on('mouseenter', 'h3-cells-fill', () => {
+          state.map.getCanvas().style.cursor = 'pointer';
+        });
+        state.map.on('mouseleave', 'h3-cells-fill', () => {
+          state.map.getCanvas().style.cursor = '';
+        });
+        state.map.on('click', 'h3-cells-fill', event => {
+          const feature = event?.features?.[0];
+          const h3Cell = feature?.properties?.h3_cell;
+          if (h3Cell) {
+            loadHexSites(h3Cell).catch(err => setStatus(`Hex load failed: ${err.message}`));
+          }
+        });
+      }
+
+      function renderHeatmapCells(cells) {
+        if (!state.map) return;
+        ensureHeatmapLayers();
+        const source = state.map.getSource('h3-cells');
+        if (!source) return;
+
+        const values = cells.map(c => c.avg_priority_score);
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+
+        const fc = {
+          type: 'FeatureCollection',
+          features: cells.map(c => ({
+            type: 'Feature',
+            properties: {
+              h3_cell: c.h3_cell,
+              fill_color: rgbaToCss(colorFor(c.avg_priority_score, min, max)),
+            },
+            geometry: {
+              type: 'Polygon',
+              coordinates: [h3BoundaryToRing(c.h3_cell)],
+            },
+          })),
+        };
+
+        source.setData(fc);
+      }
+
+      function setSelectedHexStyle(h3Cell) {
+        if (!state.map) return;
+        const selected = h3Cell || '';
+        if (state.map.getLayer('h3-cells-selected')) {
+          state.map.setFilter('h3-cells-selected', ['==', ['get', 'h3_cell'], selected]);
+        }
+        if (state.map.getLayer('h3-cells-selected-fill')) {
+          state.map.setFilter('h3-cells-selected-fill', ['==', ['get', 'h3_cell'], selected]);
+        }
+      }
+
+      function fitToHex(h3Cell) {
+        if (!state.map || !h3Cell) return;
+        try {
+          const ring = h3BoundaryToRing(h3Cell);
+          const lons = ring.map(c => c[0]);
+          const lats = ring.map(c => c[1]);
+          const minLon = Math.min(...lons), maxLon = Math.max(...lons);
+          const minLat = Math.min(...lats), maxLat = Math.max(...lats);
+          state.map.fitBounds([[minLon, minLat], [maxLon, maxLat]], { padding: 40, duration: 700, maxZoom: 16 });
+        } catch (err) {
+          console.warn('fitToHex failed', err);
+        }
+      }
+
+      function fitToCells(cells) {
+        if (!state.map || !Array.isArray(cells) || cells.length === 0) return;
+        try {
+          let minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
+          for (const c of cells) {
+            const ring = h3BoundaryToRing(c.h3_cell);
+            for (const [lng, lat] of ring) {
+              if (lng < minLon) minLon = lng;
+              if (lng > maxLon) maxLon = lng;
+              if (lat < minLat) minLat = lat;
+              if (lat > maxLat) maxLat = lat;
+            }
+          }
+          if (Number.isFinite(minLon) && Number.isFinite(minLat) && Number.isFinite(maxLon) && Number.isFinite(maxLat)) {
+            state.map.fitBounds([[minLon, minLat], [maxLon, maxLat]], { padding: 18, duration: 650, maxZoom: 12 });
+          }
+        } catch (err) {
+          console.warn('fitToCells failed', err);
+        }
+      }
+
+      function buildRouteParams(maxStops = 10) {
+        const params = new URLSearchParams();
+        params.set('max_stops', String(maxStops));
+        if (state.zip && state.zip !== '__all__') {
+          params.set('zip', state.zip);
+        }
+        return params;
+      }
+
+      async function planRoute(maxStops = 10) {
+        const params = buildRouteParams(maxStops);
+        const data = await api(`${API_BASE}/operator/route-plan?${params.toString()}`);
+        if (!data.stops || data.stops.length === 0) {
+          setStatus('Route plan: no eligible stops in current scope.');
+          return;
+        }
+        const first = data.stops[0];
+        setStatus(`Route ready: ${data.count} stops. First: ${first.address}`);
+        if (first.site_id) {
+          await loadSite(first.site_id);
+        }
+      }
+
+      window.__demandGridRunRoutePlan = async function demandGridRunRoutePlan() {
+        try {
+          await planRoute(10);
+        } catch (err) {
+          setStatus(`Route planning failed: ${err.message}`);
+        }
+      };
+
+      window.__demandGridRunRouteCsv = function demandGridRunRouteCsv() {
+        try {
+          downloadRouteCsv(20);
+          setStatus('Opened route CSV export.');
+        } catch (err) {
+          setStatus(`Route CSV failed: ${err.message}`);
+        }
+      };
+
+      function downloadRouteCsv(maxStops = 20) {
+        const params = buildRouteParams(maxStops);
+        const href = `${API_BASE}/operator/route-plan.csv?${params.toString()}`;
+        window.open(href, '_blank', 'noopener,noreferrer');
+      }
+
+      async function loadHexSites(h3Cell, opts = {}) {
+        state.selectedHex = h3Cell;
+        state.userSelectedHex = opts.userInitiated !== false;
+        if (!opts.preserveQueueFilter) state.queueFilter = 'all';
+        hexSelected.textContent = `Hex ${h3Cell.slice(0, 8)}…`;
+        setSelectedHexStyle(h3Cell);
+        updateChatScope();
+        void loadTodayPlan(state.zip, h3Cell);
+
+        const data = await api(`${API_BASE}/hex/${h3Cell}/sites?limit=250`);
+        state.currentSites = Array.isArray(data.sites) ? data.sites : [];
+        renderQueueChips(state.currentSites, h3Cell);
+        await renderHexSites(state.currentSites, h3Cell, opts);
+
+        if (!opts.skipFit && (state.userSelectedHex || opts.forceFit)) {
+          fitToHex(h3Cell);
+        }
+      }
+
+      async function loadSite(siteId) {
+        state.selectedSiteId = siteId;
+        state.detailMode = 'site';
+        updateDetailModeButtons();
+        updateChatScope();
+
+        const [site, outreachBundle, outcomeSummary, contactability, leadNextAction, voiceBrief, executionState] = await Promise.all([
+          api(`${API_BASE}/site/${siteId}`),
+          api(`${API_BASE}/outreach/site/${siteId}`).catch(() => null),
+          api(`${API_BASE}/operator/outcomes/summary?site_id=${encodeURIComponent(siteId)}`).catch(() => null),
+          api(`${API_BASE}/lead/${siteId}/contactability`).catch(() => null),
+          api(`${API_BASE}/lead/${siteId}/next-action`).catch(() => null),
+          api(`${API_BASE}/voice/site/${siteId}/brief`).catch(() => null),
+          getChowExecution(siteId).catch(() => null),
+        ]);
+        let contact = null;
+        let interactionTimeline = null;
+        if (contactability && contactability.contact_id) {
+          [contact, interactionTimeline] = await Promise.all([
+            api(`${API_BASE}/contacts/${contactability.contact_id}`).catch(() => null),
+            api(`${API_BASE}/contacts/${contactability.contact_id}/timeline`).catch(() => null),
+          ]);
+        }
+        const playbook = buildSitePlaybook(site, outreachBundle);
+        const surveyClass = site.requires_site_survey ? 'warn' : 'good';
+        const surveyLabel = site.requires_site_survey ? 'Screening only' : 'Production-ready inputs';
+        const currentWorkflow = (site.operator_status && site.operator_status.status) ? site.operator_status.status : 'unworked';
+        const currentWorkflowLabel = humanizeLabel(currentWorkflow);
+        const currentOutcome = site.lead_outcome || {};
+        const currentOutcomeStatus = currentOutcome.status || 'unknown';
+        const currentOutcomeLabel = humanizeLabel(currentOutcomeStatus);
+        const queue = workQueueInfo(site);
+        const revenueLabel = currentOutcome.realized_revenue_usd == null ? 'n/a' : usd.format(currentOutcome.realized_revenue_usd);
+        const profitLabel = currentOutcome.realized_profit_usd == null ? 'n/a' : usd.format(currentOutcome.realized_profit_usd);
+        const nextAction = outcomeSummary && outcomeSummary.next_action ? outcomeSummary.next_action : null;
+        const nextActionSteps = Array.isArray(nextAction && nextAction.steps) ? nextAction.steps : [];
+        const contactSummary = buildContactSummary(contact, contactability);
+        const timelineSummary = buildTimelineSummary(interactionTimeline && interactionTimeline.items);
+        const aiActionReason = leadNextAction && leadNextAction.reason ? leadNextAction.reason : 'DemandGrid has not produced a stronger AI execution command yet.';
+        const aiActionTiming = leadNextAction && leadNextAction.recommended_timing ? formatTimestamp(leadNextAction.recommended_timing) : 'Now';
+        const voiceSession = voiceBrief && voiceBrief.session ? voiceBrief.session : null;
+        const execution = executionState || {};
+        const supervision = execution.supervision || {};
+        const latestCallSession = execution.calling_session || voiceSession || null;
+        const latestOutreachJob = execution.outreach_job || null;
+        const latestRun = execution.orchestrator_run || null;
+        const adapterInfo = execution.adapters || {};
+        const callingAdapter = adapterInfo.calling || {};
+        const emailAdapter = adapterInfo.email || {};
+        const pendingActions = Array.isArray(supervision.pending_actions) ? supervision.pending_actions : [];
+        const pendingCallAction = pendingActions.find(action => action.action_type === 'create_calling_session') || null;
+        const pendingEmailAction = pendingActions.find(action => action.action_type === 'create_outreach_job') || null;
+        const callEventLoggable = !!(latestCallSession && !['completed', 'cancelled', 'failed'].includes(String(latestCallSession.status || '')));
+        const emailEventLoggable = !!(latestOutreachJob && !['blocked', 'cancelled', 'completed', 'failed'].includes(String(latestOutreachJob.status || '')));
+        const callDispatchable = !!(callingAdapter.enabled && latestCallSession && latestCallSession.session_id && !pendingCallAction && !['completed', 'cancelled', 'failed'].includes(String(latestCallSession.status || '')));
+        const emailDispatchable = !!(emailAdapter.enabled && latestOutreachJob && latestOutreachJob.job_id && !pendingEmailAction && !['blocked', 'cancelled', 'completed', 'failed'].includes(String(latestOutreachJob.status || '')));
+        detailCard.classList.remove('muted');
+        detailCard.innerHTML = `
+          <div><strong>${site.address}</strong></div>
+          <div class="meta" style="margin:4px 0 8px 0">${site.city}, ${site.state} ${site.zip}</div>
+
+          <div class="operator-grid">
+            <div class="operator-card">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">Who To Work</div>
+                  <div class="meta">${contactSummary.role}</div>
+                </div>
+                <span class="pill">${contactSummary.preferredChannel}</span>
+              </div>
+              <div class="operator-copy"><strong>${contactSummary.name}</strong></div>
+              <div class="operator-copy">Contactability: ${contactSummary.contactability}</div>
+              ${renderOperatorMetaList(contactSummary.methods.length ? contactSummary.methods : ['No direct phone/email is loaded yet. Use mailing address, door, or manual enrichment.'])}
+              ${contactSummary.identitySources.length ? `<div class="meta" style="margin-top:6px;">Sources: ${contactSummary.identitySources.join(' • ')}</div>` : ''}
+            </div>
+
+            <div class="operator-card">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">AI Next Move</div>
+                  <div class="meta">${leadNextAction ? humanizeLabel(leadNextAction.action_type || 'contact') : 'No explicit action'}</div>
+                </div>
+                <span class="pill">${leadNextAction ? humanizeLabel(leadNextAction.recommended_channel || 'mail') : humanizeLabel(contactSummary.preferredChannel)}</span>
+              </div>
+              <div class="operator-copy">${aiActionReason}</div>
+              <div class="operator-copy">Timing: ${aiActionTiming}</div>
+              ${renderOperatorMetaList([
+                leadNextAction && leadNextAction.recommended_script_angle ? `Lead with: ${leadNextAction.recommended_script_angle}` : null,
+                leadNextAction && leadNextAction.expected_value_usd != null ? `Expected value proxy: ${usd.format(Number(leadNextAction.expected_value_usd) || 0)}` : null,
+                leadNextAction && Array.isArray(leadNextAction.risk_flags) && leadNextAction.risk_flags.length ? `Watch: ${leadNextAction.risk_flags.map(humanizeLabel).join(', ')}` : null,
+              ].filter(Boolean))}
+            </div>
+          </div>
+
+          <div class="operator-grid">
+            <div class="operator-card">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">Recent Touches</div>
+                  <div class="meta">${timelineSummary.headline}</div>
+                </div>
+              </div>
+              ${renderOperatorMetaList(timelineSummary.items)}
+            </div>
+
+            <div class="operator-card">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">Voice Agent</div>
+                  <div class="meta">${voiceBrief ? (voiceBrief.voice_ready ? 'Ready to connect' : 'Needs fallback path') : 'Voice contract unavailable'}</div>
+                </div>
+                <span class="pill">${voiceSession ? humanizeLabel(voiceSession.status || 'not_started') : 'Not started'}</span>
+              </div>
+              ${renderOperatorMetaList([
+                voiceBrief && voiceBrief.phone_number ? `Dial: ${voiceBrief.phone_number}` : 'No phone loaded yet for voice.',
+                voiceBrief && voiceBrief.email ? `Email fallback: ${voiceBrief.email}` : null,
+                voiceBrief && voiceBrief.contact_form_url ? `Form fallback: ${voiceBrief.contact_form_url}` : null,
+                voiceBrief && voiceBrief.website_url ? `Website: ${voiceBrief.website_url}` : null,
+                voiceBrief && voiceBrief.call_objective ? `Objective: ${voiceBrief.call_objective}` : null,
+                voiceBrief && voiceBrief.desired_outcome ? `Desired outcome: ${humanizeLabel(voiceBrief.desired_outcome)}` : null,
+                voiceBrief && voiceBrief.fallback_channel ? `Fallback if voice fails: ${humanizeLabel(voiceBrief.fallback_channel)}` : null,
+                voiceSession && voiceSession.last_event && voiceSession.last_event.detail ? `Last call event: ${voiceSession.last_event.detail}` : 'No prior voice events logged.',
+                voiceBrief && Array.isArray(voiceBrief.missing_requirements) && voiceBrief.missing_requirements.length ? `Missing: ${voiceBrief.missing_requirements.map(humanizeLabel).join(', ')}` : null,
+              ])}
+            </div>
+
+            <div class="operator-card">
+              <div class="operator-card-head">
+                <div>
+                  <div class="operator-card-title">Supervised Execution</div>
+                  <div class="meta">${supervision.ready_for_supervised_outreach ? 'Prepared for supervised outreach lane' : 'Still needs work before supervised outreach'}</div>
+                </div>
+                <span class="pill">${latestRun ? humanizeLabel(latestRun.status || 'planned') : 'No run'}</span>
+              </div>
+              ${renderOperatorMetaList([
+                latestRun ? `Run: ${latestRun.run_id}` : 'No supervised run has been prepared yet.',
+                pendingActions.length ? `Pending approvals: ${pendingActions.map(action => humanizeLabel(action.action_type)).join(', ')}` : 'No approvals are waiting right now.',
+                `Calling adapter: ${humanizeLabel(callingAdapter.provider || 'unknown')} / ${humanizeLabel(callingAdapter.mode || 'disabled')} (${callingAdapter.allow_live_dispatch ? 'live allowed' : 'mock-only'})`,
+                `Email adapter: ${humanizeLabel(emailAdapter.provider || 'unknown')} / ${humanizeLabel(emailAdapter.mode || 'disabled')} (${emailAdapter.allow_live_dispatch ? 'live allowed' : 'mock-only'})`,
+                latestCallSession ? `Latest call session: ${humanizeLabel(latestCallSession.status || 'ready')} (${latestCallSession.session_id || 'session'})` : 'No Chow call session yet.',
+                latestCallSession && latestCallSession.dispatch && latestCallSession.dispatch.status ? `Call dispatch: ${humanizeLabel(latestCallSession.dispatch.status)}` : null,
+                latestCallSession && Array.isArray(latestCallSession.event_log) && latestCallSession.event_log.length ? `Last call event: ${latestCallSession.event_log[latestCallSession.event_log.length - 1].detail || latestCallSession.event_log[latestCallSession.event_log.length - 1].event_type}` : null,
+                latestOutreachJob ? `Latest email job: ${humanizeLabel(latestOutreachJob.status || 'queued')} (${latestOutreachJob.dispatch_mode || 'mode unknown'})` : 'No Chow email job yet.',
+                latestOutreachJob && latestOutreachJob.dispatch && latestOutreachJob.dispatch.status ? `Email dispatch: ${humanizeLabel(latestOutreachJob.dispatch.status)}` : null,
+                latestOutreachJob && Array.isArray(latestOutreachJob.event_log) && latestOutreachJob.event_log.length ? `Last email event: ${latestOutreachJob.event_log[latestOutreachJob.event_log.length - 1].detail || latestOutreachJob.event_log[latestOutreachJob.event_log.length - 1].event_type}` : null,
+                Array.isArray(supervision.blockers) && supervision.blockers.length ? `Blockers: ${supervision.blockers.map(humanizeLabel).join(', ')}` : `Recommended next step: ${humanizeLabel(supervision.recommended_next_step || 'prepare_supervised_run')}`,
+              ])}
+              <div class="playbook-actions" style="margin-top:8px;">
+                <button id="prepare-supervised-run-btn" type="button">Prepare supervised outreach</button>
+                <button id="approve-call-action-btn" type="button"${pendingCallAction ? '' : ' disabled'}>Approve Chow call</button>
+                <button id="approve-email-action-btn" type="button"${pendingEmailAction ? '' : ' disabled'}>Approve Chow email</button>
+                <button id="dispatch-call-btn" type="button"${callDispatchable ? '' : ' disabled'}>Dispatch Chow call</button>
+                <button id="dispatch-email-btn" type="button"${emailDispatchable ? '' : ' disabled'}>${emailAdapter.allow_live_dispatch ? 'Send Chow email' : 'Dispatch Chow email'}</button>
+                <button id="log-call-no-answer-btn" type="button"${callEventLoggable ? '' : ' disabled'}>Log call: no answer</button>
+                <button id="log-call-qualified-btn" type="button"${callEventLoggable ? '' : ' disabled'}>Log call: qualified</button>
+                <button id="log-email-sent-btn" type="button"${emailEventLoggable ? '' : ' disabled'}>Log email: sent</button>
+                <button id="log-email-replied-btn" type="button"${emailEventLoggable ? '' : ' disabled'}>Log email: replied</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-runner">
+            <div class="task-runner-head">
+              <div>
+                <div class="task-runner-title">${nextAction ? nextAction.headline : 'Run the lead'}</div>
+                <div class="task-runner-subtitle">${nextAction ? nextAction.rationale : 'Use the playbook, make contact, then log the real outcome.'}</div>
+              </div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+                <button id="work-lead-btn" type="button">Work lead</button>
+                <button id="next-lead-btn" type="button"${nextSiteIdInQueue(site.site_id) ? '' : ' disabled'}>Next lead</button>
+                <span class="pill">workflow: ${currentWorkflowLabel}</span>
+              </div>
+            </div>
+            <div class="task-runner-grid">
+              <div class="task-runner-box">
+                <span class="playbook-label">Do These Steps In Order</span>
+                <ol class="task-runner-steps">
+                  ${(nextActionSteps.length ? nextActionSteps : ['Use the opener.', 'Make contact or follow up.', 'Log the real result immediately.']).map(step => `<li>${step}</li>`).join('')}
+                </ol>
+              </div>
+              <div class="task-runner-box">
+                <span class="playbook-label">What DemandGrid Has Learned</span>
+                <ul class="learning-list">
+                  <li>${(nextAction && nextAction.learning_note) || 'No learning data is logged yet for this lead.'}</li>
+                  ${renderOutcomeScopeSummary(outcomeSummary && outcomeSummary.same_zip_product, 'same ZIP and lane')}
+                  ${renderOutcomeScopeSummary(outcomeSummary && outcomeSummary.same_zip, 'same ZIP')}
+                  ${renderOutcomeScopeSummary(outcomeSummary && outcomeSummary.global, 'global')}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-header">
+              <div>
+                <div class="playbook-title">${playbook.title}</div>
+                <div class="playbook-subtitle">${playbook.subtitle}</div>
+              </div>
+              <div class="playbook-actions">
+                <button id="copy-opener-btn" type="button">Copy opener</button>
+                <button id="copy-next-step-btn" type="button">Copy next step</button>
+                <button id="ask-ai-pitch-btn" type="button">Ask Chow for pitch</button>
+                <button id="queue-chow-call-btn" type="button">Queue Chow call</button>
+                <button id="queue-chow-email-btn" type="button">Queue Chow email</button>
+              </div>
+            </div>
+
+            <div class="playbook-grid">
+              <div class="playbook-block">
+                <span class="playbook-label">Lead With This</span>
+                <div class="playbook-copy">${playbook.opener}</div>
+              </div>
+              <div class="playbook-block">
+                <span class="playbook-label">Do This Next</span>
+                <div class="playbook-copy">${playbook.nextStep}</div>
+              </div>
+              <div class="playbook-block">
+                <span class="playbook-label">Why This Lead Matters</span>
+                ${renderList(playbook.proof)}
+              </div>
+              <div class="playbook-block">
+                <span class="playbook-label">Verify Before You Push</span>
+                ${renderList(playbook.verify)}
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-summary">
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+              <span class="pill">${humanizeLabel(site.primary_product)} first</span>
+              <span class="pill">${humanizeLabel(site.secondary_product)} second</span>
+              <span class="pill">${queue.label}</span>
+              ${queue.reason_label ? `<span class="pill">${queue.reason_label}</span>` : ''}
+              <span class="pill">${humanizeLabel(site.lead_temperature)} lead</span>
+              <span class="pill">next: ${humanizeLabel(site.operator_next_step)}</span>
+              <span class="pill">outcome: ${currentOutcomeLabel}</span>
+              <span class="pill">${humanizeLabel(site.confidence_label)} confidence</span>
+              <span class="pill ${surveyClass}">${surveyLabel}</span>
+            </div>
+
+            <div class="detail-grid">
+              <div><span class="kpi">Route / Priority</span>${site.sales_route_score.toFixed(1)} / ${site.priority_score.toFixed(1)}</div>
+              <div><span class="kpi">Workflow</span>${currentWorkflowLabel}</div>
+              <div><span class="kpi">Queue action</span>${queue.reason_label ? `${queue.reason_label}: ` : ''}${queue.action}</div>
+              <div><span class="kpi">Est. savings</span>${usd.format(site.annual_savings_usd)}/yr</div>
+              <div><span class="kpi">Payback</span>${site.payback_years.toFixed(1)} years</div>
+              <div><span class="kpi">Revenue won</span>${revenueLabel}</div>
+              <div><span class="kpi">Profit won</span>${profitLabel}</div>
+            </div>
+
+            <div class="workflow-quick">
+              <button type="button" data-workflow-status="contacted">Mark contacted</button>
+              <button type="button" data-workflow-status="follow_up">Set follow up</button>
+              <button type="button" data-workflow-status="visited">Mark visited</button>
+              <button type="button" data-workflow-status="closed">Mark closed</button>
+            </div>
+
+            <div class="workflow-row">
+              <span class="kpi">Full workflow update:</span>
+              <select id="workflow-status-select">
+                <option value="unworked">unworked</option>
+                <option value="visited">visited</option>
+                <option value="contacted">contacted</option>
+                <option value="follow_up">follow up</option>
+                <option value="closed">closed</option>
+                <option value="skip">skip</option>
+              </select>
+              <button id="workflow-save-btn">Save</button>
+            </div>
+          </div>
+
+          <details open>
+            <summary>Outcome Capture</summary>
+            <div class="meta" style="margin-bottom:6px;">Use this to teach DemandGrid what actually happened on this lead.</div>
+            <div class="outcome-grid">
+              <label>
+                Outcome stage
+                <select id="outcome-status-select">
+                  <option value="unknown">unknown</option>
+                  <option value="contacted">contacted</option>
+                  <option value="responded">responded</option>
+                  <option value="qualified">qualified</option>
+                  <option value="won">won</option>
+                  <option value="lost">lost</option>
+                </select>
+              </label>
+              <label>
+                Product closed/tested
+                <input id="outcome-product-input" type="text" value="${currentOutcome.product || site.primary_product || ''}" />
+              </label>
+              <label>
+                Main objection
+                <input id="outcome-objection-input" type="text" value="${currentOutcome.objection || ''}" placeholder="price, timing, trust..." />
+              </label>
+              <label>
+                Win/loss reason
+                <input id="outcome-reason-input" type="text" value="${currentOutcome.reason || ''}" placeholder="storm urgency, bad timing..." />
+              </label>
+              <label>
+                Realized revenue
+                <input id="outcome-revenue-input" type="number" step="0.01" value="${currentOutcome.realized_revenue_usd ?? ''}" placeholder="0" />
+              </label>
+              <label>
+                Realized profit
+                <input id="outcome-profit-input" type="number" step="0.01" value="${currentOutcome.realized_profit_usd ?? ''}" placeholder="0" />
+              </label>
+              <label style="grid-column: 1 / -1;">
+                Notes
+                <input id="outcome-note-input" type="text" value="${currentOutcome.note || ''}" placeholder="Anything useful the model should learn from this lead" />
+              </label>
+            </div>
+            <div class="workflow-row">
+              <button id="outcome-save-btn" type="button">Save outcome</button>
+              <span class="meta">Last updated: ${currentOutcome.updated_at || 'never'}</span>
+            </div>
+          </details>
+
+          <details open>
+            <summary>Operator Brief</summary>
+            <div><span class="kpi">Operator lane:</span> ${humanizeLabel(site.operator_lane)}</div>
+            <div><span class="kpi">Pitch angle:</span> ${site.operator_pitch_angle}</div>
+            <div><span class="kpi">Why now:</span> ${site.why_now_summary}</div>
+            <div><span class="kpi">Action:</span> ${site.operator_action_summary}</div>
+          </details>
+
+          <details>
+            <summary>Economics</summary>
+            <div><span class="kpi">Product scores:</span> roof ${site.roofing_score.toFixed(1)} / solar ${site.solar_score.toFixed(1)} / hvac ${site.hvac_score.toFixed(1)} / battery ${site.battery_score.toFixed(1)}</div>
+            <div><span class="kpi">Profit / Close / Fit / Effort:</span> ${site.profit_score.toFixed(1)} / ${site.close_probability.toFixed(1)} / ${site.fit_score.toFixed(1)} / ${site.effort_score.toFixed(1)}</div>
+            <div><span class="kpi">Best option:</span> ${site.best_option}</div>
+            <div><span class="kpi">Estimated system:</span> ${site.estimated_system_kw.toFixed(1)} kW</div>
+            <div><span class="kpi">Est. production:</span> ${site.annual_kwh_solar.toLocaleString()} kWh/yr</div>
+            <div><span class="kpi">NPV (15y):</span> ${usd.format(site.npv_15y_usd)}</div>
+            <div><span class="kpi">Input source:</span> ${site.data_source}${site.source_type ? ` / ${site.source_type}` : ''}</div>
+            <div><span class="kpi">Model:</span> ${site.solar_model}</div>
+          </details>
+
+          <details>
+            <summary>Triggers</summary>
+            <div><span class="kpi">Trigger statuses:</span> storm ${site.storm_trigger_status} / outage ${site.outage_trigger_status} / equipment ${site.equipment_age_trigger_status} / flood ${site.flood_risk_trigger_status}</div>
+            <div><span class="kpi">Trigger scores:</span> storm ${site.storm_trigger_score == null ? 'n/a' : site.storm_trigger_score.toFixed(1)} / outage ${site.outage_trigger_score == null ? 'n/a' : site.outage_trigger_score.toFixed(1)} / equipment ${site.equipment_age_trigger_score == null ? 'n/a' : site.equipment_age_trigger_score.toFixed(1)} / flood ${site.flood_risk_trigger_score == null ? 'n/a' : site.flood_risk_trigger_score.toFixed(1)}</div>
+            <div><span class="kpi">Data loaded:</span> storm ${site.has_storm_trigger_data ? 'yes' : 'no'} / outage ${site.has_outage_trigger_data ? 'yes' : 'no'} / equipment ${site.has_equipment_age_data ? 'yes' : 'no'} / flood ${site.has_flood_risk_data ? 'yes' : 'no'}</div>
+            <div><span class="kpi">Trigger notes:</span> ${site.trigger_notes || 'none'}</div>
+          </details>
+
+          <details>
+            <summary>Reason Codes (${site.reasons.length})</summary>
+            <ul style="margin-top:4px; padding-left:18px;">
+              ${site.reasons.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </details>
+        `;
+
+        listBody.querySelectorAll('tr').forEach(tr => {
+          tr.style.background = tr.dataset.siteId === site.site_id ? '#ece8dd' : '';
+        });
+        if (siteCards) {
+          siteCards.querySelectorAll('.site-card').forEach(card => {
+            card.style.borderColor = card.dataset.siteId === site.site_id ? '#7a3b10' : 'var(--line)';
+          });
+        }
+
+        const statusSelect = document.getElementById('workflow-status-select');
+        const saveBtn = document.getElementById('workflow-save-btn');
+        if (statusSelect) {
+          statusSelect.value = currentWorkflow;
+        }
+
+        const persistWorkflow = async newStatus => {
+          try {
+            await api(`${API_BASE}/operator/status/${site.site_id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: newStatus }),
+            });
+
+            const pretty = humanizeLabel(newStatus);
+            const rowEl = listBody.querySelector(`tr[data-site-id="${site.site_id}"]`);
+            if (rowEl && rowEl.children && rowEl.children[3]) {
+              rowEl.children[3].textContent = pretty;
+            }
+            if (siteCards) {
+              const statusPill = siteCards.querySelector(`.site-card[data-site-id="${site.site_id}"] .site-card-tags .pill:nth-child(3)`);
+              if (statusPill) statusPill.textContent = pretty;
+            }
+
+            setStatus(`Saved workflow status: ${pretty}`);
+            await loadSite(site.site_id);
+          } catch (err) {
+            setStatus(`Status save failed: ${err.message}`);
+          }
+        };
+
+        if (saveBtn && statusSelect) {
+          saveBtn.addEventListener('click', async () => {
+            await persistWorkflow(statusSelect.value);
+          });
+        }
+
+        detailCard.querySelectorAll('[data-workflow-status]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const next = btn.getAttribute('data-workflow-status');
+            if (!next) return;
+            await persistWorkflow(next);
+          });
+        });
+
+        const copyOpenerBtn = document.getElementById('copy-opener-btn');
+        if (copyOpenerBtn) {
+          copyOpenerBtn.addEventListener('click', async () => {
+            await copyToClipboard(playbook.opener, 'opener');
+          });
+        }
+
+        const nextLeadBtn = document.getElementById('next-lead-btn');
+        if (nextLeadBtn) {
+          nextLeadBtn.addEventListener('click', async () => {
+            const nextSiteId = nextSiteIdInQueue(site.site_id);
+            if (!nextSiteId) {
+              setStatus('No more leads are queued in this filtered list.');
+              return;
+            }
+            await loadSite(nextSiteId);
+            setStatus('Moved to the next lead in the current queue.');
+          });
+        }
+
+        const workLeadBtn = document.getElementById('work-lead-btn');
+        if (workLeadBtn) {
+          workLeadBtn.addEventListener('click', async () => {
+            try {
+              await claimTaskForSite(site.site_id);
+              await copyToClipboard(playbook.opener, 'opener');
+              setStatus(`Chow claimed ${site.address}. Opener copied.`);
+            } catch (err) {
+              setStatus(`Lead claim failed: ${err.message}`);
+            }
+          });
+        }
+
+        const copyNextStepBtn = document.getElementById('copy-next-step-btn');
+        if (copyNextStepBtn) {
+          copyNextStepBtn.addEventListener('click', async () => {
+            await copyToClipboard(playbook.nextStep, 'next step');
+          });
+        }
+
+        const askAiPitchBtn = document.getElementById('ask-ai-pitch-btn');
+        if (askAiPitchBtn) {
+          askAiPitchBtn.addEventListener('click', async () => {
+            await sendChatMessage(`Give me a 20 second pitch for ${site.site_id}`);
+          });
+        }
+
+        const queueChowCallBtn = document.getElementById('queue-chow-call-btn');
+        if (queueChowCallBtn) {
+          queueChowCallBtn.addEventListener('click', async () => {
+            try {
+              const session = await queueChowCall(site.site_id);
+              setStatus(`Chow call queued for ${site.address} (${session.session_id || 'session ready'}).`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Call queue failed: ${err.message}`);
+            }
+          });
+        }
+
+        const queueChowEmailBtn = document.getElementById('queue-chow-email-btn');
+        if (queueChowEmailBtn) {
+          queueChowEmailBtn.addEventListener('click', async () => {
+            try {
+              const job = await queueChowEmail(site.site_id);
+              setStatus(`Chow email dry-run queued for ${site.address} (${job.job_id || 'job ready'}).`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Email queue failed: ${err.message}`);
+            }
+          });
+        }
+
+        const prepareSupervisedRunBtn = document.getElementById('prepare-supervised-run-btn');
+        if (prepareSupervisedRunBtn) {
+          prepareSupervisedRunBtn.addEventListener('click', async () => {
+            try {
+              const run = await createChowSupervisedRun(site.site_id);
+              setStatus(`Prepared supervised Chow run for ${site.address} (${run.run_id || 'run ready'}).`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Supervised run prep failed: ${err.message}`);
+            }
+          });
+        }
+
+        const approveCallActionBtn = document.getElementById('approve-call-action-btn');
+        if (approveCallActionBtn && pendingCallAction) {
+          approveCallActionBtn.addEventListener('click', async () => {
+            try {
+              await approveChowAction(pendingCallAction.action_id, `approve_call_for_${site.site_id}`);
+              setStatus(`Approved Chow call action for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Call approval failed: ${err.message}`);
+            }
+          });
+        }
+
+        const approveEmailActionBtn = document.getElementById('approve-email-action-btn');
+        if (approveEmailActionBtn && pendingEmailAction) {
+          approveEmailActionBtn.addEventListener('click', async () => {
+            try {
+              await approveChowAction(pendingEmailAction.action_id, `approve_email_for_${site.site_id}`);
+              setStatus(`Approved Chow email action for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Email approval failed: ${err.message}`);
+            }
+          });
+        }
+
+        const dispatchCallBtn = document.getElementById('dispatch-call-btn');
+        if (dispatchCallBtn && callDispatchable && latestCallSession && latestCallSession.session_id) {
+          dispatchCallBtn.addEventListener('click', async () => {
+            try {
+              const session = await dispatchChowCall(latestCallSession.session_id, `dispatch_call_for_${site.site_id}`);
+              const dispatchStatus = session && session.dispatch ? humanizeLabel(session.dispatch.status || 'queued') : 'queued';
+              setStatus(`Chow call dispatched for ${site.address} (${dispatchStatus}).`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Call dispatch failed: ${err.message}`);
+            }
+          });
+        }
+
+        const dispatchEmailBtn = document.getElementById('dispatch-email-btn');
+        if (dispatchEmailBtn && emailDispatchable && latestOutreachJob && latestOutreachJob.job_id) {
+          dispatchEmailBtn.addEventListener('click', async () => {
+            try {
+              const job = await dispatchChowEmail(latestOutreachJob.job_id, {
+                note: `dispatch_email_for_${site.site_id}`,
+                promoteToLive: !!emailAdapter.allow_live_dispatch,
+              });
+              const dispatchStatus = job && job.dispatch ? humanizeLabel(job.dispatch.status || 'queued') : humanizeLabel(job.status || 'queued');
+              const dispatchVerb = emailAdapter.allow_live_dispatch ? 'sent' : 'prepared';
+              setStatus(`Chow email ${dispatchVerb} for ${site.address} (${dispatchStatus}).`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Email dispatch failed: ${err.message}`);
+            }
+          });
+        }
+
+        const logCallNoAnswerBtn = document.getElementById('log-call-no-answer-btn');
+        if (logCallNoAnswerBtn && callEventLoggable && latestCallSession && latestCallSession.session_id) {
+          logCallNoAnswerBtn.addEventListener('click', async () => {
+            try {
+              await logChowCallEvent(latestCallSession.session_id, 'no_answer', 'Logged from dashboard supervisor lane.');
+              setStatus(`Logged no-answer call result for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Call result logging failed: ${err.message}`);
+            }
+          });
+        }
+
+        const logCallQualifiedBtn = document.getElementById('log-call-qualified-btn');
+        if (logCallQualifiedBtn && callEventLoggable && latestCallSession && latestCallSession.session_id) {
+          logCallQualifiedBtn.addEventListener('click', async () => {
+            try {
+              await logChowCallEvent(latestCallSession.session_id, 'qualified', 'Supervisor marked the call as qualified from the dashboard.');
+              setStatus(`Logged qualified call outcome for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Qualified call logging failed: ${err.message}`);
+            }
+          });
+        }
+
+        const logEmailSentBtn = document.getElementById('log-email-sent-btn');
+        if (logEmailSentBtn && emailEventLoggable && latestOutreachJob && latestOutreachJob.job_id) {
+          logEmailSentBtn.addEventListener('click', async () => {
+            try {
+              await logChowEmailEvent(latestOutreachJob.job_id, 'sent', 'Supervisor marked the dry-run email as reviewed/sent.');
+              setStatus(`Logged email sent event for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Email sent logging failed: ${err.message}`);
+            }
+          });
+        }
+
+        const logEmailRepliedBtn = document.getElementById('log-email-replied-btn');
+        if (logEmailRepliedBtn && emailEventLoggable && latestOutreachJob && latestOutreachJob.job_id) {
+          logEmailRepliedBtn.addEventListener('click', async () => {
+            try {
+              await logChowEmailEvent(latestOutreachJob.job_id, 'reply_received', 'Supervisor logged an email reply from the dashboard.');
+              setStatus(`Logged email reply event for ${site.address}.`);
+              await loadSite(site.site_id);
+            } catch (err) {
+              setStatus(`Email reply logging failed: ${err.message}`);
+            }
+          });
+        }
+
+        const outcomeStatusSelect = document.getElementById('outcome-status-select');
+        const outcomeProductInput = document.getElementById('outcome-product-input');
+        const outcomeObjectionInput = document.getElementById('outcome-objection-input');
+        const outcomeReasonInput = document.getElementById('outcome-reason-input');
+        const outcomeRevenueInput = document.getElementById('outcome-revenue-input');
+        const outcomeProfitInput = document.getElementById('outcome-profit-input');
+        const outcomeNoteInput = document.getElementById('outcome-note-input');
+        const outcomeSaveBtn = document.getElementById('outcome-save-btn');
+        if (outcomeStatusSelect) {
+          outcomeStatusSelect.value = currentOutcomeStatus;
+        }
+        if (outcomeSaveBtn) {
+          outcomeSaveBtn.addEventListener('click', async () => {
+            try {
+              await api(`${API_BASE}/operator/outcome/${site.site_id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  status: outcomeStatusSelect ? outcomeStatusSelect.value : 'unknown',
+                  product: outcomeProductInput ? outcomeProductInput.value.trim() : '',
+                  objection: outcomeObjectionInput ? outcomeObjectionInput.value.trim() : '',
+                  reason: outcomeReasonInput ? outcomeReasonInput.value.trim() : '',
+                  realized_revenue_usd: outcomeRevenueInput && outcomeRevenueInput.value !== '' ? Number(outcomeRevenueInput.value) : null,
+                  realized_profit_usd: outcomeProfitInput && outcomeProfitInput.value !== '' ? Number(outcomeProfitInput.value) : null,
+                  note: outcomeNoteInput ? outcomeNoteInput.value.trim() : '',
+                }),
+              });
+              const savedOutcomeLabel = humanizeLabel(outcomeStatusSelect ? outcomeStatusSelect.value : 'unknown');
+              const nextSiteId = nextSiteIdInQueue(site.site_id);
+              if (nextSiteId) {
+                await loadSite(nextSiteId);
+                setStatus(`Saved lead outcome: ${savedOutcomeLabel}. Advanced to the next lead.`);
+              } else {
+                setStatus(`Saved lead outcome: ${savedOutcomeLabel}`);
+                await loadSite(site.site_id);
+              }
+            } catch (err) {
+              setStatus(`Outcome save failed: ${err.message}`);
+            }
+          });
+        }
+      }
+
+      async function loadHeatmap(zip) {
+        const loadingStatus = 'Loading heatmap...';
+        setStatus(loadingStatus);
+        state.selectedHex = null;
+        state.selectedSiteId = null;
+        state.userSelectedHex = false;
+        setSelectedHexStyle('');
+        hexSelected.textContent = 'No hex selected';
+        listBody.innerHTML = '';
+        if (listMeta) listMeta.textContent = 'Loading addresses for selected scope...';
+        detailCard.classList.add('muted');
+        detailCard.textContent = 'DemandGrid is loading the best current territory and first lead. When it appears: 1) read the task runner, 2) use the opener, 3) log what happened.';
+        updateChatScope();
+
+        const endpoint = zip === '__all__' ? `${API_BASE}/heatmap` : `${API_BASE}/zip/${zip}/heatmap`;
+        const data = await api(endpoint);
+        state.cells = data.cells;
+
+        if (!Array.isArray(data.cells) || data.cells.length === 0) {
+          renderHeatmapCells([]);
+          heatmapMeta.textContent = zip === '__all__' ? 'No cells found for ALL ZIPs' : `No cells found for ZIP ${zip}`;
+          if (listMeta) listMeta.textContent = 'No addresses available in current scope.';
+          setStatusIfStill(loadingStatus, 'No heatmap cells');
+          return;
+        }
+
+        renderHeatmapCells(data.cells);
+        state.map.resize();
+        fitToCells(data.cells);
+
+        const values = data.cells.map(c => c.avg_priority_score);
+        const max = Math.max(...values);
+        const totalSites = data.cells.reduce((acc, c) => acc + (c.site_count || 0), 0);
+        const scopeLabel = zip === '__all__' ? `${(data.zip_count || state.zipCount)} ZIPs` : `ZIP ${zip}`;
+        const modeLabel = data.source_mode === 'lightweight_fallback' ? ' • lightweight fallback board' : '';
+        heatmapMeta.textContent = `${scopeLabel} • ${data.cell_count} hex cells • ${totalSites.toLocaleString()} sites • max avg priority ${max.toFixed(1)}/100${modeLabel}`;
+        void loadTodayPlan(zip);
+
+        const topCell = data.cells[0]?.h3_cell;
+        if (topCell) {
+          try {
+            await loadHexSites(topCell, { userInitiated: false, forceFit: true });
+            setStatusIfStill(loadingStatus, `Heatmap ready. Top cell ${topCell.slice(0, 8)}… loaded. First lead is open below.`);
+          } catch (err) {
+            setStatusIfStill(loadingStatus, `Heatmap ready, but top cell load failed: ${err.message}`);
+          }
+        } else {
+            setStatusIfStill(loadingStatus, 'Heatmap ready. Pick a hex to load ranked addresses.');
+        }
+      }
+
+      async function loadZipOptions() {
+        const z = await api(`${API_BASE}/zips`);
+        zipSelect.innerHTML = '';
+        const allowed = new Set(((state.pilotScope && state.pilotScope.zips) || []).map(String));
+        const pilotZips = (Array.isArray(z.zips) ? z.zips : []).filter(item => allowed.size === 0 || allowed.has(String(item.zip || '')));
+        if (pilotZips.length === 0) throw new Error('No pilot ZIP data available');
+
+        state.zipCount = pilotZips.length;
+        state.totalSites = pilotZips.reduce((acc, item) => acc + (item.count || 0), 0);
+
+        for (const item of pilotZips) {
+          const opt = document.createElement('option');
+          opt.value = item.zip;
+          opt.textContent = `${item.zip} (${item.count} sites)`;
+          zipSelect.appendChild(opt);
+        }
+
+        const primaryZip = state.pilotScope && state.pilotScope.primary_zip ? String(state.pilotScope.primary_zip) : null;
+        state.zip = primaryZip && pilotZips.some(item => item.zip === primaryZip) ? primaryZip : pilotZips[0].zip;
+        zipSelect.value = state.zip;
+        updateChatScope();
+      }
+
+      async function boot() {
+        updateTopbarHeight();
+        initMap();
+        initChat();
+        setRouteControlsEnabled(false);
+        await loadPilotScope();
+
+        tabMapBtn.addEventListener('click', () => setMobileView('map'));
+        tabListBtn.addEventListener('click', () => setMobileView('list'));
+        if (detailModeSiteBtn) detailModeSiteBtn.addEventListener('click', async () => setDetailMode('site'));
+        if (detailModeCraigslistBtn) detailModeCraigslistBtn.addEventListener('click', async () => setDetailMode('craigslist'));
+
+        zipSelect.addEventListener('change', async () => {
+          state.zip = zipSelect.value;
+          document.body.classList.remove('chat-open');
+          await loadHeatmap(state.zip);
+        });
+
+        reloadBtn.addEventListener('click', async () => {
+          try { await fetch(`${API_BASE}/admin/reload`, { method: 'POST' }); } catch (_) {}
+          await loadHeatmap(state.zip);
+        });
+
+        routeBtn.onclick = () => { void window.__demandGridRunRoutePlan(); };
+        routeCsvBtn.onclick = () => { window.__demandGridRunRouteCsv(); };
+        if (routeBtnInline) routeBtnInline.onclick = () => { void window.__demandGridRunRoutePlan(); };
+        if (routeCsvBtnInline) routeCsvBtnInline.onclick = () => { window.__demandGridRunRouteCsv(); };
+        if (chatOpenInline) {
+          chatOpenInline.addEventListener('click', () => {
+            document.body.classList.add('chat-open');
+          });
+        }
+
+        window.addEventListener('resize', () => {
+          updateTopbarHeight();
+          if (state.map) state.map.resize();
+
+          if (!isMobileLikeLayout()) {
+            document.body.classList.remove('mobile-map', 'mobile-list', 'chat-open');
+          } else if (!document.body.classList.contains('mobile-map') && !document.body.classList.contains('mobile-list')) {
+            setMobileView('list');
+          }
+        });
+
+        if (!isMobileLikeLayout()) {
+          document.body.classList.remove('mobile-map', 'mobile-list', 'chat-open');
+        } else {
+          // Mobile-first usability: show actionable ranked list/details immediately.
+          setMobileView('list');
+        }
+
+        await waitForMapReady();
+        await loadZipOptions();
+        await loadHeatmap(state.zip);
+        setRouteControlsEnabled(true);
+      }
+
+      boot().catch(err => {
+        console.error(err);
+        setStatus(`Error: ${err.message}`);
+      });
+    </script>
+  </body>
+</html>

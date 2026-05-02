@@ -1,0 +1,55 @@
+# Secrets
+.env
+.env.*
+*.env
+!*.env.example
+
+# Dependencies
+node_modules/
+
+# PM2 logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pi auth
+.pi/agent/auth.json
+
+# Data snapshots (large)
+data/jose-telegram-snapshot.json
+data/*.ndjson
+
+# Backup files
+*.bak
+*.bak-*
+
+# Dark-factory project data (large CSVs)
+factory/projects/*/data/raw/
+factory/projects/*/data/processed/
+factory/projects/*/artifacts/*.csv
+
+# Session archives (large)
+sessions/archive/
+sessions/*/
+
+# Chat history JSON
+web-chat-history.json
+
+# Misc test registries
+test-registry*.mjs
+test-validate.mjs
+test-debug.mjs
+
+# Large media (demos)
+factory/projects/*/artifacts/*.webm
+factory/projects/*/artifacts/*.mp4
+
+# Cache dirs
+__pycache__/
+*.pyc
+media-cache/
+agent-sessions/
+

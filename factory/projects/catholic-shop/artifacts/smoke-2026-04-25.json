@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-04-25T00:45:10Z",
+  "project": "catholic-shop",
+  "checks": [
+    {
+      "name": "local_health",
+      "url": "http://127.0.0.1:8110/health",
+      "status": 200
+    },
+    {
+      "name": "local_catalog",
+      "url": "http://127.0.0.1:8110/api/v1/catalog/feed?limit=5",
+      "status": 200
+    },
+    {
+      "name": "local_ai_recommend",
+      "url": "http://127.0.0.1:8110/api/v1/ai/recommend",
+      "status": 200
+    },
+    {
+      "name": "public_ui_ip",
+      "url": "http://20.122.197.143/catholic-shop/",
+      "status": 200
+    },
+    {
+      "name": "public_ui_domain",
+      "url": "https://optimizedworkflow.dev/catholic-shop/",
+      "status": 200
+    },
+    {
+      "name": "public_catalog_ip",
+      "url": "http://20.122.197.143/catholic-shop/api/v1/catalog/feed?limit=2",
+      "status": 200
+    }
+  ]
+}

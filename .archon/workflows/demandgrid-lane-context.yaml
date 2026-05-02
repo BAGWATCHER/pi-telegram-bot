@@ -1,0 +1,108 @@
+name: demandgrid-lane-context
+description: |
+  Use when: You need a concise lane context package before implementing a DemandGrid ticket.
+  Triggers: "demandgrid lane context", "dg lane brief", "prep EZ-022", "prep DG-008".
+  Does: Extracts lane contract from queue.yaml + latest eval status and writes JSON/Markdown brief artifacts.
+  NOT for: Direct implementation or deployment.
+
+nodes:
+  - id: build-lane-context
+    bash: |
+      set -euo pipefail
+      DG_ROOT="/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow"
+      cd "$DG_ROOT"
+
+      LANE_RAW="$ARGUMENTS"
+      LANE_ID="$(printf "%s" "$LANE_RAW" | awk '{print $1}')"
+      if [ -z "$LANE_ID" ]; then
+        echo "FAIL: provide lane id, e.g. 'EZ-022' or 'DG-008'"
+        exit 1
+      fi
+
+      export LANE_ID
+      python3 - << 'PY'
+      import json
+      import os
+      from datetime import datetime, timezone
+      from pathlib import Path
+
+      import yaml
+
+      root = Path('/home/ubuntu/pi-telegram-bot/factory/projects/energy-zillow')
+      lane_id = os.environ['LANE_ID']
+      queue_path = root / 'queue.yaml'
+      eval_summary_path = root / 'artifacts' / 'eval-summary.md'
+      run_status_path = root / 'artifacts' / 'run-status-2026-04-18.md'
+
+      queue = yaml.safe_load(queue_path.read_text(encoding='utf-8'))
+      tasks = queue.get('tasks', [])
+      lane = next((t for t in tasks if str(t.get('id')) == lane_id), None)
+      if lane is None:
+          raise SystemExit(f'FAIL: lane {lane_id} not found in queue.yaml')
+
+      eval_head = ''
+      if eval_summary_path.exists():
+          eval_head = '\n'.join(eval_summary_path.read_text(encoding='utf-8', errors='replace').splitlines()[:20])
+
+      run_head = ''
+      if run_status_path.exists():
+          run_head = '\n'.join(run_status_path.read_text(encoding='utf-8', errors='replace').splitlines()[:40])
+
+      payload = {
+          'lane_id': lane_id,
+          'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          'queue_updated_at': queue.get('updated_at'),
+          'lane': lane,
+          'eval_summary_head': eval_head,
+          'run_status_head': run_head,
+      }
+
+      artifacts_dir = root / 'artifacts'
+      artifacts_dir.mkdir(parents=True, exist_ok=True)
+      out_json = artifacts_dir / f'archon-lane-context-{lane_id}.json'
+      out_md = artifacts_dir / f'archon-lane-context-{lane_id}.md'
+      out_json.write_text(json.dumps(payload, indent=2), encoding='utf-8')
+
+      lines = [
+          f'# DemandGrid lane context - {lane_id}',
+          '',
+          f"- timestamp_utc: {payload['timestamp_utc']}",
+          f"- queue_updated_at: {payload['queue_updated_at']}",
+          f"- status: {lane.get('status')}",
+          f"- lane: {lane.get('lane')}",
+          f"- priority: {lane.get('priority')}",
+          f"- risk: {lane.get('risk')}",
+          '',
+          '## title',
+          str(lane.get('title', '')),
+          '',
+          '## done_when',
+      ]
+      for item in lane.get('done_when', []) or []:
+          lines.append(f'- {item}')
+
+      lines += ['', '## artifacts']
+      for item in lane.get('artifacts', []) or []:
+          lines.append(f'- {item}')
+
+      if eval_head:
+          lines += ['', '## eval-summary.md (head)', '```text', eval_head, '```']
+      if run_head:
+          lines += ['', '## run-status-2026-04-18.md (head)', '```text', run_head, '```']
+
+      out_md.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+      print(str(out_json))
+      print(str(out_md))
+      print('PASS')
+      PY
+
+  - id: assert-context
+    depends_on: [build-lane-context]
+    bash: |
+      set -euo pipefail
+      if ! echo "$build-lane-context.output" | grep -q 'PASS'; then
+        echo "FAIL: lane context generation did not report PASS"
+        exit 1
+      fi
+      echo "PASS: lane context artifact generated"

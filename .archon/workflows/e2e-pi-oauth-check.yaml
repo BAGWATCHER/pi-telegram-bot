@@ -1,0 +1,23 @@
+name: e2e-pi-oauth-check
+description: Verify Archon can use Pi OAuth credentials for openai-codex.
+provider: pi
+model: openai-codex/gpt-5.4
+
+nodes:
+  - id: ping
+    prompt: |
+      Reply exactly: PI_ARCHON_OAUTH_OK
+    allowed_tools: []
+    effort: low
+
+  - id: assert
+    depends_on: [ping]
+    bash: |
+      set -euo pipefail
+      raw="$ping.output"
+      normalized=$(printf "%s" "$raw" | tr -d "'\"[:space:]")
+      if [ "$normalized" != "PI_ARCHON_OAUTH_OK" ]; then
+        echo "FAIL: unexpected response raw='$raw' normalized='$normalized'"
+        exit 1
+      fi
+      echo "PASS: pi oauth usable in archon"

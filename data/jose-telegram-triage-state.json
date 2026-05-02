@@ -1,0 +1,667 @@
+{
+  "generatedAt": "2026-04-09T03:53:21.109Z",
+  "loadMode": "flood",
+  "loadReasons": [
+    "unreadDialogs=40",
+    "urgentItems=39",
+    "maxUnread=289685"
+  ],
+  "totals": {
+    "dialogs": 200,
+    "unreadDialogs": 40,
+    "urgentItems": 39
+  },
+  "categoryCounts": {
+    "crypto": 25,
+    "other": 6,
+    "community": 5,
+    "shopping": 1,
+    "dev": 1,
+    "finance": 1
+  },
+  "topicLanes": [
+    {
+      "category": "crypto",
+      "count": 25,
+      "urgentCount": 25,
+      "unreadTotal": 2090298,
+      "topDialogs": [
+        "Whales Tracker Signals",
+        "$GRODT",
+        "SOL Sending Alert"
+      ]
+    },
+    {
+      "category": "other",
+      "count": 6,
+      "urgentCount": 6,
+      "unreadTotal": 143514,
+      "topDialogs": [
+        "Gambles 🎲 MadApes",
+        "Twitter X Tracker",
+        "DEFAI Creator"
+      ]
+    },
+    {
+      "category": "community",
+      "count": 5,
+      "urgentCount": 5,
+      "unreadTotal": 306001,
+      "topDialogs": [
+        "$FAPCOIN CTO",
+        "Infinity Gainz",
+        "Jupiter Offerbook Private Beta"
+      ]
+    },
+    {
+      "category": "shopping",
+      "count": 1,
+      "urgentCount": 1,
+      "unreadTotal": 38066,
+      "topDialogs": [
+        "BSC's X Tracking"
+      ]
+    },
+    {
+      "category": "dev",
+      "count": 1,
+      "urgentCount": 1,
+      "unreadTotal": 3218,
+      "topDialogs": [
+        "Synesis One [chat] Official"
+      ]
+    },
+    {
+      "category": "finance",
+      "count": 1,
+      "urgentCount": 1,
+      "unreadTotal": 1916,
+      "topDialogs": [
+        "Bank Of Cart 🏦"
+      ]
+    }
+  ],
+  "priorityQueue": [
+    {
+      "dialogId": "2503706241",
+      "title": "Whales Tracker Signals",
+      "category": "crypto",
+      "urgencyScore": 95,
+      "unreadCount": 127628,
+      "reasons": [
+        "unread=127628",
+        "fresh<=15m",
+        "keyword:now",
+        "links=1",
+        "market-signals=2"
+      ],
+      "preview": "🟡[SOL] - meyhum ($meyhum) 📜 CA: GneJgb74HuWMPGAfYPw34bF2jCDgp1kpjRCcM8nPpump ┌ Name: meyhum ｜ meyhum ├ Age: 3 minutes ago ├ Market Cap: $15.7k ├ Liq: $12.9k ├ Holders: 167 ｜ TOP 10: 20.75% └ 36.4 ｜ 3.5 ｜ 3.4 ｜ 2.8 ｜ 2.",
+      "noveltyKey": "meyhum|meyhum|gnejgb74huwmpgafypw34bf2jcdgp1kpjrccm8nppump|name|meyhum|meyhum|minutes|market|holders|devs",
+      "lastMessageAt": "2026-04-09T03:51:53.000Z"
+    },
+    {
+      "dialogId": "2567973678",
+      "title": "$GRODT",
+      "category": "crypto",
+      "urgencyScore": 95,
+      "unreadCount": 153,
+      "reasons": [
+        "unread=153",
+        "fresh<=15m",
+        "keyword:now",
+        "links=1",
+        "market-signals=1"
+      ],
+      "preview": "📣 ONLINE GRODT AIRDROP 📣 💫 It's time to Claim Your $GRODT Rewards CLAIM NOW👉 http://getalloccation.pro/ We’ve secured $700k tоkens & exclusive airdrоp to #GRODT users and hоlders. 🔥 🔥 CLAIM $GRODT REWARD CLAIM NOW\ud83d",
+      "noveltyKey": "online|grodt|airdrop|time|claim|your|grodt|rewards|claim|secured",
+      "lastMessageAt": "2026-04-09T03:50:20.000Z"
+    },
+    {
+      "dialogId": "2495900078",
+      "title": "SOL Sending Alert",
+      "category": "crypto",
+      "urgencyScore": 95,
+      "unreadCount": 81072,
+      "reasons": [
+        "unread=81072",
+        "fresh<=15m",
+        "keyword:now",
+        "links=1",
+        "market-signals=2"
+      ],
+      "preview": "🟡[SOL] - Autofare ($Autofare) 📜 CA: 8qXiL1WPCtBn3zizHJseddQwrvZb3Z4otYqEGo2Wp5o9 ┌ Name: Autofare ｜ Autofare ├ Age: 20 minutes ago ├ Market Cap: $5.9k ├ Liq: $7.9k ├ Holders: 66 ｜ TOP 10: 21.92% └ 58.5 ｜ 3.9 ｜ 2.7 ｜ 2.",
+      "noveltyKey": "autofare|autofare|8qxil1wpctbn3zizhjseddqwrvzb3z4otyqego2wp5o9|name|autofare|autofare|minutes|market|holders|devs",
+      "lastMessageAt": "2026-04-09T03:48:48.000Z"
+    },
+    {
+      "dialogId": "1758611100",
+      "title": "Gambles 🎲 MadApes",
+      "category": "other",
+      "urgencyScore": 91,
+      "unreadCount": 14253,
+      "reasons": [
+        "unread=14253",
+        "fresh<=15m",
+        "keyword:now",
+        "market-signals=2"
+      ],
+      "preview": "44x, 7.5M 💎 now 2.6M $BURNIE 🔥 \n 32.5x, 2.6M 💎 now 1.4M $ABCDEFG 🔥",
+      "noveltyKey": "burnie|abcdefg",
+      "lastMessageAt": "2026-04-09T03:53:01.000Z"
+    },
+    {
+      "dialogId": "2333406905",
+      "title": "MEME 1000X",
+      "category": "crypto",
+      "urgencyScore": 91,
+      "unreadCount": 252654,
+      "reasons": [
+        "unread=252654",
+        "fresh<=15m",
+        "keyword:now",
+        "market-signals=2"
+      ],
+      "preview": "🌞1 Smart Money Buying Now!🌞 🟢 Token: Marshtomp (Market Cap: 7.76K) Created🕐：3h ago Buy Price💵 $0.000007764 Amount💳 0.4889 SOL【Added】 Contract Address (Click to Copy): CgKukvCnhs1mramWUvUkhEE3PcVj8SBYCoXjcFVbpump #1",
+      "noveltyKey": "smart|money|buying|token|marshtomp|market|created|price|000007764|amount",
+      "lastMessageAt": "2026-04-09T03:52:43.000Z"
+    },
+    {
+      "dialogId": "2202241417",
+      "title": "GMGN Featured Signals(Lv2) - SOL",
+      "category": "crypto",
+      "urgencyScore": 91,
+      "unreadCount": 202189,
+      "reasons": [
+        "unread=202189",
+        "fresh<=15m",
+        "keyword:alert",
+        "market-signals=1"
+      ],
+      "preview": "💊💊Pump市值飙升 FDV Surge Alert FDV in 5 min 🟢+$25.7K(+1116.4%) 🚀 Status进度: 4.23% $ NNN(NNNN) 2eFNbap2QmvCAWABmhcrZLgU4ftGS7DQ5E4HKnQEpump 📈 5m | 1h | 6h: 1056.7% | 1056.7% | 1056.7% 🎲 5m TXs/Vol: 294/$973.3 💡 MCP: $26",
+      "noveltyKey": "pump|surge|alert|1116|status|nnnn|2efnbap2qmvcawabmhcrzlgu4ftgs7dq5e4hknqepump|1056|1056|1056",
+      "lastMessageAt": "2026-04-09T03:52:15.000Z"
+    },
+    {
+      "dialogId": "2519488394",
+      "title": "Apex Gambles 🎲",
+      "category": "crypto",
+      "urgencyScore": 91,
+      "unreadCount": 3548,
+      "reasons": [
+        "unread=3548",
+        "fresh<=15m",
+        "keyword:security",
+        "market-signals=2"
+      ],
+      "preview": "­💰 パンチ ($PUNCH) ├ H1CknM7TXz134nY5YT7KUYG6fL2Egn4ieLyzkTk7BAGS └ #SOL | 🌱4h | 👁️1.1K 📊 Stats ├ USD $0.0₄4972 (+21%) ├ MC $49.7K ├ Vol $200.3K ├ LP $7.7K ├ Sup 1B/1B ├ 1H +3.2% 🟩130 🟥109 └ ATH $95.7K (-48% / 3h) 🔗 ",
+      "noveltyKey": "punch|h1cknm7txz134ny5yt7kuyg6fl2egn4ielyzktk7bags|stats|4972|socials|about|security|fresh|total|sold",
+      "lastMessageAt": "2026-04-09T03:46:26.000Z"
+    },
+    {
+      "dialogId": "2134751475",
+      "title": "BLACKHAT SOL",
+      "category": "crypto",
+      "urgencyScore": 87,
+      "unreadCount": 254410,
+      "reasons": [
+        "unread=254410",
+        "fresh<=15m",
+        "keyword:now"
+      ],
+      "preview": "#rambo ⭐️ 🟢 Swapped 0.99 #SOL ($81.07) for 28,408,743.56 #UNISON On #PumpFun @ $0.0000029 | MC: $2.9k | Age: just now 📊GMGN | 🎯MAESTRO \n #BlackhatSOL455 ⭐️ 🟢 Swapped 6.91 #SOL ($567.90) for 200,963,210.66 #slop On #P",
+      "noveltyKey": "rambo|swapped|unison|pumpfun|0000029|just|gmgn|maestro|blackhatsol455|swapped",
+      "lastMessageAt": "2026-04-09T03:53:07.000Z"
+    },
+    {
+      "dialogId": "1722272970",
+      "title": "Skeleton Lounge",
+      "category": "crypto",
+      "urgencyScore": 87,
+      "unreadCount": 4939,
+      "reasons": [
+        "unread=4939",
+        "fresh<=15m",
+        "keyword:alert"
+      ],
+      "preview": "💀Pump Alert! NEU token pumped 1070% [11X] since the Multi trade signal! 💀Marketcap: $648,296 💀Holders: 1,946 💀Dex 💀KOLs traded: 12 📋Check List 💀Scan Token",
+      "noveltyKey": "pump|alert|token|pumped|1070|since|multi|trade|signal|marketcap",
+      "lastMessageAt": "2026-04-09T03:52:09.000Z"
+    },
+    {
+      "dialogId": "2093384030",
+      "title": "Solana Early Trending 💵",
+      "category": "crypto",
+      "urgencyScore": 87,
+      "unreadCount": 38027,
+      "reasons": [
+        "unread=38027",
+        "fresh<=15m",
+        "keyword:security"
+      ],
+      "preview": "🔥 ‎REVÉRSÉ SOCIETY New Trending 🕒 Age: 4h | Security: 🚨 🔗 TG•WEB•CHART 💰 MC: $138,299 • 🔝 $210K 💧 Liq: $28.4K 📈 Vol: 1h: $1.4K ┗ Fake: $0 👥 Hodls: 253 • 🤝 CTO 📦 /Bundles: 3 • 27% → 28.2% 🔫 Snipers: 1 • 0.3% →",
+      "noveltyKey": "society|trending|security|chart|210k|fake|hodls|bundles|snipers|first",
+      "lastMessageAt": "2026-04-09T03:48:55.000Z"
+    },
+    {
+      "dialogId": "1576823564",
+      "title": "Synesis One [chat] Official",
+      "category": "dev",
+      "urgencyScore": 73,
+      "unreadCount": 3218,
+      "reasons": [
+        "unread=3218",
+        "fresh<=15m",
+        "links=1",
+        "market-signals=1"
+      ],
+      "preview": "Welcome Synesis One, @vladislavabon! Synesis One is a data crowdsourcing platform where anyone can earn $SNS by completing micro-tasks that train AI. Make sure you join our Discord server as well https://discord.gg/synes",
+      "noveltyKey": "welcome|synesis|vladislavabon|synesis|data|crowdsourcing|platform|where|anyone|earn",
+      "lastMessageAt": "2026-04-09T03:51:52.000Z"
+    },
+    {
+      "dialogId": "3006076902",
+      "title": "$FAPCOIN CTO",
+      "category": "community",
+      "urgencyScore": 69,
+      "unreadCount": 2902,
+      "reasons": [
+        "unread=2902",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "📈 Your Dick has grown by 77 cm! 📏 New size: 1214 cm",
+      "noveltyKey": "your|dick|grown|size|1214",
+      "lastMessageAt": "2026-04-09T03:52:52.000Z"
+    },
+    {
+      "dialogId": "2596386377",
+      "title": "BLACKHAT BSC",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 289685,
+      "reasons": [
+        "unread=289685",
+        "fresh<=15m",
+        "links=1"
+      ],
+      "preview": "宝二爷 (宝二爷) Pair: 宝二爷/WBNB https://gmgn.ai/bsc/token/10Xboost_0xa060823c34b071777f4e644499C6312929c64444 Volume: $0 Created: 20531d ago | Dex Paid: ❌ MarketCap: $15,115 Holders: 19 | TOP 10: 41.1% └👨‍💻12.5%| 9.6%| 5.1%| ",
+      "noveltyKey": "pair|wbnb|volume|created|20531d|paid|marketcap|holders|creator|0xfd89322f0b1566328268e9bf8bb3737d5f5a3baa",
+      "lastMessageAt": "2026-04-09T03:52:51.000Z"
+    },
+    {
+      "dialogId": "2289079451",
+      "title": "BSC's X Tracking",
+      "category": "shopping",
+      "urgencyScore": 69,
+      "unreadCount": 38066,
+      "reasons": [
+        "unread=38066",
+        "fresh<=15m",
+        "links=1"
+      ],
+      "preview": "🚨 @heyibinance replied tweet 你漏掉了宝二爷。 🔗 https://x.com/heyibinance/status/2042088257010229263",
+      "noveltyKey": "heyibinance|replied|tweet",
+      "lastMessageAt": "2026-04-09T03:52:37.000Z"
+    },
+    {
+      "dialogId": "2439158541",
+      "title": "Pnut Hidden Gems",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 12608,
+      "reasons": [
+        "unread=12608",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "🔥🔥🔥 PEPE TRUMP | $PETE #PETE 1.4x 💹 $111k 🔜 $158.2k 💦GMGN.AI (WEB) | NEO | GMGN.AI (BOT) | Trojan | Photon | AXIOM | Nova ｜ Bloom ｜ Padre ｜ AVE | #PETE ________________________ 📢 Ad: 🧧 NEW YEAR BIG SALE! - 🎁 Lif",
+      "noveltyKey": "pepe|trump|pete|pete|111k|gmgn|gmgn|trojan|photon|axiom",
+      "lastMessageAt": "2026-04-09T03:51:43.000Z"
+    },
+    {
+      "dialogId": "2267170492",
+      "title": "SOL 秘密 ㊙️🇨🇳",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 18604,
+      "reasons": [
+        "unread=18604",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "🔥🔥🔥PEPE TRUMP | $PETE #PETE 1.4x 💹 $111k 🔜 $158.2k ⚡️立即购买 💦GMGN.AI (网页) | GMGN.AI (机器人) | PinkPunk🐷 PEPE🐸 | DraGun🐲 | 📈图表 | 💹ᴅꜱᴄʀ | [#Solana㊙️🇨🇳] ________________________ 对 #Crypto #Memecoins #1000x gems #Bi",
+      "noveltyKey": "pepe|trump|pete|pete|111k|gmgn|gmgn|pinkpunk|pepe|dragun",
+      "lastMessageAt": "2026-04-09T03:51:43.000Z"
+    },
+    {
+      "dialogId": "2258080534",
+      "title": "Twitter X Tracker",
+      "category": "other",
+      "urgencyScore": 69,
+      "unreadCount": 14503,
+      "reasons": [
+        "unread=14503",
+        "fresh<=15m",
+        "links=1"
+      ],
+      "preview": "🚨 @elonmusk quoted tweet @SawyerMerritt Tesla puts a lot of effort into ensuring that our cars don’t run over animals 🔗 https://x.com/elonmusk/status/2042087991347446070",
+      "noveltyKey": "elonmusk|quoted|tweet|sawyermerritt|tesla|puts|effort|into|ensuring|that",
+      "lastMessageAt": "2026-04-09T03:51:32.000Z"
+    },
+    {
+      "dialogId": "2314485533",
+      "title": "KOL SignalX",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 4874,
+      "reasons": [
+        "unread=4874",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "🔥🔥🔥 Neucoin ｜ $NEU #NEU 7.0x 💹 $86.8k 🔜 $608.6k 💦GMGN.AI (WEB) ｜ NEO ｜ GMGN.AI (BOT) ｜ Trojan ｜ Photon ｜ AXIOM ｜ Nova ｜ Bloom ｜ Padre ｜ AVE ｜ #NEU 💎 Powered by @MemesDontLies 💎 ________________________ 📢 Ad: 🧧 ",
+      "noveltyKey": "neucoin|gmgn|gmgn|trojan|photon|axiom|nova|bloom|padre|powered",
+      "lastMessageAt": "2026-04-09T03:49:59.000Z"
+    },
+    {
+      "dialogId": "1914959004",
+      "title": "Call Analyser 2",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 250811,
+      "reasons": [
+        "unread=250811",
+        "fresh<=15m",
+        "market-signals=2"
+      ],
+      "preview": "☘️(Update) $PETE +1 call at $160.6K mc from: ⚡️Caller: Solana Premium VIP Calls 💊 | CPW: 313/1000 ⚡️Total calls: 3 🟩Check Stats ‎Gpdy4Xx46NjHuAvyGs4nMYXQfN3SiuXnb3SERrcfpump‎ 🎯BUY: STB☆Trojan☆AlphAI☆GMGN☆Axiom☆Kaizen☆",
+      "noveltyKey": "update|pete|call|from|caller|solana|premium|calls|1000|total",
+      "lastMessageAt": "2026-04-09T03:49:08.000Z"
+    },
+    {
+      "dialogId": "2265463352",
+      "title": "4AM Solana Volume Signal",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 24521,
+      "reasons": [
+        "unread=24521",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "🔔KUNEKUNE | KUNEKUNE 3QakkeCux4FtnvwWapVfVZYxCd6ETqpP5oTyjca1pump 🧢 Marketcap: $108,104 ⏱️ Age: 14m 🧑‍💻 Dev: 28EjP...cGNLL (💰 0%) 👥 Holders: 454 🔝 Top 10 holders: 9% 🚀 Volume: $180,129 🏛️ Platform: 💊 pump.fun \ud83d",
+      "noveltyKey": "kunekune|kunekune|3qakkecux4ftnvwwapvfvzyxcd6etqpp5otyjca1pump|marketcap|28ejp|cgnll|holders|holders|volume|platform",
+      "lastMessageAt": "2026-04-09T03:47:27.000Z"
+    },
+    {
+      "dialogId": "2159053734",
+      "title": "DEFAI Creator",
+      "category": "other",
+      "urgencyScore": 69,
+      "unreadCount": 111218,
+      "reasons": [
+        "unread=111218",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "$PETE call of @PikachuCallsGirls just passed 2x! 🔎 View Call 🔬 View Details 🎯 Maestro",
+      "noveltyKey": "pete|call|pikachucallsgirls|just|passed|view|call|view|details|maestro",
+      "lastMessageAt": "2026-04-09T03:46:19.000Z"
+    },
+    {
+      "dialogId": "2548285541",
+      "title": "DEFAI - Hall of Fame 🥇",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 28154,
+      "reasons": [
+        "unread=28154",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "18 agents just passed 2x with $PETE! 🔬 View Token",
+      "noveltyKey": "agents|just|passed|with|pete|view|token",
+      "lastMessageAt": "2026-04-09T03:46:19.000Z"
+    },
+    {
+      "dialogId": "2341018601",
+      "title": "Solana Dex Paid",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 16519,
+      "reasons": [
+        "unread=16519",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "✅✅✅ El Gato | $GATO #GATO 7.2x 👑 $8.3k 🚀 $59.8k 🔗 GMGN.AI (WEB) ｜ GMGN.AI (BOT) ｜ Bloom ｜ Trojan ｜ AXIOM ________________________ 📢 Ad: 🧧 NEW YEAR BIG SALE! - 🎁 Lifetime Access → 1 SOL, contact @k_vlde to join!",
+      "noveltyKey": "gato|gato|gato|gmgn|gmgn|bloom|trojan|axiom|year|sale",
+      "lastMessageAt": "2026-04-09T03:46:06.000Z"
+    },
+    {
+      "dialogId": "2769587207",
+      "title": "insightcasino",
+      "category": "crypto",
+      "urgencyScore": 69,
+      "unreadCount": 4505,
+      "reasons": [
+        "unread=4505",
+        "fresh<=15m",
+        "market-signals=1"
+      ],
+      "preview": "Just a gameble, DYOR DvdzXKUEKe7LNpF3gu1aE9z4WBeN56WHDb1otvfcpump",
+      "noveltyKey": "just|gameble|dyor|dvdzxkueke7lnpf3gu1ae9z4wben56whdb1otvfcpump",
+      "lastMessageAt": "2026-04-09T03:45:50.000Z"
+    },
+    {
+      "dialogId": "2473898666",
+      "title": "Bank Of Cart 🏦",
+      "category": "finance",
+      "urgencyScore": 65,
+      "unreadCount": 1916,
+      "reasons": [
+        "unread=1916",
+        "fresh<=15m"
+      ],
+      "preview": "I think they didn't realized yet \n can't dm you",
+      "noveltyKey": "think|they|didn|realized",
+      "lastMessageAt": "2026-04-09T03:53:15.000Z"
+    },
+    {
+      "dialogId": "2638863516",
+      "title": "🇸🇬SOLANA 官方合约矿池中文群",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 3362,
+      "reasons": [
+        "unread=3362",
+        "fresh<=15m"
+      ],
+      "preview": "我们做质押感觉就是在给sol造势 \n Binance以45%的市占率在持续领跑全球现货市场",
+      "noveltyKey": "binance",
+      "lastMessageAt": "2026-04-09T03:53:07.000Z"
+    },
+    {
+      "dialogId": "1324535284",
+      "title": "Infinity Gainz",
+      "category": "community",
+      "urgencyScore": 65,
+      "unreadCount": 187594,
+      "reasons": [
+        "unread=187594",
+        "fresh<=15m"
+      ],
+      "preview": "",
+      "noveltyKey": "1324535284:no-preview",
+      "lastMessageAt": "2026-04-09T03:52:16.000Z"
+    },
+    {
+      "dialogId": "3686578784",
+      "title": "Jupiter Offerbook Private Beta",
+      "category": "community",
+      "urgencyScore": 65,
+      "unreadCount": 705,
+      "reasons": [
+        "unread=705",
+        "fresh<=15m"
+      ],
+      "preview": "Is offerbook live yet",
+      "noveltyKey": "offerbook|live",
+      "lastMessageAt": "2026-04-09T03:52:01.000Z"
+    },
+    {
+      "dialogId": "2214581326",
+      "title": "SOLANA Smart Money Signal",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 244524,
+      "reasons": [
+        "unread=244524",
+        "fresh<=15m"
+      ],
+      "preview": "2 smart money bought this token!! 。 🔖 Token-info ┣ Name: BERNIE ┣ CA: Click to view ┣ 💎 ┣ Amount: 1.39SOL。 ┣ price: 0.0000037 ┗ FDV: 3.65 k ┣ 🔍twitter Search ┗ 🔍CA 📈 K-line ┣ 💹 ┣ Gmgn buyInfo: ┣ 1th buy 3.59SOL ┣ 2",
+      "noveltyKey": "smart|money|bought|this|token|token|info|name|bernie|click",
+      "lastMessageAt": "2026-04-09T03:51:48.000Z"
+    },
+    {
+      "dialogId": "2340989663",
+      "title": "区块节点-Mining pool",
+      "category": "community",
+      "urgencyScore": 65,
+      "unreadCount": 2267,
+      "reasons": [
+        "unread=2267",
+        "fresh<=15m"
+      ],
+      "preview": "我现在每天收益拿着过得已经不错了比上班强，我2000U，每天也能赚60左右足够了😁",
+      "noveltyKey": "2000u",
+      "lastMessageAt": "2026-04-09T03:51:37.000Z"
+    },
+    {
+      "dialogId": "1099505434",
+      "title": "Hacker News",
+      "category": "other",
+      "urgencyScore": 65,
+      "unreadCount": 962,
+      "reasons": [
+        "unread=962",
+        "fresh<=15m"
+      ],
+      "preview": "Newly created Polymarket accounts win big on well-timed Iran ceasefire bets Article, Comments",
+      "noveltyKey": "newly|created|polymarket|accounts|well|timed|iran|ceasefire|bets|article",
+      "lastMessageAt": "2026-04-09T03:51:17.000Z"
+    },
+    {
+      "dialogId": "2013099981",
+      "title": "Solana Rockets Casino 🎰",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 364,
+      "reasons": [
+        "unread=364",
+        "fresh<=15m"
+      ],
+      "preview": "",
+      "noveltyKey": "2013099981:no-preview",
+      "lastMessageAt": "2026-04-09T03:48:20.000Z"
+    },
+    {
+      "dialogId": "1890805953",
+      "title": "Pikachu Calls",
+      "category": "other",
+      "urgencyScore": 65,
+      "unreadCount": 2562,
+      "reasons": [
+        "unread=2562",
+        "fresh<=15m"
+      ],
+      "preview": "2x",
+      "noveltyKey": "1890805953:2x",
+      "lastMessageAt": "2026-04-09T03:47:18.000Z"
+    },
+    {
+      "dialogId": "2419238508",
+      "title": "DARKLEDGER CASHOUTS🏧🏦",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 246,
+      "reasons": [
+        "unread=246",
+        "fresh<=15m"
+      ],
+      "preview": "Who want Oklahoma Benefits method 2026 ! paying same day ! no need any docs ! pm @Rowan73",
+      "noveltyKey": "want|oklahoma|benefits|method|2026|paying|same|need|docs|rowan73",
+      "lastMessageAt": "2026-04-09T03:47:01.000Z"
+    },
+    {
+      "dialogId": "2105866508",
+      "title": "Crypto cyber punk",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 218886,
+      "reasons": [
+        "unread=218886",
+        "fresh<=15m"
+      ],
+      "preview": "wojak Buy! 🟢🟢🟢🟢🟢🟢🟢 🔀 Spent $125.96 (0.058 ETH) 🔀 Got 8,105,061,088 wojak 👤 Buyer / TX 🪙 Position +2% 💸 Market Cap $4,816,571 DexT | Screener | Buy | Trending",
+      "noveltyKey": "wojak|spent|wojak|buyer|position|market|dext|screener|trending",
+      "lastMessageAt": "2026-04-09T03:46:40.000Z"
+    },
+    {
+      "dialogId": "2279143316",
+      "title": "4AM Pumpfun Volume Signal",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 1145,
+      "reasons": [
+        "unread=1145",
+        "fresh<=15m"
+      ],
+      "preview": "🚀 x2.2 in 29m 💹 From $24,843 ↗ $53,890 Copyright © 4AM",
+      "noveltyKey": "from|copyright",
+      "lastMessageAt": "2026-04-09T03:46:38.000Z"
+    },
+    {
+      "dialogId": "2881971490",
+      "title": "Degen Cult | Calls Bot (SOL)",
+      "category": "crypto",
+      "urgencyScore": 65,
+      "unreadCount": 6870,
+      "reasons": [
+        "unread=6870",
+        "fresh<=15m"
+      ],
+      "preview": "🔍 Watching the market....",
+      "noveltyKey": "watching|market",
+      "lastMessageAt": "2026-04-09T03:46:07.000Z"
+    },
+    {
+      "dialogId": "2184002844",
+      "title": "🌊 Sui Traders",
+      "category": "community",
+      "urgencyScore": 65,
+      "unreadCount": 112533,
+      "reasons": [
+        "unread=112533",
+        "fresh<=15m"
+      ],
+      "preview": "Wassup traders?!?",
+      "noveltyKey": "wassup|traders",
+      "lastMessageAt": "2026-04-09T03:45:45.000Z"
+    },
+    {
+      "dialogId": "2084671326",
+      "title": "Handsome Finance",
+      "category": "other",
+      "urgencyScore": 44,
+      "unreadCount": 16,
+      "reasons": [
+        "unread=16",
+        "links=1"
+      ],
+      "preview": "https://www.youtube.com/@HandsomeFinance \n It's memescope monday",
+      "noveltyKey": "memescope|monday",
+      "lastMessageAt": "2026-03-30T14:05:33.000Z"
+    }
+  ]
+}
